@@ -1,6 +1,4 @@
 import {FilecoinApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
-// import {InjectedMetamaskExtension} from "@nodefactory/metamask-filecoin-adapter/src/types";
-import {InjectedExtension} from "@polkadot/extension-inject/types";
 
 declare global {
     interface Window {
@@ -27,7 +25,6 @@ export const pluginOrigin = `wallet_plugin_${origin}`;
 export async function installFilecoinSnap(): Promise<boolean> {
     try {
         console.log("installing snap")
-        await web3Enable('my cool dapp');
         console.log("Snap installed!!");
         return true;
     } catch (e) {
@@ -37,14 +34,6 @@ export async function installFilecoinSnap(): Promise<boolean> {
 }
 
 export async function isFilecoinSnapInstalled(): Promise<boolean> {
-    return !! await getInjectedMetamaskExtension();
+    return true;
 }
 
-export async function getInjectedMetamaskExtension(): Promise<InjectedMetamaskExtension | null> {
-    const extensions = await web3EnablePromise;
-    return getMetamaskExtension(extensions || []) || null;
-}
-
-function getMetamaskExtension(extensions: InjectedExtension[]): InjectedMetamaskExtension|undefined {
-    return extensions.find(item => item.name === "metamask-polkadot-snap") as unknown as InjectedMetamaskExtension|undefined;
-}
