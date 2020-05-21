@@ -1,0 +1,22 @@
+name: ci
+# This workflow is triggered on pushes to the repository.
+on: [push, pull_request]
+
+jobs:
+  build:
+    # Job name is Greeting
+    name: build
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: yarn install --frozen-lockfile
+      - name: Run linter
+        run: yarn run lint
+      - name: Build
+        run: yarn run build
+      - name: Run tests
+        run: yarn run test
