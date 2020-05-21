@@ -1,4 +1,4 @@
-import {Callback, HexHash, Origin, TxEventArgument} from "@nodefactory/metamask-filecoin-types";
+import {Callback} from "@nodefactory/metamask-filecoin-types";
 
 export interface EventEmitter<K, T, J>  {
   addListener(event: K, identifier: T, listener: Callback<J>): this;
