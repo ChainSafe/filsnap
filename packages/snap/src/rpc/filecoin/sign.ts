@@ -1,5 +1,4 @@
 import {Wallet} from "../../interfaces";
-import ApiPromise from "@polkadot/api/promise";
 import {getKeyPair} from "../../filecoin/account";
 import {showConfirmationDialog} from "../../util/confirmation";
 

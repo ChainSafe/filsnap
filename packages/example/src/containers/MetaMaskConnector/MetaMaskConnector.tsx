@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import React, {useCallback, useContext, useEffect} from "react";
 import Alert from "@material-ui/lab/Alert";
 import {MetamaskActions, MetaMaskContext} from "../../context/metamask";
-import {installPolkadotSnap, isPolkadotSnapInstalled} from "../../services/metamask";
+import {installFilecoinSnap, isFilecoinSnapInstalled} from "../../services/metamask";
 
 export const MetaMaskConnector = () => {
 
@@ -11,14 +11,14 @@ export const MetaMaskConnector = () => {
 
     useEffect( () => {
         (async () => {
-            if(await isPolkadotSnapInstalled()) {
+            if(await isFilecoinSnapInstalled()) {
                 dispatch({type: MetamaskActions.SET_INSTALLED_STATUS, payload: {isInstalled: true}});
             }
         })();
     }, [dispatch]);
 
     const installSnap = useCallback(async () => {
-       const isInitiated = await installPolkadotSnap();
+       const isInitiated = await installFilecoinSnap();
        if(!isInitiated) {
            dispatch({type: MetamaskActions.SET_INSTALLED_STATUS, payload: {isInstalled: false, message: "Please accept snap installation prompt"}})
        } else {
@@ -34,7 +34,7 @@ export const MetaMaskConnector = () => {
       };
     
     const shouldDisplaySnackbar = (): boolean => {
-      if (!state.polkadotSnap.isInstalled && state.polkadotSnap.message) return true;
+      if (!state.filecoinSnap.isInstalled && state.filecoinSnap.message) return true;
       else return false;
     }
 
@@ -48,7 +48,7 @@ export const MetaMaskConnector = () => {
                 open={shouldDisplaySnackbar()}
                 autoHideDuration={6000}
                 onClose={handleClose}
-                message={state.polkadotSnap.message}
+                message={state.filecoinSnap.message}
                 action={
                     <React.Fragment>
                       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>

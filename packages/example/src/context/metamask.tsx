@@ -31,7 +31,7 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
         case MetamaskActions.SET_INSTALLED_STATUS: {
             return {
                 ...state,
-                polkadotSnap: action.payload
+                filecoinSnap: action.payload
             }
         }
         default: {

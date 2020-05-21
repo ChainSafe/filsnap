@@ -1,5 +1,4 @@
 import {Asset, Wallet} from "../interfaces";
-import {Balance} from "@polkadot/types/interfaces";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
 
 const assets: Map<string, Asset> = new Map<string, Asset>();

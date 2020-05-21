@@ -1,5 +1,4 @@
-import {web3Enable, web3EnablePromise} from "@polkadot/extension-dapp";
-import {PolkadotApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
 // import {InjectedMetamaskExtension} from "@nodefactory/metamask-filecoin-adapter/src/types";
 import {InjectedExtension} from "@polkadot/extension-inject/types";
 
@@ -10,7 +9,7 @@ declare global {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             send: (request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<unknown>;
             on: (eventName: unknown, callback: unknown) => unknown;
-            requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<PolkadotApi>}>;
+            requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<FilecoinApi>}>;
         }
     }
 }
