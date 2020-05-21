@@ -1,4 +1,4 @@
-# Metamask <> Polkadot snap
+# Metamask <> Filecoin snap
 ![](https://github.com/nodefactoryio/filecoin-metamask-snap/workflows/ci/badge.svg)
 ![](https://img.shields.io/github/issues-raw/nodefactoryio/filecoin-metamask-snap)
 ![](https://img.shields.io/github/license/nodefactoryio/filecoin-metamask-snap)

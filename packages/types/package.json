@@ -1,11 +1,10 @@
 {
-  "name": "@nodefactory/metamask-polkadot-types",
+  "name": "@nodefactory/metamask-filecoin-types",
   "version": "1.0.0",
   "types": "./index.d.ts",
   "author": "NodeFactory <info@nodefactory.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polkadot/api": "^1.10.1"
   },
   "devDependencies": {
   }

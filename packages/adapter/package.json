@@ -1,5 +1,5 @@
 {
-  "name": "@nodefactory/metamask-polkadot-adapter",
+  "name": "@nodefactory/metamask-filecoin-adapter",
   "version": "1.0.0",
   "main": "./build/index.js",
   "module": "./build/index.js",
@@ -7,8 +7,6 @@
   "author": "NodeFactory <info@nodefactory.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polkadot/api": "^1.11.2",
-    "@polkadot/extension-inject": "^0.23.1"
   },
   "scripts": {
     "prebuild": "rm -rf build",

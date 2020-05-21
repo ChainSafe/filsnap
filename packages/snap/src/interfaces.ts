@@ -1,17 +1,17 @@
-import {MetamaskPolkadotRpcRequest, SnapConfig} from "@nodefactory/metamask-polkadot-types";
+import {MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/metamask-filecoin-types";
 
 export type FMethodCallback = (
   originString: string,
-  requestObject: MetamaskPolkadotRpcRequest
+  requestObject: MetamaskFilecoinRpcRequest
 ) => Promise<unknown>;
 
 export type MetamaskState = {
-  polkadot: {
+  filecoin: {
     config: SnapConfig;
   };
 };
 
-export const EmptyMetamaskState: () => MetamaskState = () => ({polkadot: {config: null}});
+export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: null}});
 
 export interface Wallet {
   registerApiRequestHandler: (origin: unknown) => unknown;

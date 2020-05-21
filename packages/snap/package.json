@@ -1,8 +1,8 @@
 {
-  "name": "polkadot-snap",
+  "name": "filecoin-snap",
   "version": "0.0.1",
   "private": true,
-  "description": "Metamask snap to interact with Polkadot dapps.",
+  "description": "Metamask snap to interact with Filecoin dapps.",
   "main": "build/index.js",
   "scripts": {
     "lint": "yarn run lint:types && yarn run lint:style",
@@ -25,10 +25,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NodeFactoryIo/metamask-snap-polkadot.git"
+    "url": "git+https://github.com/NodeFactoryIo/filecoin-metamask-snap.git"
   },
   "keywords": [
-    "polkadot",
+    "filecoin",
     "metamask",
     "snap",
     "plugin",
@@ -38,9 +38,9 @@
   "author": "NodeFactory <info@nodefactory.io>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/NodeFactoryIo/metamask-snap-polkadot/issues"
+    "url": "https://github.com/NodeFactoryIo/filecoin-metamask-snap/issues"
   },
-  "homepage": "https://github.com/NodeFactoryIo/metamask-snap-polkadot#readme",
+  "homepage": "https://github.com/NodeFactoryIo/filecoin-metamask-snap#readme",
   "web3Wallet": {
     "bundle": {
       "local": "dist/bundle.js",
@@ -62,7 +62,7 @@
     "@types/sinon-chai": "^3.2.3",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
-    "@nodefactory/metamask-polkadot-types": "1.0.0",
+    "@nodefactory/metamask-filecoin-types": "1.0.0",
     "chai": "^4.2.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
@@ -73,13 +73,10 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@polkadot/api": "1.10.1",
-    "@polkadot/types": "1.10.1",
-    "@polkadot/util": "2.9.1",
     "axios": "^0.19.2",
     "deepmerge": "^4.2.2"
   },
   "resolutions": {
-    "@polkadot/wasm-crypto": "file:./wasm-crypto-stub"
+    "@filecoin/wasm-crypto": "file:./wasm-crypto-stub"
   }
 }

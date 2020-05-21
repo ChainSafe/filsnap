@@ -1,1 +1,0 @@
-{"version":3,"file":"getAddress.js","sourceRoot":"","sources":["../../src/rpc/getAddress.ts"],"names":[],"mappings":";;;;;;;;;;;AACA,iDAA+C;AAE/C,SAAsB,UAAU,CAAC,MAAc;;QAC7C,MAAM,OAAO,GAAG,MAAM,oBAAU,CAAC,MAAM,CAAC,CAAC;QACzC,OAAO,OAAO,CAAC,OAAO,CAAC;IACzB,CAAC;CAAA;AAHD,gCAGC"}

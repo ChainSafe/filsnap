@@ -7,9 +7,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build:snap": "lerna run build --scope polkadot-snap",
-    "build:adapter": "lerna run build --scope @nodefactory/metamask-polkadot-adapter",
-    "start:snap": "lerna run serve --scope polkadot-snap",
+    "build:snap": "lerna run build --scope filecoin-snap",
+    "build:adapter": "lerna run build --scope @nodefactory/metamask-filecoin-adapter",
+    "start:snap": "lerna run serve --scope filecoin-snap",
     "start:example": "lerna run start --scope example",
     "predemo": "yarn run build:snap && yarn run build:adapter",
     "build": "lerna run build",
