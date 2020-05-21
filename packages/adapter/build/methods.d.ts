@@ -1,4 +1,4 @@
-import { BlockInfo, SnapConfig, TxPayload } from "@nodefactory/metamask-polkadot-types";
+import { BlockInfo, SnapConfig, TxPayload } from "@nodefactory/metamask-filecoin-types";
 import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
 import { MetamaskPolkadotSnap } from "./snap";
 export declare function signPayloadJSON(this: MetamaskPolkadotSnap, payload: SignerPayloadJSON): Promise<string>;

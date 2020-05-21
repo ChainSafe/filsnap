@@ -1,4 +1,4 @@
-import { SnapConfig } from "@nodefactory/metamask-polkadot-types";
+import { SnapConfig } from "@nodefactory/metamask-filecoin-types";
 /**
  *
  * @param network

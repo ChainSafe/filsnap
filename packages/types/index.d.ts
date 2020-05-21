@@ -1,5 +1,3 @@
-import { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
-
 export interface GetPublicKeyRequest{
   method: "getPublicKey";
 }
@@ -38,12 +36,12 @@ export interface ConfigureSnapRequest {
   };
 }
 
-export interface AddPolkadotAssetRequest {
-  method: "addPolkadotAsset";
+export interface AddFilecoinAssetRequest {
+  method: "addFilecoinasset";
 }
 
-export interface RemovePolkadotAssetRequest {
-  method: "removePolkadotAsset";
+export interface RemoveFilecoinAssetRequest {
+  method: "removeFilecoinAsset";
 }
 
 export interface GetChainHeadRequest {
@@ -53,14 +51,14 @@ export interface GetChainHeadRequest {
 export interface SignPayloadJSONRequest {
   method: "signPayloadJSON";
   params: {
-    payload: SignerPayloadJSON;
+    payload: any;
   };
 }
 
 export interface SignPayloadRawRequest {
   method: "signPayloadRaw";
   params: {
-    payload: SignerPayloadRaw;
+    payload: any;
   };
 }
 
@@ -80,7 +78,7 @@ export interface SendUnitRequest {
   };
 }
 
-export type MetamaskPolkadotRpcRequest =
+export type MetamaskFilecoinRpcRequest =
     GetPublicKeyRequest
     | GetAddressRequest
     | ExportSeedRequest
@@ -88,15 +86,15 @@ export type MetamaskPolkadotRpcRequest =
     | GetBlockRequest
     | GetBalanceRequest
     | ConfigureSnapRequest
-    | AddPolkadotAssetRequest
-    | RemovePolkadotAssetRequest
+    | AddFilecoinAssetRequest
+    | RemoveFilecoinAssetRequest
     | GetChainHeadRequest
     | SignPayloadJSONRequest
     | SignPayloadRawRequest
     | SendUnitRequest
     | GenerateTransactionPayload;
 
-type Method = MetamaskPolkadotRpcRequest["method"];
+type Method = MetamaskFilecoinRpcRequest["method"];
 
 export interface WalletEnableRequest {
   method: "wallet_enable";
@@ -109,7 +107,7 @@ export interface GetPluginsRequest {
 
 export interface SnapRpcMethodRequest {
   method: string;
-  params: [MetamaskPolkadotRpcRequest];
+  params: [MetamaskFilecoinRpcRequest];
 }
 
 export type MetamaskRpcRequest = WalletEnableRequest | GetPluginsRequest | SnapRpcMethodRequest;
@@ -118,7 +116,7 @@ export type BlockId = number|string|"latest";
 
 export interface TxPayload {
   tx: string;
-  payload: SignerPayloadJSON;
+  payload: any;
 }
 
 export interface BlockInfo {
@@ -141,12 +139,9 @@ export interface SnapConfig {
   unit?: UnitConfiguration;
 }
 
-// Polkadot types
+// Filecoin types
 
 export type Callback<T> = (arg: T) => void;
-
-export type PolkadotEventArgument = Balance;
-export type PolkadotEventCallback = Callback<PolkadotEventArgument>;
 
 export type TxEventArgument = TxStatus;
 export type TxEventCallback = Callback<TxEventArgument>;
@@ -159,9 +154,5 @@ export type TxStatus = {
 export type Origin = string;
 export type HexHash = string;
 
-export interface PolkadotApi {
-  subscribeToBalance(callback: PolkadotEventCallback): void;
-  unsubscribeFromBalance(callback: PolkadotEventCallback): void;
-  unsubscribeAllFromBalance(): void;
-  subscribeToTxStatus(hash: HexHash, onIncluded: TxEventCallback, onFinalized?: TxEventCallback): void;
+export interface FilecoinApi {
 }

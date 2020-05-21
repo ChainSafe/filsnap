@@ -1,4 +1,4 @@
-import { BlockInfo, PolkadotApi, SnapConfig, SnapRpcMethodRequest, TxPayload } from "@nodefactory/metamask-polkadot-types";
+import { BlockInfo, PolkadotApi, SnapConfig, SnapRpcMethodRequest, TxPayload } from "@nodefactory/metamask-filecoin-types";
 import { InjectedExtension } from "@polkadot/extension-inject/types";
 export interface MetamaskSnapApi {
     addPolkadotAsset(): Promise<void>;

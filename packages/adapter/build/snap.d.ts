@@ -1,6 +1,6 @@
 import { Injected, InjectedAccounts } from "@polkadot/extension-inject/types";
 import { Signer as InjectedSigner } from '@polkadot/api/types';
-import { SnapConfig } from "@nodefactory/metamask-polkadot-types";
+import { SnapConfig } from "@nodefactory/metamask-filecoin-types";
 import { MetamaskSnapApi } from "./types";
 export declare class MetamaskPolkadotSnap implements Injected {
     accounts: InjectedAccounts;
