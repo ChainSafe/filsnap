@@ -8,7 +8,7 @@ const apiDependentMethods = [
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinApi> {
-  return {}
+  return {};
 });
 
 wallet.registerRpcMessageHandler(async (originString, requestObject) => {
@@ -18,7 +18,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     wallet.updatePluginState(EmptyMetamaskState());
   }
   // fetch api promise
-  let api: any = null;
+  // let api;
   switch (requestObject.method) {
   }
 });
