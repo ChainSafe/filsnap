@@ -1,6 +1,6 @@
 import {web3Enable, web3EnablePromise} from "@polkadot/extension-dapp";
-import {InjectedMetamaskExtension} from "@nodefactory/metamask-polkadot-adapter/src/types";
-import {PolkadotApi, SnapRpcMethodRequest} from "@nodefactory/metamask-polkadot-types";
+import {PolkadotApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
+// import {InjectedMetamaskExtension} from "@nodefactory/metamask-filecoin-adapter/src/types";
 import {InjectedExtension} from "@polkadot/extension-inject/types";
 
 declare global {
@@ -25,7 +25,7 @@ export function hasMetaMask(): boolean {
 export const origin = new URL('package.json', 'http://localhost:8081').toString();
 export const pluginOrigin = `wallet_plugin_${origin}`;
 
-export async function installPolkadotSnap(): Promise<boolean> {
+export async function installFilecoinSnap(): Promise<boolean> {
     try {
         console.log("installing snap")
         await web3Enable('my cool dapp');
@@ -37,7 +37,7 @@ export async function installPolkadotSnap(): Promise<boolean> {
     }
 }
 
-export async function isPolkadotSnapInstalled(): Promise<boolean> {
+export async function isFilecoinSnapInstalled(): Promise<boolean> {
     return !! await getInjectedMetamaskExtension();
 }
 

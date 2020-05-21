@@ -8,7 +8,7 @@
     "@material-ui/lab": "latest",
     "@material-ui/styles": "^4.9.6",
     "@nodefactory/metamask-polkadot-adapter": "^1.0.0",
-    "@nodefactory/metamask-polkadot-types": "^1.0.0",
+    "@nodefactory/metamask-filecoin-types": "^1.0.0",
     "@polkadot/api": "^1.12.2",
     "@polkadot/extension-dapp": "^0.24.1",
     "@polkadot/util": "^2.7.1",

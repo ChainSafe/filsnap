@@ -1,18 +1,18 @@
 import {hasMetaMask} from "../services/metamask";
 import React, {createContext, Dispatch, PropsWithChildren, Reducer, useReducer} from "react";
 
-interface IPolkadotSnap {
+interface IFilecoinSnap {
     isInstalled: boolean
     message: string
 }
 
 export interface MetamaskState {
-    polkadotSnap: IPolkadotSnap,
+    filecoinSnap: IFilecoinSnap,
     hasMetaMask: boolean,
 }
 
 const initialState: MetamaskState = {
-    polkadotSnap: {
+    filecoinSnap: {
         isInstalled: false,
         message: ""
     },
