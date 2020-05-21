@@ -1,0 +1,448 @@
+<!doctype html>
+
+<html>
+
+  </head>
+    <title>Hello Plugins!</title>
+  </head>
+
+  <body>
+    <img src="https://blog.coinfabrik.com/wp-content/uploads/2019/04/polkadot-substrate.png" height="60"/>
+    <h2>Polkadot metamask snap</h2>
+    <details>
+      <summary>Instructions</summary>
+      <ul>
+        <li>First, click "Connect polkadot plugin". Then, try out the other buttons!</li>
+        <li>Please note that:</li>
+        <ul>
+          <li>
+            The Snap <b>package.json</b> must be located in located in the server root directory
+          </li>
+          <li>
+            The Snap bundle must be hosted at the location specified by <b>package.json:web3Wallet:bundle:url</b>
+          </li>
+        </ul>
+      </ul>
+    </details>
+    <br/>
+    <div>
+      <!-- Snap connect button -->
+      <div style="margin-bottom: 10px">
+        <button class="connect-snap">Connect polkadot snap</button>
+        <button class="configure">Set configuration</button>
+        <button class="create-asset">Create dot asset</button>
+        <button class="remove-asset">Remove dot asset</button>
+      </div>
+
+      <!-- Public Key -->
+      <div style="display: inline">Public key:</div>
+      <div class="publicKey" style="display: inline; font-weight: bold"></div>
+      <!-- separator -->
+      <div style="margin-top: 10px" ></div>
+      <!-- Address -->
+      <div style="display: inline">Address:</div>
+      <div class="address" style="display: inline; font-weight: bold"></div>
+      <!-- separator -->
+      <div style="margin-top: 10px" ></div>
+      <!-- Snap connection status -->
+      <div style="display: inline">Snap connected:</div>
+      <div class="connected-snap" style="display: inline"></div>
+    </div>
+    <br/>
+    <div>
+      <!-- Seed export button -->
+      <div style="margin-bottom: 10px">
+        <button class="export-seed">Export seed</button>
+      </div>
+      <!-- Seed -->
+      <div>
+        <div style="display: inline">Seed:</div>
+        <div class="seed" style="display: inline; font-weight: bold"></div>
+      </div>
+    </div>
+    <br/>
+    <div style="background-color: floralwhite">
+      <h3 style="margin-block-end: 0">Polkadot substrate calls</h3>
+      <div style="margin-top: 10px">
+        <button class="head-button">Get substrate chain head</button>
+        <span style="margin-left: 10px">Substrate chain head hash:</span>
+        <span class="head" style="font-weight: bold"></span>
+      </div>
+      <div style="margin-top: 10px">
+        <button class="balance-button">Get balance</button>
+        <span style="margin-left: 10px">Balance:</span>
+        <span class="balance" style="font-weight: bold"></span>
+      </div>
+      <h4 style="margin-block-end: 0">Block search</h4>
+      <div>
+        <details>
+          <summary>Supported formats of tag</summary>
+          <ul>
+            <li>block id as string or number: 1629433</li>
+            <li>block hash as hex string: 0xc9fb400866641ca80ef3e760d904fe15a8c9eda6ff1bd769b0628e26e82d5c75</li>
+            <li>"latest" (returns latest block)</li>
+          </ul>
+        </details>
+      </div>
+      <div style="margin-top: 10px; display: flex">
+        <div style="margin-right: 10px">
+          <label for="block-tag">Block tag</label>
+          <input class="block-tag" id="block-tag" type="text" value="1629433"/>
+        </div>
+        <div style="margin-left: 10px">
+          <button class="block-find">Find block</button>
+        </div>
+        <span style="color: darkred; margin-left: 10px">block tag is pre-filled with real block value for easy testing</span>
+      </div>
+      <br/>
+      <pre class="block-data" style="background-color: ghostwhite"></pre>
+      <h4>Polkascan api</h4>
+      <button class="transactions-button">Get transactions</button>
+      <span>Number of transactions:</span>
+      <span class="numOfTransactions" style="font-weight: bold"></span>
+      <div class="transactions"></div>
+    </div>
+  </body>
+
+  <script>
+    const origin = new URL('package.json', window.location.href).toString();
+    const snapId = `wallet_plugin_${origin}`;
+
+    async function test() {
+      index = await ethereum.requestIndex();
+      pluginApi = await index.getPluginApi(origin);
+      console.log(pluginApi);
+      const s = await pluginApi.sign(100, "test-address");
+      console.log(s);
+    }
+
+    // spans for status
+    const FALSE = "<span style='color: darkred'>FALSE</span>";
+    const TRUE = "<span style='color: darkgreen'>TRUE</span>";
+
+    // snap connection
+    const snapConnectButton = document.querySelector('button.connect-snap');
+    const publicKeyLabel = document.querySelector('div.publicKey');
+    const snapConnectedLabel = document.querySelector('div.connected-snap');
+    const addressLabel = document.querySelector('div.address');
+    snapConnectButton.addEventListener('click', connectSnap);
+    snapConnectButton.disabled = false; // until keypair is fetched
+    snapConnectedLabel.innerHTML = FALSE;
+    // configuration
+    const configureButton = document.querySelector('button.configure');
+    configureButton.addEventListener('click', loadConfiguration);
+    // create asset
+    const createAssetButton = document.querySelector('button.create-asset');
+    createAssetButton.addEventListener('click', createAsset);
+    const removeAssetButton = document.querySelector('button.remove-asset');
+    removeAssetButton.addEventListener('click', removeAsset);
+    // export seed
+    const exportButton = document.querySelector('button.export-seed');
+    const seedLabel = document.querySelector('div.seed');
+    exportButton.addEventListener('click', exportSeed);
+
+    // SUBSTRATE CALLS
+
+    // chain head
+    const polkadotHeadButton = document.querySelector('button.head-button');
+    const headLabel = document.querySelector('span.head');
+    polkadotHeadButton.addEventListener('click', getChainHead);
+    // balance
+    const polkadotBalanceButton = document.querySelector('button.balance-button');
+    const balanceLabel = document.querySelector('span.balance');
+    polkadotBalanceButton.addEventListener('click', getBalance);
+
+    // transactions
+    const transactionsButton = document.querySelector('button.transactions-button');
+    const transactionDiv = document.querySelector('div.transactions');
+    const numberOfTransactionsSpan = document.querySelector('span.numOfTransactions');
+    transactionsButton.addEventListener('click', getAllTransactions);
+
+    // blocks
+    const blockTagInput = document.querySelector('input.block-tag');
+    const blockFindButton = document.querySelector('button.block-find');
+    const blockData = document.querySelector('pre.block-data');
+    blockFindButton.addEventListener('click', findBlock);
+
+    async function loadConfiguration() {
+      try {
+        const c = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'configure',
+            params: {
+              configuration: {
+                network: {
+                  wsRpcUrl: "wss://kusama-rpc.polkadot.io/",
+                  unit: {
+                    image: "",
+                    symbol: "KSM",
+                  },
+                  addressPrefix: 1
+                }
+              }
+            }
+          }]
+        });
+        console.log(c);
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+    }
+
+    async function removeAsset() {
+      try {
+        await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'removeKusamaAsset'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+    }
+
+    async function createAsset() {
+      try {
+        await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'addKusamaAsset'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+    }
+
+    async function findBlock() {
+      let block = null;
+      try {
+        block = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getBlock',
+            params: {
+              blockTag: blockTagInput.value
+            }
+          }]
+        });
+      } catch (e) {
+        console.log("Unable to fetch substrate chain head", e);
+      }
+      if (block !== null) {
+        console.log(block);
+        blockData.innerHTML = JSON.stringify(block.block, null, 2);
+      }
+    }
+
+    fetchPublicKey().then((fetched) => {
+      if (fetched) {
+        snapConnectedLabel.innerHTML = TRUE;
+        // connectButton.disabled = false;
+      } else {
+        snapConnectedLabel.innerHTML = FALSE;
+        // connectButton.disabled = false;
+      }
+    }).catch(reason => console.log(reason));
+
+    async function exportSeed() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'exportSeed'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+      if (response != null) {
+        seedLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    // snap functions
+
+    async function fetchPublicKey() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getPublicKey'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+        publicKeyLabel.innerHTML = "Error on key generation"
+      }
+      if (response != null) {
+        publicKeyLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function fetchAddress() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getAddress'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+      if (response != null) {
+        addressLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function connectSnap () {
+      console.log(snapId);
+      try {
+        await ethereum.send({
+          method: 'wallet_enable',
+          params: [{
+            [snapId]: {}
+          }]
+        });
+      } catch (e) {
+        console.error(e)
+      }
+      snapConnectedLabel.innerHTML = TRUE;
+      publicKeyLabel.innerHTML = "In progress...";
+      addressLabel.innerHTML = "In progress...";
+
+      let payload = null;
+      try {
+        payload = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'generateTransactionPayload',
+            params: {
+              amount: "10",
+              to: "HYxTWKxPTQwcENdt41QhsDrAKoy8Vn7i1NPfYjSnBT1Z62c"
+            }
+          }]
+        });
+        console.log("GENERATE PAYLOAD RESULT");
+        console.log(payload);
+      } catch (e) {
+        console.log("Unable to generate payload", e);
+      }
+
+      let signature = null;
+      try {
+        signature = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'signPayloadJSON',
+            params: {
+              payload: payload
+            }
+          }]
+        });
+        console.log("SIGN RESULT");
+        console.log(signature);
+      } catch (e) {
+        console.log("Unable to sign payload", e);
+      }
+
+      let tx = null;
+      try {
+        tx = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'send',
+            params: {
+              signature: signature,
+              txPayload: payload
+            }
+          }]
+        });
+        console.log("SEND RESULT");
+        console.log(tx);
+      } catch (e) {
+        console.log("Unable to sign payload", e);
+      }
+      // await test();
+      // await fetchPublicKey();
+      // await fetchAddress();
+    }
+
+    // polkadot/substrate functions
+
+    async function getChainHead() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getChainHead'
+          }]
+        });
+      } catch (e) {
+        console.log("Unable to fetch substrate chain head", e);
+      }
+      if (response != null) {
+        headLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function getBalance() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getBalance'
+          }]
+        });
+      } catch (e) {
+        console.log("Unable to fetch balance", e);
+      }
+      if (response != null) {
+        balanceLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function getAllTransactions() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getAllTransactions',
+            params: {
+              address: "Dc6ouAsLFYLF7kCfAbW6j6kVN1FvoKcyAuTr1NCKmU2c8mk"
+            }
+          }]
+        });
+      } catch (e) {
+        console.log("Unable to fetch transactions", e);
+      }
+      if (response != null) {
+        numberOfTransactionsSpan.innerHTML = response.length.toString();
+        transactionDiv.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+  </script>
+
+</html>

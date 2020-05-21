@@ -1,0 +1,85 @@
+{
+  "name": "polkadot-snap",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Metamask snap to interact with Polkadot dapps.",
+  "main": "build/index.js",
+  "scripts": {
+    "lint": "yarn run lint:types && yarn run lint:style",
+    "lint:types": "tsc --noEmit --pretty",
+    "lint:style": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "lint:fix": "yarn run lint --fix",
+    "start": "yarn run build && yarn run serve",
+    "prebuild": "rm -rf build && rm -rf dist",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "yarn run build:tsc && yarn run build:snap",
+    "build:tsc": "tsc --build --pretty",
+    "build:snap": "nf-snap build --stripComments --debug --verbose",
+    "watch": "concurrently  --raw --kill-others \"yarn run watch:tsc\" \"yarn run watch:snap\" \"yarn run serve\"",
+    "watch:tsc": "yarn run build:tsc --watch",
+    "watch:snap": "nf-snap watch --debug -s build/index.js",
+    "serve": "nf-snap serve",
+    "test": "yarn run test:unit",
+    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NodeFactoryIo/metamask-snap-polkadot.git"
+  },
+  "keywords": [
+    "polkadot",
+    "metamask",
+    "snap",
+    "plugin",
+    "dapp",
+    "wallet"
+  ],
+  "author": "NodeFactory <info@nodefactory.io>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/NodeFactoryIo/metamask-snap-polkadot/issues"
+  },
+  "homepage": "https://github.com/NodeFactoryIo/metamask-snap-polkadot#readme",
+  "web3Wallet": {
+    "bundle": {
+      "local": "dist/bundle.js",
+      "url": "http://localhost:8081/dist/bundle.js"
+    },
+    "initialPermissions": {
+      "alert": {},
+      "confirm": {},
+      "getPluginState": {},
+      "updatePluginState": {},
+      "wallet_manageAssets": {}
+    }
+  },
+  "devDependencies": {
+    "@nodefactory/snaps-cli": "1.0.0",
+    "@types/chai": "^4.2.10",
+    "@types/mocha": "^7.0.2",
+    "@types/sinon": "^7.5.2",
+    "@types/sinon-chai": "^3.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.22.0",
+    "@typescript-eslint/parser": "^2.22.0",
+    "@nodefactory/metamask-polkadot-types": "1.0.0",
+    "chai": "^4.2.0",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "mocha": "^7.1.1",
+    "sinon": "^9.0.1",
+    "sinon-chai": "^3.5.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@polkadot/api": "1.10.1",
+    "@polkadot/types": "1.10.1",
+    "@polkadot/util": "2.9.1",
+    "axios": "^0.19.2",
+    "deepmerge": "^4.2.2"
+  },
+  "resolutions": {
+    "@polkadot/wasm-crypto": "file:./wasm-crypto-stub"
+  }
+}
