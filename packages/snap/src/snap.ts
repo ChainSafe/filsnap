@@ -1,5 +1,5 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
-import {HexHash, FilecoinApi, TxEventCallback} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinApi} from "@nodefactory/metamask-filecoin-types";
 
 declare let wallet: Wallet;
 

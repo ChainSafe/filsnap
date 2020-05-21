@@ -138,3 +138,9 @@ export interface SnapConfig {
   addressPrefix?: number;
   unit?: UnitConfiguration;
 }
+
+// Filecoin types
+
+export interface FilecoinApi {}
+
+export type Callback<T> = (arg: T) => void;
