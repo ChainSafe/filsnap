@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {Dashboard} from "./containers/Dashboard/Dashboard";
 import {MetaMaskContextProvider} from "./context/metamask";
 

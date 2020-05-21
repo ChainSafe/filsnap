@@ -1,16 +1,7 @@
-import React, {useCallback, useContext, useEffect, useState} from "react";
+import React from "react";
 import {
-    Box,
-    Card,
-    CardContent,
-    CardHeader,
     Container,
     Grid,
-    Hidden,
-    InputLabel,
-    MenuItem,
-    Select,
-    Typography
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 
