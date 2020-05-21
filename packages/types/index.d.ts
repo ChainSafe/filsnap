@@ -138,21 +138,3 @@ export interface SnapConfig {
   addressPrefix?: number;
   unit?: UnitConfiguration;
 }
-
-// Filecoin types
-
-export type Callback<T> = (arg: T) => void;
-
-export type TxEventArgument = TxStatus;
-export type TxEventCallback = Callback<TxEventArgument>;
-
-export type Balance = string;
-export type TxStatus = {
-  txHash: string;
-};
-
-export type Origin = string;
-export type HexHash = string;
-
-export interface FilecoinApi {
-}

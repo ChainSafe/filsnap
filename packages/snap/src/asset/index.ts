@@ -8,7 +8,7 @@ function getIdentifier(origin: string, id: string): string {
 }
 
 export function getFilecoinAssetDescription(
-  balance: number|string|Balance, address: string, configuration: SnapConfig
+  balance: number|string, address: string, configuration: SnapConfig
 ): Asset {
   return {
     balance: balance,
@@ -25,7 +25,7 @@ export async function removeAsset(wallet: Wallet, origin: string): Promise<boole
 }
 
 export async function updateAsset(
-  wallet: Wallet, origin: string, balance: number|string|Balance
+  wallet: Wallet, origin: string, balance: number|string
 ): Promise<boolean> {
   return true;
 }
