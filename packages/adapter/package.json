@@ -5,7 +5,6 @@
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
   "author": "NodeFactory <info@nodefactory.io>",
-  "license": "Apache-2.0",
   "dependencies": {
   },
   "scripts": {
