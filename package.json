@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "private": true,
+  "author": "NodeFactory <info@nodefactory.io>",
+  "license": "(Apache-2.0 AND MIT)",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build:snap": "lerna run build --scope filecoin-snap",
+    "build:adapter": "lerna run build --scope @nodefactory/metamask-filecoin-adapter",
+    "start:snap": "lerna run serve --scope filecoin-snap",
+    "start:example": "lerna run start --scope example",
+    "predemo": "yarn run build:snap && yarn run build:adapter",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "lint:style:fix": "lerna run lint:style:fix",
+    "demo": "concurrently  --raw --kill-others \"yarn run start:snap\" \"yarn run start:example\""
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2",
+    "@types/node": "^12.12.35",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3"
+  }
+}

@@ -1,0 +1,165 @@
+<!doctype html>
+
+<html>
+
+  </head>
+    <title>Hello Plugins!</title>
+  </head>
+
+  <body>
+  </body>
+
+  <script>
+    const origin = new URL('package.json', window.location.href).toString();
+    const snapId = `wallet_plugin_${origin}`;
+
+    async function test() {
+      index = await ethereum.requestIndex();
+      pluginApi = await index.getPluginApi(origin);
+      console.log(pluginApi);
+      const s = await pluginApi.sign(100, "test-address");
+      console.log(s);
+    }
+
+    // spans for status
+    const FALSE = "<span style='color: darkred'>FALSE</span>";
+    const TRUE = "<span style='color: darkgreen'>TRUE</span>";
+
+    // snap connection
+    const snapConnectButton = document.querySelector('button.connect-snap');
+    const publicKeyLabel = document.querySelector('div.publicKey');
+    const snapConnectedLabel = document.querySelector('div.connected-snap');
+    const addressLabel = document.querySelector('div.address');
+    snapConnectButton.addEventListener('click', connectSnap);
+    snapConnectButton.disabled = false; // until keypair is fetched
+    snapConnectedLabel.innerHTML = FALSE;
+    // configuration
+    const configureButton = document.querySelector('button.configure');
+    configureButton.addEventListener('click', loadConfiguration);
+    // create asset
+    const createAssetButton = document.querySelector('button.create-asset');
+    createAssetButton.addEventListener('click', createAsset);
+    const removeAssetButton = document.querySelector('button.remove-asset');
+    removeAssetButton.addEventListener('click', removeAsset);
+    // export seed
+    const exportButton = document.querySelector('button.export-seed');
+    const seedLabel = document.querySelector('div.seed');
+    exportButton.addEventListener('click', exportSeed);
+
+    // snap functions
+
+    async function fetchPublicKey() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getPublicKey'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+        publicKeyLabel.innerHTML = "Error on key generation"
+      }
+      if (response != null) {
+        publicKeyLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function fetchAddress() {
+      let response = null;
+      try {
+        response = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'getAddress'
+          }]
+        });
+      } catch (e) {
+        console.log("Keys not generated", e);
+      }
+      if (response != null) {
+        addressLabel.innerHTML = response;
+        return true;
+      }
+      return false;
+    }
+
+    async function connectSnap () {
+      console.log(snapId);
+      try {
+        await ethereum.send({
+          method: 'wallet_enable',
+          params: [{
+            [snapId]: {}
+          }]
+        });
+      } catch (e) {
+        console.error(e)
+      }
+      snapConnectedLabel.innerHTML = TRUE;
+      publicKeyLabel.innerHTML = "In progress...";
+      addressLabel.innerHTML = "In progress...";
+
+      let payload = null;
+      try {
+        payload = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'generateTransactionPayload',
+            params: {
+              amount: "10",
+              to: "HYxTWKxPTQwcENdt41QhsDrAKoy8Vn7i1NPfYjSnBT1Z62c"
+            }
+          }]
+        });
+        console.log("GENERATE PAYLOAD RESULT");
+        console.log(payload);
+      } catch (e) {
+        console.log("Unable to generate payload", e);
+      }
+
+      let signature = null;
+      try {
+        signature = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'signPayloadJSON',
+            params: {
+              payload: payload
+            }
+          }]
+        });
+        console.log("SIGN RESULT");
+        console.log(signature);
+      } catch (e) {
+        console.log("Unable to sign payload", e);
+      }
+
+      let tx = null;
+      try {
+        tx = await ethereum.send({
+          method: snapId,
+          params: [{
+            method: 'send',
+            params: {
+              signature: signature,
+              txPayload: payload
+            }
+          }]
+        });
+        console.log("SEND RESULT");
+        console.log(tx);
+      } catch (e) {
+        console.log("Unable to sign payload", e);
+      }
+      // await test();
+      // await fetchPublicKey();
+      // await fetchAddress();
+    }
+
+  </script>
+
+</html>
