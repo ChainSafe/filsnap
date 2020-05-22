@@ -1,6 +1,0 @@
-{
-  "name": "@filecoin/wasm-crypto",
-  "version": "1.8.0-beta.10",
-  "private": true,
-  "main": "./noWasm.js"
-}

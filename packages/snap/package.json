@@ -75,7 +75,4 @@
     "axios": "^0.19.2",
     "deepmerge": "^4.2.2"
   },
-  "resolutions": {
-    "@filecoin/wasm-crypto": "file:./wasm-crypto-stub"
-  }
 }
