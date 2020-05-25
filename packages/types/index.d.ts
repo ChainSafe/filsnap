@@ -47,11 +47,3 @@ export interface SnapConfig {
 export interface FilecoinApi {}
 
 export type Callback<T> = (arg: T) => void;
-
-export interface ExtendedKey {
-  address: string;
-  public_hexstring: string;
-  private_hexstring: string;
-  public_raw: string;
-  private_raw: string;
-}
