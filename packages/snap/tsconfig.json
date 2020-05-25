@@ -12,10 +12,16 @@
       "@types/chai",
       "@types/mocha",
       "@types/sinon",
-      "@types/sinon-chai"
+      "@types/sinon-chai",
+    ],
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "@types/**/*"
   ]
 }
