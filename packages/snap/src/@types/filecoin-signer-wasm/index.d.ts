@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/camelcase */
+
 declare module "@zondax/filecoin-signer-wasm" {
 
   export interface ExtendedKey {
@@ -15,6 +17,6 @@ declare module "@zondax/filecoin-signer-wasm" {
   export function transaction_serialize(transaction: string): string;
   export function transaction_parse(hexstring: string, testnet: boolean): JSON;
   export function transaction_sign(transaction: string, privateKey: string): string;
-  export function verify_signature(signature: string, cbor_transaction: string): boolean
+  export function verify_signature(signature: string, cbor_transaction: string): boolean;
 
 }
