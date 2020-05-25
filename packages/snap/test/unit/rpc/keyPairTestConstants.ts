@@ -1,0 +1,2 @@
+export const testAppKey = "ed2f664e65b5ef0dd907ae15a2788cfc98e41970bc9fcb46f5900f6919862075e721f37212304a56505dab99b001cc8907ef093b7c5016a46b50c01cc3ec1cac";
+export const testAddress = "t1rovwtiuo5ncslpmpjftzu5akswbgsgighjazxoi";
