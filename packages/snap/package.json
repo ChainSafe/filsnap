@@ -16,7 +16,7 @@
     "type-check:watch": "npm run type-check -- --watch",
     "build": "yarn run build:tsc && yarn run build:snap",
     "build:tsc": "tsc -p tsconfig.build.json --pretty --outDir build",
-    "build:snap": "nf-snap build -p tsconfig.build.json --stripComments --debug --verbose",
+    "build:snap": "nf-snap build --stripComments --debug --verbose",
     "watch": "concurrently  --raw --kill-others \"yarn run watch:tsc\" \"yarn run watch:snap\" \"yarn run serve\"",
     "watch:tsc": "yarn run build:tsc --watch",
     "watch:snap": "nf-snap watch --debug -s build/index.js",
