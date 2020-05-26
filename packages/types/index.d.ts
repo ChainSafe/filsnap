@@ -39,7 +39,7 @@ export interface UnitConfiguration {
 }
 
 export interface SnapConfig {
-  bip44: string;
+  derivationPath: string;
 }
 
 // Filecoin types
