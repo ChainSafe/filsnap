@@ -3,10 +3,6 @@ import {FilecoinApi} from "@nodefactory/metamask-filecoin-types";
 
 declare let wallet: Wallet;
 
-const apiDependentMethods = [
-  "getBlock", "getBalance", "getChainHead", "signPayloadJSON", "signPayloadRaw", "generateTransactionPayload", "send"
-];
-
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinApi> {
   return {};
 });
