@@ -5,6 +5,9 @@
     "paths": {
       "*": [
         "../../node_modules"
+      ],
+      "@zondax/filecoin-signer-wasm": [
+        "./@types/filecoin-signer-wasm"
       ]
     },
     "outDir": "./build",
@@ -21,11 +24,6 @@
     ]
   },
   "include": [
-    "src/**/*.ts",
-    "test/**/*.ts",
-    "@types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
+    "src/**/*.ts"
   ]
 }
