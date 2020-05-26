@@ -21,7 +21,7 @@
     "watch:snap": "nf-snap watch --debug -s build/index.js",
     "serve": "nf-snap serve",
     "test": "yarn run test:unit",
-    "test:unit": "node --experimental-exports ../../node_modules/mocha/bin/_mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\""
+    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\""
   },
   "repository": {
     "type": "git",
