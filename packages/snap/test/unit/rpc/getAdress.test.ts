@@ -1,3 +1,5 @@
+/// <reference path="../../../@types/filecoin-signer-wasm/index.d.ts" />
+
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
