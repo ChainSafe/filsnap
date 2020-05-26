@@ -5,6 +5,9 @@
     "paths": {
       "*": [
         "../../node_modules"
+      ],
+      "@zondax/filecoin-signer-wasm": [
+        "./@types/filecoin-signer-wasm"
       ]
     },
     "outDir": "./build",
@@ -12,10 +15,16 @@
       "@types/chai",
       "@types/mocha",
       "@types/sinon",
-      "@types/sinon-chai"
+      "@types/sinon-chai",
+    ],
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
     ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts",
+    "test/**/*ts",
   ]
 }

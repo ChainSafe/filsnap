@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "build": "yarn run build:tsc && yarn run build:snap",
-    "build:tsc": "tsc --build --pretty",
+    "build:tsc": "tsc -p tsconfig.build.json --pretty --outDir build",
     "build:snap": "nf-snap build --stripComments --debug --verbose",
     "watch": "concurrently  --raw --kill-others \"yarn run watch:tsc\" \"yarn run watch:snap\" \"yarn run serve\"",
     "watch:tsc": "yarn run build:tsc --watch",
@@ -55,6 +55,7 @@
     }
   },
   "devDependencies": {
+    "@nodefactory/metamask-filecoin-types": "1.0.0",
     "@nodefactory/snaps-cli": "1.0.0",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
@@ -62,7 +63,6 @@
     "@types/sinon-chai": "^3.2.3",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
-    "@nodefactory/metamask-filecoin-types": "1.0.0",
     "chai": "^4.2.0",
     "concurrently": "^5.1.0",
     "eslint": "^6.8.0",
@@ -73,6 +73,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@zondax/filecoin-signer-wasm": "^0.3.1",
     "axios": "^0.19.2",
     "deepmerge": "^4.2.2"
   }
