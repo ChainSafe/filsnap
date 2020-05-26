@@ -1,2 +1,3 @@
 export const testAppKey = "ed2f664e65b5ef0dd907ae15a2788cfc98e41970bc9fcb46f5900f6919862075e721f37212304a56505dab99b001cc8907ef093b7c5016a46b50c01cc3ec1cac";
 export const testAddress = "t1rovwtiuo5ncslpmpjftzu5akswbgsgighjazxoi";
+export const testPublicKey = "04fc016f3d88dc7070cdd95b5754d32fd5290f850b7c2208fca0f715d35861de1841d9a342a487692a63810a6c906b443a18aa804d9d508d69facc5b06789a01b4";

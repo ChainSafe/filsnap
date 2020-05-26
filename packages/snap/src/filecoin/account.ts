@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
+/// <reference path="../../@types/filecoin-signer-wasm/index.d.ts" />
 
 import {Wallet} from "../interfaces";
 import {getConfiguration} from "../configuration/index";

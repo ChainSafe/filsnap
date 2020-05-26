@@ -1,10 +1,8 @@
-/// <reference path="../../../@types/filecoin-signer-wasm/index.d.ts" />
-
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
 import {getAddress} from "../../../src/rpc/getAddress";
-import {testAppKey} from "./keyPairTestConstants";
+import {testAppKey, testAddress} from "./keyPairTestConstants";
 
 chai.use(sinonChai);
 
@@ -19,7 +17,7 @@ describe('Test rpc handler function: getAddress', function() {
   it('should return valid address', async function () {
     walletStub.getAppKey.returns(testAppKey);
     const result = await getAddress(walletStub);
-    expect(result).to.be.eq("t1rovwtiuo5ncslpmpjftzu5akswbgsgighjazxoi");
+    expect(result).to.be.eq(testAddress);
   });
 
 });
