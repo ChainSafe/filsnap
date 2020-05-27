@@ -1,6 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "*": [
@@ -8,6 +9,15 @@
       ],
       "@zondax/filecoin-signer-wasm": [
         "./@types/filecoin-signer-wasm"
+      ],
+      "@filecoin-shipyard/lotus-client-rpc": [
+        "./@types/lotus-client-rpc"
+      ],
+      "@filecoin-shipyard/lotus-client-provider-browser": [
+        "./@types/lotus-client-provider-browser"
+      ],
+      "@filecoin-shipyard/lotus-client-schema": [
+        "./@types/lotus-client-schema"
       ]
     },
     "outDir": "./build",

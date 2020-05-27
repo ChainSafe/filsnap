@@ -5,6 +5,7 @@ import {filecoinConfiguration} from "../../../src/configuration/predefined";
 import {configure} from "../../../src/rpc/configure";
 import {EmptyMetamaskState} from "../../../src/interfaces";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {getApi} from "../../../src/filecoin/api";
 
 chai.use(sinonChai);
 
@@ -46,4 +47,15 @@ describe('Test rpc handler function: configure', function() {
     });
     expect(walletStub.updatePluginState).to.have.been.calledOnce;
   });
+
+  it('debug', function () {
+    walletStub.getPluginState.returns(EmptyMetamaskState());
+    walletStub.updatePluginState.returnsArg(0);
+
+    const api = getApi(walletStub)
+
+    console.log('Here')
+    console.log(api)
+  });
+
 });

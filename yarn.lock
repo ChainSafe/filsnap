@@ -1151,6 +1151,21 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@filecoin-shipyard/lotus-client-provider-browser@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.6.tgz#046d6819dee9c95d915b9db891ca32fafbe99a33"
+  integrity sha512-d8/Wi8eGPC1DHq1alkHwI92piRbnkXaofTgJKenZxvYBYznJ6iR2Hl7UvKiRqX8zjTbejfIZfUYIL4i+wJlcvg==
+
+"@filecoin-shipyard/lotus-client-rpc@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.8.tgz#b761cc070c92b0660dcbe0512640546ce301d770"
+  integrity sha512-Olh57HuBTwFwO2pvfV6OM74AsjENB9YPBs9TJ5r4swRVxLkDtNivgdsFlmGzHs4S0mppw7cIBIkZBp25mqI0mg==
+
+"@filecoin-shipyard/lotus-client-schema@^0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.9.tgz#03bcb733de66e02d7e07fa3d617caa9f7b69d8e1"
+  integrity sha512-xHchzR91GZB98D70+n63HUD8+Lof7o1iMCRtuQc8HQ41R4fmWGGLT3f1dyfwt5y6tTlPQyZPbFJYD9jTrkWh/g==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
