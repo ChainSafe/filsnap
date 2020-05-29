@@ -22,7 +22,6 @@ describe('Test rpc handler function: getBalance', function() {
     const apiStub = {request: sinon.stub()};
     apiStub.request.returns("3");
 
-
     const result = await getBalance(walletStub, apiStub);
 
     expect(result).to.be.eq("3");

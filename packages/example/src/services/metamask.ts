@@ -1,4 +1,4 @@
-import {FilecoinApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
+import {SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
 
 declare global {
     interface Window {
@@ -7,7 +7,7 @@ declare global {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             send: (request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<unknown>;
             on: (eventName: unknown, callback: unknown) => unknown;
-            requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<FilecoinApi>}>;
+            requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<any>}>;
         }
     }
 }
@@ -36,4 +36,3 @@ export async function installFilecoinSnap(): Promise<boolean> {
 export async function isFilecoinSnapInstalled(): Promise<boolean> {
     return true;
 }
-
