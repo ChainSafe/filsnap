@@ -8,6 +8,9 @@
       ],
       "@zondax/filecoin-signer-wasm": [
         "./@types/filecoin-signer-wasm"
+      ],
+      "@openworklabs/lotus-jsonrpc-engine": [
+        "./@types/lotus-jsonrpc-engine"
       ]
     },
     "outDir": "./build",
