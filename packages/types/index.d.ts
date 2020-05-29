@@ -40,10 +40,9 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   derivationPath: string;
+  rpcUrl: string;
 }
 
 // Filecoin types
-
-export interface FilecoinApi {}
 
 export type Callback<T> = (arg: T) => void;
