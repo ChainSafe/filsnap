@@ -8,6 +8,5 @@ export function getApi(wallet: Wallet): LotusRpcEngine {
     apiAddress: rpcUrl
   };
 
-  const api = new LotusRpcEngine(config);
-  return api;
+  return new LotusRpcEngine(config);
 };

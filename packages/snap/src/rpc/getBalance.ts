@@ -12,5 +12,5 @@ export async function getBalance(wallet: Wallet, api: LotusRpcEngine, address?: 
     address = (await getKeyPair(wallet)).address;
   }
 
-  return await api.request('WalletBalance', address) as string;
+  return await api.request("WalletBalance", address);
 }
