@@ -45,4 +45,6 @@ export interface SnapConfig {
 
 // Filecoin types
 
+export interface FilecoinApi {}
+
 export type Callback<T> = (arg: T) => void;
