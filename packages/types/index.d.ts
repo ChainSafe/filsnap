@@ -1,4 +1,16 @@
-export type MetamaskFilecoinRpcRequest = any;
+export interface GetPublicKeyRequest{
+  method: "getPublicKey";
+}
+
+export interface GetAddressRequest {
+  method: "getAddress";
+}
+
+export interface ExportSeedRequest {
+  method: "exportSeed";
+}
+
+export type MetamaskFilecoinRpcRequest = GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
