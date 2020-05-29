@@ -40,6 +40,7 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   derivationPath: string;
+  rpcUrl: string;
 }
 
 // Filecoin types

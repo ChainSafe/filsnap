@@ -1,4 +1,4 @@
-import {FilecoinApi, SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
+import {SnapRpcMethodRequest, FilecoinApi} from "@nodefactory/metamask-filecoin-types";
 
 declare global {
     interface Window {
@@ -36,4 +36,3 @@ export async function installFilecoinSnap(): Promise<boolean> {
 export async function isFilecoinSnapInstalled(): Promise<boolean> {
     return true;
 }
-

@@ -1,9 +1,8 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
-import {FilecoinApi} from "@nodefactory/metamask-filecoin-types";
 
 declare let wallet: Wallet;
 
-wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinApi> {
+wallet.registerApiRequestHandler(async function (origin: URL): Promise<{}> {
   return {};
 });
 

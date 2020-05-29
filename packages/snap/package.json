@@ -73,6 +73,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@openworklabs/lotus-jsonrpc-engine": "^0.1.2",
     "@zondax/filecoin-signer-wasm": "^0.3.1",
     "axios": "^0.19.2",
     "deepmerge": "^4.2.2"
