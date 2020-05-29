@@ -1,7 +1,7 @@
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
-import {filecoinConfiguration} from "../../../src/configuration/predefined";
+import {devConfiguration} from "../../../src/configuration/predefined";
 import {configure} from "../../../src/rpc/configure";
 import {EmptyMetamaskState} from "../../../src/interfaces";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
@@ -21,10 +21,10 @@ describe('Test rpc handler function: configure', function() {
 
     const result = configure(walletStub, {});
 
-    expect(result).to.be.deep.eq(filecoinConfiguration);
+    expect(result).to.be.deep.eq(devConfiguration);
     expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
       filecoin: {
-        config: filecoinConfiguration
+        config: devConfiguration
       }
     });
     expect(walletStub.updatePluginState).to.have.been.calledOnce;
@@ -34,7 +34,7 @@ describe('Test rpc handler function: configure', function() {
     walletStub.getPluginState.returns(EmptyMetamaskState());
     walletStub.updatePluginState.returnsArg(0);
 
-    const customConfiguration = filecoinConfiguration;
+    const customConfiguration = devConfiguration;
     customConfiguration.rpcUrl = "wss://custom";
     const result = configure(walletStub, {rpcUrl: "wss://custom"} as SnapConfig);
 
