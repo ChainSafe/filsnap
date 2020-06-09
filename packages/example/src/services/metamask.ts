@@ -49,4 +49,3 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
 export async function isFilecoinSnapInstalled(): Promise<boolean> {
     return isInstalled;
 }
-

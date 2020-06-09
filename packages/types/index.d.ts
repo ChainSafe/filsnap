@@ -52,6 +52,7 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   network: FilecoinNetwork;
+  rpcUrl: string;
 }
 
 export type Callback<T> = (arg: T) => void;

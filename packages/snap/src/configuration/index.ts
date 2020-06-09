@@ -2,7 +2,7 @@ import {Wallet} from "../interfaces";
 import {defaultConfiguration} from "./predefined";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
 
-export function getDefaultConfiguration(networkName: string): SnapConfig {
+export function getDefaultConfiguration(): SnapConfig {
   return defaultConfiguration;
 }
 
