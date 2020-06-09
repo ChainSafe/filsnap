@@ -1,6 +1,5 @@
 import {SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
 
-
 declare global {
     interface Window {
         ethereum: {

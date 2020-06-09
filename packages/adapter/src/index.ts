@@ -1,18 +1,29 @@
 import {hasMetaMask, isSnapInstalled} from "./utils";
+import {MetamaskFilecoinSnap as MFSnap} from "./snap";
 
-const defaultOrigin = "wallet_plugin_http://localhost:8081/package.json";
+const defaultSnapOrigin = "http://localhost:8081/package.json";
+const defaultSnapId = `wallet_plugin_${defaultSnapOrigin}`;
 
-export async function enableFilecoinSnap(): Promise<void> {
+export type MetamaskFilecoinSnap = MFSnap;
+
+export async function enableFilecoinSnap(pluginOrigin?: string): Promise<MetamaskFilecoinSnap> {
     if (!hasMetaMask()) {
-        return;
+        throw new Error("Metamask no installed");
     }
-
-    if (!(await isSnapInstalled(defaultOrigin))) {
+    // enable snap
+    if (!(await isSnapInstalled(defaultSnapId))) {
         await window.ethereum.send({
             method: "wallet_enable",
             params: [{
-                [defaultOrigin]: {}
+                [defaultSnapId]: {}
             }]
         })
     }
+
+    // TODO configure snap with initial configuration
+
+    // return snap object
+    return new MFSnap(
+        pluginOrigin || defaultSnapOrigin
+    );
 }
