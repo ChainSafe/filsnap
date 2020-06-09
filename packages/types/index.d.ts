@@ -51,11 +51,19 @@ export interface UnitConfiguration {
 }
 
 export interface SnapConfig {
-  derivationPath: string;
+  network: FilecoinNetwork;
 }
+
+export type Callback<T> = (arg: T) => void;
 
 // Filecoin types
 
-export interface FilecoinApi {}
+export type FilecoinNetwork = "f" | "t";
 
-export type Callback<T> = (arg: T) => void;
+export interface FilecoinEventApi {}
+
+export interface FilecoinSnapApi {
+  getPublicKey(): Promise<string>;
+  getAddress(): Promise<string>;
+  exportSeed(): Promise<string>;
+}
