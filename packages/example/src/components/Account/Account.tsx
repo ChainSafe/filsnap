@@ -5,12 +5,12 @@ export interface AccountProps {
     address: string,
     publicKey: string,
     balance: string
-    network: string
 }
 
 export const Account = (props: AccountProps) => {
 
     const handleExport = async () => {
+        alert("Export private key")
     };
 
     return (        
