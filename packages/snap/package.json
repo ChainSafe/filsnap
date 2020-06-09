@@ -73,8 +73,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@zondax/filecoin-signer-wasm": "^0.3.1",
-    "axios": "^0.19.2",
+    "@nodefactory/filecoin-address": "^1.0.1",
     "deepmerge": "^4.2.2"
   }
 }

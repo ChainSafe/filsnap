@@ -1,9 +1,12 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
-import {FilecoinApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinEventApi} from "@nodefactory/metamask-filecoin-types";
+import {getAddress} from "./rpc/getAddress";
+import {exportSeed} from "./rpc/exportSeed";
+import {getPublicKey} from "./rpc/getPublicKey";
 
 declare let wallet: Wallet;
 
-wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinApi> {
+wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
   return {};
 });
 
@@ -13,8 +16,12 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     // initialize state if empty and set default config
     wallet.updatePluginState(EmptyMetamaskState());
   }
-  // fetch api promise
-  // let api;
   switch (requestObject.method) {
+    case "getAddress":
+      return await getAddress(wallet);
+    case "getPublicKey":
+      return await getPublicKey(wallet);
+    case "exportSeed":
+      return exportSeed(wallet);
   }
 });

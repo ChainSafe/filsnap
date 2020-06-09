@@ -11,7 +11,7 @@ export type MetamaskState = {
   };
 };
 
-export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: null}});
+export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: {network: "t"}}});
 
 export interface Wallet {
   registerApiRequestHandler: (origin: unknown) => unknown;
