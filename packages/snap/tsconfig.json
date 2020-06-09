@@ -5,6 +5,9 @@
     "paths": {
       "*": [
         "../../node_modules"
+      ],
+      "@openworklabs/lotus-jsonrpc-engine": [
+        "./@types/lotus-jsonrpc-engine"
       ]
     },
     "outDir": "./build",

@@ -1,4 +1,5 @@
 import {MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {defaultConfiguration} from "./configuration/predefined";
 
 export type FMethodCallback = (
   originString: string,
@@ -11,7 +12,7 @@ export type MetamaskState = {
   };
 };
 
-export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: {network: "t"}}});
+export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: defaultConfiguration}});
 
 export interface Wallet {
   registerApiRequestHandler: (origin: unknown) => unknown;
