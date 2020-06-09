@@ -5,6 +5,7 @@ import LotusRpcEngine from "@openworklabs/lotus-jsonrpc-engine";
 /**
  * Returns balance as string
  * @param wallet
+ * @param api
  * @param address
  */
 export async function getBalance(wallet: Wallet, api: LotusRpcEngine, address?: string): Promise<string> {

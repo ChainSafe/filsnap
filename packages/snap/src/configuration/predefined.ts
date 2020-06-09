@@ -13,9 +13,9 @@ export const filecoinTestnetConfiguration: SnapConfig = {
 };
 
 export const devConfiguration: SnapConfig = {
-    derivationPath: "m/44'/461'/0/0/1",
-    network: "t",
-    rpcUrl: "https://lotus.testground.ipfs.team/api/0/node/rpc/v0"
+  derivationPath: "m/44'/461'/0/0/1",
+  network: "t",
+  rpcUrl: "https://lotus.testground.ipfs.team/api/0/node/rpc/v0"
 };
 
 export const defaultConfiguration: SnapConfig = devConfiguration;
