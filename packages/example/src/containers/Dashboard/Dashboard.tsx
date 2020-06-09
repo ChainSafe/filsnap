@@ -12,7 +12,7 @@ export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
 
-    const [balance, setBalance] = useState("0");
+    // const [balance, setBalance] = useState("0");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
 
@@ -45,7 +45,7 @@ export const Dashboard = () => {
                 <Hidden xsUp={!state.filecoinSnap.isInstalled}>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
-                            <Account address={address} balance={balance} publicKey={publicKey}/>
+                            <Account address={address} balance={"0"} publicKey={publicKey}/>
                         </Grid>
                     </Grid>
                 </Hidden>
