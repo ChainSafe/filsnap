@@ -23,5 +23,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return await getPublicKey(wallet);
     case "exportSeed":
       return exportSeed(wallet);
+    default:
+      throw new Error("Unsupported RPC method");
   }
 });
