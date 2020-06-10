@@ -10,7 +10,12 @@ export interface ExportSeedRequest {
   method: "exportSeed";
 }
 
-export type MetamaskFilecoinRpcRequest = GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest;
+export interface GetBalanceRequest {
+  method: "getBalance";
+}
+
+export type MetamaskFilecoinRpcRequest =
+    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | GetBalanceRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -67,5 +72,6 @@ export interface FilecoinEventApi {}
 export interface FilecoinSnapApi {
   getPublicKey(): Promise<string>;
   getAddress(): Promise<string>;
+  getBalance(): Promise<string>;
   exportSeed(): Promise<string>;
 }

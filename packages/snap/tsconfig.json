@@ -6,7 +6,7 @@
       "*": [
         "../../node_modules"
       ],
-      "@openworklabs/lotus-jsonrpc-engine": [
+      "@openworklabs/lotus-jsonrpc-engine/dist": [
         "./@types/lotus-jsonrpc-engine"
       ]
     },
