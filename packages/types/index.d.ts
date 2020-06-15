@@ -10,7 +10,15 @@ export interface ExportSeedRequest {
   method: "exportSeed";
 }
 
-export type MetamaskFilecoinRpcRequest = GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest;
+export interface ConfigureRequest {
+  method: "configure";
+  params: {
+    configuration: SnapConfig;
+  };
+}
+
+export type MetamaskFilecoinRpcRequest =
+    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | ConfigureRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
