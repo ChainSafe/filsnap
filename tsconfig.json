@@ -3,8 +3,8 @@
     "module": "commonjs",
     "lib": [
       "es5",
-      "DOM",
-      "ES2015"
+      "dom",
+      "es2015"
     ],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

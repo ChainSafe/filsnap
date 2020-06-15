@@ -1,17 +1,12 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 import {Wallet} from "../interfaces";
-import {getConfiguration} from "../configuration/index";
-import {key_derive_from_seed, ExtendedKey} from "@zondax/filecoin-signer-wasm";
+import {KeyPair, keyPairFromSeed} from "@nodefactory/filecoin-address";
 
 /**
  * Return derived KeyPair from seed.
  * @param wallet
  */
-export async function getKeyPair(wallet: Wallet): Promise<ExtendedKey> {
+export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   const seed = await wallet.getAppKey();
-  const derivationPath = getConfiguration(wallet).derivationPath;
-
-  const keyPair: ExtendedKey = key_derive_from_seed(seed, derivationPath);
-  return keyPair;
+  const network = await wallet.getPluginState().filecoin.config.network;
+  return keyPairFromSeed(seed, network);
 }

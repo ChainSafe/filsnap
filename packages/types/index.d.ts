@@ -1,4 +1,16 @@
-export type MetamaskFilecoinRpcRequest = any;
+export interface GetPublicKeyRequest{
+  method: "getPublicKey";
+}
+
+export interface GetAddressRequest {
+  method: "getAddress";
+}
+
+export interface ExportSeedRequest {
+  method: "exportSeed";
+}
+
+export type MetamaskFilecoinRpcRequest = GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -40,11 +52,20 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   derivationPath: string;
+  network: FilecoinNetwork;
   rpcUrl: string;
 }
 
+export type Callback<T> = (arg: T) => void;
+
 // Filecoin types
 
-export interface FilecoinApi {}
+export type FilecoinNetwork = "f" | "t";
 
-export type Callback<T> = (arg: T) => void;
+export interface FilecoinEventApi {}
+
+export interface FilecoinSnapApi {
+  getPublicKey(): Promise<string>;
+  getAddress(): Promise<string>;
+  exportSeed(): Promise<string>;
+}

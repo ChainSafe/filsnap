@@ -1,9 +1,10 @@
-import {hasMetaMask} from "../services/metamask";
 import React, {createContext, Dispatch, PropsWithChildren, Reducer, useReducer} from "react";
+import {hasMetaMask, MetamaskFilecoinSnap} from "@nodefactory/metamask-filecoin-adapter";
 
 interface IFilecoinSnap {
     isInstalled: boolean
     message: string
+    snap?: MetamaskFilecoinSnap
 }
 
 export interface MetamaskState {
@@ -38,9 +39,7 @@ const reducer: Reducer<MetamaskState, MetamaskDispatch> = (state, action) => {
             return state;
         }
     }
-
 };
-
 
 export const MetaMaskContextProvider = (props: PropsWithChildren<{}>) => {
 

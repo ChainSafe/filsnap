@@ -6,9 +6,6 @@
       "*": [
         "../../node_modules"
       ],
-      "@zondax/filecoin-signer-wasm": [
-        "./@types/filecoin-signer-wasm"
-      ],
       "@openworklabs/lotus-jsonrpc-engine": [
         "./@types/lotus-jsonrpc-engine"
       ]
@@ -18,7 +15,7 @@
       "@types/chai",
       "@types/mocha",
       "@types/sinon",
-      "@types/sinon-chai",
+      "@types/sinon-chai"
     ],
     "typeRoots": [
       "./@types",
@@ -28,6 +25,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*ts",
+    "test/**/*ts"
   ]
 }

@@ -16,6 +16,7 @@ describe('Test rpc handler function: getAddress', function() {
 
   it('should return valid address', async function () {
     walletStub.getAppKey.returns(testAppKey);
+    walletStub.getPluginState.returns({filecoin: {config: {network: "f"}}});
     const result = await getAddress(walletStub);
     expect(result).to.be.eq(testAddress);
   });
