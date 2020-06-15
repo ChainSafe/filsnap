@@ -1,6 +1,5 @@
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
-import LotusRpcEngine from "@openworklabs/lotus-jsonrpc-engine";
 
 /**
  * Returns balance as string
@@ -8,10 +7,11 @@ import LotusRpcEngine from "@openworklabs/lotus-jsonrpc-engine";
  * @param api
  * @param address
  */
-export async function getBalance(wallet: Wallet, api: LotusRpcEngine, address?: string): Promise<string> {
+export async function getBalance(wallet: Wallet, address?: string): Promise<string> {
   if(!address) {
     address = (await getKeyPair(wallet)).address;
   }
 
-  return await api.request("WalletBalance", address);
+  // return await api.request("WalletBalance", address);
+  return "0"
 }

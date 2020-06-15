@@ -3,6 +3,7 @@ import {FilecoinEventApi} from "@nodefactory/metamask-filecoin-types";
 import {getAddress} from "./rpc/getAddress";
 import {exportSeed} from "./rpc/exportSeed";
 import {getPublicKey} from "./rpc/getPublicKey";
+import {getApi} from "./filecoin/api";
 
 declare let wallet: Wallet;
 
@@ -16,6 +17,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     // initialize state if empty and set default config
     wallet.updatePluginState(EmptyMetamaskState());
   }
+
+  const api = getApi(wallet);
   switch (requestObject.method) {
     case "getAddress":
       return await getAddress(wallet);

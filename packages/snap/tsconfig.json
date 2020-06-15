@@ -6,8 +6,8 @@
       "*": [
         "../../node_modules"
       ],
-      "@openworklabs/lotus-jsonrpc-engine": [
-        "./@types/lotus-jsonrpc-engine"
+      "@filecoin-shipyard/lotus-client-provider-nodejs": [
+        "./@types/lotus-client-provider-nodejs"
       ]
     },
     "outDir": "./build",

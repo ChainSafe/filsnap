@@ -1,12 +1,17 @@
 import {Wallet} from "../interfaces";
-import LotusRpcEngine from "@openworklabs/lotus-jsonrpc-engine";
 import { getConfiguration } from "../configuration";
+// @ts-ignore
+import LotusRPC from "@filecoin-shipyard/lotus-client-rpc"
 
-export function getApi(wallet: Wallet): LotusRpcEngine {
+import {NodejsProvider} from "@filecoin-shipyard/lotus-client-provider-nodejs"
+// @ts-ignore
+import testnet from "@filecoin-shipyard/lotus-client-schema"
+
+export function getApi(wallet: Wallet) {
   const rpcUrl = getConfiguration(wallet).rpcUrl;
-  const config = {
-    apiAddress: rpcUrl
-  };
-
-  return new LotusRpcEngine(config);
+  const provider = new NodejsProvider(rpcUrl, {});
+  console.log(provider);
+  const client = new LotusRPC(provider, {schema: testnet.fullNode});
+  console.log(client);
+  return client;
 };
