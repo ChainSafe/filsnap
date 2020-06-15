@@ -23,13 +23,10 @@ export const Dashboard = () => {
 
     const handleNetworkChange = async (event: React.ChangeEvent<{value: any}>) => {
         const selectedNetwork = event.target.value as "f" | "t";
-        console.log("NETWORK");
-        console.log(selectedNetwork);
         if (selectedNetwork === network) return;
-        // todo set initial configuration
         if (api) {
-            // todo implement configuraitons with only network name
-            // api.configure({})
+            api.configure({network: selectedNetwork});
+            setNetwork(selectedNetwork);
         }
     };
 
@@ -50,7 +47,7 @@ export const Dashboard = () => {
                 setPublicKey(await api.getPublicKey())
             }
         })();
-    }, [api]);
+    }, [api, network]);
 
     return (
         <Container maxWidth="lg">
