@@ -1159,24 +1159,24 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@filecoin-shipyard/lotus-client-provider-browser@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.12.tgz#ddb291f8c2e256276416c4839bc09e5884a1b5e5"
-  integrity sha512-/LzLgi5TwM2ZOaYgXi1Ao9nqOfGpD8a4J5LeqaOgJ9NqLmJOUOqlKLaJKKtl7hmN8YnEMoc63COmSoJtQWMsgw==
+"@filecoin-shipyard/lotus-client-provider-browser@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.14.tgz#28268cd1a940627b08e06378527f5f34fea0db75"
+  integrity sha512-rFH2aUA65fa9C+3d8JoKxL/UGYPbEqIjhJ9ZMJS50aKFELMA1FJ/l10Tpgkx0p6KrdygfIytHneITvpgcumR4g==
 
-"@filecoin-shipyard/lotus-client-provider-nodejs@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-0.0.4.tgz#6ed80459ae03127c21452b1a7d9d87639916515b"
-  integrity sha512-Y19XkssrWsMKyc/UEd4DOqq7+4w5u4AwRyoNQA/wUnNkyJiQD+FNhVBQYB+XilVFMGHtzOldzIxSUNrQggOd1w==
+"@filecoin-shipyard/lotus-client-provider-nodejs@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-0.0.5.tgz#e7e27b13eb5b1892454ff72c8060c6f845ee0bf6"
+  integrity sha512-alYbMEYr5M/U/n97eWSWvIi79pZBFhUdS+NEJSpVUhZBzR1iIKKSr0MxL0zXdMTFV5C/UbVKNJy72JaSAvS9oA==
   dependencies:
-    "@filecoin-shipyard/lotus-client-provider-browser" "^0.0.12"
+    "@filecoin-shipyard/lotus-client-provider-browser" "^0.0.14"
     node-fetch "^2.6.0"
     ws "^7.3.0"
 
-"@filecoin-shipyard/lotus-client-rpc@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.10.tgz#9f84a5ad727c3ec39ff21f8cb546c17e5c72eb58"
-  integrity sha512-0shqzGJJnAbYQ2V4kvOfrKGaAm3KNXkrY8JhJznyMj8VOLsIEmMfG6+qj/SJkj2tfzMhaRHUB6IDHTczS2xmnA==
+"@filecoin-shipyard/lotus-client-rpc@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.11.tgz#60d6953dee4ff583ca982aae45d57e05a68ad89b"
+  integrity sha512-7ZgT7tyB+5fp5mC9yC4Da9vj3M8PiVPNuxFkFAaDRu8blDuKg/tNh4OMZr5pqs/uuwjRZuXslGl8dOb2Iz+rZg==
 
 "@filecoin-shipyard/lotus-client-schema@^0.0.10":
   version "0.0.10"

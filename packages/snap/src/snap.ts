@@ -4,8 +4,14 @@ import {getAddress} from "./rpc/getAddress";
 import {exportSeed} from "./rpc/exportSeed";
 import {getPublicKey} from "./rpc/getPublicKey";
 import {getApi} from "./filecoin/api";
+import {LotusRpcApi} from "./filecoin/types";
+import {getBalance} from "./rpc/getBalance";
 
 declare let wallet: Wallet;
+
+const apiDependentMethods = [
+  "getBalance"
+];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
   return {};
@@ -18,7 +24,12 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     wallet.updatePluginState(EmptyMetamaskState());
   }
 
-  const api = getApi(wallet);
+  let api: LotusRpcApi;
+  // initialize lotus RPC api if needed
+  if (apiDependentMethods.indexOf(requestObject.method) >= 0) {
+      api = getApi(wallet);
+  }
+
   switch (requestObject.method) {
     case "getAddress":
       return await getAddress(wallet);
@@ -26,6 +37,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return await getPublicKey(wallet);
     case "exportSeed":
       return exportSeed(wallet);
+    case "getBalance":
+      return getBalance(wallet, api);
     default:
       throw new Error("Unsupported RPC method");
   }

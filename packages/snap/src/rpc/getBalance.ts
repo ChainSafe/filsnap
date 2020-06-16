@@ -1,5 +1,6 @@
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
+import {LotusRpcApi} from "../filecoin/types";
 
 /**
  * Returns balance as string
@@ -7,11 +8,9 @@ import {getKeyPair} from "../filecoin/account";
  * @param api
  * @param address
  */
-export async function getBalance(wallet: Wallet, address?: string): Promise<string> {
+export async function getBalance(wallet: Wallet, api: LotusRpcApi, address?: string): Promise<string> {
   if(!address) {
     address = (await getKeyPair(wallet)).address;
   }
-
-  // return await api.request("WalletBalance", address);
-  return "0"
+  return await api.walletBalance(address);
 }

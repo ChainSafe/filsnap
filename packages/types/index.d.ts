@@ -10,7 +10,12 @@ export interface ExportSeedRequest {
   method: "exportSeed";
 }
 
-export type MetamaskFilecoinRpcRequest = GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest;
+export interface GetBalanceRequest {
+  method: "getBalance";
+}
+
+export type MetamaskFilecoinRpcRequest =
+    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | GetBalanceRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
