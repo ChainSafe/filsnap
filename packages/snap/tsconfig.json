@@ -8,6 +8,12 @@
       ],
       "@filecoin-shipyard/lotus-client-provider-nodejs": [
         "./@types/lotus-client-provider-nodejs"
+      ],
+      "@filecoin-shipyard/lotus-client-rpc": [
+        "./@types/lotus-client-rpc"
+      ],
+      "@filecoin-shipyard/lotus-client-schema": [
+        "./@types/lotus-client-schema"
       ]
     },
     "outDir": "./build",

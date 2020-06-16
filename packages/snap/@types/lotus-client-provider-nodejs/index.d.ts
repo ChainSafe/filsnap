@@ -1,5 +1,5 @@
 declare module "@filecoin-shipyard/lotus-client-provider-nodejs" {
-    class BrowserProvider {
+    export class BrowserProvider {
         constructor(url: string, options: any);
         connect(): void;
         send(request: any, schemaMethod: any): any;
@@ -11,5 +11,4 @@ declare module "@filecoin-shipyard/lotus-client-provider-nodejs" {
         constructor(url: string, options: any);
     }
 
-    // export default NodejsProvider;
 }
