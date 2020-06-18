@@ -6,7 +6,7 @@ export const filecoinMainnetConfiguration: SnapConfig = {
   rpcUrl: "",
   unit: {
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg",
+    image: `https://svgshare.com/i/M4s.svg`,
     symbol: "FIL"
   }
 };
@@ -14,10 +14,10 @@ export const filecoinMainnetConfiguration: SnapConfig = {
 export const filecoinTestnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/461'/0/0/1",
   network: "t",
-  rpcUrl: "",
+  rpcUrl: `https://lotus.testground.ipfs.team/api/0/node/rpc/v0`,
   unit: {
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg",
+    image: `https://svgshare.com/i/M4s.svg`,
     symbol: "FIL"
   }
 };
@@ -25,10 +25,10 @@ export const filecoinTestnetConfiguration: SnapConfig = {
 export const devConfiguration: SnapConfig = {
   derivationPath: "m/44'/461'/0/0/1",
   network: "t",
-  rpcUrl: "https://lotus.testground.ipfs.team/api/0/node/rpc/v0",
+  rpcUrl: `https://lotus.testground.ipfs.team/api/0/node/rpc/v0`,
   unit: {
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg",
+    image: `https://svgshare.com/i/M4s.svg`,
     symbol: "FIL"
   }
 };
