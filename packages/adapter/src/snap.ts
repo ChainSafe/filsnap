@@ -14,10 +14,10 @@ export class MetamaskFilecoinSnap {
 
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {
     return {
+      configure: configure.bind(this),
       exportSeed: exportSeed.bind(this),
       getAddress: getAddress.bind(this),
-      getPublicKey: getPublicKey.bind(this),
-      configure: configure.bind(this)
+      getPublicKey: getPublicKey.bind(this)
     };
   };
 }

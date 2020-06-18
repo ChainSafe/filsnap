@@ -22,6 +22,6 @@ export async function exportSeed(this: MetamaskFilecoinSnap): Promise<string> {
   return await sendSnapMethod({method: "exportSeed"}, this.snapId);
 }
 
-export async function configure(this: MetamaskFilecoinSnap, configuration: SnapConfig) {
-    return await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
+export async function configure(this: MetamaskFilecoinSnap, configuration: SnapConfig): Promise<void> {
+  return await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
 }

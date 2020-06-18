@@ -5,9 +5,9 @@ export const filecoinMainnetConfiguration: SnapConfig = {
   network: "f",
   rpcUrl: "",
   unit: {
-    symbol: "FIL",
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg"
+    image: "https://svgshare.com/i/M4s.svg",
+    symbol: "FIL"
   }
 };
 
@@ -16,9 +16,9 @@ export const filecoinTestnetConfiguration: SnapConfig = {
   network: "t",
   rpcUrl: "",
   unit: {
-    symbol: "FIL",
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg"
+    image: "https://svgshare.com/i/M4s.svg",
+    symbol: "FIL"
   }
 };
 
@@ -27,9 +27,9 @@ export const devConfiguration: SnapConfig = {
   network: "t",
   rpcUrl: "https://lotus.testground.ipfs.team/api/0/node/rpc/v0",
   unit: {
-    symbol: "FIL",
     decimals: 6,
-    image: "https://svgshare.com/i/M4s.svg"
+    image: "https://svgshare.com/i/M4s.svg",
+    symbol: "FIL"
   }
 };
 

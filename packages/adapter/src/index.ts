@@ -29,10 +29,10 @@ export async function enableFilecoinSnap(network: "f"|"t", pluginOrigin?: string
 
   // create snap describer
   const snap = new MFSnap(
-      pluginOrigin || defaultSnapOrigin
+    pluginOrigin || defaultSnapOrigin
   );
   // set initial configuration
   (await snap.getFilecoinSnapApi()).configure({network});
   // return snap object
-  return snap
+  return snap;
 }
