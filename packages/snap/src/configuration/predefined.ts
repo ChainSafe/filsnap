@@ -6,7 +6,8 @@ export const filecoinMainnetConfiguration: SnapConfig = {
   rpcUrl: "",
   unit: {
     symbol: "FIL",
-    decimals: 6
+    decimals: 6,
+    image: "https://svgshare.com/i/M4s.svg"
   }
 };
 

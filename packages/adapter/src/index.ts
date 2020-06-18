@@ -8,7 +8,7 @@ export type MetamaskFilecoinSnap = MFSnap;
 
 export {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
 
-export async function enableFilecoinSnap(pluginOrigin?: string): Promise<MetamaskFilecoinSnap> {
+export async function enableFilecoinSnap(network: "f"|"t", pluginOrigin?: string): Promise<MetamaskFilecoinSnap> {
   if (!hasMetaMask()) {
     throw new Error("Metamask is not installed");
   }
@@ -27,10 +27,12 @@ export async function enableFilecoinSnap(pluginOrigin?: string): Promise<Metamas
     });
   }
 
-  // TODO configure snap with initial configuration
-
-  // return snap object
-  return new MFSnap(
-    pluginOrigin || defaultSnapOrigin
+  // create snap describer
+  const snap = new MFSnap(
+      pluginOrigin || defaultSnapOrigin
   );
+  // set initial configuration
+  (await snap.getFilecoinSnapApi()).configure({network});
+  // return snap object
+  return snap
 }

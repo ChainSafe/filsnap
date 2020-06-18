@@ -34,7 +34,6 @@ export const Dashboard = () => {
         (async () => {
             if (state.filecoinSnap.isInstalled && state.filecoinSnap.snap) {
                 const filecoinApi = await state.filecoinSnap.snap.getFilecoinSnapApi();
-                filecoinApi.configure({network: network})
                 setApi(filecoinApi);
             }
         })();
