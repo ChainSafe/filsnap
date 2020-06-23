@@ -1,6 +1,6 @@
 export interface LotusRpcApi {
-    version(): Promise<VersionResponse>
-    walletBalance(address: string): Promise<string>
+  version(): Promise<VersionResponse>;
+  walletBalance(address: string): Promise<string>;
 }
 
-type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string }
+type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string };

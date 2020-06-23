@@ -29,7 +29,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   let api: LotusRpcApi;
   // initialize lotus RPC api if needed
   if (apiDependentMethods.indexOf(requestObject.method) >= 0) {
-      api = getApi(wallet);
+    api = getApi(wallet);
   }
 
   switch (requestObject.method) {

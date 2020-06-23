@@ -19,8 +19,8 @@ describe('Test rpc handler function: getBalance', function() {
   it('should return balance on saved keyring in state', async function () {
     walletStub.getAppKey.returns(testAppKey);
     walletStub.getPluginState.returns(EmptyMetamaskState());
-    const apiStub = {request: sinon.stub()};
-    apiStub.request.returns("3");
+    const apiStub = {walletBalance: sinon.stub(), version: sinon.stub()};
+    apiStub.walletBalance.returns("3");
 
     const result = await getBalance(walletStub, apiStub);
 

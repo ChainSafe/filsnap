@@ -1,8 +1,8 @@
 import {Wallet} from "../interfaces";
 import {getConfiguration} from "../configuration";
-import {LotusRPC} from "@filecoin-shipyard/lotus-client-rpc"
-import {NodejsProvider} from "@filecoin-shipyard/lotus-client-provider-nodejs"
-import {testnet} from "@filecoin-shipyard/lotus-client-schema"
+import {LotusRPC} from "@filecoin-shipyard/lotus-client-rpc";
+import {NodejsProvider} from "@filecoin-shipyard/lotus-client-provider-nodejs";
+import {testnet} from "@filecoin-shipyard/lotus-client-schema";
 import {LotusRpcApi} from "./types";
 
 export function getApi(wallet: Wallet): LotusRpcApi {
