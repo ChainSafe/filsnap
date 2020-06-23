@@ -6,6 +6,8 @@ import {getPublicKey} from "./rpc/getPublicKey";
 import {getApi} from "./filecoin/api";
 import {LotusRpcApi} from "./filecoin/types";
 import {getBalance} from "./rpc/getBalance";
+import {configure} from "./rpc/configure";
+import {updateAsset} from "./asset";
 
 declare let wallet: Wallet;
 
@@ -31,6 +33,13 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   }
 
   switch (requestObject.method) {
+    case "configure":
+      const configuration = configure(
+        wallet, requestObject.params.configuration.network, requestObject.params.configuration
+      );
+      // TODO getBalance
+      await updateAsset(wallet, originString, "0");
+      return configuration;
     case "getAddress":
       return await getAddress(wallet);
     case "getPublicKey":
