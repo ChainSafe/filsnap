@@ -4,6 +4,7 @@ import {getAddress} from "./rpc/getAddress";
 import {exportSeed} from "./rpc/exportSeed";
 import {getPublicKey} from "./rpc/getPublicKey";
 import {configure} from "./rpc/configure";
+import {updateAsset} from "./asset";
 
 declare let wallet: Wallet;
 
@@ -19,9 +20,12 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   }
   switch (requestObject.method) {
     case "configure":
-      return configure(
-        wallet, requestObject.params.configuration
+      const configuration = configure(
+        wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
+      // TODO getBalance
+      await updateAsset(wallet, originString, "0");
+      return configuration;
     case "getAddress":
       return await getAddress(wallet);
     case "getPublicKey":

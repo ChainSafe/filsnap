@@ -3,9 +3,9 @@ import deepmerge from "deepmerge";
 import {getDefaultConfiguration} from "../configuration";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
 
-export function configure(wallet: Wallet, overrides: unknown): SnapConfig {
-  const defaultConfig = getDefaultConfiguration();
-  const configuration = deepmerge(defaultConfig, overrides);
+export function configure(wallet: Wallet, networkName: string, overrides?: unknown): SnapConfig {
+  const defaultConfig = getDefaultConfiguration(networkName);
+  const configuration = overrides ? deepmerge(defaultConfig, overrides) : defaultConfig;
   const state = wallet.getPluginState();
   state.filecoin.config = configuration;
   wallet.updatePluginState(state);
