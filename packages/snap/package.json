@@ -74,6 +74,7 @@
   },
   "dependencies": {
     "@nodefactory/filecoin-address": "^1.0.1",
-    "deepmerge": "^4.2.2"
+    "deepmerge": "^4.2.2",
+    "@zondax/filecoin-signer-js": "file:../../../filecoin-rs/signer-wasm/js"
   }
 }
