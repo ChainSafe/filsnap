@@ -32,7 +32,7 @@ export async function enableFilecoinSnap(network: "f"|"t", pluginOrigin?: string
     pluginOrigin || defaultSnapOrigin
   );
   // set initial configuration
-  (await snap.getFilecoinSnapApi()).configure({network});
+  await (await snap.getFilecoinSnapApi()).configure({network});
   // return snap object
   return snap;
 }

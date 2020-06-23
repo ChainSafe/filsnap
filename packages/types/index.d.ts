@@ -76,5 +76,5 @@ export interface FilecoinSnapApi {
   getPublicKey(): Promise<string>;
   getAddress(): Promise<string>;
   exportSeed(): Promise<string>;
-  configure(configuration: SnapConfig): void;
+  configure(configuration: SnapConfig): Promise<void>;
 }
