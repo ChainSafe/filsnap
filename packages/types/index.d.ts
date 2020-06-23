@@ -10,12 +10,19 @@ export interface ExportSeedRequest {
   method: "exportSeed";
 }
 
+export interface ConfigureRequest {
+  method: "configure";
+  params: {
+    configuration: SnapConfig;
+  };
+}
+
 export interface GetBalanceRequest {
   method: "getBalance";
 }
 
 export type MetamaskFilecoinRpcRequest =
-    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | GetBalanceRequest;
+    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | GetBalanceRequest | ConfigureRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -50,15 +57,15 @@ export interface BlockInfo {
 export interface UnitConfiguration {
   symbol: string;
   decimals: number;
-  assetId: string;
   image?: string;
   customViewUrl?: string;
 }
 
 export interface SnapConfig {
-  derivationPath: string;
+  derivationPath?: string;
   network: FilecoinNetwork;
-  rpcUrl: string;
+  rpcUrl?: string;
+  unit?: UnitConfiguration;
 }
 
 export type Callback<T> = (arg: T) => void;
@@ -74,4 +81,5 @@ export interface FilecoinSnapApi {
   getAddress(): Promise<string>;
   getBalance(): Promise<string>;
   exportSeed(): Promise<string>;
+  configure(configuration: SnapConfig): Promise<void>;
 }

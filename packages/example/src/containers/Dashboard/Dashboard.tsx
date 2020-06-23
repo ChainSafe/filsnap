@@ -1,7 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import {
+    Box,
     Container,
-    Grid, Hidden,
+    Grid, Hidden, InputLabel, MenuItem, Select,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
@@ -16,7 +17,18 @@ export const Dashboard = () => {
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
 
+    const [network, setNetwork] = useState<"f" | "t">("t");
+
     const [api, setApi] = useState<FilecoinSnapApi|null>(null);
+
+    const handleNetworkChange = async (event: React.ChangeEvent<{value: any}>) => {
+        const selectedNetwork = event.target.value as "f" | "t";
+        if (selectedNetwork === network) return;
+        if (api) {
+            api.configure({network: selectedNetwork});
+            setNetwork(selectedNetwork);
+        }
+    };
 
     useEffect(() => {
         (async () => {
@@ -35,7 +47,7 @@ export const Dashboard = () => {
                 setBalance(await api.getBalance());
             }
         })();
-    }, [api]);
+    }, [api, network]);
 
     return (
         <Container maxWidth="lg">
@@ -44,6 +56,16 @@ export const Dashboard = () => {
                     <MetaMaskConnector/>
                 </Hidden>
                 <Hidden xsUp={!state.filecoinSnap.isInstalled}>
+                    <Box m="1rem" alignSelf="baseline">
+                        <InputLabel>Network</InputLabel>
+                        <Select
+                            defaultValue={"t"}
+                            onChange={handleNetworkChange}
+                        >
+                            <MenuItem value={"t"}>Testnet</MenuItem>
+                            <MenuItem value={"f"}>Mainnet</MenuItem>
+                        </Select>
+                    </Box>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
                             <Account address={address} balance={balance} publicKey={publicKey}/>

@@ -7,18 +7,11 @@ declare global {
         ethereum: {
             isMetaMask: boolean;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            send: (request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<unknown>;
+            send: <T>(request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<T>;
             on: (eventName: unknown, callback: unknown) => unknown;
             // requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<FilecoinApi>}>;
         }
     }
-}
-
-export function hasMetaMask(): boolean {
-    if (!window.ethereum) {
-        return false
-    }
-    return window.ethereum.isMetaMask;
 }
 
 export const origin = new URL('package.json', 'http://localhost:8081').toString();
@@ -35,7 +28,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
     try {
         console.log("installing snap");
         // enable filecoin snap with default testnet network
-        const metamaskFilecoinSnap = await enableFilecoinSnap();
+        const metamaskFilecoinSnap = await enableFilecoinSnap("t");
         isInstalled = true;
         console.log("Snap installed!!");
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
