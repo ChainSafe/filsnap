@@ -4,5 +4,9 @@ declare module "@filecoin-shipyard/lotus-client-rpc" {
 
     export class LotusRPC {
         constructor(provider: BrowserProvider, options: {schema: Schema});
+        callSchemaMethod: (method: unknown, schemaMethod: unknown, ...args: unknown[]) => Promise<unknown>;
+        callSchemaMethodSub: (method: unknown, schemaMethod: unknown, ...args: unknown[]) => unknown;
+        importFile(body: unknown): string;
+        destroy(): void;
     }
 }
