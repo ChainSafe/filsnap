@@ -12,7 +12,7 @@ import {updateAsset} from "./asset";
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "getBalance"
+  "getBalance", "configure"
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
@@ -30,7 +30,6 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   // initialize lotus RPC api if needed
   if (apiDependentMethods.indexOf(requestObject.method) >= 0) {
     api = getApi(wallet);
-    console.log(await api.version());
   }
 
   switch (requestObject.method) {
@@ -38,8 +37,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      // TODO getBalance
-      await updateAsset(wallet, originString, "0");
+      const balance = await getBalance(wallet, api);
+      await updateAsset(wallet, originString, balance);
       return configuration;
     case "getAddress":
       return await getAddress(wallet);

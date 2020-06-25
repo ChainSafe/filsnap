@@ -7,7 +7,7 @@ import {LotusRpcApi} from "./types";
 
 export function getApi(wallet: Wallet): LotusRpcApi {
   const rpcUrl = getConfiguration(wallet).rpcUrl;
-  const provider = new NodejsProvider(rpcUrl, {});
+  const provider = new NodejsProvider(rpcUrl);
   const client = new LotusRPC(provider, {schema: testnet.fullNode});
-  return client as LotusRpcApi;
+  return client as unknown as LotusRpcApi;
 }
