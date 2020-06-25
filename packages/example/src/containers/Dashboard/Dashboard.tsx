@@ -13,7 +13,7 @@ export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
 
-    // const [balance, setBalance] = useState("0");
+    const [balance, setBalance] = useState("0");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
 
@@ -25,7 +25,7 @@ export const Dashboard = () => {
         const selectedNetwork = event.target.value as "f" | "t";
         if (selectedNetwork === network) return;
         if (api) {
-            api.configure({network: selectedNetwork});
+            await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
         }
     };
@@ -43,7 +43,8 @@ export const Dashboard = () => {
         (async () => {
             if (api) {
                 setAddress(await api.getAddress());
-                setPublicKey(await api.getPublicKey())
+                setPublicKey(await api.getPublicKey());
+                setBalance(await api.getBalance());
             }
         })();
     }, [api, network]);
@@ -67,7 +68,7 @@ export const Dashboard = () => {
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
-                            <Account address={address} balance={"0"} publicKey={publicKey}/>
+                            <Account address={address} balance={balance + " FIL"} publicKey={publicKey}/>
                         </Grid>
                     </Grid>
                 </Hidden>

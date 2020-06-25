@@ -79,6 +79,7 @@ export interface FilecoinEventApi {}
 export interface FilecoinSnapApi {
   getPublicKey(): Promise<string>;
   getAddress(): Promise<string>;
+  getBalance(): Promise<string>;
   exportSeed(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
 }
