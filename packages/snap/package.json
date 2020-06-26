@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@nodefactory/metamask-filecoin-types": "1.0.0",
-    "@nodefactory/snaps-cli": "1.0.0",
+    "@nodefactory/snaps-cli": "file:../../../snaps-cli",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
     "@types/sinon": "^7.5.2",
