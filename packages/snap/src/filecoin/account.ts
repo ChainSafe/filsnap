@@ -13,6 +13,5 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   console.log(acc);
   const acc2 = keyPairFromSeed(seed, network);
   console.log(acc2);
-  debugger;
   return acc2;
 }
