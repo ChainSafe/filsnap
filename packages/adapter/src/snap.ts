@@ -1,5 +1,5 @@
 import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
-import {configure, exportSeed, getAddress, getBalance, getPublicKey} from "./methods";
+import {configure, exportPrivateKey, getAddress, getBalance, getPublicKey} from "./methods";
 
 export class MetamaskFilecoinSnap {
 
@@ -15,7 +15,7 @@ export class MetamaskFilecoinSnap {
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {
     return {
       configure: configure.bind(this),
-      exportSeed: exportSeed.bind(this),
+      exportPrivateKey: exportPrivateKey.bind(this),
       getAddress: getAddress.bind(this),
       getBalance: getBalance.bind(this),
       getPublicKey: getPublicKey.bind(this)

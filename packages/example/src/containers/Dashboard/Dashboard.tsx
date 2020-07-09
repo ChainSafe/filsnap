@@ -68,7 +68,7 @@ export const Dashboard = () => {
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
-                            <Account address={address} balance={balance + " FIL"} publicKey={publicKey}/>
+                            <Account address={address} balance={balance + " FIL"} publicKey={publicKey} api={api}/>
                         </Grid>
                     </Grid>
                 </Hidden>

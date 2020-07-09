@@ -1,8 +1,8 @@
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
-import {exportSeed} from "../../../src/rpc/exportSeed";
+import {exportPrivateKey} from "../../../src/rpc/exportPrivateKey";
 import {WalletMock} from "../wallet.mock.test";
-import {getDefaultConfiguration} from "../../../src/configuration/index";
+import {testAppKey, testPrivateKey} from "./keyPairTestConstants";
 
 chai.use(sinonChai);
 
@@ -16,20 +16,21 @@ describe('Test rpc handler function: exportSeed', function() {
 
   it('should return seed on positive prompt confirmation and keyring saved in state', async function () {
     walletStub.send.returns(true);
-    walletStub.getAppKey.returns("aba2dd1a12eeafda3fda62aa6dfa21ca2aa6dfaba13fda6a22ea2dd1eafda1ca");
+    walletStub.getAppKey.returns(testAppKey);
+    walletStub.getPluginState.returns({filecoin: {config: {network: "f"}}});
 
-    const result = await exportSeed(walletStub);
+    const result = await exportPrivateKey(walletStub);
 
     expect(walletStub.send).to.have.been.calledOnce;
     expect(walletStub.getAppKey).to.have.been.calledOnce;
-    expect(result.appKey).to.be.eq("aba2dd1a12eeafda3fda62aa6dfa21ca2aa6dfaba13fda6a22ea2dd1eafda1ca");
-    expect(result.derivationPath).to.be.eq(getDefaultConfiguration().derivationPath);
+    expect(walletStub.getPluginState).to.have.been.calledOnce;
+    expect(result).to.be.eq(testPrivateKey);
   });
 
   it('should not return seed on negative prompt confirmation', async function () {
     walletStub.send.returns(false);
 
-    const result = await exportSeed(walletStub);
+    const result = await exportPrivateKey(walletStub);
 
     expect(walletStub.send).to.have.been.calledOnce;
     expect(result).to.be.eq(null);
