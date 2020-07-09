@@ -1,17 +1,18 @@
 import {Wallet} from "../interfaces";
-import {KeyPair, keyPairFromSeed} from "@nodefactory/filecoin-address";
-import {keyDeriveFromSeed} from "@zondax/filecoin-signer-js"
+import {keyDeriveFromSeed} from "@zondax/filecoin-signer-js";
 
 /**
  * Return derived KeyPair from seed.
  * @param wallet
  */
-export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
+export async function getKeyPair(wallet: Wallet): Promise<any> {
   const seed = await wallet.getAppKey();
-  const network = await wallet.getPluginState().filecoin.config.network;
-  const acc = keyDeriveFromSeed(seed, (await wallet.getPluginState()).filecoin.config.derivationPath);
-  console.log(acc);
-  const acc2 = keyPairFromSeed(seed, network);
-  console.log(acc2);
-  return acc2;
+  const pluginState = await wallet.getPluginState();
+  const extendedKey = keyDeriveFromSeed(seed, pluginState.filecoin.config.derivationPath);
+
+  return {
+    address: extendedKey.address,
+    privateKey: extendedKey.privateKey.toString("hex"),
+    publicKey: extendedKey.publicKey.toString("hex")
+  };
 }

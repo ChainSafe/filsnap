@@ -9,4 +9,4 @@ export function getApi(wallet: Wallet): LotusRpcEngine {
   };
 
   return new LotusRpcEngine(config);
-};
+}
