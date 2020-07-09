@@ -9,11 +9,13 @@ export type FMethodCallback = (
 export type MetamaskState = {
   filecoin: {
     config: SnapConfig;
-    transactions: Transaction[]
+    transactions: Transaction[];
   };
 };
 
-export const EmptyMetamaskState: () => MetamaskState = () => ({filecoin: {config: defaultConfiguration, transactions: []}});
+export const EmptyMetamaskState: () => MetamaskState = () => ({
+  filecoin: {config: defaultConfiguration, transactions: []}
+});
 
 export interface Wallet {
   registerApiRequestHandler: (origin: unknown) => unknown;
