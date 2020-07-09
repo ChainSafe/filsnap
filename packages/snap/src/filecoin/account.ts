@@ -1,5 +1,5 @@
 import {Wallet} from "../interfaces";
-import {keyDeriveFromSeed} from "@zondax/filecoin-signer-js";
+import {keyDeriveFromSeed} from "@zondax/filecoin-signing-tools";
 
 /**
  * Return derived KeyPair from seed.

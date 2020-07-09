@@ -9,8 +9,8 @@
       "@openworklabs/lotus-jsonrpc-engine": [
         "./@types/lotus-jsonrpc-engine"
       ],
-      "@zondax/filecoin-signer-js": [
-        "./@types/filecoin-signer-js"
+      "@zondax/filecoin-signing-tools": [
+        "./@types/filecoin-signing-tools"
       ]
     },
     "outDir": "./build",

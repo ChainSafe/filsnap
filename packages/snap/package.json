@@ -72,6 +72,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@zondax/filecoin-signing-tools": "^0.5.2",
     "deepmerge": "^4.2.2"
   }
 }
