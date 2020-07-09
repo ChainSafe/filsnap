@@ -28,8 +28,7 @@ export const Account = (props: AccountProps) => {
                         <Divider light/>
                         <Box m={"0.5rem"}/>
                         <Typography variant="h6">ACCOUNT BALANCE:</Typography>
-                        <Typography variant="subtitle2">
-                        </Typography>
+                        <Typography variant="subtitle2">{props.balance}</Typography>
                     </Grid>
                 </Grid>
                 <Grid container item xs={12} justify="flex-end">

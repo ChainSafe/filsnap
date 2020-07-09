@@ -1159,6 +1159,30 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
+"@filecoin-shipyard/lotus-client-provider-browser@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.14.tgz#28268cd1a940627b08e06378527f5f34fea0db75"
+  integrity sha512-rFH2aUA65fa9C+3d8JoKxL/UGYPbEqIjhJ9ZMJS50aKFELMA1FJ/l10Tpgkx0p6KrdygfIytHneITvpgcumR4g==
+
+"@filecoin-shipyard/lotus-client-provider-nodejs@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-0.0.5.tgz#e7e27b13eb5b1892454ff72c8060c6f845ee0bf6"
+  integrity sha512-alYbMEYr5M/U/n97eWSWvIi79pZBFhUdS+NEJSpVUhZBzR1iIKKSr0MxL0zXdMTFV5C/UbVKNJy72JaSAvS9oA==
+  dependencies:
+    "@filecoin-shipyard/lotus-client-provider-browser" "^0.0.14"
+    node-fetch "^2.6.0"
+    ws "^7.3.0"
+
+"@filecoin-shipyard/lotus-client-rpc@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.11.tgz#60d6953dee4ff583ca982aae45d57e05a68ad89b"
+  integrity sha512-7ZgT7tyB+5fp5mC9yC4Da9vj3M8PiVPNuxFkFAaDRu8blDuKg/tNh4OMZr5pqs/uuwjRZuXslGl8dOb2Iz+rZg==
+
+"@filecoin-shipyard/lotus-client-schema@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.10.tgz#2fe996e497552304bb20576b6c5e21df8470ae71"
+  integrity sha512-Emx05Y8EKELn1o9FfGts3WoyS0h8akAKaU70VzwRzVEr56mNBR8r882orD5cLcnH74DcASYULeiuKPmQuxQC6Q==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -9608,7 +9632,7 @@ node-fetch-npm@^2.0.2:
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
 
-node-fetch@^2.3.0, node-fetch@^2.5.0:
+node-fetch@^2.3.0, node-fetch@^2.5.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
@@ -14379,6 +14403,11 @@ ws@^6.1.2, ws@^6.2.1:
   integrity sha512-GIyAXC2cB7LjvpgMt9EKS2ldqr0MTrORaleiOno6TweZ6r3TKtoFQWay/2PceJ3RuBasOHzXNn5Lrw1X0bEjqA==
   dependencies:
     async-limiter "~1.0.0"
+
+ws@^7.3.0:
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.0.tgz#4b2f7f219b3d3737bc1a2fbf145d825b94d38ffd"
+  integrity sha512-iFtXzngZVXPGgpTlP1rBqsUK82p9tKqsWRPg5L56egiljujJT3vGAYnHANvFxBieXrTFavhzhxW52jnaWV+w2w==
 
 xml-name-validator@^3.0.0:
   version "3.0.0"

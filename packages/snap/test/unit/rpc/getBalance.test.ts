@@ -17,13 +17,16 @@ describe('Test rpc handler function: getBalance', function() {
   });
 
   it('should return balance on saved keyring in state', async function () {
+    // prepare stubs
     walletStub.getAppKey.returns(testAppKey);
     walletStub.getPluginState.returns(EmptyMetamaskState());
-    const apiStub = {request: sinon.stub()};
-    apiStub.request.returns("3");
-
+    const apiStub = {walletBalance: sinon.stub(), version: sinon.stub()};
+    apiStub.walletBalance.returns("3");
+    // call getBalance
     const result = await getBalance(walletStub, apiStub);
-
+    // assertions
+    expect(walletStub.getAppKey).to.have.been.calledOnce;
+    expect(walletStub.getPluginState).to.have.been.calledOnce;
     expect(result).to.be.eq("3");
   });
 });
