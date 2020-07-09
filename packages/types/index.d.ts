@@ -7,7 +7,7 @@ export interface GetAddressRequest {
 }
 
 export interface ExportSeedRequest {
-  method: "exportSeed";
+  method: "exportPrivateKey";
 }
 
 export interface ConfigureRequest {
@@ -80,6 +80,6 @@ export interface FilecoinSnapApi {
   getPublicKey(): Promise<string>;
   getAddress(): Promise<string>;
   getBalance(): Promise<string>;
-  exportSeed(): Promise<string>;
+  exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
 }

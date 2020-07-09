@@ -1,7 +1,7 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
 import {FilecoinEventApi} from "@nodefactory/metamask-filecoin-types";
 import {getAddress} from "./rpc/getAddress";
-import {exportSeed} from "./rpc/exportSeed";
+import {exportPrivateKey} from "./rpc/exportPrivateKey";
 import {getPublicKey} from "./rpc/getPublicKey";
 import {getApi} from "./filecoin/api";
 import {LotusRpcApi} from "./filecoin/types";
@@ -44,8 +44,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return await getAddress(wallet);
     case "getPublicKey":
       return await getPublicKey(wallet);
-    case "exportSeed":
-      return exportSeed(wallet);
+    case "exportPrivateKey":
+      return exportPrivateKey(wallet);
     case "getBalance":
       return getBalance(wallet, api);
     default:
