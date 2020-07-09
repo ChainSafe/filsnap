@@ -8,6 +8,7 @@ import {LotusRpcApi} from "./filecoin/types";
 import {getBalance} from "./rpc/getBalance";
 import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
+import {getTransactions} from "./rpc/getTransactions";
 
 declare let wallet: Wallet;
 
@@ -48,6 +49,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return exportPrivateKey(wallet);
     case "getBalance":
       return getBalance(wallet, api);
+    case "getTransactions":
+      return getTransactions(wallet);
     default:
       throw new Error("Unsupported RPC method");
   }
