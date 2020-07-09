@@ -29,6 +29,7 @@ export const Dashboard = () => {
         if (api) {
             await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
+            setTransactions([]);
         }
     };
 
