@@ -1,13 +1,14 @@
 import React, {useContext, useEffect, useState} from "react";
 import {
-    Box,
+    Box, Card, CardContent, CardHeader,
     Container,
     Grid, Hidden, InputLabel, MenuItem, Select,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
 import {Account} from "../../components/Account/Account";
-import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi, Transaction} from "@nodefactory/metamask-filecoin-types";
+import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 
 export const Dashboard = () => {
 
@@ -16,6 +17,7 @@ export const Dashboard = () => {
     const [balance, setBalance] = useState("0");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
     const [network, setNetwork] = useState<"f" | "t">("t");
 
@@ -69,6 +71,17 @@ export const Dashboard = () => {
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
                             <Account address={address} balance={balance + " FIL"} publicKey={publicKey} api={api}/>
+                        </Grid>
+                    </Grid>
+                    <Box m="1rem"/>
+                    <Grid container spacing={3} alignItems={"stretch"}>
+                        <Grid item xs={12}>
+                            <Card>
+                                <CardHeader title="Account transactions"/>
+                                <CardContent>
+                                    <TransactionTable txs={transactions}/>
+                                </CardContent>
+                            </Card>
                         </Grid>
                     </Grid>
                 </Hidden>
