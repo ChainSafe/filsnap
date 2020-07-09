@@ -1,8 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {
     Box, Card, CardContent, CardHeader,
-    Container,
-    Grid, Hidden, InputLabel, MenuItem, Select,
+    Container, Grid, Hidden, InputLabel, MenuItem, Select,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
