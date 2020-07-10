@@ -21,8 +21,17 @@ export interface GetBalanceRequest {
   method: "getBalance";
 }
 
+export interface GetTransactionsRequest {
+  method: "getTransactions";
+}
+
 export type MetamaskFilecoinRpcRequest =
-    GetPublicKeyRequest | GetAddressRequest | ExportSeedRequest | ConfigureRequest | GetBalanceRequest;
+    GetPublicKeyRequest |
+    GetAddressRequest |
+    ExportSeedRequest |
+    ConfigureRequest |
+    GetBalanceRequest |
+    GetTransactionsRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -82,4 +91,13 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
+}
+
+export interface Transaction {
+  hash: string;
+  block: string;
+  sender: string;
+  destination: string;
+  amount: string | number;
+  fee: string;
 }
