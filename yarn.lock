@@ -2157,13 +2157,14 @@
     blakejs "^1.1.0"
     elliptic "^6.5.2"
 
-"@nodefactory/snaps-cli@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.0.0.tgz#6f89a3ef8421c1f64e43906a51aaacac6e64c69b"
-  integrity sha512-6JbPXvSvw+447///S6Ky1pBOxo2n7xjRzGMnzBY4UInOXjfBSkHeviufDJfeQXE4EB+yNV70rHI43NEgj40+Bg==
+"@nodefactory/snaps-cli@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.5.0.tgz#74cfd67ca750095e9915e7372fea7a4ba92b0dc7"
+  integrity sha512-vqvqP793Kb/fqL30n62v8LlhXDDJGGgTYqP6QaC2fMJWYQ9YilVKl1Zfxpc5Q0a5suGGaGe+unUVZvOIdTf0Tw==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/preset-env" "^7.5.5"
+    "@nodefactory/strip-comments" "^1.0.0"
     babelify "^10.0.0"
     browserify "^16.3.0"
     chokidar "^3.0.2"
@@ -2173,9 +2174,13 @@
     rfdc "^1.1.4"
     serve-handler "^6.1.1"
     ses "^0.6.4"
-    strip-comments "^2.0.1"
     terser "^4.3.1"
     yargs "^14.0.0"
+
+"@nodefactory/strip-comments@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@nodefactory/strip-comments/-/strip-comments-1.0.0.tgz#e97089938aa1ace8fce73976e7aa98110102b5e1"
+  integrity sha512-+MsHDvNjV+UJHJD7W02EzNSTEvcu5NYotx9UsVdGRI2vy+EAXwVUu+60YHZX/3pDsInlgoo2kMJheBS+jnsUog==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
@@ -13078,11 +13083,6 @@ strip-comments@^1.0.2:
   dependencies:
     babel-extract-comments "^1.0.0"
     babel-plugin-transform-object-rest-spread "^6.26.0"
-
-strip-comments@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/strip-comments/-/strip-comments-2.0.1.tgz#4ad11c3fbcac177a67a40ac224ca339ca1c1ba9b"
-  integrity sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==
 
 strip-eof@^1.0.0:
   version "1.0.0"
