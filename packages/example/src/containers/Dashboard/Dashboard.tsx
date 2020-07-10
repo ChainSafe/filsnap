@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from "react";
 import {
     Box, Card, CardContent, CardHeader,
-    Container, Grid, Hidden, InputLabel, MenuItem, Select,
+    Container, Grid, Hidden, InputLabel, MenuItem, Select, Typography,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
@@ -54,6 +54,11 @@ export const Dashboard = () => {
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
+                <Box m="2rem">
+                    <Typography variant="h2">
+                        Filecoin snap demo
+                    </Typography>
+                </Box>
                 <Hidden xsUp={state.filecoinSnap.isInstalled}>
                     <MetaMaskConnector/>
                 </Hidden>
