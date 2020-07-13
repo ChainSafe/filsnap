@@ -1,6 +1,8 @@
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
+import BN from "bn.js";
+import {convertToFIL} from "../util/format";
 
 /**
  * Returns balance as string
@@ -12,5 +14,6 @@ export async function getBalance(wallet: Wallet, api: LotusRpcApi, address?: str
   if(!address) {
     address = (await getKeyPair(wallet)).address;
   }
-  return await api.walletBalance(address);
+  const balanceResult = await api.walletBalance(address);
+  return balanceResult ? convertToFIL(balanceResult) : balanceResult;
 }

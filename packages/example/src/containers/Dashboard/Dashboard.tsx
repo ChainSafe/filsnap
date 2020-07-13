@@ -13,7 +13,7 @@ export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
 
-    const [balance, setBalance] = useState("0");
+    const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
     const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -45,7 +45,15 @@ export const Dashboard = () => {
         setTransactions([
             {
                 sender: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
-                destination: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                destination: "t1crsy5lshxgudn4b77e3gizajhvelmgrjl2c5pky",
+                block: "bafy2bzacecucilkqxis7cieyrr6dmmljj42hgwflkpfsj6p2m3ccbbr7auoyi",
+                hash: "bafy2bzacecvwuqrg3zv3ummrqprdaildajsqrx3q5mlx7kopg5xecb2r44sa4",
+                amount: "50 FIL",
+                fee: "284"
+            },
+            {
+                sender: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                destination: "t1g5zliuiwhirrkuvhpdrz73mu7vxnutrwld6xpba",
                 block: "bafy2bzacecucilkqxis7cieyrr6dmmljj42hgwflkpfsj6p2m3ccbbr7auoyi",
                 hash: "bafy2bzacea46pfo7pjcinok6be7qfv2yxgznnosjv3xcakteklw3t4wedqyoi",
                 amount: "50 FIL",
@@ -53,11 +61,11 @@ export const Dashboard = () => {
             },
             {
                 sender: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
-                destination: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
-                block: "bafy2bzacecucilkqxis7cieyrr6dmmljj42hgwflkpfsj6p2m3ccbbr7auoyi",
-                hash: "bafy2bzacea46pfo7pjcinok6be7qfv2yxgznnosjv3xcakteklw3t4wedqyoi",
+                destination: "t1azeuu7j5wzzpigqolbxndq2zv6ftbqbzuqdsnri",
+                block: "bafy2bzaceamjcjlirr2adcdedv4yyvvmdjfgqvtb7mieg5dpiqx5pr2wzjcmm",
+                hash: "bafy2bzacecagpdspnquncxdcgudf55rj5riqjx4pkp3t6gcsm6cdyiujda432",
                 amount: "50 FIL",
-                fee: "910"
+                fee: "284"
             }
         ]);
         (async () => {
