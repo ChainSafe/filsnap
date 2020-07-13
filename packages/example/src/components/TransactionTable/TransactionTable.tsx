@@ -19,7 +19,7 @@ export const TransactionTable = (props: TransactionTableProps) => {
                     <TableCell align="center">Sender</TableCell>
                     <TableCell align="center">Destination</TableCell>
                     <TableCell align="center">Amount</TableCell>
-                    <TableCell align="center">Fee</TableCell>
+                    <TableCell align="center">Gas Used</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>

@@ -42,6 +42,24 @@ export const Dashboard = () => {
     }, [state.filecoinSnap.isInstalled, state.filecoinSnap.snap]);
 
     useEffect(() => {
+        setTransactions([
+            {
+                sender: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                destination: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                block: "bafy2bzacecucilkqxis7cieyrr6dmmljj42hgwflkpfsj6p2m3ccbbr7auoyi",
+                hash: "bafy2bzacea46pfo7pjcinok6be7qfv2yxgznnosjv3xcakteklw3t4wedqyoi",
+                amount: "50 FIL",
+                fee: "910"
+            },
+            {
+                sender: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                destination: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                block: "bafy2bzacecucilkqxis7cieyrr6dmmljj42hgwflkpfsj6p2m3ccbbr7auoyi",
+                hash: "bafy2bzacea46pfo7pjcinok6be7qfv2yxgznnosjv3xcakteklw3t4wedqyoi",
+                amount: "50 FIL",
+                fee: "910"
+            }
+        ]);
         (async () => {
             if (api) {
                 setAddress(await api.getAddress());
