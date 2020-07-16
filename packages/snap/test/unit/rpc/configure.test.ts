@@ -1,7 +1,7 @@
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
-import {devConfiguration, filecoinTestnetConfiguration} from "../../../src/configuration/predefined";
+import {filecoinTestnetConfiguration} from "../../../src/configuration/predefined";
 import {configure} from "../../../src/rpc/configure";
 import {EmptyMetamaskState} from "../../../src/interfaces";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
