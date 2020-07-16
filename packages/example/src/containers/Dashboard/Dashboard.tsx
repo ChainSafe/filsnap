@@ -1,21 +1,22 @@
 import React, {useContext, useEffect, useState} from "react";
 import {
-    Box,
-    Container,
-    Grid, Hidden, InputLabel, MenuItem, Select,
+    Box, Card, CardContent, CardHeader,
+    Container, Grid, Hidden, InputLabel, MenuItem, Select, Typography,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
 import {Account} from "../../components/Account/Account";
-import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi, Transaction} from "@nodefactory/metamask-filecoin-types";
+import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 
 export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
 
-    // const [balance, setBalance] = useState("0");
+    const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
+    const [transactions, setTransactions] = useState<Transaction[]>([]);
 
     const [network, setNetwork] = useState<"f" | "t">("t");
 
@@ -25,8 +26,9 @@ export const Dashboard = () => {
         const selectedNetwork = event.target.value as "f" | "t";
         if (selectedNetwork === network) return;
         if (api) {
-            api.configure({network: selectedNetwork});
+            await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
+            setTransactions([]);
         }
     };
 
@@ -43,7 +45,8 @@ export const Dashboard = () => {
         (async () => {
             if (api) {
                 setAddress(await api.getAddress());
-                setPublicKey(await api.getPublicKey())
+                setPublicKey(await api.getPublicKey());
+                setBalance(await api.getBalance());
             }
         })();
     }, [api, network]);
@@ -51,6 +54,11 @@ export const Dashboard = () => {
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
+                <Box m="2rem">
+                    <Typography variant="h2">
+                        Filecoin snap demo
+                    </Typography>
+                </Box>
                 <Hidden xsUp={state.filecoinSnap.isInstalled}>
                     <MetaMaskConnector/>
                 </Hidden>
@@ -67,7 +75,18 @@ export const Dashboard = () => {
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
-                            <Account address={address} balance={"0 FIL"} publicKey={publicKey}/>
+                            <Account address={address} balance={balance + " FIL"} publicKey={publicKey} api={api}/>
+                        </Grid>
+                    </Grid>
+                    <Box m="1rem"/>
+                    <Grid container spacing={3} alignItems={"stretch"}>
+                        <Grid item xs={12}>
+                            <Card>
+                                <CardHeader title="Account transactions"/>
+                                <CardContent>
+                                    <TransactionTable txs={transactions}/>
+                                </CardContent>
+                            </Card>
                         </Grid>
                     </Grid>
                 </Hidden>

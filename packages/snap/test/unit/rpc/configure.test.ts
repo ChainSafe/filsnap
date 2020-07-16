@@ -24,7 +24,8 @@ describe('Test rpc handler function: configure', function() {
     expect(result).to.be.deep.eq(filecoinTestnetConfiguration);
     expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
       filecoin: {
-        config: filecoinTestnetConfiguration
+        config: filecoinTestnetConfiguration,
+        transactions: []
       }
     });
     expect(walletStub.updatePluginState).to.have.been.calledOnce;
@@ -41,7 +42,8 @@ describe('Test rpc handler function: configure', function() {
     expect(result).to.be.deep.eq(customConfiguration);
     expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
       filecoin: {
-        config: customConfiguration
+        config: customConfiguration,
+        transactions: []
       }
     });
     expect(walletStub.updatePluginState).to.have.been.calledOnce;

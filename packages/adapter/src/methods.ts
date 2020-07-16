@@ -18,8 +18,12 @@ export async function getPublicKey(this: MetamaskFilecoinSnap): Promise<string> 
   return await sendSnapMethod({method: "getPublicKey"}, this.snapId);
 }
 
-export async function exportSeed(this: MetamaskFilecoinSnap): Promise<string> {
-  return await sendSnapMethod({method: "exportSeed"}, this.snapId);
+export async function getBalance(this: MetamaskFilecoinSnap): Promise<string> {
+  return await sendSnapMethod({method: "getBalance"}, this.snapId);
+}
+
+export async function exportPrivateKey(this: MetamaskFilecoinSnap): Promise<string> {
+  return await sendSnapMethod({method: "exportPrivateKey"}, this.snapId);
 }
 
 export async function configure(this: MetamaskFilecoinSnap, configuration: SnapConfig): Promise<void> {

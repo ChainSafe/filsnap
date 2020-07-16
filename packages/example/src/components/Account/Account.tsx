@@ -1,16 +1,21 @@
 import React from "react";
 import {Box, Button, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@material-ui/core/';
+import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
 
 export interface AccountProps {
     address: string,
     publicKey: string,
-    balance: string
+    balance: string,
+    api: FilecoinSnapApi | null
 }
 
 export const Account = (props: AccountProps) => {
 
     const handleExport = async () => {
-        alert("Export private key")
+        if (props.api) {
+            const privateKey = await props.api.exportPrivateKey();
+            alert(`Your private key: ${privateKey}`);
+        }
     };
 
     return (        
