@@ -7,7 +7,7 @@ import {Transaction} from "@nodefactory/metamask-filecoin-types";
 
 chai.use(sinonChai);
 
-describe('Test account function: getKeyPair', function() {
+describe('Test saving transactions in state', function() {
 
     const walletStub = new WalletMock();
 

@@ -3,6 +3,7 @@ import sinonChai from "sinon-chai";
 import {exportPrivateKey} from "../../../src/rpc/exportPrivateKey";
 import {WalletMock} from "../wallet.mock.test";
 import {testAppKey, testPrivateKey} from "./keyPairTestConstants";
+import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
 
 chai.use(sinonChai);
 
@@ -17,7 +18,9 @@ describe('Test rpc handler function: exportSeed', function() {
   it('should return seed on positive prompt confirmation and keyring saved in state', async function () {
     walletStub.send.returns(true);
     walletStub.getAppKey.returns(testAppKey);
-    walletStub.getPluginState.returns({filecoin: {config: {network: "f"}}});
+    walletStub.getPluginState.returns({
+      filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
+    });
 
     const result = await exportPrivateKey(walletStub);
 
