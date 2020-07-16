@@ -1,7 +1,6 @@
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
-import BN from "bn.js";
 import {convertToFIL} from "../util/format";
 
 /**
