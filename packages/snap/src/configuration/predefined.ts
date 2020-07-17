@@ -3,15 +3,16 @@ import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
 export const filecoinMainnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/461'/0/0/1",
   network: "f",
-  rpcUrl: "https://lotus.testground.ipfs.team/api/0/node/rpc/v0",
+  rpcUrl: "",
   unit: {
     decimals: 6,
     image: `https://svgshare.com/i/M4s.svg`,
     symbol: "FIL"
   }
 };
-// lotus.testground.ipfs.team/nerpa_api
-export const filecoinTestnetConfiguration: SnapConfig = {
+
+// replaces testnet for now
+export const filecoinDevnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/461'/0/0/1",
   network: "t",
   rpcUrl: `https://lotus.testground.ipfs.team/nerpa_api/0/node/rpc/v0`,
@@ -22,15 +23,16 @@ export const filecoinTestnetConfiguration: SnapConfig = {
   }
 };
 
-export const devConfiguration: SnapConfig = {
-  derivationPath: "m/44'/461'/0/0/1",
-  network: "t",
-  rpcUrl: `https://lotus.testground.ipfs.team/api/0/node/rpc/v0`,
-  unit: {
-    decimals: 6,
-    image: `https://svgshare.com/i/M4s.svg`,
-    symbol: "FIL"
-  }
-};
+export const filecoinTestnetConfiguration: SnapConfig = filecoinDevnetConfiguration;
+// export const filecoinTestnetConfiguration: SnapConfig = {
+//   derivationPath: "m/44'/461'/0/0/1",
+//   network: "t",
+//   rpcUrl: ``,
+//   unit: {
+//     decimals: 6,
+//     image: `https://svgshare.com/i/M4s.svg`,
+//     symbol: "FIL"
+//   }
+// };
 
-export const defaultConfiguration: SnapConfig = devConfiguration;
+export const defaultConfiguration: SnapConfig = filecoinDevnetConfiguration;
