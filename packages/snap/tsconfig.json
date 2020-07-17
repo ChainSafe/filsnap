@@ -15,7 +15,7 @@
       "@filecoin-shipyard/lotus-client-schema": [
         "./@types/lotus-client-schema"
       ],
-      "@zondax/filecoin-signing-tools": [
+      "@zondax/filecoin-signing-tools/js": [
         "./@types/filecoin-signing-tools"
       ]
     },

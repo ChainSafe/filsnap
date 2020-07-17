@@ -15,7 +15,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
 
   return {
     address: extendedKey.address,
-    privateKey: extendedKey.privateKey.toString("hex"),
-    publicKey: extendedKey.publicKey.toString("hex")
+    privateKey: extendedKey.private_hexstring,
+    publicKey: extendedKey.public_hexstring
   };
 }
