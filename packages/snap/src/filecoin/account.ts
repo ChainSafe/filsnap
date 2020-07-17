@@ -1,6 +1,4 @@
 import {Wallet} from "../interfaces";
-// eslint-disable-next-line
-// @ts-ignore
 import {keyDeriveFromSeed} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@nodefactory/metamask-filecoin-types";
 
