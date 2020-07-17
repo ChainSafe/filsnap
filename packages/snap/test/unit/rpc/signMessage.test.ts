@@ -25,13 +25,15 @@ describe('Test rpc handler function: signMessage', function () {
         walletStub.reset();
     });
 
-    it('should successfully sign valid message', async function () {
+    it('should successfully sign valid message on positive prompt', async function () {
+        walletStub.send.returns(true);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
             filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
         });
 
         const signedMessage = await signMessage(walletStub, unsignedMessage);
+        expect(walletStub.send).to.have.been.calledOnce;
         expect(walletStub.getPluginState).to.have.been.calledOnce;
         expect(walletStub.getAppKey).to.have.been.calledOnce;
         expect(signedMessage.message).to.be.eq(unsignedMessage);
@@ -39,7 +41,22 @@ describe('Test rpc handler function: signMessage', function () {
         expect(signedMessage.signature.type).to.be.eq(1);
     });
 
+    it('should successfully sign valid message on negative prompt', async function () {
+        walletStub.send.returns(false);
+        walletStub.getAppKey.returns(testAppKey);
+        walletStub.getPluginState.returns({
+            filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
+        });
+
+        const signedMessage = await signMessage(walletStub, unsignedMessage);
+        expect(walletStub.send).to.have.been.calledOnce;
+        expect(walletStub.getPluginState).to.not.have.been.calledOnce;
+        expect(walletStub.getAppKey).to.not.have.been.calledOnce;
+        expect(signedMessage).to.be.null;
+    });
+
     it('should fail signing on invalid message ', async function () {
+        walletStub.send.returns(true);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
             filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
