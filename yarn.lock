@@ -2157,13 +2157,14 @@
     blakejs "^1.1.0"
     elliptic "^6.5.2"
 
-"@nodefactory/snaps-cli@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.0.0.tgz#6f89a3ef8421c1f64e43906a51aaacac6e64c69b"
-  integrity sha512-6JbPXvSvw+447///S6Ky1pBOxo2n7xjRzGMnzBY4UInOXjfBSkHeviufDJfeQXE4EB+yNV70rHI43NEgj40+Bg==
+"@nodefactory/snaps-cli@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.5.0.tgz#74cfd67ca750095e9915e7372fea7a4ba92b0dc7"
+  integrity sha512-vqvqP793Kb/fqL30n62v8LlhXDDJGGgTYqP6QaC2fMJWYQ9YilVKl1Zfxpc5Q0a5suGGaGe+unUVZvOIdTf0Tw==
   dependencies:
     "@babel/core" "^7.5.5"
     "@babel/preset-env" "^7.5.5"
+    "@nodefactory/strip-comments" "^1.0.0"
     babelify "^10.0.0"
     browserify "^16.3.0"
     chokidar "^3.0.2"
@@ -2173,9 +2174,13 @@
     rfdc "^1.1.4"
     serve-handler "^6.1.1"
     ses "^0.6.4"
-    strip-comments "^2.0.1"
     terser "^4.3.1"
     yargs "^14.0.0"
+
+"@nodefactory/strip-comments@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@nodefactory/strip-comments/-/strip-comments-1.0.0.tgz#e97089938aa1ace8fce73976e7aa98110102b5e1"
+  integrity sha512-+MsHDvNjV+UJHJD7W02EzNSTEvcu5NYotx9UsVdGRI2vy+EAXwVUu+60YHZX/3pDsInlgoo2kMJheBS+jnsUog==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
@@ -2519,6 +2524,13 @@
   integrity sha512-ddHK5icION5U6q11+tV2f9Mo6CZVuT8GJKld2q9LqHSZbvLbH34Kcu2yFGckZut453+eQU6btIA3RihmnRgI+Q==
   dependencies:
     "@babel/types" "^7.3.0"
+
+"@types/bn.js@^4.11.6":
+  version "4.11.6"
+  resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.6.tgz#c306c70d9358aaea33cd4eda092a742b9505967c"
+  integrity sha512-pqr857jrp2kPuO9uRjZ3PwnJTjoQy+fcdxvBTvHm6dkmEL9q+hDD/2j/0ELOBPtPnS8LjCX0gI9nbl8lVkadpg==
+  dependencies:
+    "@types/node" "*"
 
 "@types/chai@*", "@types/chai@^4.2.10":
   version "4.2.11"
@@ -3656,7 +3668,7 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.4.0:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
   integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
 
-bn.js@^5.0.0, bn.js@^5.1.1:
+bn.js@^5.0.0, bn.js@^5.1.1, bn.js@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.2.tgz#c9686902d3c9a27729f43ab10f9d79c2004da7b0"
   integrity sha512-40rZaf3bUNKTVYu9sIeeEGOg7g14Yvnj9kH7b50EiwX0Q7A6umbvfI5tvHaOERH0XigqKkfLkFQxzb4e6CIXnA==
@@ -13078,11 +13090,6 @@ strip-comments@^1.0.2:
   dependencies:
     babel-extract-comments "^1.0.0"
     babel-plugin-transform-object-rest-spread "^6.26.0"
-
-strip-comments@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/strip-comments/-/strip-comments-2.0.1.tgz#4ad11c3fbcac177a67a40ac224ca339ca1c1ba9b"
-  integrity sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==
 
 strip-eof@^1.0.0:
   version "1.0.0"

@@ -9,6 +9,7 @@ import {getBalance} from "./rpc/getBalance";
 import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
 import {getTransactions} from "./rpc/getTransactions";
+import {convertToFIL} from "./util/format";
 
 declare let wallet: Wallet;
 
@@ -38,8 +39,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      const balance = await getBalance(wallet, api);
-      await updateAsset(wallet, originString, balance);
+      await updateAsset(wallet, originString, convertToFIL(await getBalance(wallet, api)));
       return configuration;
     case "getAddress":
       return await getAddress(wallet);
@@ -48,7 +48,9 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     case "exportPrivateKey":
       return exportPrivateKey(wallet);
     case "getBalance":
-      return getBalance(wallet, api);
+      const balance = await getBalance(wallet, api);
+      await updateAsset(wallet, originString, balance);
+      return balance;
     case "getTransactions":
       return getTransactions(wallet);
     default:

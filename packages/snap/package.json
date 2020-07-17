@@ -56,7 +56,8 @@
   },
   "devDependencies": {
     "@nodefactory/metamask-filecoin-types": "1.0.0",
-    "@nodefactory/snaps-cli": "1.0.0",
+    "@nodefactory/snaps-cli": "^1.5.0",
+    "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
     "@types/sinon": "^7.5.2",
@@ -73,10 +74,11 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@nodefactory/filecoin-address": "^1.0.1",
-    "deepmerge": "^4.2.2",
     "@filecoin-shipyard/lotus-client-provider-nodejs": "^0.0.5",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
     "@filecoin-shipyard/lotus-client-schema": "^0.0.10",
-    "@filecoin-shipyard/lotus-client-rpc": "^0.0.11"
+    "@nodefactory/filecoin-address": "^1.0.1",
+    "bn.js": "^5.1.2",
+    "deepmerge": "^4.2.2"
   }
 }
