@@ -41,7 +41,7 @@ describe('Test rpc handler function: signMessage', function () {
         expect(signedMessage.signature.type).to.be.eq(1);
     });
 
-    it('should successfully sign valid message on negative prompt', async function () {
+    it('should cancel signing on negative prompt', async function () {
         walletStub.send.returns(false);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
@@ -50,8 +50,8 @@ describe('Test rpc handler function: signMessage', function () {
 
         const signedMessage = await signMessage(walletStub, unsignedMessage);
         expect(walletStub.send).to.have.been.calledOnce;
-        expect(walletStub.getPluginState).to.not.have.been.calledOnce;
-        expect(walletStub.getAppKey).to.not.have.been.calledOnce;
+        expect(walletStub.getPluginState).to.have.been.calledOnce;
+        expect(walletStub.getAppKey).to.have.been.calledOnce;
         expect(signedMessage).to.be.null;
     });
 
