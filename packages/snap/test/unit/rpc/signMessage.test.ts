@@ -8,7 +8,7 @@ import {signMessage} from "../../../src/rpc/signMessage";
 
 chai.use(sinonChai);
 
-describe('Test rpc handler function: getPublicKey', function () {
+describe('Test rpc handler function: signMessage', function () {
     const walletStub = new WalletMock();
 
     const unsignedMessage: Message = {
