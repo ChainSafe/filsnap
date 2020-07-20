@@ -23,13 +23,13 @@ export async function signMessage(wallet: Wallet, message: Message): Promise<Sig
 export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promise<string> {
   const keypair = await getKeyPair(wallet);
   const confirmation = await showConfirmationDialog(
-      wallet,
-      `Do you want to sign message\n\n` +
+    wallet,
+    `Do you want to sign message\n\n` +
       `${rawMessage}\n\n`+
       `with account ${keypair.address}?`
   );
   if (confirmation) {
-      return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
   }
   return null;
 }
