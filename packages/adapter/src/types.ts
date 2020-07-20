@@ -11,15 +11,3 @@ declare global {
     };
   }
 }
-
-// Filecoin message
-export interface Message {
-  to: string;
-  from: string;
-  nonce: number;
-  value: string;
-  gasprice: string
-  gaslimit: number;
-  method: number;
-  params?: any;
-}

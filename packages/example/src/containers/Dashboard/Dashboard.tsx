@@ -37,6 +37,15 @@ export const Dashboard = () => {
             if (state.filecoinSnap.isInstalled && state.filecoinSnap.snap) {
                 const filecoinApi = await state.filecoinSnap.snap.getFilecoinSnapApi();
                 setApi(filecoinApi);
+                await filecoinApi.signMessage({
+                    from: "t1hw4amnow4gsgk2ottjdpdverfwhaznyrslsmoni",
+                    to: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
+                    gaslimit: 10000,
+                    gasprice: "0",
+                    method: 1,
+                    nonce: 90571,
+                    value: "5000000000000000",
+                });
             }
         })();
     }, [state.filecoinSnap.isInstalled, state.filecoinSnap.snap]);

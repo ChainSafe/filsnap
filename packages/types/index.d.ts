@@ -1,5 +1,3 @@
-import {Message, SignedMessage} from "@zondax/filecoin-signing-tools/js";
-
 export interface GetPublicKeyRequest{
   method: "getPublicKey";
 }
@@ -65,6 +63,7 @@ export type BlockId = number|string|"latest";
 
 export interface TxPayload {
   tx: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: any;
 }
 
@@ -90,6 +89,26 @@ export interface SnapConfig {
 export type Callback<T> = (arg: T) => void;
 
 // Filecoin types
+
+export interface Message {
+  to: string;
+  from: string;
+  nonce: number;
+  value: string;
+  gasprice: string;
+  gaslimit: number;
+  method: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params?: any;
+}
+
+export interface SignedMessage {
+  message: Message;
+  signature: {
+    data: string;
+    type: number;
+  };
+}
 
 export type FilecoinNetwork = "f" | "t";
 

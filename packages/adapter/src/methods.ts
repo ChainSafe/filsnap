@@ -1,6 +1,5 @@
-import {MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {Message, MetamaskFilecoinRpcRequest, SignedMessage, SnapConfig} from "@nodefactory/metamask-filecoin-types";
 import {MetamaskFilecoinSnap} from "./snap";
-import {Message} from "./types";
 
 async function sendSnapMethod<T>(request: MetamaskFilecoinRpcRequest, snapId: string): Promise<T> {
   return await window.ethereum.send({
@@ -31,6 +30,6 @@ export async function configure(this: MetamaskFilecoinSnap, configuration: SnapC
   return await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
 }
 
-export async function signMessage(this: MetamaskFilecoinSnap, message: Message) {
+export async function signMessage(this: MetamaskFilecoinSnap, message: Message): Promise<SignedMessage> {
   return await sendSnapMethod({method: "signMessage", params: {message: message}}, this.snapId)
 }
