@@ -9,6 +9,7 @@ import {Account} from "../../components/Account/Account";
 import {FilecoinSnapApi, Transaction} from "@nodefactory/metamask-filecoin-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
+import {Transfer} from "../../components/Transfer/Transfer";
 
 export const Dashboard = () => {
 
@@ -38,15 +39,6 @@ export const Dashboard = () => {
             if (state.filecoinSnap.isInstalled && state.filecoinSnap.snap) {
                 const filecoinApi = await state.filecoinSnap.snap.getFilecoinSnapApi();
                 setApi(filecoinApi);
-                await filecoinApi.signMessage({
-                    from: "t1hw4amnow4gsgk2ottjdpdverfwhaznyrslsmoni",
-                    to: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
-                    gaslimit: 10000,
-                    gasprice: "0",
-                    method: 1,
-                    nonce: 90571,
-                    value: "5000000000000000",
-                });
             }
         })();
     }, [state.filecoinSnap.isInstalled, state.filecoinSnap.snap]);
@@ -90,6 +82,9 @@ export const Dashboard = () => {
                     </Grid>
                     <Box m="1rem"/>
                     <Grid container spacing={3} alignItems="stretch">
+                        <Grid item md={6} xs={12}>
+                            <Transfer api={api} network={network} />
+                        </Grid>
                         <Grid item md={6} xs={12}>
                             <SignMessage api={api} />
                         </Grid>
