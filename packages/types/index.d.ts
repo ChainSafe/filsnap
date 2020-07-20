@@ -1,3 +1,5 @@
+import {Message, SignedMessage} from "@zondax/filecoin-signing-tools/js";
+
 export interface GetPublicKeyRequest{
   method: "getPublicKey";
 }
@@ -17,6 +19,13 @@ export interface ConfigureRequest {
   };
 }
 
+export interface SignMessageRequest {
+  method: "signMessage";
+  params: {
+    message: Message;
+  };
+}
+
 export interface GetBalanceRequest {
   method: "getBalance";
 }
@@ -31,7 +40,8 @@ export type MetamaskFilecoinRpcRequest =
     ExportSeedRequest |
     ConfigureRequest |
     GetBalanceRequest |
-    GetTransactionsRequest;
+    GetTransactionsRequest |
+    SignMessageRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -91,6 +101,7 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
+  signMessage(message: Message): Promise<SignedMessage>;
 }
 
 export interface Transaction {

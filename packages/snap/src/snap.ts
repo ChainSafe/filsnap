@@ -10,6 +10,7 @@ import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
 import {getTransactions} from "./rpc/getTransactions";
 import {convertToFIL} from "./util/format";
+import {signMessage} from "./rpc/signMessage";
 
 declare let wallet: Wallet;
 
@@ -53,6 +54,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return balance;
     case "getTransactions":
       return getTransactions(wallet);
+    case "signMessage":
+      return await signMessage(wallet, requestObject.params.message);
     default:
       throw new Error("Unsupported RPC method");
   }
