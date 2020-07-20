@@ -33,3 +33,7 @@ export async function configure(this: MetamaskFilecoinSnap, configuration: SnapC
 export async function signMessage(this: MetamaskFilecoinSnap, message: Message): Promise<SignedMessage> {
   return await sendSnapMethod({method: "signMessage", params: {message: message}}, this.snapId)
 }
+
+export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: string): Promise<string> {
+  return await sendSnapMethod({method: "signMessageRaw", params: {message: rawMessage}}, this.snapId);
+}

@@ -24,6 +24,13 @@ export interface SignMessageRequest {
   };
 }
 
+export interface SignMessageRawRequest {
+  method: "signMessageRaw";
+  params: {
+    message: string;
+  };
+}
+
 export interface GetBalanceRequest {
   method: "getBalance";
 }
@@ -39,7 +46,8 @@ export type MetamaskFilecoinRpcRequest =
     ConfigureRequest |
     GetBalanceRequest |
     GetTransactionsRequest |
-    SignMessageRequest;
+    SignMessageRequest |
+    SignMessageRawRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -121,6 +129,7 @@ export interface FilecoinSnapApi {
   exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
   signMessage(message: Message): Promise<SignedMessage>;
+  signMessageRaw(message: string): Promise<string>;
 }
 
 export interface Transaction {

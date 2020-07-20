@@ -8,6 +8,7 @@ import {MetaMaskContext} from "../../context/metamask";
 import {Account} from "../../components/Account/Account";
 import {FilecoinSnapApi, Transaction} from "@nodefactory/metamask-filecoin-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
+import {SignMessage} from "../../components/SignMessage/SignMessage";
 
 export const Dashboard = () => {
 
@@ -85,6 +86,12 @@ export const Dashboard = () => {
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
                             <Account address={address} balance={balance + " FIL"} publicKey={publicKey} api={api}/>
+                        </Grid>
+                    </Grid>
+                    <Box m="1rem"/>
+                    <Grid container spacing={3} alignItems="stretch">
+                        <Grid item md={6} xs={12}>
+                            <SignMessage api={api} />
                         </Grid>
                     </Grid>
                     <Box m="1rem"/>
