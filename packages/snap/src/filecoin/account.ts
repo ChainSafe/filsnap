@@ -1,6 +1,4 @@
 import {Wallet} from "../interfaces";
-// eslint-disable-next-line
-// @ts-ignore
 import {keyDeriveFromSeed} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@nodefactory/metamask-filecoin-types";
 
@@ -15,7 +13,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
 
   return {
     address: extendedKey.address,
-    privateKey: extendedKey.privateKey.toString("hex"),
-    publicKey: extendedKey.publicKey.toString("hex")
+    privateKey: extendedKey.private_hexstring,
+    publicKey: extendedKey.public_hexstring
   };
 }
