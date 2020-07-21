@@ -1,6 +1,5 @@
 import {
   Message,
-  PartialMessage,
   SignedMessage,
   transactionSign,
   transactionSignRaw
@@ -9,6 +8,7 @@ import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
 import {LotusRpcApi} from "../filecoin/types";
+import {PartialMessage} from "@nodefactory/metamask-filecoin-types";
 
 export async function signMessage(wallet: Wallet, api: LotusRpcApi, partialMessage: PartialMessage): Promise<SignedMessage> {
   const keypair = await getKeyPair(wallet);

@@ -20,7 +20,7 @@ export interface ConfigureRequest {
 export interface SignMessageRequest {
   method: "signMessage";
   params: {
-    message: Message;
+    message: PartialMessage;
   };
 }
 
@@ -116,6 +116,11 @@ export interface SignedMessage {
     data: string;
     type: number;
   };
+}
+
+export interface PartialMessage {
+  to: string;
+  value: string;
 }
 
 export type FilecoinNetwork = "f" | "t";
