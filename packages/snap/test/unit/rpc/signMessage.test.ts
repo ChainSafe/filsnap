@@ -2,8 +2,8 @@ import {WalletMock} from "../wallet.mock.test";
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {testAppKey} from "./keyPairTestConstants";
-import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
-import {Message, PartialMessage} from "@zondax/filecoin-signing-tools/js";
+import {PartialMessage, SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {Message} from "@zondax/filecoin-signing-tools/js";
 import {signMessage} from "../../../src/rpc/signMessage";
 import sinon from "sinon";
 
