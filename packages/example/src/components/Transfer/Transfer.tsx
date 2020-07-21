@@ -56,6 +56,8 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
                 nonce: 1
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
+            setAmount("");
+            setRecipient("");
         }
     }, [amount, api, recipient]);
 
