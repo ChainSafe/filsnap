@@ -44,16 +44,10 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
 
     const onSign = useCallback(async () => {
         if (amount && recipient && api) {
-            const address = await api.getAddress();
             // Temporary signature method until sending is implemented
             const signedMessage = await api.signMessage({
-                from: address,
                 to: recipient,
                 value: BigInt(amount).toString(),
-                method: 1,
-                gaslimit: 100,
-                gasprice: "0",
-                nonce: 1
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
             setAmount("");

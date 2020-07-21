@@ -133,7 +133,7 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
-  signMessage(message: Message): Promise<SignedMessage>;
+  signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
 }
 
