@@ -14,6 +14,11 @@ declare module "@zondax/filecoin-signing-tools/js" {
         get private_base64(): string;
     }
 
+    export interface PartialMessage {
+        to: string;
+        value: string;
+    }
+
     export interface Message {
         to: string;
         from: string;
