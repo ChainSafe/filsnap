@@ -1,10 +1,27 @@
-import {Message, SignedMessage, transactionSign} from "@zondax/filecoin-signing-tools/js";
+import {
+  Message,
+  SignedMessage,
+  transactionSign,
+  transactionSignRaw
+} from "@zondax/filecoin-signing-tools/js";
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
+import {LotusRpcApi} from "../filecoin/types";
+import {PartialMessage} from "@nodefactory/metamask-filecoin-types";
 
-export async function signMessage(wallet: Wallet, message: Message): Promise<SignedMessage> {
+export async function signMessage(
+  wallet: Wallet, api: LotusRpcApi, partialMessage: PartialMessage
+): Promise<SignedMessage> {
   const keypair = await getKeyPair(wallet);
+  const message: Message = {
+    ...partialMessage,
+    from: keypair.address,
+    gaslimit: 10,   // TODO should be part of input form
+    gasprice: "5",  // TODO calculate from RPC method
+    method: 1,       // TODO figure out method code for transaction
+    nonce: Number(await api.mpoolGetNonce(keypair.address))
+  };
   const confirmation = await showConfirmationDialog(
     wallet,
     `Do you want to sign message\n\n` +
@@ -16,6 +33,20 @@ export async function signMessage(wallet: Wallet, message: Message): Promise<Sig
   );
   if (confirmation) {
     return transactionSign(message, keypair.privateKey);
+  }
+  return null;
+}
+
+export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promise<string> {
+  const keypair = await getKeyPair(wallet);
+  const confirmation = await showConfirmationDialog(
+    wallet,
+    `Do you want to sign message\n\n` +
+      `${rawMessage}\n\n`+
+      `with account ${keypair.address}?`
+  );
+  if (confirmation) {
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
   }
   return null;
 }

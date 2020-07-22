@@ -17,6 +17,20 @@ export interface ConfigureRequest {
   };
 }
 
+export interface SignMessageRequest {
+  method: "signMessage";
+  params: {
+    message: PartialMessage;
+  };
+}
+
+export interface SignMessageRawRequest {
+  method: "signMessageRaw";
+  params: {
+    message: string;
+  };
+}
+
 export interface GetBalanceRequest {
   method: "getBalance";
 }
@@ -31,7 +45,9 @@ export type MetamaskFilecoinRpcRequest =
     ExportSeedRequest |
     ConfigureRequest |
     GetBalanceRequest |
-    GetTransactionsRequest;
+    GetTransactionsRequest |
+    SignMessageRequest |
+    SignMessageRawRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -55,6 +71,7 @@ export type BlockId = number|string|"latest";
 
 export interface TxPayload {
   tx: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload: any;
 }
 
@@ -81,6 +98,31 @@ export type Callback<T> = (arg: T) => void;
 
 // Filecoin types
 
+export interface Message {
+  to: string;
+  from: string;
+  nonce: number;
+  value: string;
+  gasprice: string;
+  gaslimit: number;
+  method: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  params?: any;
+}
+
+export interface SignedMessage {
+  message: Message;
+  signature: {
+    data: string;
+    type: number;
+  };
+}
+
+export interface PartialMessage {
+  to: string;
+  value: string;
+}
+
 export type FilecoinNetwork = "f" | "t";
 
 export interface FilecoinEventApi {}
@@ -91,6 +133,8 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: SnapConfig): Promise<void>;
+  signMessage(message: PartialMessage): Promise<SignedMessage>;
+  signMessageRaw(message: string): Promise<string>;
 }
 
 export interface Transaction {

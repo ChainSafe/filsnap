@@ -21,6 +21,7 @@
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "sass": "^1.26.3",
+    "to-hex": "^0.0.15",
     "typescript": "~3.7.2"
   },
   "scripts": {

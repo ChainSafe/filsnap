@@ -9982,6 +9982,13 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
+normalize-hex@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/normalize-hex/-/normalize-hex-0.0.2.tgz#5491c43759db2f06b7168d8419f4925c271ab27e"
+  integrity sha512-E2dx7XJQnjsm6SkS4G6GGvIXRHaLeWAZE2D2N3aia+OpIif2UT8y4S0KCjrX3WmFDSeFnlNOp0FSHFjLeJ4SJw==
+  dependencies:
+    bn.js "^4.11.8"
+
 normalize-package-data@^2.0.0, normalize-package-data@^2.3.0, normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.3.5, normalize-package-data@^2.4.0, normalize-package-data@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
@@ -13666,6 +13673,13 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
   integrity sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=
+
+to-hex@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/to-hex/-/to-hex-0.0.15.tgz#a18f31f8f4cf8c7bd627cc25d7e58350b5f10e1f"
+  integrity sha512-sAMjdR0/do43JrvublqVeBL7IsxRICt3GksDJdx4biBQ1WZVoVuj2c+C8KQJ0BIG8AYs6oVAWPKW7lmXFrdILA==
+  dependencies:
+    normalize-hex "0.0.2"
 
 to-object-path@^0.3.0:
   version "0.3.0"

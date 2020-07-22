@@ -20,7 +20,7 @@ describe('Test rpc handler function: getBalance', function() {
     // prepare stubs
     walletStub.getAppKey.returns(testAppKey);
     walletStub.getPluginState.returns(EmptyMetamaskState());
-    const apiStub = {walletBalance: sinon.stub(), version: sinon.stub()};
+    const apiStub = {walletBalance: sinon.stub(), version: sinon.stub(), mpoolGetNonce: sinon.stub()};
     apiStub.walletBalance.returns("3000000000000000000");
     // call getBalance
     const result = await getBalance(walletStub, apiStub);
