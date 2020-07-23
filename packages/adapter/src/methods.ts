@@ -42,3 +42,7 @@ export async function signMessage(this: MetamaskFilecoinSnap, message: PartialMe
 export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: string): Promise<string> {
   return await sendSnapMethod({method: "signMessageRaw", params: {message: rawMessage}}, this.snapId);
 }
+
+export async function sendMessage(this: MetamaskFilecoinSnap, signedMessage: SignedMessage): Promise<void> {
+  return await sendSnapMethod({method: "sendMessage", params: {signedMessage: signedMessage}}, this.snapId);
+}

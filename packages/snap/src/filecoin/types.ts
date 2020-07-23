@@ -1,10 +1,11 @@
-import {Message} from "@nodefactory/metamask-filecoin-types";
+import {Message, SignedMessage} from "@nodefactory/metamask-filecoin-types";
 
 export interface LotusRpcApi {
   version(): Promise<VersionResponse>;
   walletBalance(address: string): Promise<string>;
   mpoolGetNonce(address: string): Promise<string>;
   stateCall(message: Message, tipset: any): Promise<MessageStateCallResponse>;
+  mpoolPush(signedMessage: SignedMessage): Promise<any>;
 }
 
 type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string };
