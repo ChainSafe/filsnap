@@ -121,6 +121,8 @@ export interface SignedMessage {
 export interface PartialMessage {
   to: string;
   value: string;
+  gaslimit?: number;
+  gasprice?: string;
 }
 
 export type FilecoinNetwork = "f" | "t";
