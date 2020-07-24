@@ -16,9 +16,8 @@ export const filecoinMainnetConfiguration: SnapConfig = {
 export const filecoinDevnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/1'/0/0/1",
   network: "t",
-  rpcUrl: `http://134.122.86.62/rpc/v0`,
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiL" +
-      "CJzaWduIiwiYWRtaW4iXX0.lggkQAOfdZSHuif8JAQ8vW4WrXa1-Nw4IMVCw8cy0oA",
+  rpcUrl: `http://134.122.86.62:1234/rpc/v0`,
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.E0vtzfrPaHBDcP2Y1trnxVhTU6mgJl9MAqFhCmLFd40",
   unit: {
     decimals: 6,
     image: `https://svgshare.com/i/M4s.svg`,

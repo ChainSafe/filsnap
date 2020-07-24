@@ -5,10 +5,14 @@ export interface LotusRpcApi {
   walletBalance(address: string): Promise<string>;
   mpoolGetNonce(address: string): Promise<string>;
   stateCall(message: Message, tipset: unknown): Promise<MessageStateCallResponse>;
-  mpoolPush(signedMessage: SignedMessage): Promise<void>;
+  mpoolPush(signedMessage: SignedMessage): Promise<MessageResponse>;
 }
 
 type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string };
+
+export interface MessageResponse {
+    ["/"]: string;
+}
 
 export interface MessageStateCallResponse {
   Duration: number;
