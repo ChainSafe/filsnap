@@ -4,8 +4,8 @@ export interface LotusRpcApi {
   version(): Promise<VersionResponse>;
   walletBalance(address: string): Promise<string>;
   mpoolGetNonce(address: string): Promise<string>;
-  stateCall(message: Message, tipset: any): Promise<MessageStateCallResponse>;
-  mpoolPush(signedMessage: SignedMessage): Promise<any>;
+  stateCall(message: Message, tipset: unknown): Promise<MessageStateCallResponse>;
+  mpoolPush(signedMessage: SignedMessage): Promise<void>;
 }
 
 type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string };
@@ -21,13 +21,13 @@ export interface MessageStateCallResponse {
     MsgRct: {
       ExitCode: number;
       GasUsed: number;
-      Return: any;
-    }
+      Return: unknown;
+    };
   };
   Msg: Message;
   MsgRct: {
     ExitCode: number;
     GasUsed: number;
-    Return: any;
-  }
+    Return: unknown;
+  };
 }

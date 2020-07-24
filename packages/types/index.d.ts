@@ -96,9 +96,10 @@ export interface UnitConfiguration {
 }
 
 export interface SnapConfig {
-  derivationPath?: string;
+  derivationPath: string;
+  token: string;
   network: FilecoinNetwork;
-  rpcUrl?: string;
+  rpcUrl: string;
   unit?: UnitConfiguration;
 }
 
@@ -142,7 +143,7 @@ export interface FilecoinSnapApi {
   getAddress(): Promise<string>;
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
-  configure(configuration: SnapConfig): Promise<void>;
+  configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
   sendMessage(signedMessage: SignedMessage): Promise<void>;

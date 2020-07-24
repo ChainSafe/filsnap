@@ -5,17 +5,14 @@ import {testAppKey} from "./keyPairTestConstants";
 import {PartialMessage, SnapConfig} from "@nodefactory/metamask-filecoin-types";
 import {Message} from "@zondax/filecoin-signing-tools/js";
 import {signMessage} from "../../../src/rpc/signMessage";
-import sinon from "sinon";
+import {LotusApiMock} from "../lotusapi.mock.test";
+import {MessageStateCallResponse} from "../../../src/filecoin/types";
 
 chai.use(sinonChai);
 
 describe('Test rpc handler function: signMessage', function () {
     const walletStub = new WalletMock();
-    const apiStub = {
-        walletBalance: sinon.stub(),
-        version: sinon.stub(),
-        mpoolGetNonce: sinon.stub()
-    };
+    const apiStub = new LotusApiMock();
 
     const partialMessage: PartialMessage = {
         to: "t12flyjpedjjqlrr2dmlnrtbh62qav3b3h7o7lohy",
@@ -24,27 +21,26 @@ describe('Test rpc handler function: signMessage', function () {
 
     const fullMessage: Message = {
         ...partialMessage,
-        from: "f1rovwtiuo5ncslpmpjftzu5akswbgsgighjazxoi",
-        gaslimit: 10,
-        gasprice: "5",
-        method: 1,
+        from: "t1o5kdqsmjb2zh4i7aeggespvz72nmveio2cwhlai",
+        gaslimit: 10000,
+        gasprice: "0",
+        method: 0,
         nonce: 0
     };
 
     afterEach(function() {
         walletStub.reset();
-        apiStub.walletBalance.reset();
-        apiStub.mpoolGetNonce.reset();
-        apiStub.version.reset();
+        apiStub.reset();
     });
 
     it('should successfully sign valid message on positive prompt', async function () {
         walletStub.send.returns(true);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
-            filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
+            filecoin: {config: {network: "f", derivationPath: "m/44'/1'/0/0/1"} as SnapConfig}
         });
         apiStub.mpoolGetNonce.returns("0");
+        apiStub.stateCall.returns({ExecutionTrace: {MsgRct: {GasUsed: 100}}} as MessageStateCallResponse);
         const signedMessage = await signMessage(walletStub, apiStub, partialMessage);
         expect(walletStub.send).to.have.been.calledOnce;
         expect(walletStub.getPluginState).to.have.been.calledOnce;
@@ -58,9 +54,10 @@ describe('Test rpc handler function: signMessage', function () {
         walletStub.send.returns(false);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
-            filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
+            filecoin: {config: {network: "f", derivationPath: "m/44'/1'/0/0/1"} as SnapConfig}
         });
         apiStub.mpoolGetNonce.returns("0");
+        apiStub.stateCall.returns({ExecutionTrace: {MsgRct: {GasUsed: 100}}} as MessageStateCallResponse);
         const signedMessage = await signMessage(walletStub, apiStub, partialMessage);
         expect(walletStub.send).to.have.been.calledOnce;
         expect(walletStub.getPluginState).to.have.been.calledOnce;
@@ -72,7 +69,7 @@ describe('Test rpc handler function: signMessage', function () {
         walletStub.send.returns(true);
         walletStub.getAppKey.returns(testAppKey);
         walletStub.getPluginState.returns({
-            filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0/0/1"} as SnapConfig}
+            filecoin: {config: {network: "f", derivationPath: "m/44'/1'/0/0/1"} as SnapConfig}
         });
 
         const invalidMessage = partialMessage;

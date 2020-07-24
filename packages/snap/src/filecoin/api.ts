@@ -6,8 +6,8 @@ import {testnet} from "@filecoin-shipyard/lotus-client-schema";
 import {LotusRpcApi} from "./types";
 
 export function getApi(wallet: Wallet): LotusRpcApi {
-  const rpcUrl = getConfiguration(wallet).rpcUrl;
-  const provider = new NodejsProvider(rpcUrl);
+  const configuration = getConfiguration(wallet);
+  const provider = new NodejsProvider(configuration.rpcUrl, {token: configuration.token});
   const client = new LotusRPC(provider, {schema: testnet.fullNode});
   return client as unknown as LotusRpcApi;
 }

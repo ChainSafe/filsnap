@@ -27,9 +27,9 @@ export class MetamaskFilecoinSnap {
       getAddress: getAddress.bind(this),
       getBalance: getBalance.bind(this),
       getPublicKey: getPublicKey.bind(this),
+      sendMessage: sendMessage.bind(this),
       signMessage: signMessage.bind(this),
-      signMessageRaw: signMessageRaw.bind(this),
-      sendMessage: sendMessage.bind(this)
+      signMessageRaw: signMessageRaw.bind(this)
     };
   };
 }
