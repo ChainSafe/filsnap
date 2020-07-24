@@ -18,14 +18,10 @@ export async function signMessage(
     ...partialMessage,
     from: keypair.address,
     gaslimit: partialMessage.gaslimit || 10000,
-    gasprice: partialMessage.gasprice || "0",
+    gasprice: partialMessage.gasprice || "1",
     method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address))
   };
-  const stateCallResponse = await api.stateCall(message, null);
-  if (stateCallResponse.ExecutionTrace.MsgRct.GasUsed > message.gaslimit) {
-    // TODO - error
-  }
   const confirmation = await showConfirmationDialog(
     wallet,
     `Do you want to sign message\n\n` +
