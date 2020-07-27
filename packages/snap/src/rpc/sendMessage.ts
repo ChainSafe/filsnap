@@ -9,8 +9,8 @@ export async function sendMessage(
 ): Promise<MessageResponse> {
   const response = await api.mpoolPush(signedMessage);
   const messageStatus = {
-    message: signedMessage.message,
     block: {cid: response["/"]},
+    message: signedMessage.message,
     serialized: transactionSerialize(signedMessage.message)
   };
   updateMessageInState(wallet, messageStatus);
