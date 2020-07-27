@@ -8,10 +8,14 @@ export interface LotusRpcApi {
   mpoolPush(signedMessage: SignedMessage): Promise<MessageResponse>;
 }
 
-type VersionResponse = { APIVersion: number; BlockDelay: number; Version: string };
+export interface VersionResponse {
+  APIVersion: number;
+  BlockDelay: number;
+  Version: string;
+}
 
 export interface MessageResponse {
-    ["/"]: string;
+  ["/"]: string;
 }
 
 export interface MessageStateCallResponse {

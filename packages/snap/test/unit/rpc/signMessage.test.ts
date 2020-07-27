@@ -23,7 +23,7 @@ describe('Test rpc handler function: signMessage', function () {
         ...partialMessage,
         from: "t1o5kdqsmjb2zh4i7aeggespvz72nmveio2cwhlai",
         gaslimit: 10000,
-        gasprice: "0",
+        gasprice: "1",
         method: 0,
         nonce: 0
     };

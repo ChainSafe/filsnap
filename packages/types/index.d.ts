@@ -115,8 +115,7 @@ export interface Message {
   gasprice: string;
   gaslimit: number;
   method: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  params?: any;
+  params?: [];
 }
 
 export interface SignedMessage {

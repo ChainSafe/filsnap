@@ -22,12 +22,12 @@ describe('Test rpc handler function: getBalance', function() {
     // prepare stubs
     walletStub.getAppKey.returns(testAppKey);
     walletStub.getPluginState.returns(EmptyMetamaskState());
-    apiStub.walletBalance.returns("3000000000000000000");
+    apiStub.walletBalance.returns("30000000");
     // call getBalance
     const result = await getBalance(walletStub, apiStub);
     // assertions
     expect(walletStub.getAppKey).to.have.been.calledOnce;
     expect(walletStub.getPluginState).to.have.been.calledOnce;
-    expect(result).to.be.eq("3");
+    expect(result).to.be.eq("30000000");
   });
 });
