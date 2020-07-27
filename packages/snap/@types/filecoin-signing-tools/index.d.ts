@@ -41,4 +41,8 @@ declare module "@zondax/filecoin-signing-tools/js" {
 
     export function transactionSignRaw(unsignedMessage: Message | string, privateKey: string): Buffer;
     export function transactionSign(unsignedMessage: Message, privateKey: string): SignedMessage;
+
+    export interface Buffer {
+        toString(encoding: "utf8" | "hex" | "binary" | "base64" | "ascii"): string;
+    }
 }
