@@ -1,4 +1,5 @@
 import {
+  MessageStatus,
   MetamaskFilecoinRpcRequest,
   PartialMessage,
   SignedMessage,
@@ -45,4 +46,8 @@ export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: str
 
 export async function sendMessage(this: MetamaskFilecoinSnap, signedMessage: SignedMessage): Promise<void> {
   return await sendSnapMethod({method: "sendMessage", params: {signedMessage: signedMessage}}, this.snapId);
+}
+
+export async function getMessages(this: MetamaskFilecoinSnap): Promise<MessageStatus[]> {
+  return await sendSnapMethod({method: "getMessages"}, this.snapId);
 }

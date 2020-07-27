@@ -3,7 +3,7 @@ import {
   configure,
   exportPrivateKey,
   getAddress,
-  getBalance,
+  getBalance, getMessages,
   getPublicKey, sendMessage,
   signMessage,
   signMessageRaw
@@ -29,7 +29,8 @@ export class MetamaskFilecoinSnap {
       getPublicKey: getPublicKey.bind(this),
       sendMessage: sendMessage.bind(this),
       signMessage: signMessage.bind(this),
-      signMessageRaw: signMessageRaw.bind(this)
+      signMessageRaw: signMessageRaw.bind(this),
+      getMessages: getMessages.bind(this)
     };
   };
 }

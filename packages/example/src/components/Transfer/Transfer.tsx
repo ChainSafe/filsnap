@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useState} from "react";
 import {
     Box,
     Button,
@@ -15,12 +15,13 @@ import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
 
 interface ITransferProps {
     network: string,
-    api: FilecoinSnapApi | null
+    api: FilecoinSnapApi | null,
+    onNewMessageCallback: any
 }
 
 type AlertSeverity = "success" | "warning" | "info" | "error";
 
-export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
+export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCallback}) => {
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string | number>("");
     const [gasLimit, setGasLimit] = useState<string>("1000");
@@ -65,12 +66,15 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
             const txResult = await api.sendMessage(signedMessage);
             // @ts-ignore
             showAlert("info", `Message included in block with cid: ${txResult["/"]}`);
+            // clear form
             setAmount("");
             setRecipient("");
             setGasPrice("1");
             setGasLimit("1000");
+            // inform to refresh messages display
+            onNewMessageCallback();
         }
-    }, [amount, api, recipient, gasPrice, gasLimit]);
+    }, [amount, api, recipient, gasPrice, gasLimit, onNewMessageCallback]);
 
     return (
         <Card>

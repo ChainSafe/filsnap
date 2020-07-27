@@ -154,6 +154,7 @@ export interface FilecoinSnapApi {
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
   sendMessage(signedMessage: SignedMessage): Promise<unknown>;
+  getMessages(): Promise<MessageStatus[]>;
 }
 
 export interface KeyPair {

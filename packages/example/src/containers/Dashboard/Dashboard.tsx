@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import {
     Box, Card, CardContent, CardHeader,
     Container, Grid, Hidden, InputLabel, MenuItem, Select, Typography,
@@ -18,7 +18,7 @@ export const Dashboard = () => {
     const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
-    const [transactions, setTransactions] = useState<MessageStatus[]>([]);
+    const [messages, setMessages] = useState<MessageStatus[]>([]);
 
     const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
@@ -32,9 +32,15 @@ export const Dashboard = () => {
         if (api) {
             await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
-            setTransactions([]);
+            setMessages(await api.getMessages());
         }
     };
+
+    const handleNewMessage = useCallback(async () => {
+        if (api) {
+            setMessages(await api.getMessages());
+        }
+    }, [api, setMessages]);
 
     useEffect(() => {
         (async () => {
@@ -51,11 +57,14 @@ export const Dashboard = () => {
                 setAddress(await api.getAddress());
                 setPublicKey(await api.getPublicKey());
                 setBalance(await api.getBalance());
+                setMessages(await api.getMessages());
+                console.log(await api.getMessages());
             }
         })();
     }, [api, network]);
 
     useEffect( () => {
+        // periodically check balance
         const interval = setInterval(async () => {
             if (api) {
                 const newBalance = await api.getBalance();
@@ -106,7 +115,7 @@ export const Dashboard = () => {
                     <Box m="1rem"/>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item md={6} xs={12}>
-                            <Transfer api={api} network={network} />
+                            <Transfer api={api} network={network} onNewMessageCallback={handleNewMessage} />
                         </Grid>
                         <Grid item md={6} xs={12}>
                             <SignMessage api={api} />
@@ -118,7 +127,7 @@ export const Dashboard = () => {
                             <Card>
                                 <CardHeader title="Account transactions"/>
                                 <CardContent>
-                                    <TransactionTable txs={transactions}/>
+                                    <TransactionTable txs={messages}/>
                                 </CardContent>
                             </Card>
                         </Grid>
