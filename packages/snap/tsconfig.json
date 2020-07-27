@@ -34,6 +34,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*ts"
+    "test/**/*ts",
+    "../../node_modules/@types/node/globals.d.ts"
   ]
 }

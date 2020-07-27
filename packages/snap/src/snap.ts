@@ -9,7 +9,6 @@ import {getBalance} from "./rpc/getBalance";
 import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
 import {getTransactions} from "./rpc/getTransactions";
-import {convertToFIL} from "./util/format";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
 import {sendMessage} from "./rpc/sendMessage";
 
@@ -41,7 +40,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      await updateAsset(wallet, originString, convertToFIL(await getBalance(wallet, api)));
+      await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
     case "getAddress":
       return await getAddress(wallet);
