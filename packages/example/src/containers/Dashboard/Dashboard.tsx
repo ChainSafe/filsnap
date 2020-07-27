@@ -6,7 +6,7 @@ import {
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
 import {MetaMaskContext} from "../../context/metamask";
 import {Account} from "../../components/Account/Account";
-import {FilecoinSnapApi, Transaction} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi, MessageStatus} from "@nodefactory/metamask-filecoin-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
@@ -18,7 +18,9 @@ export const Dashboard = () => {
     const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
-    const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [transactions, setTransactions] = useState<MessageStatus[]>([]);
+
+    const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
     const [network, setNetwork] = useState<"f" | "t">("t");
 
@@ -53,6 +55,21 @@ export const Dashboard = () => {
         })();
     }, [api, network]);
 
+    useEffect( () => {
+        const interval = setInterval(async () => {
+            if (api) {
+                const newBalance = await api.getBalance();
+                if (newBalance !== balance) {
+                    setBalanceChange(true);
+                    setBalance(newBalance);
+                } else {
+                    setBalanceChange(false)
+                }
+            }
+        }, 3000);
+        return () => clearInterval(interval);
+    }, [api, balance, setBalance, setBalanceChange]);
+
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
@@ -77,7 +94,13 @@ export const Dashboard = () => {
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
-                            <Account address={address} balance={balance + " FIL"} publicKey={publicKey} api={api}/>
+                            <Account
+                                address={address}
+                                balance={balance + " FIL"}
+                                publicKey={publicKey}
+                                api={api}
+                                balanceChange={balanceChange}
+                            />
                         </Grid>
                     </Grid>
                     <Box m="1rem"/>

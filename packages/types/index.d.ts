@@ -42,8 +42,8 @@ export interface GetBalanceRequest {
   method: "getBalance";
 }
 
-export interface GetTransactionsRequest {
-  method: "getTransactions";
+export interface GetMessagesRequest {
+  method: "getMessages";
 }
 
 export type MetamaskFilecoinRpcRequest =
@@ -52,7 +52,7 @@ export type MetamaskFilecoinRpcRequest =
     ExportSeedRequest |
     ConfigureRequest |
     GetBalanceRequest |
-    GetTransactionsRequest |
+    GetMessagesRequest |
     SignMessageRequest |
     SignMessageRawRequest |
     SendMessageRequest;
@@ -133,6 +133,14 @@ export interface PartialMessage {
   gasprice?: string;
 }
 
+export interface MessageStatus {
+  message: Message;
+  serialized: string;
+  block: {
+    cid: string;
+  };
+}
+
 export type FilecoinNetwork = "f" | "t";
 
 export interface FilecoinEventApi {}
@@ -145,16 +153,7 @@ export interface FilecoinSnapApi {
   configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
-  sendMessage(signedMessage: SignedMessage): Promise<void>;
-}
-
-export interface Transaction {
-  hash: string;
-  block: string;
-  sender: string;
-  destination: string;
-  amount: string | number;
-  fee: string;
+  sendMessage(signedMessage: SignedMessage): Promise<unknown>;
 }
 
 export interface KeyPair {

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {
     Box,
     Button,
@@ -62,12 +62,15 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
                 gasprice: gasPrice
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
+            const txResult = await api.sendMessage(signedMessage);
+            // @ts-ignore
+            showAlert("info", `Message included in block with cid: ${txResult["/"]}`);
             setAmount("");
             setRecipient("");
             setGasPrice("1");
             setGasLimit("1000");
         }
-    }, [amount, api, recipient]);
+    }, [amount, api, recipient, gasPrice, gasLimit]);
 
     return (
         <Card>

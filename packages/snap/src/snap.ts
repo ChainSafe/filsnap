@@ -8,7 +8,7 @@ import {LotusRpcApi} from "./filecoin/types";
 import {getBalance} from "./rpc/getBalance";
 import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
-import {getTransactions} from "./rpc/getTransactions";
+import {getMessages} from "./rpc/getMessages";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
 import {sendMessage} from "./rpc/sendMessage";
 
@@ -52,8 +52,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const balance = await getBalance(wallet, api);
       await updateAsset(wallet, originString, balance);
       return balance;
-    case "getTransactions":
-      return getTransactions(wallet);
+    case "getMessages":
+      return getMessages(wallet);
     case "signMessage":
       return await signMessage(wallet, api, requestObject.params.message);
     case "signMessageRaw":
