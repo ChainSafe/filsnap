@@ -14,7 +14,7 @@ export const filecoinMainnetConfiguration: SnapConfig = {
 
 // replaces testnet for now
 export const filecoinDevnetConfiguration: SnapConfig = {
-  derivationPath: "m/44'/461'/0/0/1",
+  derivationPath: "m/44'/1'/0/0/1",
   network: "t",
   rpcUrl: `http://134.122.86.62:1234/rpc/v0`,
   // eslint-disable-next-line max-len
