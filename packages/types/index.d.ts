@@ -126,6 +126,10 @@ export interface SignedMessage {
   };
 }
 
+export interface BlockInfo {
+  ["/"]: string;
+}
+
 export interface PartialMessage {
   to: string;
   value: string;
@@ -153,7 +157,7 @@ export interface FilecoinSnapApi {
   configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
-  sendMessage(signedMessage: SignedMessage): Promise<unknown>;
+  sendMessage(signedMessage: SignedMessage): Promise<BlockInfo>;
   getMessages(): Promise<MessageStatus[]>;
 }
 
