@@ -11,6 +11,7 @@ import {updateAsset} from "./asset";
 import {getMessages} from "./rpc/getMessages";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
 import {sendMessage} from "./rpc/sendMessage";
+import {registerToBalanceChange} from "./filecoin/balance";
 
 declare let wallet: Wallet;
 
@@ -41,6 +42,11 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
       await updateAsset(wallet, originString, await getBalance(wallet, api));
+      await registerToBalanceChange(
+          wallet,
+          api,
+          async (newBalance: string) => {await updateAsset(wallet, originString, newBalance)}
+      );
       return configuration;
     case "getAddress":
       return await getAddress(wallet);
