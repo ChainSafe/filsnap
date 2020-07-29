@@ -9,17 +9,19 @@ export type MetamaskFilecoinSnap = MFSnap;
 
 export {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
 
-export async function enableFilecoinSnap(config: Partial<SnapConfig>, pluginOrigin?: string): Promise<MetamaskFilecoinSnap> {
+export async function enableFilecoinSnap(
+  config: Partial<SnapConfig>, pluginOrigin?: string
+): Promise<MetamaskFilecoinSnap> {
+
+  // check all conditions
   if (!hasMetaMask()) {
     throw new Error("Metamask is not installed");
   }
-
   if (!await isMetamaskSnapsSupported()) {
     throw new Error("Current Metamask version doesn't support snaps");
   }
-
   if (!config.network) {
-      throw new Error("Configuration must at least define network type");
+    throw new Error("Configuration must at least define network type");
   }
 
   // enable snap
