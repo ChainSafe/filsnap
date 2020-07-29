@@ -28,7 +28,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
     try {
         console.log("installing snap");
         // enable filecoin snap with default testnet network
-        const metamaskFilecoinSnap = await enableFilecoinSnap("t");
+        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "t"});
         isInstalled = true;
         console.log("Snap installed!!");
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
