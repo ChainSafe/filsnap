@@ -8,14 +8,14 @@ import {LotusRpcApi} from "./filecoin/types";
 import {getBalance} from "./rpc/getBalance";
 import {configure} from "./rpc/configure";
 import {updateAsset} from "./asset";
-import {getTransactions} from "./rpc/getTransactions";
-import {convertToFIL} from "./util/format";
+import {getMessages} from "./rpc/getMessages";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
+import {sendMessage} from "./rpc/sendMessage";
 
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "getBalance", "configure", "signMessage"
+  "getBalance", "configure", "signMessage", "sendMessage"
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
@@ -40,7 +40,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      await updateAsset(wallet, originString, convertToFIL(await getBalance(wallet, api)));
+      await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
     case "getAddress":
       return await getAddress(wallet);
@@ -52,12 +52,14 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const balance = await getBalance(wallet, api);
       await updateAsset(wallet, originString, balance);
       return balance;
-    case "getTransactions":
-      return getTransactions(wallet);
+    case "getMessages":
+      return getMessages(wallet);
     case "signMessage":
       return await signMessage(wallet, api, requestObject.params.message);
     case "signMessageRaw":
       return await signMessageRaw(wallet, requestObject.params.message);
+    case "sendMessage":
+      return await sendMessage(wallet, api, requestObject.params.signedMessage);
     default:
       throw new Error("Unsupported RPC method");
   }

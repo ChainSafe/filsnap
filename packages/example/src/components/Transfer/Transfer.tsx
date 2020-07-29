@@ -15,14 +15,17 @@ import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
 
 interface ITransferProps {
     network: string,
-    api: FilecoinSnapApi | null
+    api: FilecoinSnapApi | null,
+    onNewMessageCallback: any
 }
 
 type AlertSeverity = "success" | "warning" | "info" | "error";
 
-export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
+export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCallback}) => {
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string | number>("");
+    const [gasLimit, setGasLimit] = useState<string>("1000");
+    const [gasPrice, setGasPrice] = useState<string>("1");
 
     const [alert, setAlert] = useState(false);
     const [severity, setSeverity] = useState("success" as AlertSeverity);
@@ -36,26 +39,41 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
         setAmount(event.target.value);
     }, [setAmount]);
 
+    const handleGasLimitChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setGasLimit(event.target.value);
+    }, [setGasLimit]);
+
+    const handleGasPriceChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setGasPrice(event.target.value);
+    }, [setGasPrice]);
+
     const showAlert = (severity: AlertSeverity, message: string) => {
         setSeverity(severity);
         setMessage(message);
         setAlert(true);
     };
 
-    const onSign = useCallback(async () => {
+    const onSubmit = useCallback(async () => {
         if (amount && recipient && api) {
             // Temporary signature method until sending is implemented
             const signedMessage = await api.signMessage({
                 to: recipient,
                 value: BigInt(amount).toString(),
+                gaslimit: Number(gasLimit),
+                gasprice: gasPrice
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
+            const txResult = await api.sendMessage(signedMessage);
+            showAlert("info", `Message included in block with cid: ${txResult["/"]}`);
+            // clear form
             setAmount("");
             setRecipient("");
+            setGasPrice("1");
+            setGasLimit("1000");
+            // inform to refresh messages display
+            onNewMessageCallback();
         }
-    }, [amount, api, recipient]);
-
-    const onSubmit = useCallback(args => {console.log("Transaction submited");}, []);
+    }, [amount, api, recipient, gasPrice, gasLimit, onNewMessageCallback]);
 
     return (
         <Card>
@@ -71,12 +89,18 @@ export const Transfer: React.FC<ITransferProps> = ({network, api}) => {
                         InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
                         onChange={handleAmountChange} size="medium" fullWidth id="recipient" label="Amount" variant="outlined" value={amount}>
                         </TextField>
+                        <Box m="0.5rem"/>
+                        <TextField
+                            onChange={handleGasLimitChange} size="medium" fullWidth id="gaslimit" label="Gas Limit" variant="outlined" value={gasLimit}>
+                        </TextField>
+                        <Box m="0.5rem"/>
+                        <TextField
+                            onChange={handleGasPriceChange} size="medium" fullWidth id="gasprice" label="Gas Price" variant="outlined" value={gasPrice}>
+                        </TextField>
                     </Grid>
                 </Grid>
                 <Box m="0.5rem"/>
                 <Grid container item xs={12} justify="flex-end">
-                    <Button onClick={onSign} color="secondary" variant="contained" size="large">SIGN</Button>
-                    <Box m="0.5rem"/>
                     <Button onClick={onSubmit} color="secondary" variant="contained" size="large">SEND</Button>
                 </Grid>
                 <Snackbar

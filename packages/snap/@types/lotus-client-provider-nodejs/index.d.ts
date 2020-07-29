@@ -7,13 +7,13 @@ declare module "@filecoin-shipyard/lotus-client-provider-nodejs" {
     type CancelSubscriptionCallback = () => void;
 
     interface ProviderOptions {
-        wsUrl: string;
-        httpUrl: string;
-        importUrl: string;
-        transport: "http" | "ws";
-        token: string | TokenCallback;
-        WebSocket: WebSocket;
-        fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>;
+        wsUrl?: string;
+        httpUrl?: string;
+        importUrl?: string;
+        transport?: "http" | "ws";
+        token?: string | TokenCallback;
+        WebSocket?: WebSocket;
+        fetch?: (input: RequestInfo, init?: RequestInit) => Promise<Response>;
     }
 
     interface JsonRpcRequest {

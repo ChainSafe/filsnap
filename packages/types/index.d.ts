@@ -31,12 +31,19 @@ export interface SignMessageRawRequest {
   };
 }
 
+export interface SendMessageRequest {
+  method: "sendMessage";
+  params: {
+    signedMessage: SignedMessage;
+  };
+}
+
 export interface GetBalanceRequest {
   method: "getBalance";
 }
 
-export interface GetTransactionsRequest {
-  method: "getTransactions";
+export interface GetMessagesRequest {
+  method: "getMessages";
 }
 
 export type MetamaskFilecoinRpcRequest =
@@ -45,9 +52,10 @@ export type MetamaskFilecoinRpcRequest =
     ExportSeedRequest |
     ConfigureRequest |
     GetBalanceRequest |
-    GetTransactionsRequest |
+    GetMessagesRequest |
     SignMessageRequest |
-    SignMessageRawRequest;
+    SignMessageRawRequest |
+    SendMessageRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -88,9 +96,10 @@ export interface UnitConfiguration {
 }
 
 export interface SnapConfig {
-  derivationPath?: string;
+  derivationPath: string;
+  token: string;
   network: FilecoinNetwork;
-  rpcUrl?: string;
+  rpcUrl: string;
   unit?: UnitConfiguration;
 }
 
@@ -106,8 +115,7 @@ export interface Message {
   gasprice: string;
   gaslimit: number;
   method: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  params?: any;
+  params?: [];
 }
 
 export interface SignedMessage {
@@ -118,9 +126,23 @@ export interface SignedMessage {
   };
 }
 
+export interface BlockInfo {
+  ["/"]: string;
+}
+
 export interface PartialMessage {
   to: string;
   value: string;
+  gaslimit?: number;
+  gasprice?: string;
+}
+
+export interface MessageStatus {
+  message: Message;
+  serialized: string;
+  block: {
+    cid: string;
+  };
 }
 
 export type FilecoinNetwork = "f" | "t";
@@ -132,18 +154,11 @@ export interface FilecoinSnapApi {
   getAddress(): Promise<string>;
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
-  configure(configuration: SnapConfig): Promise<void>;
+  configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
-}
-
-export interface Transaction {
-  hash: string;
-  block: string;
-  sender: string;
-  destination: string;
-  amount: string | number;
-  fee: string;
+  sendMessage(signedMessage: SignedMessage): Promise<BlockInfo>;
+  getMessages(): Promise<MessageStatus[]>;
 }
 
 export interface KeyPair {

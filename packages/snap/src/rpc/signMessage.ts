@@ -17,9 +17,9 @@ export async function signMessage(
   const message: Message = {
     ...partialMessage,
     from: keypair.address,
-    gaslimit: 10,   // TODO should be part of input form
-    gasprice: "5",  // TODO calculate from RPC method
-    method: 1,       // TODO figure out method code for transaction
+    gaslimit: partialMessage.gaslimit || 10000,
+    gasprice: partialMessage.gasprice || "1",
+    method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address))
   };
   const confirmation = await showConfirmationDialog(
@@ -28,6 +28,7 @@ export async function signMessage(
     `from: ${message.from}\n`+
     `to: ${message.to}\n`+
     `value:${message.value}\n`+
+    `gas limit:${message.gaslimit}\n`+
     `gas price:${message.gasprice}\n\n` +
     `with account ${keypair.address}?`
   );

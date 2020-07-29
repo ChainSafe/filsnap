@@ -1,4 +1,4 @@
-import {MetamaskFilecoinRpcRequest, SnapConfig, Transaction} from "@nodefactory/metamask-filecoin-types";
+import {MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/metamask-filecoin-types";
 import {defaultConfiguration} from "./configuration/predefined";
 
 export type FMethodCallback = (
@@ -9,12 +9,12 @@ export type FMethodCallback = (
 export type MetamaskState = {
   filecoin: {
     config: SnapConfig;
-    transactions: Transaction[];
+    messages: MessageStatus[];
   };
 };
 
 export const EmptyMetamaskState: () => MetamaskState = () => ({
-  filecoin: {config: defaultConfiguration, transactions: []}
+  filecoin: {config: defaultConfiguration, messages: []}
 });
 
 export interface Wallet {

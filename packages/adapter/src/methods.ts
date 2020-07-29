@@ -1,4 +1,6 @@
 import {
+  BlockInfo,
+  MessageStatus,
   MetamaskFilecoinRpcRequest,
   PartialMessage,
   SignedMessage,
@@ -41,4 +43,12 @@ export async function signMessage(this: MetamaskFilecoinSnap, message: PartialMe
 
 export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: string): Promise<string> {
   return await sendSnapMethod({method: "signMessageRaw", params: {message: rawMessage}}, this.snapId);
+}
+
+export async function sendMessage(this: MetamaskFilecoinSnap, signedMessage: SignedMessage): Promise<BlockInfo> {
+  return await sendSnapMethod({method: "sendMessage", params: {signedMessage: signedMessage}}, this.snapId);
+}
+
+export async function getMessages(this: MetamaskFilecoinSnap): Promise<MessageStatus[]> {
+  return await sendSnapMethod({method: "getMessages"}, this.snapId);
 }

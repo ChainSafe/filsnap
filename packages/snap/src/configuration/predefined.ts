@@ -4,6 +4,7 @@ export const filecoinMainnetConfiguration: SnapConfig = {
   derivationPath: "m/44'/461'/0/0/1",
   network: "f",
   rpcUrl: "",
+  token: "",
   unit: {
     decimals: 6,
     image: `https://svgshare.com/i/M4s.svg`,
@@ -13,9 +14,11 @@ export const filecoinMainnetConfiguration: SnapConfig = {
 
 // replaces testnet for now
 export const filecoinDevnetConfiguration: SnapConfig = {
-  derivationPath: "m/44'/461'/0/0/1",
+  derivationPath: "m/44'/1'/0/0/1",
   network: "t",
-  rpcUrl: `https://lotus.testground.ipfs.team/nerpa_api/0/node/rpc/v0`,
+  rpcUrl: `http://134.122.86.62:1234/rpc/v0`,
+  // eslint-disable-next-line max-len
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.E0vtzfrPaHBDcP2Y1trnxVhTU6mgJl9MAqFhCmLFd40",
   unit: {
     decimals: 6,
     image: `https://svgshare.com/i/M4s.svg`,

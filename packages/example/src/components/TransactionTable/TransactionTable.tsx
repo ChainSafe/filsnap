@@ -1,10 +1,10 @@
 import React from "react";
 import {Paper, Table, TableContainer, TableCell,
     TableRow, TableHead, TableBody} from '@material-ui/core/';
-import {Transaction} from "@nodefactory/metamask-filecoin-types";
+import {MessageStatus} from "@nodefactory/metamask-filecoin-types";
 
 export interface TransactionTableProps {
-    txs: Transaction[];
+    txs: MessageStatus[];
 }
 
 export const TransactionTable = (props: TransactionTableProps) => {
@@ -19,22 +19,21 @@ export const TransactionTable = (props: TransactionTableProps) => {
                     <TableCell align="center">Sender</TableCell>
                     <TableCell align="center">Destination</TableCell>
                     <TableCell align="center">Amount</TableCell>
-                    <TableCell align="center">Gas Used</TableCell>
+                    <TableCell align="center">Gas Price</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
                 {props.txs.map(tx => (
-                    <TableRow key={tx.hash}>
+                    <TableRow key={tx.serialized}>
                     <TableCell  align="left" component="th" scope="row">
-                        {tx.hash}
+                        {tx.block.cid}
                     </TableCell>
                     <TableCell  align="center" component="th" scope="row">
-                        {tx.block}
+                        {tx.message.from}
                     </TableCell>
-                    <TableCell align="center">{tx.sender}</TableCell>
-                    <TableCell align="center">{tx.destination}</TableCell>
-                    <TableCell align="center">{tx.amount}</TableCell>
-                    <TableCell align="center">{tx.fee}</TableCell>
+                    <TableCell align="center">{tx.message.to}</TableCell>
+                    <TableCell align="center">{tx.message.value}</TableCell>
+                    <TableCell align="center">{tx.message.gasprice}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
