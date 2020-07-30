@@ -14,8 +14,7 @@ export const TransactionTable = (props: TransactionTableProps) => {
             aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell>Transaction id</TableCell>
-                    <TableCell align="center">Block</TableCell>
+                    <TableCell>Message id</TableCell>
                     <TableCell align="center">Sender</TableCell>
                     <TableCell align="center">Destination</TableCell>
                     <TableCell align="center">Amount</TableCell>
