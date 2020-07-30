@@ -64,7 +64,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
             const txResult = await api.sendMessage(signedMessage);
-            showAlert("info", `Message included in block with cid: ${txResult["/"]}`);
+            showAlert("info", `Message sent with cid: ${txResult["/"]}`);
             // clear form
             setAmount("");
             setRecipient("");

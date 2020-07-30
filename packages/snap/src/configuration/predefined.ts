@@ -18,7 +18,7 @@ export const filecoinDevnetConfiguration: SnapConfig = {
   network: "t",
   rpcUrl: `http://134.122.86.62:1234/rpc/v0`,
   // eslint-disable-next-line max-len
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.E0vtzfrPaHBDcP2Y1trnxVhTU6mgJl9MAqFhCmLFd40",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJBbGxvdyI6WyJyZWFkIiwid3JpdGUiLCJzaWduIiwiYWRtaW4iXX0.s6vsMwMKTfFR3kAEEs0a8ZPW_816H48q8IHt3ewILsQ",
   unit: {
     decimals: 6,
     image: `https://svgshare.com/i/M4s.svg`,

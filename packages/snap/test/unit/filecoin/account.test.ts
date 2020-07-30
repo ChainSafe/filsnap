@@ -4,10 +4,6 @@ import {WalletMock} from "../wallet.mock.test";
 import {getKeyPair} from "../../../src/filecoin/account";
 import {testAddress, testAppKey, testPrivateKey, testPublicKey} from "../rpc/keyPairTestConstants";
 import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
-import {LotusRPC} from "@filecoin-shipyard/lotus-client-rpc";
-import {testnet} from "@filecoin-shipyard/lotus-client-schema";
-import {LotusRpcApi} from "../../../src/filecoin/types";
-import { NodejsProvider } from "@filecoin-shipyard/lotus-client-provider-nodejs";
 
 chai.use(sinonChai);
 
