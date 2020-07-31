@@ -20,10 +20,7 @@ describe('Test saving transactions in state', function() {
             gasprice: "1",
             gaslimit: 1000
         },
-        serialized: "msg-serialized-test",
-        block: {
-            cid: "a1b2c3ee"
-        }
+        cid: "a1b2c3ee"
     };
 
     afterEach(function() {
@@ -41,7 +38,7 @@ describe('Test saving transactions in state', function() {
     });
 
     it('should add transaction to state if same hash transaction is not saved', function () {
-        const differentTx = {...message, serialized: "msg-serialized-test-different"};
+        const differentTx = {...message, cid: "abc123"};
 
         walletStub.getPluginState.returns({filecoin: {config: {network: "f"}, messages: [differentTx]}});
         walletStub.updatePluginState.returnsArg(0);
@@ -57,7 +54,8 @@ describe('Test saving transactions in state', function() {
         walletStub.getPluginState.returns({filecoin: {config: {network: "f"}, messages: [message]}});
         walletStub.updatePluginState.returnsArg(0);
 
-        const updatedTx = {...message, block: {cid: "aabbccee"}};
+        const updatedTx = {...message};
+        updatedTx.message.nonce = 2;
 
         updateMessageInState(walletStub, updatedTx);
 

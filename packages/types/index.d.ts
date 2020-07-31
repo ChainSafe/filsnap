@@ -75,19 +75,6 @@ export interface SnapRpcMethodRequest {
 
 export type MetamaskRpcRequest = WalletEnableRequest | GetPluginsRequest | SnapRpcMethodRequest;
 
-export type BlockId = number|string|"latest";
-
-export interface TxPayload {
-  tx: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any;
-}
-
-export interface BlockInfo {
-  hash: string;
-  number: string;
-}
-
 export interface UnitConfiguration {
   symbol: string;
   decimals: number;
@@ -126,10 +113,6 @@ export interface SignedMessage {
   };
 }
 
-export interface BlockInfo {
-  ["/"]: string;
-}
-
 export interface PartialMessage {
   to: string;
   value: string;
@@ -139,10 +122,7 @@ export interface PartialMessage {
 
 export interface MessageStatus {
   message: Message;
-  serialized: string;
-  block: {
-    cid: string;
-  };
+  cid: string;
 }
 
 export type FilecoinNetwork = "f" | "t";
@@ -157,7 +137,7 @@ export interface FilecoinSnapApi {
   configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: PartialMessage): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
-  sendMessage(signedMessage: SignedMessage): Promise<BlockInfo>;
+  sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
 }
 
