@@ -1,6 +1,7 @@
 # Metamask <> Filecoin snap adapter
 ![](https://github.com/nodefactoryio/filecoin-metamask-snap/workflows/ci/badge.svg)
-![](https://img.shields.io/github/license/nodefactoryio/filecoin-metamask-snap)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![](https://img.shields.io/badge/yarn-%3E%3D1.17.0-orange.svg?style=flat-square)
 ![Discord](https://img.shields.io/discord/608204864593461248?color=blue&label=Discord&logo=discord)
 
