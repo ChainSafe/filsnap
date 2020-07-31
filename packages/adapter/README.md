@@ -20,9 +20,9 @@ async function enableFilecoinSnap(
 ): Promise<MetamaskFilecoinSnap> 
 ```
 
-On snap installation, it is possible to send full or partial configuration. 
-If only `network` property is provided, predefined configuration for the specified network will be used. 
-Other properties are optional bu will override default values if provided.
+On snap installation, it is possible to send full or partial configuration.
+If you only provide `network` property a predefined configuration for the specified network will be used.
+Other properties are optional but will override default values if provided.
 
 Below you can see structure of config object:
 
@@ -43,8 +43,8 @@ export interface UnitConfiguration {
 }
 ```
 
-After snap installation this function returns `MetamaskFilecoinSnap` object that can be used to retrieve snap API. 
-Example of initializing Filecoin snap and invoking snap API is shown below.
+After snap installation, this function returns `MetamaskFilecoinSnap` object that can be used to retrieve snap API. 
+An example of initializing Filecoin snap and invoking snap API is shown below.
 
 ```typescript
 // install snap and fetch API
