@@ -22,6 +22,8 @@ export async function signMessage(
     method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address))
   };
+  // const messageCall = await api.stateCall(message, null);
+  // const gasNeeded = messageCall.MsgRct.GasUsed;
   const confirmation = await showConfirmationDialog(
     wallet,
     `Do you want to sign message\n\n` +
