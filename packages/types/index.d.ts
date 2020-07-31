@@ -84,9 +84,11 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   derivationPath: string;
-  token: string;
   network: FilecoinNetwork;
-  rpcUrl: string;
+  rpc: {
+    token: string;
+    url: string;
+  };
   unit?: UnitConfiguration;
 }
 

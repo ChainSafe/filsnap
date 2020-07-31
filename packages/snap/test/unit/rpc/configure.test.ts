@@ -36,8 +36,8 @@ describe('Test rpc handler function: configure', function() {
     walletStub.updatePluginState.returnsArg(0);
 
     const customConfiguration = filecoinTestnetConfiguration;
-    customConfiguration.rpcUrl = "wss://custom";
-    const result = configure(walletStub, "t", {rpcUrl: "wss://custom"} as SnapConfig);
+    customConfiguration.rpc.url = "wss://custom";
+    const result = configure(walletStub, "t", {rpc: {url: "wss://custom"}} as SnapConfig);
 
     expect(result).to.be.deep.eq(customConfiguration);
     expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
