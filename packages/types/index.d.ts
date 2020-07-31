@@ -20,7 +20,7 @@ export interface ConfigureRequest {
 export interface SignMessageRequest {
   method: "signMessage";
   params: {
-    message: PartialMessage;
+    message: MessageRequest;
   };
 }
 
@@ -107,13 +107,15 @@ export interface Message {
 
 export interface SignedMessage {
   message: Message;
-  signature: {
-    data: string;
-    type: number;
-  };
+  signature: MessageSignature;
 }
 
-export interface PartialMessage {
+export interface MessageSignature {
+  data: string;
+  type: number;
+}
+
+export interface MessageRequest {
   to: string;
   value: string;
   gaslimit?: number;
@@ -135,7 +137,7 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: Partial<SnapConfig>): Promise<void>;
-  signMessage(message: PartialMessage): Promise<SignedMessage>;
+  signMessage(message: MessageRequest): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;

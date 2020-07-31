@@ -23,9 +23,9 @@ export const TransactionTable = (props: TransactionTableProps) => {
                 </TableHead>
                 <TableBody>
                 {props.txs.map(tx => (
-                    <TableRow key={tx.serialized}>
+                    <TableRow key={tx.cid}>
                     <TableCell  align="left" component="th" scope="row">
-                        {tx.block.cid}
+                        {tx.cid}
                     </TableCell>
                     <TableCell  align="center" component="th" scope="row">
                         {tx.message.from}

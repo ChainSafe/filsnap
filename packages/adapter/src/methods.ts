@@ -1,7 +1,7 @@
 import {
   MessageStatus,
   MetamaskFilecoinRpcRequest,
-  PartialMessage,
+  MessageRequest,
   SignedMessage,
   SnapConfig
 } from "@nodefactory/metamask-filecoin-types";
@@ -36,7 +36,7 @@ export async function configure(this: MetamaskFilecoinSnap, configuration: SnapC
   return await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
 }
 
-export async function signMessage(this: MetamaskFilecoinSnap, message: PartialMessage): Promise<SignedMessage> {
+export async function signMessage(this: MetamaskFilecoinSnap, message: MessageRequest): Promise<SignedMessage> {
   return await sendSnapMethod({method: "signMessage", params: {message: message}}, this.snapId);
 }
 
