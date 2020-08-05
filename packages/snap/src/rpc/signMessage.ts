@@ -8,20 +8,22 @@ import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
 import {LotusRpcApi} from "../filecoin/types";
-import {PartialMessage} from "@nodefactory/metamask-filecoin-types";
+import {MessageRequest} from "@nodefactory/metamask-filecoin-types";
 
 export async function signMessage(
-  wallet: Wallet, api: LotusRpcApi, partialMessage: PartialMessage
+  wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest
 ): Promise<SignedMessage> {
   const keypair = await getKeyPair(wallet);
   const message: Message = {
-    ...partialMessage,
+    ...messageRequest,
     from: keypair.address,
-    gaslimit: partialMessage.gaslimit || 10000,
-    gasprice: partialMessage.gasprice || "1",
+    gaslimit: messageRequest.gaslimit || 10000,
+    gasprice: messageRequest.gasprice || "1",
     method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address))
   };
+  // const messageCall = await api.stateCall(message, null);
+  // const gasNeeded = messageCall.MsgRct.GasUsed;
   const confirmation = await showConfirmationDialog(
     wallet,
     `Do you want to sign message\n\n` +

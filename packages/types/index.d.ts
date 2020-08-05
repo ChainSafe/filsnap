@@ -20,7 +20,7 @@ export interface ConfigureRequest {
 export interface SignMessageRequest {
   method: "signMessage";
   params: {
-    message: PartialMessage;
+    message: MessageRequest;
   };
 }
 
@@ -75,19 +75,6 @@ export interface SnapRpcMethodRequest {
 
 export type MetamaskRpcRequest = WalletEnableRequest | GetPluginsRequest | SnapRpcMethodRequest;
 
-export type BlockId = number|string|"latest";
-
-export interface TxPayload {
-  tx: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any;
-}
-
-export interface BlockInfo {
-  hash: string;
-  number: string;
-}
-
 export interface UnitConfiguration {
   symbol: string;
   decimals: number;
@@ -97,9 +84,11 @@ export interface UnitConfiguration {
 
 export interface SnapConfig {
   derivationPath: string;
-  token: string;
   network: FilecoinNetwork;
-  rpcUrl: string;
+  rpc: {
+    token: string;
+    url: string;
+  };
   unit?: UnitConfiguration;
 }
 
@@ -120,17 +109,15 @@ export interface Message {
 
 export interface SignedMessage {
   message: Message;
-  signature: {
-    data: string;
-    type: number;
-  };
+  signature: MessageSignature;
 }
 
-export interface BlockInfo {
-  ["/"]: string;
+export interface MessageSignature {
+  data: string;
+  type: number;
 }
 
-export interface PartialMessage {
+export interface MessageRequest {
   to: string;
   value: string;
   gaslimit?: number;
@@ -139,10 +126,7 @@ export interface PartialMessage {
 
 export interface MessageStatus {
   message: Message;
-  serialized: string;
-  block: {
-    cid: string;
-  };
+  cid: string;
 }
 
 export type FilecoinNetwork = "f" | "t";
@@ -155,9 +139,9 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: Partial<SnapConfig>): Promise<void>;
-  signMessage(message: PartialMessage): Promise<SignedMessage>;
+  signMessage(message: MessageRequest): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
-  sendMessage(signedMessage: SignedMessage): Promise<BlockInfo>;
+  sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
 }
 
