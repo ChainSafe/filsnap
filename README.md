@@ -5,8 +5,9 @@
 ![Discord](https://img.shields.io/discord/608204864593461248?color=blue&label=Discord&logo=discord)
 
 Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
+**For detailed documentation and integration instructions see [wiki](https://github.com/NodeFactoryIo/filecoin-metamask-snap/wiki).**
 
-### Testing
+### Testing Filecoin snap
 
 #### Metamask
 - [download latest Metamask snaps beta release](https://github.com/NodeFactoryIo/metamask-snaps-beta/releases) (chrome recommended)
@@ -18,7 +19,6 @@ Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
 #### Extension
 - `yarn install`
 - `yarn run demo`
-
 
 ## License
 
