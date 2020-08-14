@@ -6,7 +6,9 @@
 
 Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
 
-### Testing
+**For detailed documentation and integration instructions see [wiki](https://github.com/NodeFactoryIo/filecoin-metamask-snap/wiki).**
+
+### Testing Filecoin snap
 
 #### Metamask
 - [download latest Metamask snaps beta release](https://github.com/NodeFactoryIo/metamask-snaps-beta/releases) (chrome recommended)
@@ -18,7 +20,6 @@ Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
 #### Extension
 - `yarn install`
 - `yarn run demo`
-
 
 ## License
 
