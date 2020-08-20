@@ -1,5 +1,5 @@
 {
-  "name": "@nodefactory/metamask-filecoin-adapter",
+  "name": "@nodefactory/filsnap-adapter",
   "version": "1.0.0",
   "main": "./build/index.js",
   "module": "./build/index.js",

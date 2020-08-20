@@ -1,5 +1,5 @@
 {
-  "name": "filecoin-snap",
+  "name": "@nodefactory/filsnap",
   "version": "0.0.1",
   "private": true,
   "license": "(Apache-2.0 AND MIT)",
