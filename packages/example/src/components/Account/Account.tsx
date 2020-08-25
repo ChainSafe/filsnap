@@ -1,6 +1,6 @@
 import React from "react";
 import {Box, Button, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@material-ui/core/';
-import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 
 export interface AccountProps {
     address: string,

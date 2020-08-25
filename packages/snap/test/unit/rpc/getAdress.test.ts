@@ -3,7 +3,7 @@ import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
 import {getAddress} from "../../../src/rpc/getAddress";
 import {testAppKey, testAddress} from "./keyPairTestConstants";
-import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {SnapConfig} from "@nodefactory/filsnap-types";
 
 chai.use(sinonChai);
 

@@ -1,5 +1,5 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
-import {FilecoinEventApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinEventApi} from "@nodefactory/filsnap-types";
 import {getAddress} from "./rpc/getAddress";
 import {exportPrivateKey} from "./rpc/exportPrivateKey";
 import {getPublicKey} from "./rpc/getPublicKey";

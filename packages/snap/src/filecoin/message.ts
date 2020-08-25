@@ -1,5 +1,5 @@
 import {Wallet} from "../interfaces";
-import {MessageStatus} from "@nodefactory/metamask-filecoin-types";
+import {MessageStatus} from "@nodefactory/filsnap-types";
 
 export function updateMessageInState(wallet: Wallet, message: MessageStatus): void {
   const state = wallet.getPluginState();

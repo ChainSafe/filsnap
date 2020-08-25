@@ -8,7 +8,7 @@ import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
 import {LotusRpcApi} from "../filecoin/types";
-import {MessageRequest} from "@nodefactory/metamask-filecoin-types";
+import {MessageRequest} from "@nodefactory/filsnap-types";
 
 export async function signMessage(
   wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest

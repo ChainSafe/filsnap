@@ -3,7 +3,7 @@ import {testAppKey, testPublicKey} from "./keyPairTestConstants";
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {getPublicKey} from "../../../src/rpc/getPublicKey";
-import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {SnapConfig} from "@nodefactory/filsnap-types";
 
 chai.use(sinonChai);
 

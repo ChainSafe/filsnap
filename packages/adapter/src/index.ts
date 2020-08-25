@@ -1,6 +1,6 @@
 import {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
 import {MetamaskFilecoinSnap as MFSnap} from "./snap";
-import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {SnapConfig} from "@nodefactory/filsnap-types";
 
 const defaultSnapOrigin = "http://localhost:8081/package.json";
 const defaultSnapId = `wallet_plugin_${defaultSnapOrigin}`;
