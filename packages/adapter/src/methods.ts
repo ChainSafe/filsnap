@@ -4,7 +4,7 @@ import {
   MessageRequest,
   SignedMessage,
   SnapConfig
-} from "@nodefactory/metamask-filecoin-types";
+} from "@nodefactory/filsnap-types";
 import {MetamaskFilecoinSnap} from "./snap";
 
 async function sendSnapMethod<T>(request: MetamaskFilecoinRpcRequest, snapId: string): Promise<T> {

@@ -2219,6 +2219,15 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@nodefactory/filsnap-adapter@^1.0.0":
+  version "0.1.0"
+
+"@nodefactory/filsnap-types@1.0.0":
+  version "0.1.0"
+
+"@nodefactory/filsnap-types@^1.0.0":
+  version "0.1.0"
+
 "@nodefactory/snaps-cli@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.5.0.tgz#74cfd67ca750095e9915e7372fea7a4ba92b0dc7"

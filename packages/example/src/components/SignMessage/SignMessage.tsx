@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Box, Button, Card, CardContent, CardHeader, Dialog, Grid, TextField} from '@material-ui/core/';
 import {DialogActions, DialogContent, DialogContentText, DialogTitle, Typography} from "@material-ui/core";
-import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 import toHex from "to-hex";
 
 export interface SignMessageProps {

@@ -1,6 +1,6 @@
 import {Wallet} from "../interfaces";
 import {defaultConfiguration, filecoinMainnetConfiguration, filecoinTestnetConfiguration} from "./predefined";
-import {SnapConfig} from "@nodefactory/metamask-filecoin-types";
+import {SnapConfig} from "@nodefactory/filsnap-types";
 
 export function getDefaultConfiguration(networkName?: string): SnapConfig {
   switch (networkName) {

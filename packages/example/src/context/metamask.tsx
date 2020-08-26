@@ -1,5 +1,5 @@
 import React, {createContext, Dispatch, PropsWithChildren, Reducer, useReducer} from "react";
-import {hasMetaMask, MetamaskFilecoinSnap} from "@nodefactory/metamask-filecoin-adapter";
+import {hasMetaMask, MetamaskFilecoinSnap} from "@nodefactory/filsnap-adapter";
 
 interface IFilecoinSnap {
     isInstalled: boolean

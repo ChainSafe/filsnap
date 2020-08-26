@@ -1,9 +1,9 @@
 {
-  "name": "filecoin-snap",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@nodefactory/filsnap",
+  "version": "0.1.0",
   "license": "(Apache-2.0 AND MIT)",
-  "description": "Metamask snap to interact with Filecoin dapps.",
+  "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
+  "private": false,
   "main": "build/index.js",
   "scripts": {
     "lint": "yarn run lint:types && yarn run lint:style",
@@ -55,7 +55,7 @@
     }
   },
   "devDependencies": {
-    "@nodefactory/metamask-filecoin-types": "1.0.0",
+    "@nodefactory/filsnap-types": "^0.1.0",
     "@nodefactory/snaps-cli": "^1.5.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",

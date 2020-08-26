@@ -1,6 +1,5 @@
-import {SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
-import {enableFilecoinSnap} from "@nodefactory/metamask-filecoin-adapter";
-import {MetamaskFilecoinSnap} from "@nodefactory/metamask-filecoin-adapter";
+import {SnapRpcMethodRequest} from "@nodefactory/filsnap-types";
+import {enableFilecoinSnap, MetamaskFilecoinSnap} from "@nodefactory/filsnap-adapter";
 
 declare global {
     interface Window {

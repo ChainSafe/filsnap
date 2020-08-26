@@ -1,4 +1,4 @@
-import {Message, SignedMessage} from "@nodefactory/metamask-filecoin-types";
+import {Message, SignedMessage} from "@nodefactory/filsnap-types";
 
 export interface LotusRpcApi {
   version(): Promise<VersionResponse>;

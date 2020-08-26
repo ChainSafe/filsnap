@@ -1,4 +1,4 @@
-import {SnapRpcMethodRequest} from "@nodefactory/metamask-filecoin-types";
+import {SnapRpcMethodRequest} from "@nodefactory/filsnap-types";
 
 declare global {
   interface Window {

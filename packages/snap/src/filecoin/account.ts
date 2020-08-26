@@ -1,6 +1,6 @@
 import {Wallet} from "../interfaces";
 import {keyDeriveFromSeed} from "@zondax/filecoin-signing-tools/js";
-import {KeyPair} from "@nodefactory/metamask-filecoin-types";
+import {KeyPair} from "@nodefactory/filsnap-types";
 
 /**
  * Return derived KeyPair from seed.

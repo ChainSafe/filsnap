@@ -1,4 +1,4 @@
-import {FilecoinSnapApi} from "@nodefactory/metamask-filecoin-types";
+import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 import {
   configure,
   exportPrivateKey,

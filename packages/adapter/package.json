@@ -1,11 +1,24 @@
 {
-  "name": "@nodefactory/metamask-filecoin-adapter",
-  "version": "1.0.0",
+  "name": "@nodefactory/filsnap-adapter",
+  "version": "0.1.0",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
   "author": "NodeFactory <info@nodefactory.io>",
   "license": "(Apache-2.0 AND MIT)",
+  "private": false,
+  "homepage": "https://github.com/NodeFactoryIo/filecoin-metamask-snap/tree/master/packages/adapter",
+  "keywords": [
+    "filecoin",
+    "metamask",
+    "snap",
+    "plugin",
+    "dapp"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Adapter for installing Filsnap",
   "dependencies": {
   },
   "scripts": {
