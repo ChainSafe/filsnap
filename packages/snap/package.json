@@ -1,6 +1,6 @@
 {
   "name": "@nodefactory/filsnap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
   "private": false,
@@ -22,7 +22,10 @@
     "watch:snap": "nf-snap watch --debug -s build/index.js",
     "serve": "nf-snap serve",
     "test": "yarn run test:unit",
-    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\""
+    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
+    "prepublish": "yarn run build && mkdir ipfs && cp package.json ipfs/package.json",
+    "publish": "export BUNDLE_URL=`ipd --no-clipboard -O -p infura dist/bundle.js` && sed -i 's/http:\\/\\/localhost:8081\\/dist\\/bundle.js/https:\\/\\/ipfs.infura.io\\/ipfs\\/'\"$BUNDLE_URL\"'/g' ipfs/package.json && ipd --no-clipboard -O -p infura ipfs/package.json",
+    "postpublish": "rm -rf ipfs"
   },
   "repository": {
     "type": "git",

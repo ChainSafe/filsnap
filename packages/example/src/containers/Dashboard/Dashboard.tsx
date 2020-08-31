@@ -22,12 +22,12 @@ export const Dashboard = () => {
 
     const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
-    const [network, setNetwork] = useState<"f" | "t">("t");
+    const [network, setNetwork] = useState<"f" | "t" | "d">("t");
 
     const [api, setApi] = useState<FilecoinSnapApi|null>(null);
 
     const handleNetworkChange = async (event: React.ChangeEvent<{value: any}>) => {
-        const selectedNetwork = event.target.value as "f" | "t";
+        const selectedNetwork = event.target.value as "f" | "t" | "d";
         if (selectedNetwork === network) return;
         if (api) {
             await api.configure({network: selectedNetwork});
@@ -99,6 +99,7 @@ export const Dashboard = () => {
                         >
                             <MenuItem value={"t"}>Testnet</MenuItem>
                             <MenuItem value={"f"}>Mainnet</MenuItem>
+                            <MenuItem value={"d"}>Devnnet</MenuItem>
                         </Select>
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
