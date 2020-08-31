@@ -129,7 +129,7 @@ export interface MessageStatus {
   cid: string;
 }
 
-export type FilecoinNetwork = "f" | "t";
+export type FilecoinNetwork = "f" | "t" | "d";
 
 export interface FilecoinEventApi {}
 

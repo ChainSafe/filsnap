@@ -15,7 +15,7 @@ import {sendMessage} from "./rpc/sendMessage";
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "getBalance", "configure", "signMessage", "sendMessage"
+  "getBalance", "signMessage", "sendMessage"
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
@@ -40,6 +40,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
+      api = getApi(wallet);
       await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
     case "getAddress":
