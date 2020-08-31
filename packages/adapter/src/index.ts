@@ -28,7 +28,7 @@ export async function enableFilecoinSnap(
 
   let snapId = defaultSnapId;
   if (pluginOrigin) {
-      snapId = `wallet_plugin_${pluginOrigin}`
+    snapId = `wallet_plugin_${pluginOrigin}`;
   }
 
   // check all conditions
