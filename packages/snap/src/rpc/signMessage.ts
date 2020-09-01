@@ -21,9 +21,9 @@ export async function signMessage(
     gaspremium: gp,
     method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address)),
+    params: [],
     to: messageRequest.to,
     value: messageRequest.value,
-    params: []
   };
   // estimate gas usage if gas params not provided
   if (message.gaslimit === 0 && message.gasfeecap === "0" && message.gaspremium === "0") {
