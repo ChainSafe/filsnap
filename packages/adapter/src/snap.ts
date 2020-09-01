@@ -23,6 +23,7 @@ export class MetamaskFilecoinSnap {
 
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {
     return {
+      calculateGasForMessage: calculateGasForMessage.bind(this),
       configure: configure.bind(this),
       exportPrivateKey: exportPrivateKey.bind(this),
       getAddress: getAddress.bind(this),
@@ -32,6 +33,5 @@ export class MetamaskFilecoinSnap {
       sendMessage: sendMessage.bind(this),
       signMessage: signMessage.bind(this),
       signMessageRaw: signMessageRaw.bind(this),
-      calculateGasForMessage: calculateGasForMessage.bind(this),
-  };
-}}
+    };
+  };}
