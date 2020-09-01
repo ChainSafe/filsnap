@@ -78,7 +78,9 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             const signedMessage = await api.signMessage({
                 to: recipient,
                 value: BigInt(amount).toString(),
-                gaslimit: Number(gasLimit)
+                gaslimit: Number(gasLimit),
+                gasfeecap: gasFeeCap,
+                gaspremium: gasPremium
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
             const txResult = await api.sendMessage(signedMessage);
