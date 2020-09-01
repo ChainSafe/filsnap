@@ -7,6 +7,9 @@ export class LotusApiMock implements LotusRpcApi {
     public mpoolGetNonce = sinon.stub();
     public stateCall = sinon.stub();
     public mpoolPush = sinon.stub();
+    public gasEstimateMessageGas = sinon.stub();
+    public gasEstimateFeeCap = sinon.stub();
+    public gasEstimateGasLimit = sinon.stub();
 
     public reset(): void {
         this.version.reset();
@@ -14,5 +17,8 @@ export class LotusApiMock implements LotusRpcApi {
         this.mpoolGetNonce.reset();
         this.stateCall.reset();
         this.mpoolPush.reset();
+        this.gasEstimateFeeCap.reset();
+        this.gasEstimateGasLimit.reset();
+        this.gasEstimateMessageGas.reset();
     }
 }

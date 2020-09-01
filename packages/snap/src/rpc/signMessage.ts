@@ -6,38 +6,38 @@ import {LotusRpcApi} from "../filecoin/types";
 import {MessageRequest} from "@nodefactory/filsnap-types";
 
 export async function signMessage(
-    wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest
+  wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest
 ): Promise<SignedMessage> {
-    const keypair = await getKeyPair(wallet);
-    // extract gas params
-    const gl = messageRequest.gaslimit && messageRequest.gaslimit !== 0 ? messageRequest.gaslimit : 0;
-    const gp = messageRequest.gaspremium && messageRequest.gaspremium !== "0" ? messageRequest.gaspremium : "0";
-    const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
-    // create message object
-    let message: Message = {
-      to: messageRequest.to,
-      value: messageRequest.value,
-      gaslimit: gl,
-      gaspremium: gp,
-      gasfeecap: gfc,
-      from: keypair.address,
-      method: 0, // code for basic transaction
-      nonce: Number(await api.mpoolGetNonce(keypair.address))
-    };
+  const keypair = await getKeyPair(wallet);
+  // extract gas params
+  const gl = messageRequest.gaslimit && messageRequest.gaslimit !== 0 ? messageRequest.gaslimit : 0;
+  const gp = messageRequest.gaspremium && messageRequest.gaspremium !== "0" ? messageRequest.gaspremium : "0";
+  const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
+  // create message object
+  const message: Message = {
+    from: keypair.address,
+    gasfeecap: gfc,
+    gaslimit: gl,
+    gaspremium: gp,
+    method: 0, // code for basic transaction
+    nonce: Number(await api.mpoolGetNonce(keypair.address)),
+    to: messageRequest.to,
+    value: messageRequest.value
+  };
   // estimate gas usage if gas params not provided
-    if (messageRequest.gaslimit === 0 && messageRequest.gasfeecap === "0" && messageRequest.gaspremium === "0") {
-        message.gaslimit = await api.gasEstimateGasLimit(message, null);
-        const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: "0"}, null);
-        message.gaspremium = messageEstimate.GasPremium;
-        message.gasfeecap = messageEstimate.GasFeeCap;
-        console.log("GAS CALCULATED");
-    } else {
-      console.log("GAS PROVIDED");
-    }
-    // show confirmation
-    const confirmation = await showConfirmationDialog(
-        wallet,
-        `Do you want to sign message\n\n` +
+  if (message.gaslimit === 0 && message.gasfeecap === "0" && message.gaspremium === "0") {
+    message.gaslimit = await api.gasEstimateGasLimit(message, null);
+    const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: "0"}, null);
+    message.gaspremium = messageEstimate.GasPremium;
+    message.gasfeecap = messageEstimate.GasFeeCap;
+    console.log("GAS CALCULATED");
+  } else {
+    console.log("GAS PROVIDED");
+  }
+  // show confirmation
+  const confirmation = await showConfirmationDialog(
+    wallet,
+    `Do you want to sign message\n\n` +
         `from: ${message.from}\n` +
         `to: ${message.to}\n` +
         `value:${message.value}\n` +
@@ -45,23 +45,23 @@ export async function signMessage(
         `gas fee cap:${message.gasfeecap}\n` +
         `gas premium: ${message.gaspremium}\n` +
         `with account ${keypair.address}?`
-    );
-    if (confirmation) {
-        return transactionSign(message, keypair.privateKey);
-    }
-    return null;
+  );
+  if (confirmation) {
+    return transactionSign(message, keypair.privateKey);
+  }
+  return null;
 }
 
 export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promise<string> {
-    const keypair = await getKeyPair(wallet);
-    const confirmation = await showConfirmationDialog(
-        wallet,
-        `Do you want to sign message\n\n` +
+  const keypair = await getKeyPair(wallet);
+  const confirmation = await showConfirmationDialog(
+    wallet,
+    `Do you want to sign message\n\n` +
         `${rawMessage}\n\n` +
         `with account ${keypair.address}?`
-    );
-    if (confirmation) {
-        return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
-    }
-    return null;
+  );
+  if (confirmation) {
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
+  }
+  return null;
 }
