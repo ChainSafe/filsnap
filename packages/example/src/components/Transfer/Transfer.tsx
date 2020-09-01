@@ -24,9 +24,10 @@ type AlertSeverity = "success" | "warning" | "info" | "error";
 export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCallback}) => {
     const [recipient, setRecipient] = useState<string>("");
     const [amount, setAmount] = useState<string | number>("");
-    const [gasLimit, setGasLimit] = useState<string>("1000");
-    const [gasPrice, setGasPrice] = useState<string>("1");
-
+    const [gasLimit, setGasLimit] = useState<string>("0");
+    const [gasPremium, setGasPremium] = useState<string>("0");
+    const [gasFeeCap, setGasFeeCap] = useState<string>("0");
+    
     const [alert, setAlert] = useState(false);
     const [severity, setSeverity] = useState("success" as AlertSeverity);
     const [message, setMessage] = useState("");
@@ -37,15 +38,19 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
 
     const handleAmountChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(event.target.value);
-    }, [setAmount]);
+    }, [setAmount, amount, recipient, api]);
 
     const handleGasLimitChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setGasLimit(event.target.value);
     }, [setGasLimit]);
 
-    const handleGasPriceChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        setGasPrice(event.target.value);
-    }, [setGasPrice]);
+    const handleGasPremiumChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setGasPremium(event.target.value);
+    }, [setGasPremium]);
+    
+    const handleGasFeeCapChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setGasFeeCap(event.target.value);
+    }, [setGasFeeCap]);
 
     const showAlert = (severity: AlertSeverity, message: string) => {
         setSeverity(severity);
@@ -53,14 +58,28 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
         setAlert(true);
     };
 
+    const onAutoFillGas = useCallback(async () => {
+        if (recipient && amount && api) {
+            const messageEstimate = await api.calculateGasForMessage({
+                to: recipient,
+                value: BigInt(amount).toString(),
+                gaslimit: 0
+            });
+            setGasPremium(messageEstimate.gaspremium);
+            setGasFeeCap(messageEstimate.gasfeecap);
+            setGasLimit(messageEstimate.gaslimit.toString());
+        } else {
+            showAlert("error", "Please first fill in Recipient and Amount fields");
+        }
+    }, [recipient, amount, api]);
+
     const onSubmit = useCallback(async () => {
         if (amount && recipient && api) {
             // Temporary signature method until sending is implemented
             const signedMessage = await api.signMessage({
                 to: recipient,
                 value: BigInt(amount).toString(),
-                gaslimit: Number(gasLimit),
-                gasprice: gasPrice
+                gaslimit: Number(gasLimit)
             });
             showAlert("info", `Message signature: ${signedMessage.signature.data}`);
             const txResult = await api.sendMessage(signedMessage);
@@ -68,12 +87,13 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             // clear form
             setAmount("");
             setRecipient("");
-            setGasPrice("1");
-            setGasLimit("1000");
+            setGasFeeCap("0");
+            setGasPremium("0");
+            setGasLimit("0");
             // inform to refresh messages display
             onNewMessageCallback();
         }
-    }, [amount, api, recipient, gasPrice, gasLimit, onNewMessageCallback]);
+    }, [amount, api, recipient, gasLimit, onNewMessageCallback]);
 
     return (
         <Card>
@@ -95,12 +115,17 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            onChange={handleGasPriceChange} size="medium" fullWidth id="gasprice" label="Gas Price" variant="outlined" value={gasPrice}>
+                            onChange={handleGasPremiumChange} size="medium" fullWidth id="gaspremium" label="Gas Premium" variant="outlined" value={gasPremium}>
+                        </TextField>
+                        <Box m="0.5rem"/>
+                        <TextField
+                            onChange={handleGasFeeCapChange} size="medium" fullWidth id="gasfeecap" label="Gas Fee Cap" variant="outlined" value={gasFeeCap}>
                         </TextField>
                     </Grid>
                 </Grid>
                 <Box m="0.5rem"/>
                 <Grid container item xs={12} justify="flex-end">
+                    <Button onClick={onAutoFillGas} color="secondary" variant="contained" size="large">AUTO FILL GAS</Button>
                     <Button onClick={onSubmit} color="secondary" variant="contained" size="large">SEND</Button>
                 </Grid>
                 <Snackbar

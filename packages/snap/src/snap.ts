@@ -11,11 +11,12 @@ import {updateAsset} from "./asset";
 import {getMessages} from "./rpc/getMessages";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
 import {sendMessage} from "./rpc/sendMessage";
+import {estimateMessageGas} from "./rpc/estimateMessageGas";
 
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "getBalance", "signMessage", "sendMessage"
+  "getBalance", "signMessage", "sendMessage", "getGasForMessage"
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
@@ -62,6 +63,8 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       return await signMessageRaw(wallet, requestObject.params.message);
     case "sendMessage":
       return await sendMessage(wallet, api, requestObject.params.signedMessage);
+    case "getGasForMessage":
+      return await estimateMessageGas(wallet, api, requestObject.params.message);
     default:
       throw new Error("Unsupported RPC method");
   }

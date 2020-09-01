@@ -79,8 +79,8 @@
   "dependencies": {
     "@filecoin-shipyard/lotus-client-provider-nodejs": "^0.0.5",
     "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
-    "@filecoin-shipyard/lotus-client-schema": "^0.0.10",
-    "@zondax/filecoin-signing-tools": "^0.5.2",
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
+    "@zondax/filecoin-signing-tools": "^0.7.1",
     "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"
   }
