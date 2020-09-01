@@ -62,8 +62,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
         if (recipient && amount && api) {
             const messageEstimate = await api.calculateGasForMessage({
                 to: recipient,
-                value: BigInt(amount).toString(),
-                gaslimit: 0
+                value: BigInt(amount).toString()
             });
             setGasPremium(messageEstimate.gaspremium);
             setGasFeeCap(messageEstimate.gasfeecap);
