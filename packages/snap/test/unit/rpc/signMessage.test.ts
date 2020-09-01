@@ -6,7 +6,6 @@ import {MessageRequest, SnapConfig} from "@nodefactory/filsnap-types";
 import {Message} from "@zondax/filecoin-signing-tools/js";
 import {signMessage} from "../../../src/rpc/signMessage";
 import {LotusApiMock} from "../lotusapi.mock.test";
-import {MessageStateCallResponse} from "../../../src/filecoin/types";
 
 chai.use(sinonChai);
 
@@ -26,7 +25,8 @@ describe('Test rpc handler function: signMessage', function () {
         gasfeecap: "10",
         gaspremium: "10",
         method: 0,
-        nonce: 0
+        nonce: 0,
+        params: []
     };
 
     afterEach(function() {
