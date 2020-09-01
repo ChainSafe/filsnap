@@ -22,7 +22,8 @@ export async function signMessage(
     method: 0, // code for basic transaction
     nonce: Number(await api.mpoolGetNonce(keypair.address)),
     to: messageRequest.to,
-    value: messageRequest.value
+    value: messageRequest.value,
+    params: []
   };
   // estimate gas usage if gas params not provided
   if (message.gaslimit === 0 && message.gasfeecap === "0" && message.gaspremium === "0") {
@@ -30,9 +31,6 @@ export async function signMessage(
     const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: "0"}, null);
     message.gaspremium = messageEstimate.GasPremium;
     message.gasfeecap = messageEstimate.GasFeeCap;
-    console.log("GAS CALCULATED");
-  } else {
-    console.log("GAS PROVIDED");
   }
   // show confirmation
   const confirmation = await showConfirmationDialog(

@@ -22,7 +22,7 @@ export const Dashboard = () => {
 
     const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
-    const [network, setNetwork] = useState<"f" | "t" | "d">("t");
+    const [network, setNetwork] = useState<"f" | "t" | "d">("d");
 
     const [api, setApi] = useState<FilecoinSnapApi|null>(null);
 
@@ -94,7 +94,7 @@ export const Dashboard = () => {
                     <Box m="1rem" alignSelf="baseline">
                         <InputLabel>Network</InputLabel>
                         <Select
-                            defaultValue={"t"}
+                            defaultValue={"d"}
                             onChange={handleNetworkChange}
                         >
                             <MenuItem value={"t"}>Testnet</MenuItem>
