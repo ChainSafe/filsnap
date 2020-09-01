@@ -38,7 +38,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
 
     const handleAmountChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setAmount(event.target.value);
-    }, [setAmount, amount, recipient, api]);
+    }, [setAmount]);
 
     const handleGasLimitChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setGasLimit(event.target.value);
@@ -94,7 +94,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             // inform to refresh messages display
             onNewMessageCallback();
         }
-    }, [amount, api, recipient, gasLimit, onNewMessageCallback]);
+    }, [amount, recipient, api, gasLimit, gasFeeCap, gasPremium, onNewMessageCallback]);
 
     return (
         <Card>
@@ -108,7 +108,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                         <Box m="0.5rem"/>
                         <TextField
                         InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
-                        onChange={handleAmountChange} size="medium" fullWidth id="recipient" label="Amount" variant="outlined" value={amount}>
+                        onChange={handleAmountChange} size="medium" fullWidth id="amount" label="Amount" variant="outlined" value={amount}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField

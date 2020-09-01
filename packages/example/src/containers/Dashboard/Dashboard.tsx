@@ -98,7 +98,7 @@ export const Dashboard = () => {
                             onChange={handleNetworkChange}
                         >
                             <MenuItem value={"t"}>Testnet</MenuItem>
-                            <MenuItem value={"f"}>Mainnet</MenuItem>
+                            {/*<MenuItem value={"f"}>Mainnet</MenuItem> - mainnet not supported*/}
                             <MenuItem value={"d"}>Devnnet</MenuItem>
                         </Select>
                     </Box>

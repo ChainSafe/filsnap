@@ -37,7 +37,7 @@ export const SignMessage = (props: SignMessageProps) => {
                     value={textFieldValue} 
                     size="medium" 
                     fullWidth 
-                    id="recipient" 
+                    id="custom-message"
                     label="Message" 
                     variant="outlined" 
                     />
