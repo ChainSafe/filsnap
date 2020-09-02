@@ -13,8 +13,7 @@ declare global {
     }
 }
 
-export const origin = new URL('package.json', 'http://localhost:8081').toString();
-export const pluginId = `wallet_plugin_${origin}`;
+// export const origin = new URL('package.json', 'http://localhost:8081').toString();
 
 let isInstalled: boolean = false;
 
@@ -27,7 +26,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
     try {
         console.log("installing snap");
         // enable filecoin snap with default testnet network
-        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "d"}, origin);
+        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "d"});
         isInstalled = true;
         console.log("Snap installed!!");
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
