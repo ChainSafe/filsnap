@@ -12,6 +12,7 @@ import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
 import logo from "../../filecoin_logo.png";
 import nf_logo from "../../node_factory_logo.png";
+import Footer from "../../Footer";
 
 export const Dashboard = () => {
 
@@ -94,6 +95,7 @@ export const Dashboard = () => {
                 </Box>
                 <Hidden xsUp={state.filecoinSnap.isInstalled}>
                     <MetaMaskConnector/>
+                    <Footer/>
                 </Hidden>
                 <Hidden xsUp={!state.filecoinSnap.isInstalled}>
                     <Box m="1rem" alignSelf="baseline">

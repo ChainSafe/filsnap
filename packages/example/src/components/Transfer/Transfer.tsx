@@ -126,7 +126,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                 </Grid>
                 <Box m="0.5rem"/>
                 <Grid container item xs={12} justify="flex-end">
-                    <Button onClick={onAutoFillGas} color="secondary" variant="contained" size="large">AUTO FILL GAS</Button>
+                    <Button onClick={onAutoFillGas} color="secondary" variant="contained" size="large" style={{marginRight: 10}}>AUTO FILL GAS</Button>
                     <Button onClick={onSubmit} color="secondary" variant="contained" size="large">SEND</Button>
                 </Grid>
                 <Snackbar
