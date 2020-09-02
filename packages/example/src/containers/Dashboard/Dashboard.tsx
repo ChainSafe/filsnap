@@ -10,8 +10,6 @@ import {FilecoinSnapApi, MessageStatus} from "@nodefactory/filsnap-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
-import logo from "../../filecoin_logo.png";
-import nf_logo from "../../node_factory_logo.png";
 import Footer from "../../Footer";
 
 export const Dashboard = () => {
