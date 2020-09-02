@@ -10,7 +10,7 @@ function formatBalance(balance: number|string, decimals: number): string {
   return balance as string;
 }
 
-export function getPolkadotAssetDescription(
+export function getFilecoinAssetDescription(
   balance: number|string, address: string, configuration: SnapConfig
 ): Asset {
   return {
@@ -30,9 +30,9 @@ export async function updateAsset(
   wallet: Wallet, origin: string, balance: number|string
 ): Promise<void> {
   const configuration = getConfiguration(wallet);
-  const asset = getPolkadotAssetDescription(balance, await getAddress(wallet), configuration);
+  const asset = getFilecoinAssetDescription(balance, await getAddress(wallet), configuration);
   if (!assetState) {
-    // create polkadot snap asset
+    // create filecoin snap asset
     await executeAssetOperation(asset, wallet, "add");
   } else if (assetState.balance !== asset.balance || assetState.network !== configuration.network) {
     // update if balance or network changed
