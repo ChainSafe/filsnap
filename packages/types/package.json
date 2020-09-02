@@ -1,6 +1,6 @@
 {
   "name": "@nodefactory/filsnap-types",
-  "version": "0.2.0",
+  "version": "0.1.1",
   "types": "./index.d.ts",
   "license": "(Apache-2.0 AND MIT)",
   "author": "NodeFactory <info@nodefactory.io>",
@@ -16,6 +16,8 @@
     "plugin",
     "dapp"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
 }

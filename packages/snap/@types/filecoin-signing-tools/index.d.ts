@@ -19,8 +19,7 @@ declare module "@zondax/filecoin-signing-tools/js" {
         from: string;
         nonce: number;
         value: string;
-        gasfeecap: string;
-        gaspremium: string;
+        gasprice: string;
         gaslimit: number;
         method: number;
         params?: any;

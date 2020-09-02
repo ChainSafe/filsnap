@@ -17,9 +17,8 @@ describe('Test saving transactions in state', function() {
             nonce: 1,
             value: "100",
             method: 0,
-            gaslimit: 1000,
-            gasfeecap: "10",
-            gaspremium: "10"
+            gasprice: "1",
+            gaslimit: 1000
         },
         cid: "a1b2c3ee"
     };

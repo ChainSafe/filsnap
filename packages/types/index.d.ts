@@ -46,13 +46,6 @@ export interface GetMessagesRequest {
   method: "getMessages";
 }
 
-export interface GetGasForMessageRequest {
-  method: "getGasForMessage";
-  params: {
-    message: MessageRequest;
-  };
-}
-
 export type MetamaskFilecoinRpcRequest =
     GetPublicKeyRequest |
     GetAddressRequest |
@@ -62,8 +55,7 @@ export type MetamaskFilecoinRpcRequest =
     GetMessagesRequest |
     SignMessageRequest |
     SignMessageRawRequest |
-    SendMessageRequest |
-    GetGasForMessageRequest;
+    SendMessageRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -109,8 +101,7 @@ export interface Message {
   from: string;
   nonce: number;
   value: string;
-  gasfeecap: string;
-  gaspremium: string;
+  gasprice: string;
   gaslimit: number;
   method: number;
   params?: [];
@@ -130,14 +121,7 @@ export interface MessageRequest {
   to: string;
   value: string;
   gaslimit?: number;
-  gasfeecap?: string;
-  gaspremium?: string;
-}
-
-export interface MessageGasEstimate {
-  gaslimit: number;
-  gasfeecap: string;
-  gaspremium: string;
+  gasprice?: string;
 }
 
 export interface MessageStatus {
@@ -159,7 +143,6 @@ export interface FilecoinSnapApi {
   signMessageRaw(message: string): Promise<string>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
-  calculateGasForMessage(message: MessageRequest): Promise<MessageGasEstimate>;
 }
 
 export interface KeyPair {

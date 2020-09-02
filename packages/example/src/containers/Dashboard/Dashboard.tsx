@@ -10,7 +10,6 @@ import {FilecoinSnapApi, MessageStatus} from "@nodefactory/filsnap-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
-import Footer from "../../Footer";
 
 export const Dashboard = () => {
 
@@ -23,7 +22,7 @@ export const Dashboard = () => {
 
     const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
-    const [network, setNetwork] = useState<"f" | "t" | "d">("d");
+    const [network, setNetwork] = useState<"f" | "t" | "d">("t");
 
     const [api, setApi] = useState<FilecoinSnapApi|null>(null);
 
@@ -83,27 +82,23 @@ export const Dashboard = () => {
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
-                <Box m="2rem" style={{textAlign: "center"}}>
+                <Box m="2rem">
                     <Typography variant="h2">
-                        Filsnap demo
-                    </Typography>
-                    <Typography style={{color: "gray", fontStyle: "italic"}} variant="h6">
-                        Filsnap enables Filecoin network inside Metamask.
+                        Filecoin snap demo
                     </Typography>
                 </Box>
                 <Hidden xsUp={state.filecoinSnap.isInstalled}>
                     <MetaMaskConnector/>
-                    <Footer/>
                 </Hidden>
                 <Hidden xsUp={!state.filecoinSnap.isInstalled}>
                     <Box m="1rem" alignSelf="baseline">
                         <InputLabel>Network</InputLabel>
                         <Select
-                            defaultValue={"d"}
+                            defaultValue={"t"}
                             onChange={handleNetworkChange}
                         >
                             <MenuItem value={"t"}>Testnet</MenuItem>
-                            {/*<MenuItem value={"f"}>Mainnet</MenuItem> - mainnet not supported*/}
+                            <MenuItem value={"f"}>Mainnet</MenuItem>
                             <MenuItem value={"d"}>Devnnet</MenuItem>
                         </Select>
                     </Box>

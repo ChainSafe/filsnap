@@ -18,9 +18,7 @@ export const TransactionTable = (props: TransactionTableProps) => {
                     <TableCell align="center">Sender</TableCell>
                     <TableCell align="center">Destination</TableCell>
                     <TableCell align="center">Amount</TableCell>
-                    <TableCell align="center">Gas Limit</TableCell>
-                    <TableCell align="center">Gas Premium</TableCell>
-                    <TableCell align="center">Gas Fee Cap</TableCell>
+                    <TableCell align="center">Gas Price</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -34,9 +32,7 @@ export const TransactionTable = (props: TransactionTableProps) => {
                     </TableCell>
                     <TableCell align="center">{tx.message.to}</TableCell>
                     <TableCell align="center">{tx.message.value}</TableCell>
-                    <TableCell align="center">{tx.message.gaslimit}</TableCell>
-                    <TableCell align="center">{tx.message.gaspremium}</TableCell>
-                    <TableCell align="center">{tx.message.gasfeecap}</TableCell>
+                    <TableCell align="center">{tx.message.gasprice}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

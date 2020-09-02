@@ -1,6 +1,5 @@
 import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 import {
-  calculateGasForMessage,
   configure,
   exportPrivateKey,
   getAddress,
@@ -23,7 +22,6 @@ export class MetamaskFilecoinSnap {
 
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {
     return {
-      calculateGasForMessage: calculateGasForMessage.bind(this),
       configure: configure.bind(this),
       exportPrivateKey: exportPrivateKey.bind(this),
       getAddress: getAddress.bind(this),
@@ -32,6 +30,7 @@ export class MetamaskFilecoinSnap {
       getPublicKey: getPublicKey.bind(this),
       sendMessage: sendMessage.bind(this),
       signMessage: signMessage.bind(this),
-      signMessageRaw: signMessageRaw.bind(this),
+      signMessageRaw: signMessageRaw.bind(this)
     };
-  };}
+  };
+}

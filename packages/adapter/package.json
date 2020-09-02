@@ -1,6 +1,6 @@
 {
   "name": "@nodefactory/filsnap-adapter",
-  "version": "0.2.0",
+  "version": "0.1.1",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -19,7 +19,8 @@
     "access": "public"
   },
   "description": "Adapter for installing Filsnap",
-  "dependencies": {},
+  "dependencies": {
+  },
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "yarn run build:lib && yarn run build:types",

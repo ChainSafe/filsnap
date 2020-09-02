@@ -3,7 +3,7 @@ import {
   MetamaskFilecoinRpcRequest,
   MessageRequest,
   SignedMessage,
-  SnapConfig, MessageGasEstimate
+  SnapConfig
 } from "@nodefactory/filsnap-types";
 import {MetamaskFilecoinSnap} from "./snap";
 
@@ -50,10 +50,4 @@ export async function sendMessage(this: MetamaskFilecoinSnap, signedMessage: Sig
 
 export async function getMessages(this: MetamaskFilecoinSnap): Promise<MessageStatus[]> {
   return await sendSnapMethod({method: "getMessages"}, this.snapId);
-}
-
-export async function calculateGasForMessage(
-  this: MetamaskFilecoinSnap, message: MessageRequest
-): Promise<MessageGasEstimate> {
-  return await sendSnapMethod({method: "getGasForMessage", params: {message: message}}, this.snapId);
 }
