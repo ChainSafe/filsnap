@@ -10,6 +10,8 @@ import {FilecoinSnapApi, MessageStatus} from "@nodefactory/filsnap-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
+import logo from "../../filecoin_logo.png";
+import nf_logo from "../../node_factory_logo.png";
 
 export const Dashboard = () => {
 
@@ -82,9 +84,12 @@ export const Dashboard = () => {
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
-                <Box m="2rem">
+                <Box m="2rem" style={{textAlign: "center"}}>
                     <Typography variant="h2">
-                        Filecoin snap demo
+                        Filsnap demo
+                    </Typography>
+                    <Typography style={{color: "gray", fontStyle: "italic"}} variant="h6">
+                        Filsnap enables Filecoin network inside Metamask.
                     </Typography>
                 </Box>
                 <Hidden xsUp={state.filecoinSnap.isInstalled}>
