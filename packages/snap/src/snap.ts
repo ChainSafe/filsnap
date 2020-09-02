@@ -41,7 +41,6 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      console.log(configuration);
       api = getApi(wallet);
       await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
