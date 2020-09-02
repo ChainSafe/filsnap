@@ -1249,10 +1249,10 @@
   resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-0.0.11.tgz#60d6953dee4ff583ca982aae45d57e05a68ad89b"
   integrity sha512-7ZgT7tyB+5fp5mC9yC4Da9vj3M8PiVPNuxFkFAaDRu8blDuKg/tNh4OMZr5pqs/uuwjRZuXslGl8dOb2Iz+rZg==
 
-"@filecoin-shipyard/lotus-client-schema@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.10.tgz#2fe996e497552304bb20576b6c5e21df8470ae71"
-  integrity sha512-Emx05Y8EKELn1o9FfGts3WoyS0h8akAKaU70VzwRzVEr56mNBR8r882orD5cLcnH74DcASYULeiuKPmQuxQC6Q==
+"@filecoin-shipyard/lotus-client-schema@^0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-0.0.14.tgz#c8f62fd87ca095be667102b52ffcad1c5f8d21fb"
+  integrity sha512-qBWjM58nvnIh9YpiY1XZbmDH1J3h8lrVUCA9co4tr2LCRypGOZe7n+1GKMJAN0CnTQSnQRT6RW8uJdqBymY5qg==
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -2219,15 +2219,6 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nodefactory/filsnap-adapter@^1.0.0":
-  version "0.1.0"
-
-"@nodefactory/filsnap-types@1.0.0":
-  version "0.1.0"
-
-"@nodefactory/filsnap-types@^1.0.0":
-  version "0.1.0"
-
 "@nodefactory/snaps-cli@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@nodefactory/snaps-cli/-/snaps-cli-1.5.0.tgz#74cfd67ca750095e9915e7372fea7a4ba92b0dc7"
@@ -3021,10 +3012,10 @@
     mkdirp-promise "^5.0.1"
     mz "^2.5.0"
 
-"@zondax/filecoin-signing-tools@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@zondax/filecoin-signing-tools/-/filecoin-signing-tools-0.5.2.tgz#bb60e17e25090bc5d7c5acffed7391d08841af65"
-  integrity sha512-md6VxXFnbsYTbEQafb+5Nvjgk71XHH7FnNFvrrQJuCfr7Urk/MdcWltrfPSdTLJ7IYLIYSJJWM1qE1I90tMj0Q==
+"@zondax/filecoin-signing-tools@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@zondax/filecoin-signing-tools/-/filecoin-signing-tools-0.7.1.tgz#e8c9f1595394173fdbbfa024f91f9fc503776512"
+  integrity sha512-D9WZfNV78RJCbIfEk7QViknQwDesbRJaDIYY19pD4uBih0eyIwVfKYxAL5LPRuWJeQ4PypUd7E62rQwu4vtOFw==
   dependencies:
     base32-decode "^1.0.0"
     base32-encode "^1.1.1"
@@ -3032,6 +3023,7 @@
     bip39 "^3.0.2"
     blakejs "^1.1.0"
     ipld-dag-cbor "^0.15.3"
+    leb128 "0.0.5"
     secp256k1 "^4.0.1"
 
 JSONStream@^1.0.3, JSONStream@^1.0.4, JSONStream@^1.3.4:
@@ -3802,6 +3794,11 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.8, bn.js@^4.4.0:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.11.9.tgz#26d556829458f9d1e81fc48952493d0ba3507828"
   integrity sha512-E6QoYqCKZfgatHTdHzs1RRKP7ip4vvm+EyRUeE2RF0NblwVvb0p6jSVeNTOFxPn26QXN2o6SMfNxKp6kU8zQaw==
 
+bn.js@^5.0.0:
+  version "5.1.3"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.3.tgz#beca005408f642ebebea80b042b4d18d2ac0ee6b"
+  integrity sha512-GkTiFpjFtUzU9CbMeJ5iazkCzGL3jrhzerzZIuqLABjbwRaFt33I9tUdSNryIptM+RxDet6OKm2WnLXzW51KsQ==
+
 bn.js@^5.1.1, bn.js@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.1.2.tgz#c9686902d3c9a27729f43ab10f9d79c2004da7b0"
@@ -4090,6 +4087,13 @@ buffer-indexof@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/buffer-indexof/-/buffer-indexof-1.1.1.tgz#52fabcc6a606d1a00302802648ef68f639da268c"
   integrity sha512-4/rOEg86jivtPTeOUUT61jJO1Ya1TrR/OkqCSZDyq84WJh3LuuiphBYJN+fm5xufIk4XAFcEwte/8WzC8If/1g==
+
+buffer-pipe@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/buffer-pipe/-/buffer-pipe-0.0.3.tgz#242197681d4591e7feda213336af6c07a5ce2409"
+  integrity sha512-GlxfuD/NrKvCNs0Ut+7b1IHjylfdegMBxQIlZHj7bObKVQBxB5S84gtm2yu1mQ8/sSggceWBDPY0cPXgvX2MuA==
+  dependencies:
+    safe-buffer "^5.1.2"
 
 buffer-xor@^1.0.3:
   version "1.0.3"
@@ -8932,6 +8936,14 @@ lcid@^2.0.0:
   integrity sha512-avPEb8P8EGnwXKClwsNUgryVjllcRqtMYa49NTsbQagYuT1DcXnl1915oxWjoyGrXR6zH/Y0Zc96xWsPcoDKeA==
   dependencies:
     invert-kv "^2.0.0"
+
+leb128@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/leb128/-/leb128-0.0.5.tgz#84524a86ef7799fb3933ce41345f6490e27ac948"
+  integrity sha512-elbNtfmu3GndZbesVF6+iQAfVjOXW9bM/aax9WwMlABZW+oK9sbAZEXoewaPHmL34sxa8kVwWsru8cNE/yn2gg==
+  dependencies:
+    bn.js "^5.0.0"
+    buffer-pipe "0.0.3"
 
 left-pad@^1.3.0:
   version "1.3.0"
