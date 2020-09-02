@@ -26,7 +26,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
     try {
         console.log("installing snap");
         let metamaskFilecoinSnap;
-        if (process.env.NODE_ENV === 'test') {
+        if (process.env.REACT_APP_SNAP === 'local') {
             metamaskFilecoinSnap = await enableFilecoinSnap({network: "d"}, localOrigin);
         } else {
             metamaskFilecoinSnap = await enableFilecoinSnap({network: "d"});
