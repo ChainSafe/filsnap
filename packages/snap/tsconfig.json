@@ -17,6 +17,9 @@
       ],
       "@zondax/filecoin-signing-tools/js": [
         "./@types/filecoin-signing-tools"
+      ],
+      "@zondax/filecoin-signing-tools/js/src/extendedkey.js": [
+        "./@types/filecoin-signing-tools"
       ]
     },
     "outDir": "./build",
