@@ -1,5 +1,5 @@
 import {Wallet} from "../interfaces";
-import {default as ExtendedKey} from "@zondax/filecoin-signing-tools/js/src/extendedkey.js";
+import {keyRecover} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@nodefactory/filsnap-types";
 import {deriveKeyFromPath} from '@metamask/key-tree';
 import {Buffer} from 'buffer';
@@ -21,7 +21,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   const addressIndex = 0;
   const keyMaterial = deriveKeyFromPath(bip44Entropy, `bip32:${accountIndex}'/bip32:0/bip32:${addressIndex}`);
   const privateKey = keyMaterial.slice(0, 32);
-  const extendedKey = new ExtendedKey(privateKey, isTestnet);
+  const extendedKey = keyRecover(privateKey, isTestnet);
 
   return {
     address: extendedKey.address,
