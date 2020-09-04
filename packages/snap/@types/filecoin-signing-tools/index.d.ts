@@ -1,7 +1,7 @@
 declare module "@zondax/filecoin-signing-tools/js" {
 
     export class ExtendedKey {
-        constructor(privateKey: string, testnet?: boolean)
+        constructor(privateKey: Buffer, testnet?: boolean)
         address: string;
         privateKey: Buffer | Uint8Array;
         publicKey: Buffer | Uint8Array;
@@ -43,7 +43,7 @@ declare module "@zondax/filecoin-signing-tools/js" {
     export function transactionSignRaw(unsignedMessage: Message | string, privateKey: string): Buffer;
     export function transactionSign(unsignedMessage: Message, privateKey: string): SignedMessage;
 
-    export function keyRecover(privateKey: string, testnet: boolean): ExtendedKey;
+    export function keyRecover(privateKey: Buffer, testnet: boolean): ExtendedKey;
 
     export interface Buffer {
         toString(encoding: "utf8" | "hex" | "binary" | "base64" | "ascii"): string;

@@ -1,7 +1,7 @@
 import {SnapConfig} from "@nodefactory/filsnap-types";
 
 export const filecoinMainnetConfiguration: SnapConfig = {
-  derivationPath: "m/44'/461'/0/0/1",
+  derivationPath: "m/44'/461'/0'/0/0",
   network: "f",
   rpc: {
     token: "",
@@ -15,7 +15,7 @@ export const filecoinMainnetConfiguration: SnapConfig = {
 };
 
 export const filecoinDevnetConfiguration: SnapConfig = {
-  derivationPath: "m/44'/1'/0/0/1",
+  derivationPath: "m/44'/1'/0'/0/0",
   network: "t",
   rpc: {
     // eslint-disable-next-line max-len
@@ -32,7 +32,7 @@ export const filecoinDevnetConfiguration: SnapConfig = {
 
 // devnet configuration replaces testnet for now
 export const filecoinTestnetConfiguration: SnapConfig = {
-  derivationPath: "m/44'/1'/0/0/1",
+  derivationPath: "m/44'/1'/0'/0/0",
   network: "t",
   rpc: {
     token: "",
