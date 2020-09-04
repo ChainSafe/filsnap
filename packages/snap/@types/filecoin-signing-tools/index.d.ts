@@ -1,3 +1,24 @@
+declare module "@zondax/filecoin-signing-tools/js/src/extendedkey.js" {
+    export default class ExtendedKey {
+        // new(privateKey: string, testnet?: boolean): ExtendedKey
+        constructor(privateKey: Buffer, testnet?: boolean)
+        address: string;
+        privateKey: Buffer | Uint8Array;
+        publicKey: Buffer | Uint8Array;
+        // getters
+        get public_raw(): Uint8Array;
+        get private_raw(): Uint8Array;
+        get public_hexstring(): string;
+        get private_hexstring(): string;
+        get public_base64(): string;
+        get private_base64(): string;
+    }
+
+    export interface Buffer {
+        toString(encoding: "utf8" | "hex" | "binary" | "base64" | "ascii"): string;
+    }
+}
+
 declare module "@zondax/filecoin-signing-tools/js" {
 
     export class ExtendedKey {
