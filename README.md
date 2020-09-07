@@ -8,16 +8,28 @@ Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
 
 **For detailed documentation and integration instructions see [wiki](https://github.com/NodeFactoryIo/filecoin-metamask-snap/wiki).**
 
-### Testing Filecoin snap
+### Testing Filsnap
 
 #### Metamask
+
+First, install our beta release of Metamask plugin: 
+
 - [download latest Metamask snaps beta release](https://github.com/NodeFactoryIo/metamask-snaps-beta/releases) (chrome recommended)
 - extract downloaded archive
 - go to [chrome://extensions/](chrome://extensions/)
 - enable "Developer mode"
 - click "Load unpacked" and point to extracted archive chrome directory
 
-#### Extension
+#### Demo DAPP
+
+##### Live demo
+
+Test Filsnap inside [our demo DAPP.](https://ecstatic-keller-65b825.netlify.app/)
+
+##### Running Filsnap demo locally
+
+Start our demo locally by running:
+
 - `yarn install`
 - `yarn run demo`
 
