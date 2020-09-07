@@ -12,6 +12,7 @@ import {getMessages} from "./rpc/getMessages";
 import {signMessage, signMessageRaw} from "./rpc/signMessage";
 import {sendMessage} from "./rpc/sendMessage";
 import {estimateMessageGas} from "./rpc/estimateMessageGas";
+import {getConfiguration} from "./configuration";
 
 declare let wallet: Wallet;
 
@@ -38,10 +39,17 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
 
   switch (requestObject.method) {
     case "configure":
-      const configuration = configure(
+      const oldConfiguration = getConfiguration(wallet);
+      let configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      api = getApi(wallet);
+      try {
+        api = getApi(wallet);
+      } catch (e) {
+        console.log("Unable to change configuration");
+        console.log(e);
+        configuration = configure(wallet, oldConfiguration.network, oldConfiguration);
+      }
       await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
     case "getAddress":
