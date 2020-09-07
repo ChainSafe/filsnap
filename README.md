@@ -24,7 +24,7 @@ First, install our beta release of Metamask plugin:
 
 ##### Live demo
 
-Test Filsnap inside [our demo DAPP.](https://ecstatic-keller-65b825.netlify.app/)
+Test Filsnap inside [our demo DAPP.](https://filsnap.netlify.app/)
 
 ##### Running Filsnap demo locally
 
