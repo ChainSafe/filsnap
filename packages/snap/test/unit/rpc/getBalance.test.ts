@@ -28,6 +28,6 @@ describe('Test rpc handler function: getBalance', function() {
     // assertions
     expect(walletStub.getAppKey).to.have.not.been.called;
     expect(walletStub.getPluginState).to.have.been.calledOnce;
-    expect(result).to.be.eq("30000000");
+    expect(result).to.be.eq("0.00000000003");
   });
 });
