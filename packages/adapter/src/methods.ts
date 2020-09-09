@@ -32,8 +32,14 @@ export async function exportPrivateKey(this: MetamaskFilecoinSnap): Promise<stri
   return await sendSnapMethod({method: "exportPrivateKey"}, this.snapId);
 }
 
-export async function configure(this: MetamaskFilecoinSnap, configuration: SnapConfig): Promise<void> {
-  return await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
+export async function configure(this: MetamaskFilecoinSnap, configuration: SnapConfig): Promise<boolean> {
+  try {
+    await sendSnapMethod({method: "configure", params: {configuration: configuration}}, this.snapId);
+  } catch (e) {
+    // unable to set configuration
+    return false;
+  }
+  return true;
 }
 
 export async function signMessage(this: MetamaskFilecoinSnap, message: MessageRequest): Promise<SignedMessage> {

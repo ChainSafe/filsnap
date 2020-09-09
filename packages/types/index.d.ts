@@ -154,7 +154,7 @@ export interface FilecoinSnapApi {
   getAddress(): Promise<string>;
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
-  configure(configuration: Partial<SnapConfig>): Promise<void>;
+  configure(configuration: Partial<SnapConfig>): Promise<boolean>;
   signMessage(message: MessageRequest): Promise<SignedMessage>;
   signMessageRaw(message: string): Promise<string>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;

@@ -22,7 +22,7 @@ export const MetaMaskConnector = () => {
         if (!installResult.isSnapInstalled) {
             dispatch({
                 type: MetamaskActions.SET_INSTALLED_STATUS,
-                payload: {isInstalled: false, message: "Please accept snap installation prompt"}
+                payload: {isInstalled: false, message: installResult.message}
             })
         } else {
             dispatch({

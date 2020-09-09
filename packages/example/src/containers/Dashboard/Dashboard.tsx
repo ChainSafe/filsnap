@@ -31,9 +31,14 @@ export const Dashboard = () => {
         const selectedNetwork = event.target.value as "f" | "t" | "d";
         if (selectedNetwork === network) return;
         if (api) {
-            await api.configure({network: selectedNetwork});
-            setNetwork(selectedNetwork);
-            setMessages(await api.getMessages());
+            const succesfullConfigure = await api.configure({network: selectedNetwork});
+            if (succesfullConfigure) {
+                setNetwork(selectedNetwork);
+                setMessages(await api.getMessages());
+            } else {
+                // TODO :: SHOW ALERT FOR WRONG CONFIGURATION
+                console.log("Wrong configuration");
+            }
         }
     };
 

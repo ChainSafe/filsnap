@@ -19,6 +19,7 @@ let isInstalled: boolean = false;
 
 export interface SnapInitializationResponse {
     isSnapInstalled: boolean;
+    message: string;
     snap?: MetamaskFilecoinSnap;
 }
 
@@ -33,11 +34,11 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
         }
         isInstalled = true;
         console.log("Snap installed!!");
-        return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
+        return {isSnapInstalled: true, snap: metamaskFilecoinSnap, message: ""};
     } catch (e) {
-        console.log(e);
+        console.log("Snap not installed!!");
         isInstalled = false;
-        return {isSnapInstalled: false};
+        return {isSnapInstalled: false, message: e.toString()};
     }
 }
 

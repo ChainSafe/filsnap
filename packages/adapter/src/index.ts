@@ -44,12 +44,16 @@ export async function enableFilecoinSnap(
 
   // enable snap
   if (!(await isSnapInstalled(snapId))) {
-    await window.ethereum.send({
-      method: "wallet_enable",
-      params: [{
-        [snapId]: {}
-      }]
-    });
+    try {
+      await window.ethereum.send({
+        method: "wallet_enable",
+        params: [{
+          [snapId]: {}
+        }]
+      });
+    } catch (e) {
+      throw new Error("Snap installation prompts not accepted")
+    }
   }
 
   // create snap describer
@@ -57,7 +61,10 @@ export async function enableFilecoinSnap(
     pluginOrigin || defaultSnapOrigin
   );
   // set initial configuration
-  await (await snap.getFilecoinSnapApi()).configure(config);
+  const successfullyConfigured = await (await snap.getFilecoinSnapApi()).configure(config);
+  if (!successfullyConfigured) {
+      throw new Error("Provided configuration is no valid")
+  }
   // return snap object
   return snap;
 }
