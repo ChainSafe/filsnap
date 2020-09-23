@@ -1,7 +1,6 @@
 import {Wallet} from "../interfaces";
 import {
   defaultConfiguration,
-  filecoinDevnetConfiguration,
   filecoinMainnetConfiguration,
   filecoinTestnetConfiguration
 } from "./predefined";
@@ -15,9 +14,6 @@ export function getDefaultConfiguration(networkName?: string): SnapConfig {
     case "t":
       console.log("Filecoin testnet network selected");
       return filecoinTestnetConfiguration;
-    case "d":
-      console.log("Filecoin devnet network selected");
-      return filecoinDevnetConfiguration;
     default:
       return defaultConfiguration;
   }
