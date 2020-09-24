@@ -1,53 +1,53 @@
 export interface GetPublicKeyRequest{
-  method: "getPublicKey";
+  method: "fil_getPublicKey";
 }
 
 export interface GetAddressRequest {
-  method: "getAddress";
+  method: "fil_getAddress";
 }
 
 export interface ExportSeedRequest {
-  method: "exportPrivateKey";
+  method: "fil_exportPrivateKey";
 }
 
 export interface ConfigureRequest {
-  method: "configure";
+  method: "fil_configure";
   params: {
     configuration: SnapConfig;
   };
 }
 
 export interface SignMessageRequest {
-  method: "signMessage";
+  method: "fil_signMessage";
   params: {
     message: MessageRequest;
   };
 }
 
 export interface SignMessageRawRequest {
-  method: "signMessageRaw";
+  method: "fil_signMessageRaw";
   params: {
     message: string;
   };
 }
 
 export interface SendMessageRequest {
-  method: "sendMessage";
+  method: "fil_sendMessage";
   params: {
     signedMessage: SignedMessage;
   };
 }
 
 export interface GetBalanceRequest {
-  method: "getBalance";
+  method: "fil_getBalance";
 }
 
 export interface GetMessagesRequest {
-  method: "getMessages";
+  method: "fil_getMessages";
 }
 
 export interface GetGasForMessageRequest {
-  method: "getGasForMessage";
+  method: "fil_getGasForMessage";
   params: {
     message: MessageRequest;
   };
