@@ -16,7 +16,7 @@ export function getFilecoinAssetDescription(
   return {
     balance: formatBalance(balance, configuration.unit.decimals),
     customViewUrl: configuration.unit.customViewUrl ||
-            `https://filscan.io/#/address/detail?address=${address}`,
+            `https://filscan.io/#/tipset/address-detail?address=${address}`,
     decimals: 0,
     identifier: FILECOIN_SNAP_ASSET_IDENTIFIER,
     image: configuration.unit.image || "",
