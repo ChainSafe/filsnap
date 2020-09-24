@@ -16,7 +16,7 @@ import {estimateMessageGas} from "./rpc/estimateMessageGas";
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "getBalance", "signMessage", "sendMessage", "getGasForMessage"
+  "fil_getBalance", "fil_signMessage", "fil_sendMessage", "fil_getGasForMessage"
 ];
 
 wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
@@ -37,32 +37,32 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   }
 
   switch (requestObject.method) {
-    case "configure":
+    case "fil_configure":
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
       api = getApi(wallet);
       await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
-    case "getAddress":
+    case "fil_getAddress":
       return await getAddress(wallet);
-    case "getPublicKey":
+    case "fil_getPublicKey":
       return await getPublicKey(wallet);
-    case "exportPrivateKey":
+    case "fil_exportPrivateKey":
       return exportPrivateKey(wallet);
-    case "getBalance":
+    case "fil_getBalance":
       const balance = await getBalance(wallet, api);
       await updateAsset(wallet, originString, balance);
       return balance;
-    case "getMessages":
+    case "fil_getMessages":
       return getMessages(wallet);
-    case "signMessage":
+    case "fil_signMessage":
       return await signMessage(wallet, api, requestObject.params.message);
-    case "signMessageRaw":
+    case "fil_signMessageRaw":
       return await signMessageRaw(wallet, requestObject.params.message);
-    case "sendMessage":
+    case "fil_sendMessage":
       return await sendMessage(wallet, api, requestObject.params.signedMessage);
-    case "getGasForMessage":
+    case "fil_getGasForMessage":
       return await estimateMessageGas(wallet, api, requestObject.params.message);
     default:
       throw new Error("Unsupported RPC method");
