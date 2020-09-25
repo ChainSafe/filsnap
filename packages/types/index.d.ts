@@ -40,6 +40,9 @@ export interface SendMessageRequest {
 
 export interface GetBalanceRequest {
   method: "getBalance";
+  params: {
+    denomination: FilecoinDenomination;
+  };
 }
 
 export interface GetMessagesRequest {
@@ -147,12 +150,14 @@ export interface MessageStatus {
 
 export type FilecoinNetwork = "f" | "t";
 
+export type FilecoinDenomination = "fil" | "attofil";
+
 export interface FilecoinEventApi {}
 
 export interface FilecoinSnapApi {
   getPublicKey(): Promise<string>;
   getAddress(): Promise<string>;
-  getBalance(): Promise<string>;
+  getBalance(denomination: FilecoinDenomination): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: Partial<SnapConfig>): Promise<void>;
   signMessage(message: MessageRequest): Promise<SignedMessage>;

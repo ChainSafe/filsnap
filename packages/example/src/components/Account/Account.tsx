@@ -1,5 +1,16 @@
 import React from "react";
-import {Box, Button, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@material-ui/core/';
+import {
+    Box,
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    Divider,
+    Grid,
+    MenuItem,
+    Select,
+    Typography
+} from '@material-ui/core/';
 import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 
 export interface AccountProps {
@@ -33,7 +44,9 @@ export const Account = (props: AccountProps) => {
                         <Typography variant="subtitle2">{props.publicKey}</Typography>
                         <Divider light/>
                         <Box m={"0.5rem"}/>
+                        <Box>
                         <Typography variant="h6">ACCOUNT BALANCE:</Typography>
+                        </Box>
                         {props.balanceChange
                             ? <Typography variant="subtitle2" ><b>{props.balance}</b></Typography>
                             : <Typography variant="subtitle2" >{props.balance}</Typography>

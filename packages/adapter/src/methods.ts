@@ -3,7 +3,7 @@ import {
   MetamaskFilecoinRpcRequest,
   MessageRequest,
   SignedMessage,
-  SnapConfig, MessageGasEstimate
+  SnapConfig, MessageGasEstimate, FilecoinDenomination
 } from "@nodefactory/filsnap-types";
 import {MetamaskFilecoinSnap} from "./snap";
 
@@ -24,8 +24,8 @@ export async function getPublicKey(this: MetamaskFilecoinSnap): Promise<string> 
   return await sendSnapMethod({method: "getPublicKey"}, this.snapId);
 }
 
-export async function getBalance(this: MetamaskFilecoinSnap): Promise<string> {
-  return await sendSnapMethod({method: "getBalance"}, this.snapId);
+export async function getBalance(this: MetamaskFilecoinSnap, denomination: FilecoinDenomination): Promise<string> {
+  return await sendSnapMethod({method: "getBalance", params: {denomination: denomination}}, this.snapId);
 }
 
 export async function exportPrivateKey(this: MetamaskFilecoinSnap): Promise<string> {

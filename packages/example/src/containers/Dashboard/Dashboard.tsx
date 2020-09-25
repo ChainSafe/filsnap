@@ -57,7 +57,7 @@ export const Dashboard = () => {
             if (api) {
                 setAddress(await api.getAddress());
                 setPublicKey(await api.getPublicKey());
-                setBalance(await api.getBalance());
+                setBalance(await api.getBalance("fil"));
                 setMessages(await api.getMessages());
                 console.log(await api.getMessages());
             }
@@ -68,7 +68,7 @@ export const Dashboard = () => {
         // periodically check balance
         const interval = setInterval(async () => {
             if (api) {
-                const newBalance = await api.getBalance();
+                const newBalance = await api.getBalance("fil");
                 if (newBalance !== balance) {
                     setBalanceChange(true);
                     setBalance(newBalance);
@@ -96,16 +96,28 @@ export const Dashboard = () => {
                     <Footer/>
                 </Hidden>
                 <Hidden xsUp={!state.filecoinSnap.isInstalled}>
-                    <Box m="1rem" alignSelf="baseline">
-                        <InputLabel>Network</InputLabel>
-                        <Select
-                            defaultValue={"t"}
-                            onChange={handleNetworkChange}
-                        >
-                            <MenuItem value={"t"}>Testnet</MenuItem>
-                            {/*<MenuItem value={"f"}>Mainnet</MenuItem> - mainnet not supported*/}
-                        </Select>
-                    </Box>
+                    <Grid container spacing={1} alignItems="baseline">
+                        <Grid item md={2} xs={4}>
+                            <InputLabel>Network</InputLabel>
+                            <Select
+                                defaultValue={"t"}
+                                onChange={handleNetworkChange}
+                            >
+                                <MenuItem value={"t"}>Testnet</MenuItem>
+                                {/*<MenuItem value={"f"}>Mainnet</MenuItem> - mainnet not supported*/}
+                            </Select>
+                        </Grid>
+                        <Grid item md={2} xs={4}>
+                            <InputLabel>Balance denomination</InputLabel>
+                            <Select
+                                defaultValue={"fil"}
+                            >
+                                <MenuItem value={"fil"}>FIL</MenuItem>
+                                <MenuItem value={"attofil"}>AttoFIL</MenuItem>
+                            </Select>
+                        </Grid>
+                    </Grid>
+                    <Box m="1rem"/>
                     <Grid container spacing={3} alignItems="stretch">
                         <Grid item xs={12}>
                             <Account
