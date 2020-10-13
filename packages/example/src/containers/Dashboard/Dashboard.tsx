@@ -34,10 +34,6 @@ export const Dashboard = () => {
             await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
             setMessages(await api.getMessages());
-            //
-            setAddress(await api.getAddress());
-            setPublicKey(await api.getPublicKey());
-            setBalance(await api.getBalance());
         }
     };
 
