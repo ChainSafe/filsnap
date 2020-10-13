@@ -1,6 +1,6 @@
 {
   "name": "@nodefactory/filsnap",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
   "private": false,
