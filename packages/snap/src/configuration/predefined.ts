@@ -5,11 +5,11 @@ export const filecoinMainnetConfiguration: SnapConfig = {
   network: "f",
   rpc: {
     token: "",
-    url: "",
+    url: "https://api.node.glif.io",
   },
   unit: {
     decimals: 6,
-    image: `https://svgshare.com/i/M4s.svg`,
+    image: `https://cryptologos.cc/logos/filecoin-fil-logo.svg?v=007`,
     symbol: "FIL"
   }
 };
@@ -20,14 +20,14 @@ export const filecoinTestnetConfiguration: SnapConfig = {
   network: "t",
   rpc: {
     token: "",
-    url: `http://node.glif.io/space05/lotus/rpc/v0`
+    url: `https://api.node.glif.io`
   },
   unit: {
     decimals: 6,
-    image: `https://svgshare.com/i/M4s.svg`,
+    image: `https://cryptologos.cc/logos/filecoin-fil-logo.svg?v=007`,
     symbol: "FIL",
     // custom view url ?
   }
 };
 
-export const defaultConfiguration: SnapConfig = filecoinTestnetConfiguration;
+export const defaultConfiguration: SnapConfig = filecoinMainnetConfiguration;

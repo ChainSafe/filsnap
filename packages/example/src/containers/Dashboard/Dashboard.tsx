@@ -23,7 +23,7 @@ export const Dashboard = () => {
 
     const [balanceChange, setBalanceChange] = useState<boolean>(false);
 
-    const [network, setNetwork] = useState<"f" | "t" >("t");
+    const [network, setNetwork] = useState<"f" | "t" >("f");
 
     const [api, setApi] = useState<FilecoinSnapApi|null>(null);
 
@@ -34,6 +34,10 @@ export const Dashboard = () => {
             await api.configure({network: selectedNetwork});
             setNetwork(selectedNetwork);
             setMessages(await api.getMessages());
+            //
+            setAddress(await api.getAddress());
+            setPublicKey(await api.getPublicKey());
+            setBalance(await api.getBalance());
         }
     };
 
@@ -99,11 +103,11 @@ export const Dashboard = () => {
                     <Box m="1rem" alignSelf="baseline">
                         <InputLabel>Network</InputLabel>
                         <Select
-                            defaultValue={"t"}
+                            defaultValue={"f"}
                             onChange={handleNetworkChange}
                         >
                             <MenuItem value={"t"}>Testnet</MenuItem>
-                            {/*<MenuItem value={"f"}>Mainnet</MenuItem> - mainnet not supported*/}
+                            <MenuItem value={"f"}>Mainnet</MenuItem>
                         </Select>
                     </Box>
                     <Grid container spacing={3} alignItems="stretch">
