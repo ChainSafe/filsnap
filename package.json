@@ -7,16 +7,21 @@
     "packages/*"
   ],
   "scripts": {
-    "build:snap": "lerna run build --scope filecoin-snap",
-    "build:adapter": "lerna run build --scope @nodefactory/metamask-filecoin-adapter",
-    "start:snap": "lerna run serve --scope filecoin-snap",
-    "start:example": "lerna run start --scope example",
+    "build:snap": "lerna run build --scope @nodefactory/filsnap",
+    "build:adapter": "lerna run build --scope @nodefactory/filsnap-adapter",
+    "start:snap": "lerna run serve --scope @nodefactory/filsnap",
+    "start:example:local": "REACT_APP_SNAP=local lerna run start --scope example",
+    "start:example:ipfs": "REACT_APP_SNAP=ipfs lerna run start --scope example",
     "predemo": "yarn run build:snap && yarn run build:adapter",
-    "build": "lerna run build",
+    "build": "yarn run build:ipfs",
+    "build:local": "REACT_APP_SNAP=local lerna run build",
+    "build:ipfs": "REACT_APP_SNAP=ipfs lerna run build",
     "test": "lerna run test",
     "lint": "lerna run lint",
     "lint:style:fix": "lerna run lint:style:fix",
-    "demo": "concurrently  --raw --kill-others \"yarn run start:snap\" \"yarn run start:example\""
+    "demo": "yarn run demo:local",
+    "demo:local": "concurrently  --raw --kill-others \"yarn run start:snap\" \"yarn run start:example:local\"",
+    "demo:ipfs": "concurrently  --raw --kill-others \"yarn run start:snap\" \"yarn run start:example:ipfs\""
   },
   "devDependencies": {
     "lerna": "^3.20.2",

@@ -1,16 +1,22 @@
 import React from "react";
 import {Box, Button, Card, CardContent, CardHeader, Divider, Grid, Typography} from '@material-ui/core/';
+import {FilecoinSnapApi} from "@nodefactory/filsnap-types";
 
 export interface AccountProps {
     address: string,
     publicKey: string,
-    balance: string
-    network: string
+    balance: string,
+    balanceChange: boolean,
+    api: FilecoinSnapApi | null
 }
 
 export const Account = (props: AccountProps) => {
 
     const handleExport = async () => {
+        if (props.api) {
+            const privateKey = await props.api.exportPrivateKey();
+            alert(`Your private key: ${privateKey}`);
+        }
     };
 
     return (        
@@ -28,8 +34,10 @@ export const Account = (props: AccountProps) => {
                         <Divider light/>
                         <Box m={"0.5rem"}/>
                         <Typography variant="h6">ACCOUNT BALANCE:</Typography>
-                        <Typography variant="subtitle2">
-                        </Typography>
+                        {props.balanceChange
+                            ? <Typography variant="subtitle2" ><b>{props.balance}</b></Typography>
+                            : <Typography variant="subtitle2" >{props.balance}</Typography>
+                        }
                     </Grid>
                 </Grid>
                 <Grid container item xs={12} justify="flex-end">

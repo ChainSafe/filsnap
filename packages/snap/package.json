@@ -1,9 +1,9 @@
 {
-  "name": "filecoin-snap",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@nodefactory/filsnap",
+  "version": "1.0.0",
   "license": "(Apache-2.0 AND MIT)",
-  "description": "Metamask snap to interact with Filecoin dapps.",
+  "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
+  "private": false,
   "main": "build/index.js",
   "scripts": {
     "lint": "yarn run lint:types && yarn run lint:style",
@@ -22,7 +22,10 @@
     "watch:snap": "nf-snap watch --debug -s build/index.js",
     "serve": "nf-snap serve",
     "test": "yarn run test:unit",
-    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\""
+    "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
+    "prepublish": "yarn run build && mkdir ipfs && cp package.json ipfs/package.json",
+    "publish": "export BUNDLE_URL=`ipd --no-clipboard -O -p infura dist/bundle.js` && sed -i 's/http:\\/\\/localhost:8081\\/dist\\/bundle.js/https:\\/\\/ipfs.infura.io\\/ipfs\\/'\"$BUNDLE_URL\"'/g' ipfs/package.json && ipd --no-clipboard -O -p infura ipfs/package.json",
+    "postpublish": "rm -rf ipfs"
   },
   "repository": {
     "type": "git",
@@ -51,12 +54,15 @@
       "confirm": {},
       "getPluginState": {},
       "updatePluginState": {},
+      "wallet_getBip44Entropy_1": {},
+      "wallet_getBip44Entropy_461": {},
       "wallet_manageAssets": {}
     }
   },
   "devDependencies": {
-    "@nodefactory/metamask-filecoin-types": "1.0.0",
-    "@nodefactory/snaps-cli": "1.0.0",
+    "@nodefactory/filsnap-types": "^0.2.1",
+    "@nodefactory/snaps-cli": "^1.5.0",
+    "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
     "@types/sinon": "^7.5.2",
@@ -73,9 +79,13 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@openworklabs/lotus-jsonrpc-engine": "^0.1.2",
-    "@zondax/filecoin-signer-wasm": "^0.3.1",
-    "axios": "^0.19.2",
+    "@filecoin-shipyard/lotus-client-provider-nodejs": "^0.0.5",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
+    "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
+    "@metamask/key-tree": "^1.0.0",
+    "@openworklabs/filecoin-number": "^0.0.9",
+    "@zondax/filecoin-signing-tools": "^0.7.1",
+    "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"
   }
 }

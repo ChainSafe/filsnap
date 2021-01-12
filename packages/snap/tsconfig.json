@@ -6,11 +6,20 @@
       "*": [
         "../../node_modules"
       ],
-      "@zondax/filecoin-signer-wasm": [
-        "./@types/filecoin-signer-wasm"
+      "@filecoin-shipyard/lotus-client-provider-nodejs": [
+        "./@types/lotus-client-provider-nodejs"
       ],
-      "@openworklabs/lotus-jsonrpc-engine": [
-        "./@types/lotus-jsonrpc-engine"
+      "@filecoin-shipyard/lotus-client-rpc": [
+        "./@types/lotus-client-rpc"
+      ],
+      "@filecoin-shipyard/lotus-client-schema": [
+        "./@types/lotus-client-schema"
+      ],
+      "@zondax/filecoin-signing-tools/js": [
+        "./@types/filecoin-signing-tools"
+      ],
+      "@openworklabs/filecoin-number": [
+        "./@types/filecoin-number"
       ]
     },
     "outDir": "./build",
@@ -18,7 +27,7 @@
       "@types/chai",
       "@types/mocha",
       "@types/sinon",
-      "@types/sinon-chai",
+      "@types/sinon-chai"
     ],
     "typeRoots": [
       "./@types",
@@ -28,6 +37,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*ts",
+    "test/**/*ts"
   ]
 }

@@ -2,28 +2,32 @@ import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
 import {getBalance} from "../../../src/rpc/getBalance";
-import sinon from "sinon";
-import {testAppKey} from "./keyPairTestConstants";
+import {testBip44Entropy} from "./keyPairTestConstants";
 import {EmptyMetamaskState} from "../../../src/interfaces";
+import {LotusApiMock} from "../lotusapi.mock.test";
 
 chai.use(sinonChai);
 
 describe('Test rpc handler function: getBalance', function() {
 
   const walletStub = new WalletMock();
+  const apiStub = new LotusApiMock();
 
   afterEach(function() {
     walletStub.reset();
+    apiStub.reset();
   });
 
   it('should return balance on saved keyring in state', async function () {
-    walletStub.getAppKey.returns(testAppKey);
+    // prepare stubs
+    walletStub.send.returns(testBip44Entropy);
     walletStub.getPluginState.returns(EmptyMetamaskState());
-    const apiStub = {request: sinon.stub()};
-    apiStub.request.returns("3");
-
+    apiStub.walletBalance.returns("30000000");
+    // call getBalance
     const result = await getBalance(walletStub, apiStub);
-
-    expect(result).to.be.eq("3");
+    // assertions
+    expect(walletStub.getAppKey).to.have.not.been.called;
+    expect(walletStub.getPluginState).to.have.been.calledOnce;
+    expect(result).to.be.eq("0.00000000003");
   });
 });
