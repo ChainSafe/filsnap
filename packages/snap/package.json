@@ -50,7 +50,6 @@
       "url": "http://localhost:8081/dist/bundle.js"
     },
     "initialPermissions": {
-      "alert": {},
       "confirm": {},
       "getPluginState": {},
       "updatePluginState": {},
