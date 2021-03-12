@@ -15,8 +15,8 @@ describe('Test rpc handler function: getPublicKey', function () {
     });
 
     it('should return valid address', async function () {
-        walletStub.send.returns(testBip44Entropy);
-        walletStub.getPluginState.returns({
+        walletStub.requestStub.resolves(testBip44Entropy);
+        walletStub.rpcStubs.snap_getState.resolves({
             filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}
         })
         const result = await getPublicKey(walletStub);

@@ -16,26 +16,26 @@ describe('Test rpc handler function: exportSeed', function() {
   });
 
   it('should return seed on positive prompt confirmation and keyring saved in state', async function () {
-    walletStub.send.returns(true);
-    walletStub.send.returns(testBip44Entropy);
-    walletStub.getPluginState.returns({
+    walletStub.requestStub.resolves(true);
+    walletStub.requestStub.resolves(testBip44Entropy);
+    walletStub.rpcStubs.snap_getState.resolves({
       filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}
     });
 
     const result = await exportPrivateKey(walletStub);
 
-    expect(walletStub.getAppKey).to.have.not.been.called;
-    expect(walletStub.send).to.have.been.calledTwice;
-    expect(walletStub.getPluginState).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_getAppKey).to.have.not.been.called;
+    expect(walletStub.requestStub).to.have.been.calledTwice;
+    expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
     expect(result).to.be.eq(testPrivateKey);
   });
 
   it('should not return seed on negative prompt confirmation', async function () {
-    walletStub.send.returns(false);
+    walletStub.requestStub.resolves(false);
 
     const result = await exportPrivateKey(walletStub);
 
-    expect(walletStub.send).to.have.been.calledOnce;
+    expect(walletStub.requestStub).to.have.been.calledOnce;
     expect(result).to.be.eq(null);
   });
 });

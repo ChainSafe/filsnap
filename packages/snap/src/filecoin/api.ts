@@ -5,8 +5,8 @@ import {NodejsProvider} from "@filecoin-shipyard/lotus-client-provider-nodejs";
 import {testnet} from "@filecoin-shipyard/lotus-client-schema";
 import {LotusRpcApi} from "./types";
 
-export function getApi(wallet: Wallet): LotusRpcApi {
-  const configuration = getConfiguration(wallet);
+export async function getApi(wallet: Wallet): Promise<LotusRpcApi> {
+  const configuration = await getConfiguration(wallet);
   const provider = new NodejsProvider(
     configuration.rpc.url,
     configuration.rpc.token ? {token: configuration.rpc.token} : {});

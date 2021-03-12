@@ -16,36 +16,36 @@ describe('Test rpc handler function: configure', function() {
   });
 
   it('should set predefined filecoin configuration based on network', async function() {
-    walletStub.getPluginState.returns(EmptyMetamaskState());
-    walletStub.updatePluginState.returnsArg(0);
+    walletStub.rpcStubs.snap_getState.resolves(EmptyMetamaskState());
+    walletStub.rpcStubs.snap_updateState.returnsArg(0);
 
-    const result = configure(walletStub, "t");
+    const result = await configure(walletStub, "t");
 
     expect(result).to.be.deep.eq(filecoinTestnetConfiguration);
-    expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
+    expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnceWithExactly({
       filecoin: {
         config: filecoinTestnetConfiguration,
         messages: []
       }
     });
-    expect(walletStub.updatePluginState).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnce;
   });
 
-  it('should set predefined filecoin configuration with additional property override', function () {
-    walletStub.getPluginState.returns(EmptyMetamaskState());
-    walletStub.updatePluginState.returnsArg(0);
+  it('should set predefined filecoin configuration with additional property override', async function () {
+    walletStub.rpcStubs.snap_getState.resolves(EmptyMetamaskState());
+    walletStub.rpcStubs.snap_updateState.returnsArg(0);
 
     const customConfiguration = filecoinTestnetConfiguration;
     customConfiguration.rpc.url = "wss://custom";
-    const result = configure(walletStub, "t", {rpc: {url: "wss://custom"}} as SnapConfig);
+    const result = await configure(walletStub, "t", {rpc: {url: "wss://custom"}} as SnapConfig);
 
     expect(result).to.be.deep.eq(customConfiguration);
-    expect(walletStub.updatePluginState).to.have.been.calledOnceWithExactly({
+    expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnceWithExactly({
       filecoin: {
         config: customConfiguration,
         messages: []
       }
     });
-    expect(walletStub.updatePluginState).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnce;
   });
 });

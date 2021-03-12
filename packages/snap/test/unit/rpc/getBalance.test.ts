@@ -20,14 +20,14 @@ describe('Test rpc handler function: getBalance', function() {
 
   it('should return balance on saved keyring in state', async function () {
     // prepare stubs
-    walletStub.send.returns(testBip44Entropy);
-    walletStub.getPluginState.returns(EmptyMetamaskState());
+    walletStub.requestStub.resolves(testBip44Entropy);
+    walletStub.rpcStubs.snap_getState.resolves(EmptyMetamaskState());
     apiStub.walletBalance.returns("30000000");
     // call getBalance
     const result = await getBalance(walletStub, apiStub);
     // assertions
-    expect(walletStub.getAppKey).to.have.not.been.called;
-    expect(walletStub.getPluginState).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_getAppKey).to.have.not.been.called;
+    expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
     expect(result).to.be.eq("0.00000000003");
   });
 });

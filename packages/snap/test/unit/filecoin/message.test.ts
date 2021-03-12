@@ -28,40 +28,38 @@ describe('Test saving transactions in state', function() {
         walletStub.reset();
     });
 
-    it('should add transaction to state if empty state', function () {
-        walletStub.getPluginState.returns({filecoin: {config: {network: "f"}, messages: []}});
-        walletStub.updatePluginState.returnsArg(0);
+    it('should add transaction to state if empty state', async function () {
+        walletStub.rpcStubs.snap_getState.resolves({filecoin: {config: {network: "f"}, messages: []}});
+        walletStub.rpcStubs.snap_updateState.returnsArg(0);
 
-        updateMessageInState(walletStub, message);
+        await updateMessageInState(walletStub, message);
 
-        expect(walletStub.getPluginState).to.have.been.calledOnce;
-        expect(walletStub.updatePluginState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [message]}})
+        expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
+        expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [message]}})
     });
 
-    it('should add transaction to state if same hash transaction is not saved', function () {
+    it('should add transaction to state if same hash transaction is not saved', async function () {
         const differentTx = {...message, cid: "abc123"};
 
-        walletStub.getPluginState.returns({filecoin: {config: {network: "f"}, messages: [differentTx]}});
-        walletStub.updatePluginState.returnsArg(0);
+        walletStub.rpcStubs.snap_getState.resolves({filecoin: {config: {network: "f"}, messages: [differentTx]}});
+        walletStub.rpcStubs.snap_updateState.returnsArg(0);
 
-        updateMessageInState(walletStub, message);
+        await updateMessageInState(walletStub, message);
 
-        expect(walletStub.getPluginState).to.have.been.calledOnce;
-        expect(walletStub.updatePluginState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [differentTx, message]}})
-
+        expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
+        expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [differentTx, message]}})
     });
 
-    it('should update transaction if same hash transaction already in state', function () {
-        walletStub.getPluginState.returns({filecoin: {config: {network: "f"}, messages: [message]}});
-        walletStub.updatePluginState.returnsArg(0);
+    it('should update transaction if same hash transaction already in state', async function () {
+        walletStub.rpcStubs.snap_getState.resolves({filecoin: {config: {network: "f"}, messages: [message]}});
+        walletStub.rpcStubs.snap_updateState.returnsArg(0);
 
         const updatedTx = {...message};
         updatedTx.message.nonce = 2;
 
-        updateMessageInState(walletStub, updatedTx);
+        await updateMessageInState(walletStub, updatedTx);
 
-        expect(walletStub.getPluginState).to.have.been.calledOnce;
-        expect(walletStub.updatePluginState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [updatedTx]}})
+        expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
+        expect(walletStub.rpcStubs.snap_updateState).to.have.been.calledOnceWith({filecoin: {config: {network: "f"}, messages: [updatedTx]}})
     });
-
 });

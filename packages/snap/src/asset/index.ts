@@ -6,7 +6,7 @@ import {getAddress} from "../rpc/getAddress";
 
 export const FILECOIN_SNAP_ASSET_IDENTIFIER = "filecoin-snap-asset";
 
-function formatBalance(balance: number|string, decimals: number): string {
+function formatBalance(balance: number|string, _decimals: number): string {
   return balance as string;
 }
 
@@ -27,9 +27,9 @@ export function getFilecoinAssetDescription(
 let assetState: { balance: string | number; network: FilecoinNetwork};
 
 export async function updateAsset(
-  wallet: Wallet, origin: string, balance: number|string
+  wallet: Wallet, _origin: string, balance: number|string
 ): Promise<void> {
-  const configuration = getConfiguration(wallet);
+  const configuration = await getConfiguration(wallet);
   const asset = getFilecoinAssetDescription(balance, await getAddress(wallet), configuration);
   if (!assetState) {
     // create filecoin snap asset

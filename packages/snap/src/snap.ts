@@ -1,5 +1,4 @@
 import {EmptyMetamaskState, Wallet} from "./interfaces";
-import {FilecoinEventApi} from "@nodefactory/filsnap-types";
 import {getAddress} from "./rpc/getAddress";
 import {exportPrivateKey} from "./rpc/exportPrivateKey";
 import {getPublicKey} from "./rpc/getPublicKey";
@@ -19,21 +18,23 @@ const apiDependentMethods = [
   "fil_getBalance", "fil_signMessage", "fil_sendMessage", "fil_getGasForMessage"
 ];
 
-wallet.registerApiRequestHandler(async function (origin: URL): Promise<FilecoinEventApi> {
-  return {};
-});
-
 wallet.registerRpcMessageHandler(async (originString, requestObject) => {
-  const state = wallet.getPluginState();
+  const state = await wallet.request({
+    method: 'snap_getState',
+  });
+
   if (!state) {
     // initialize state if empty and set default config
-    wallet.updatePluginState(EmptyMetamaskState());
+    await wallet.request({
+      method: 'snap_updateState',
+      params: [EmptyMetamaskState()],
+    });
   }
 
   let api: LotusRpcApi;
   // initialize lotus RPC api if needed
   if (apiDependentMethods.indexOf(requestObject.method) >= 0) {
-    api = getApi(wallet);
+    api = await getApi(wallet);
   }
 
   switch (requestObject.method) {
@@ -41,7 +42,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
       const configuration = configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      api = getApi(wallet);
+      api = await getApi(wallet);
       await updateAsset(wallet, originString, await getBalance(wallet, api));
       return configuration;
     case "fil_getAddress":
