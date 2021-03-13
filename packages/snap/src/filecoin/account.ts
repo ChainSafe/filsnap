@@ -19,7 +19,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   // we need to derive the final "accountIndex'/change/addressIndex"
   const accountIndex = 0;
   const addressIndex = 0;
-  const keyMaterial = deriveKeyFromPath(bip44Entropy, `bip32:${accountIndex}'/bip32:0/bip32:${addressIndex}`);
+  const keyMaterial = deriveKeyFromPath(`bip32:${accountIndex}'/bip32:0/bip32:${addressIndex}`, bip44Entropy);
   const privateKey = keyMaterial.slice(0, 32);
   const extendedKey = keyRecover(privateKey, isTestnet);
 

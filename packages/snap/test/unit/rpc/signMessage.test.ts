@@ -38,7 +38,7 @@ describe('Test rpc handler function: signMessage', function () {
         walletStub.requestStub.callsFake(async (req) => {
             if (req.method === 'snap_getBip44Entropy_461') return testBip44Entropy;
             if (req.method === 'confirm') return true;
-            throw new Error('unknown rpc method')
+            throw new Error(`unknown rpc method: ${req.method}`);
         })
         walletStub.rpcStubs.snap_getState.resolves({
             filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}

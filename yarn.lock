@@ -2219,10 +2219,10 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@metamask/key-tree@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-1.0.0.tgz#9cbc7226c5fe149733110c4d8250138689b4697e"
-  integrity sha512-qoNYj3Yu4jCom8DcAG4b7QclKDu51quN+DWJ3qqLUeIpywEIHCYvGpLzi5WcE3vxWGqNEhqKbLPHBrHe4m/jVg==
+"@metamask/key-tree@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-2.0.1.tgz#1ad4f3e97faf782da62726f1a1836a7bbbea753c"
+  integrity sha512-gvwy+bej+4t6AYWjPEzYOhWyGM6I0a3o74AHniWniuI0gGTh3iafx34E42/EegscN5Z354ZbmPELke0RvNaE6Q==
   dependencies:
     bip39 "^2.5.0"
     ethereumjs-util "^5.2.0"
