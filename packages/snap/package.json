@@ -51,11 +51,11 @@
     },
     "initialPermissions": {
       "confirm": {},
-      "getPluginState": {},
-      "updatePluginState": {},
-      "wallet_getBip44Entropy_1": {},
-      "wallet_getBip44Entropy_461": {},
-      "wallet_manageAssets": {}
+      "snap_getBip44Entropy_1": {},
+      "snap_getBip44Entropy_461": {},
+      "snap_getState": {},
+      "snap_manageAssets": {},
+      "snap_updateState": {}
     }
   },
   "devDependencies": {

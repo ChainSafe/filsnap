@@ -36,7 +36,7 @@ describe('Test rpc handler function: signMessage', function () {
 
     it('should successfully sign valid message without gas params on positive prompt', async function () {
         walletStub.requestStub.callsFake(async (req) => {
-            if (req.method === 'wallet_getBip44Entropy_461') return testBip44Entropy;
+            if (req.method === 'snap_getBip44Entropy_461') return testBip44Entropy;
             if (req.method === 'confirm') return true;
             throw new Error('unknown rpc method')
         })
@@ -60,7 +60,7 @@ describe('Test rpc handler function: signMessage', function () {
 
     it('should successfully sign valid message with gas params on positive prompt', async function () {
         walletStub.requestStub.callsFake(async (req) => {
-            if (req.method === 'wallet_getBip44Entropy_461') return testBip44Entropy;
+            if (req.method === 'snap_getBip44Entropy_461') return testBip44Entropy;
             if (req.method === 'confirm') return true;
             throw new Error('unknown rpc method')
         })
@@ -85,7 +85,7 @@ describe('Test rpc handler function: signMessage', function () {
 
     it('should cancel signing on negative prompt', async function () {
         walletStub.requestStub.callsFake(async (req) => {
-            if (req.method === 'wallet_getBip44Entropy_461') return testBip44Entropy;
+            if (req.method === 'snap_getBip44Entropy_461') return testBip44Entropy;
             if (req.method === 'confirm') return false;
             throw new Error('unknown rpc method')
         })
