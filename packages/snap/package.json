@@ -50,7 +50,7 @@
       "url": "http://localhost:8081/dist/bundle.js"
     },
     "initialPermissions": {
-      "confirm": {},
+      "snap_confirm": {},
       "snap_getBip44Entropy_1": {},
       "snap_getBip44Entropy_461": {},
       "snap_getState": {},
