@@ -3,13 +3,20 @@ import sinon from "sinon";
 
 export class WalletMock implements Wallet {
   public readonly registerRpcMessageHandler = sinon.stub();
+
+  public readonly requestStub = sinon.stub()
+
   public readonly rpcStubs = {
     snap_getState: sinon.stub(),
     snap_updateState: sinon.stub(),
     snap_getAppKey: sinon.stub(),
   }
-  public readonly requestStub = sinon.stub()
-  public readonly request = (args: { method: string, params: unknown[] }) => {
+
+  /**
+   * Calls this.requestStub or this.rpcStubs[req.method], if the method has
+   * a dedicated stub.
+   */
+  public request(args: { method: string, params: unknown[] }): unknown {
     const { method, params = [] } = args;
     if (Object.hasOwnProperty.call(this.rpcStubs, method)) {
       return (this.rpcStubs as any)[method](...params)
