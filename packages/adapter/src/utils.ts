@@ -6,7 +6,7 @@ export function hasMetaMask(): boolean {
 }
 
 async function getWalletPlugins(): Promise<{ [k: string]: { permissionName: string } }> {
-  return await window.ethereum.send({
+  return await window.ethereum.request({
     method: 'wallet_getPlugins',
   }) as { [k: string]: { permissionName: string } };
 }

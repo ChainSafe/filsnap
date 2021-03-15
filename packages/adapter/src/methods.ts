@@ -8,7 +8,7 @@ import {
 import {MetamaskFilecoinSnap} from "./snap";
 
 async function sendSnapMethod<T>(request: MetamaskFilecoinRpcRequest, snapId: string): Promise<T> {
-  return await window.ethereum.send({
+  return await window.ethereum.request({
     method: snapId,
     params: [
       request
