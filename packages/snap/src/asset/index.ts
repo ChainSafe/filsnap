@@ -20,25 +20,52 @@ export function getFilecoinAssetDescription(
     decimals: 0,
     identifier: FILECOIN_SNAP_ASSET_IDENTIFIER,
     image: configuration.unit.image || "",
+    network: configuration.network,
     symbol: configuration.unit.symbol,
   };
 }
 
-let assetState: { balance: string | number; network: FilecoinNetwork};
+const assetIds: { [K in FilecoinNetwork]: string | null } = {
+  'f': null,
+  't': null,
+};
+let didCacheResources = false;
+
+async function cacheInitialResources(wallet: Wallet): Promise<void> {
+  const resources: Asset[] = await wallet.request({
+    method: 'snap_manageAssets',
+    params: ['getAll']
+  }) as Asset[];
+  resources.forEach((asset) => {
+    assetIds[asset.network] = asset.id;
+  });
+  didCacheResources = true;
+}
+
+const previousAsset: { balance: string | number | null; network: FilecoinNetwork | null } = {
+  balance: null,
+  network: null,
+};
 
 export async function updateAsset(
   wallet: Wallet, _origin: string, balance: number|string
 ): Promise<void> {
+  if (!didCacheResources) {
+    await cacheInitialResources(wallet);
+  }
+
   const configuration = await getConfiguration(wallet);
   const asset = getFilecoinAssetDescription(balance, await getAddress(wallet), configuration);
-  if (!assetState) {
-    // create filecoin snap asset
-    await executeAssetOperation(asset, wallet, "add");
-  } else if (assetState.balance !== asset.balance || assetState.network !== configuration.network) {
+  const currentNetwork = configuration.network;
+  const currentAssetId = assetIds[currentNetwork];
+
+  if (currentAssetId && (previousAsset.network !== currentNetwork || previousAsset.balance !== asset.balance)) {
     // update if balance or network changed
+    asset.id = currentAssetId;
     await executeAssetOperation(asset, wallet, "update");
+  } else if (!currentAssetId) {
+    // create filecoin snap asset
+    const newAsset = await executeAssetOperation(asset, wallet, "add");
+    assetIds[currentNetwork] = newAsset.id as string;
   }
-  assetState = {balance: asset.balance, network: configuration.network};
 }
-
-

@@ -1,4 +1,4 @@
-import {MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/filsnap-types";
+import {FilecoinNetwork, MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/filsnap-types";
 import {defaultConfiguration} from "./configuration/predefined";
 
 export type FMethodCallback = (
@@ -29,4 +29,6 @@ export interface Asset {
   identifier: string;
   image?: string;
   symbol: string;
+  network: FilecoinNetwork;
+  id?: string;
 }
