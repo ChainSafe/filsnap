@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "outDir": "build",
     "rootDir": "src",
     "moduleResolution": "node",
