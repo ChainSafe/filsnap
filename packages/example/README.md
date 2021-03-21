@@ -1,4 +1,4 @@
-### Metamask filecoin snap example 
+# MetaMask filecoin snap example
 
 - `yarn install`
 - serve snap
