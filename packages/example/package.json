@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "license": "(Apache-2.0 AND MIT)",
+  "homepage": "https://rekmarks.github.io/filsnap/",
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
@@ -25,6 +29,8 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages --dist build --remote rekmarks --no-history",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "exit 0",
