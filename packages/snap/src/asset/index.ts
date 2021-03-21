@@ -65,7 +65,10 @@ export async function updateAsset(
     await executeAssetOperation(asset, wallet, "update");
   } else if (!currentAssetId) {
     // create filecoin snap asset
-    const newAsset = await executeAssetOperation(asset, wallet, "add");
-    assetIds[currentNetwork] = newAsset.id as string;
+    const newAssetId = await executeAssetOperation(asset, wallet, "add") as string;
+    assetIds[currentNetwork] = newAssetId;
   }
+
+  previousAsset.balance = asset.balance;
+  previousAsset.network = asset.network;
 }
