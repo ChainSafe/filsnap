@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "(Apache-2.0 AND MIT)",
-  "homepage": "https://rekmarks.github.io/filsnap/",
+  "homepage": "https://metamask.github.io/filsnap/",
   "devDependencies": {
     "gh-pages": "^3.1.0"
   },
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "predeploy": "yarn build",
-    "deploy": "gh-pages --dist build --remote rekmarks --no-history",
+    "deploy": "gh-pages --dist build --remote metamask --no-history",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "exit 0",
