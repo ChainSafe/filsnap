@@ -1,4 +1,4 @@
-import {FilecoinNetwork, SnapConfig} from "@nodefactory/filsnap-types";
+import {FilecoinNetwork, SnapConfig} from "@chainsafe/filsnap-types";
 import {Asset, Wallet} from "../interfaces";
 import {executeAssetOperation} from "./action";
 import {getConfiguration} from "../configuration";

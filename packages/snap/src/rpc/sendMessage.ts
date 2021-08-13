@@ -1,4 +1,4 @@
-import {MessageStatus, SignedMessage} from "@nodefactory/filsnap-types";
+import {MessageStatus, SignedMessage} from "@chainsafe/filsnap-types";
 import {Wallet} from "../interfaces";
 import {LotusRpcApi} from "../filecoin/types";
 import {updateMessageInState} from "../filecoin/message";

@@ -1,6 +1,6 @@
 import {Wallet} from "../interfaces";
 import {keyRecover} from "@zondax/filecoin-signing-tools/js";
-import {KeyPair} from "@nodefactory/filsnap-types";
+import {KeyPair} from "@chainsafe/filsnap-types";
 import {deriveKeyFromPath} from '@metamask/key-tree';
 import {Buffer} from 'buffer';
 

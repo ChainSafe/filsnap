@@ -1,4 +1,4 @@
-import {Message, SignedMessage} from "@nodefactory/filsnap-types";
+import {Message, SignedMessage} from "@chainsafe/filsnap-types";
 
 export interface LotusRpcApi {
   version(): Promise<VersionResponse>;

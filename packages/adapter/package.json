@@ -1,13 +1,13 @@
 {
-  "name": "@nodefactory/filsnap-adapter",
+  "name": "@chainsafe/filsnap-adapter",
   "version": "1.0.0",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
-  "author": "NodeFactory <info@nodefactory.io>",
+  "author": "chainsafe <info@chainsafe.io>",
   "license": "(Apache-2.0 AND MIT)",
   "private": false,
-  "homepage": "https://github.com/NodeFactoryIo/filecoin-metamask-snap/tree/master/packages/adapter",
+  "homepage": "https://github.com/chainsafe/filecoin-metamask-snap/tree/master/packages/adapter",
   "keywords": [
     "filecoin",
     "metamask",

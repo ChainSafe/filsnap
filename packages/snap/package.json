@@ -1,5 +1,5 @@
 {
-  "name": "@nodefactory/filsnap",
+  "name": "@chainsafe/filsnap",
   "version": "1.0.0",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NodeFactoryIo/filecoin-metamask-snap.git"
+    "url": "git+https://github.com/chainsafe/filecoin-metamask-snap.git"
   },
   "keywords": [
     "filecoin",
@@ -39,11 +39,11 @@
     "dapp",
     "wallet"
   ],
-  "author": "NodeFactory <info@nodefactory.io>",
+  "author": "chainsafe <info@chainsafe.io>",
   "bugs": {
-    "url": "https://github.com/NodeFactoryIo/filecoin-metamask-snap/issues"
+    "url": "https://github.com/chainsafe/filecoin-metamask-snap/issues"
   },
-  "homepage": "https://github.com/NodeFactoryIo/filecoin-metamask-snap#readme",
+  "homepage": "https://github.com/chainsafe/filecoin-metamask-snap#readme",
   "web3Wallet": {
     "bundle": {
       "local": "dist/bundle.js",
@@ -60,7 +60,7 @@
     }
   },
   "devDependencies": {
-    "@nodefactory/filsnap-types": "^0.2.1",
+    "@chainsafe/filsnap-types": "^1.0.0",
     "@nodefactory/snaps-cli": "^1.5.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",

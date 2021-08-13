@@ -1,6 +1,6 @@
 import {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
 import {MetamaskFilecoinSnap as MFSnap} from "./snap";
-import {SnapConfig} from "@nodefactory/filsnap-types";
+import {SnapConfig} from "@chainsafe/filsnap-types";
 
 const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
 const defaultSnapId = `wallet_plugin_${defaultSnapOrigin}`;

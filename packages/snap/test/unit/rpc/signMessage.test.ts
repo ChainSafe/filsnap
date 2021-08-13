@@ -2,7 +2,7 @@ import {WalletMock} from "../wallet.mock.test";
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {testBip44Entropy} from "./keyPairTestConstants";
-import {MessageRequest, SnapConfig} from "@nodefactory/filsnap-types";
+import {MessageRequest, SnapConfig} from "@chainsafe/filsnap-types";
 import {Message} from "@zondax/filecoin-signing-tools/js";
 import {signMessage} from "../../../src/rpc/signMessage";
 import {LotusApiMock} from "../lotusapi.mock.test";

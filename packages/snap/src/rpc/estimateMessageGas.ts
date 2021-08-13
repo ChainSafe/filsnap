@@ -1,5 +1,5 @@
 import {Wallet} from "../interfaces";
-import {Message, MessageGasEstimate, MessageRequest} from "@nodefactory/filsnap-types";
+import {Message, MessageGasEstimate, MessageRequest} from "@chainsafe/filsnap-types";
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
 
