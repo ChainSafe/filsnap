@@ -1,5 +1,5 @@
 # FilSnap adapter
-![](https://github.com/chainsafe/filecoin-metamask-snap/workflows/ci/badge.svg)
+![](https://github.com/chainsafe/filsnap/workflows/ci/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![](https://img.shields.io/badge/yarn-%3E%3D1.17.0-orange.svg?style=flat-square)
@@ -7,7 +7,7 @@
 
 FilSnap adapter is used to install Filecoin snap and expose API toward snap.
 
-For more details on Filecoin snap itself see [snap repo](https://github.com/chainsafe/filecoin-metamask-snap) or read full [Filecoin snap documentation](https://github.com/chainsafe/filecoin-metamask-snap/wiki).
+For more details on Filecoin snap itself see [snap repo](https://github.com/chainsafe/filsnap) or read full [Filecoin snap documentation](https://github.com/chainsafe/filsnap/wiki).
 
 ## Usage
 
