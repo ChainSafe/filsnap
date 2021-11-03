@@ -76,7 +76,7 @@ export const Dashboard = () => {
                     setBalanceChange(false)
                 }
             }
-        }, 3000);
+        }, 30000);
         return () => clearInterval(interval);
     }, [api, balance, setBalance, setBalanceChange]);
 
