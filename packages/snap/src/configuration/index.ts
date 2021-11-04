@@ -4,7 +4,7 @@ import {
   filecoinMainnetConfiguration,
   filecoinTestnetConfiguration
 } from "./predefined";
-import {SnapConfig} from "@nodefactory/filsnap-types";
+import {SnapConfig} from "@chainsafe/filsnap-types";
 
 export function getDefaultConfiguration(networkName?: string): SnapConfig {
   switch (networkName) {

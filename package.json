@@ -1,15 +1,15 @@
 {
   "name": "root",
   "private": true,
-  "author": "NodeFactory <info@nodefactory.io>",
+  "author": "ChainSafe <info@chainsafe.io>",
   "license": "(Apache-2.0 AND MIT)",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "build:snap": "lerna run build --scope @nodefactory/filsnap",
-    "build:adapter": "lerna run build --scope @nodefactory/filsnap-adapter",
-    "start:snap": "lerna run serve --scope @nodefactory/filsnap",
+    "build:snap": "lerna run build --scope @chainsafe/filsnap",
+    "build:adapter": "lerna run build --scope @chainsafe/filsnap-adapter",
+    "start:snap": "lerna run serve --scope @chainsafe/filsnap",
     "start:example:local": "REACT_APP_SNAP=local lerna run start --scope example",
     "start:example:ipfs": "REACT_APP_SNAP=ipfs lerna run start --scope example",
     "predemo": "yarn run build:snap && yarn run build:adapter",

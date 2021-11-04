@@ -3,7 +3,7 @@ import {testBip44Entropy, testPublicKey} from "./keyPairTestConstants";
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {getPublicKey} from "../../../src/rpc/getPublicKey";
-import {SnapConfig} from "@nodefactory/filsnap-types";
+import {SnapConfig} from "@chainsafe/filsnap-types";
 
 chai.use(sinonChai);
 

@@ -1,7 +1,7 @@
 import {MetamaskState, Wallet} from "../interfaces";
 import deepmerge from "deepmerge";
 import {getDefaultConfiguration} from "../configuration";
-import {SnapConfig} from "@nodefactory/filsnap-types";
+import {SnapConfig} from "@chainsafe/filsnap-types";
 
 export async function configure(wallet: Wallet, networkName: string, overrides?: unknown): Promise<SnapConfig> {
   const defaultConfig = getDefaultConfiguration(networkName);

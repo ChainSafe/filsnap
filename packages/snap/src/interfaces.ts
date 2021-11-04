@@ -1,4 +1,4 @@
-import {FilecoinNetwork, MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@nodefactory/filsnap-types";
+import {FilecoinNetwork, MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@chainsafe/filsnap-types";
 import {defaultConfiguration} from "./configuration/predefined";
 
 export type FMethodCallback = (

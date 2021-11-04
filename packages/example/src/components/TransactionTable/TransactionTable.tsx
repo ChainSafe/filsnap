@@ -1,7 +1,7 @@
 import React from "react";
 import {Paper, Table, TableContainer, TableCell,
     TableRow, TableHead, TableBody} from '@material-ui/core/';
-import {MessageStatus} from "@nodefactory/filsnap-types";
+import {MessageStatus} from "@chainsafe/filsnap-types";
 
 export interface TransactionTableProps {
     txs: MessageStatus[];
