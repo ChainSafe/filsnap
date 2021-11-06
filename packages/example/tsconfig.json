@@ -17,7 +17,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "target": "ES2017"
+    "target": "ES2017",
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"

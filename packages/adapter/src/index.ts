@@ -3,7 +3,7 @@ import {MetamaskFilecoinSnap as MFSnap} from "./snap";
 import {SnapConfig} from "@chainsafe/filsnap-types";
 
 const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
-const defaultSnapId = `wallet_plugin_${defaultSnapOrigin}`;
+const defaultSnapId = `wallet_snap_${defaultSnapOrigin}`;
 
 export type MetamaskFilecoinSnap = MFSnap;
 
@@ -18,17 +18,17 @@ export {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
  * All other properties are optional, and if present will overwrite predefined property.
  *
  * @param config - SnapConfig
- * @param pluginOrigin
+ * @param snapOrigin
  *
  * @return MetamaskFilecoinSnap - adapter object that exposes snap API
  */
 export async function enableFilecoinSnap(
-  config: Partial<SnapConfig>, pluginOrigin?: string
+  config: Partial<SnapConfig>, snapOrigin?: string
 ): Promise<MetamaskFilecoinSnap> {
 
   let snapId = defaultSnapId;
-  if (pluginOrigin) {
-    snapId = `wallet_plugin_${pluginOrigin}`;
+  if (snapOrigin) {
+    snapId = `wallet_snap_${snapOrigin}`;
   }
 
   // check all conditions
@@ -54,7 +54,7 @@ export async function enableFilecoinSnap(
 
   // create snap describer
   const snap = new MFSnap(
-    pluginOrigin || defaultSnapOrigin
+    snapOrigin || defaultSnapOrigin
   );
   // set initial configuration
   await (await snap.getFilecoinSnapApi()).configure(config);

@@ -13,12 +13,12 @@ import {
 export class MetamaskFilecoinSnap {
 
   // snap parameters
-  protected readonly pluginOrigin: string;
+  protected readonly snapOrigin: string;
   protected readonly snapId: string;
 
-  public constructor(pluginOrigin: string) {
-    this.pluginOrigin = pluginOrigin;
-    this.snapId = `wallet_plugin_${this.pluginOrigin}`;
+  public constructor(snapOrigin: string) {
+    this.snapOrigin = snapOrigin;
+    this.snapId = `wallet_snap_${this.snapOrigin}`;
   }
 
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {

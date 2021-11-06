@@ -72,8 +72,8 @@ export interface WalletEnableRequest {
   params: object[];
 }
 
-export interface GetPluginsRequest {
-  method: "wallet_getPlugins";
+export interface GetSnapsRequest {
+  method: "wallet_getSnaps";
 }
 
 export interface SnapRpcMethodRequest {
@@ -81,7 +81,7 @@ export interface SnapRpcMethodRequest {
   params: [MetamaskFilecoinRpcRequest];
 }
 
-export type MetamaskRpcRequest = WalletEnableRequest | GetPluginsRequest | SnapRpcMethodRequest;
+export type MetamaskRpcRequest = WalletEnableRequest | GetSnapsRequest | SnapRpcMethodRequest;
 
 export interface UnitConfiguration {
   symbol: string;
