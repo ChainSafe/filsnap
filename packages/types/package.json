@@ -13,9 +13,7 @@
     "filecoin",
     "metamask",
     "snap",
-    "plugin",
     "dapp"
   ],
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {}
 }

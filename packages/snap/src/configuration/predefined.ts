@@ -20,7 +20,7 @@ export const filecoinTestnetConfiguration: SnapConfig = {
   network: "t",
   rpc: {
     token: "",
-    url: `https://api.node.glif.io`
+    url: `https://calibration.node.glif.io`
   },
   unit: {
     decimals: 6,

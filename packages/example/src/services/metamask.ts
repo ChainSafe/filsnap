@@ -8,7 +8,7 @@ declare global {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             send: <T>(request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<T>;
             on: (eventName: unknown, callback: unknown) => unknown;
-            // requestIndex: () => Promise<{getPluginApi: (origin: string) => Promise<FilecoinApi>}>;
+            // requestIndex: () => Promise<{getSnapApi: (origin: string) => Promise<FilecoinApi>}>;
         }
     }
 }
@@ -24,15 +24,10 @@ export interface SnapInitializationResponse {
 
 export async function installFilecoinSnap(): Promise<SnapInitializationResponse> {
     try {
-        console.log("installing snap");
-        let metamaskFilecoinSnap;
-        if (process.env.REACT_APP_SNAP === 'local') {
-            metamaskFilecoinSnap = await enableFilecoinSnap({network: "f"}, localOrigin);
-        } else {
-            metamaskFilecoinSnap = await enableFilecoinSnap({network: "f"});
-        }
+        console.log('Attempting to connect to snap...');
+        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "f"}, localOrigin);
         isInstalled = true;
-        console.log("Snap installed!!");
+        console.log('Snap installed!');
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
     } catch (e) {
         console.log(e);

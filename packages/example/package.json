@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "license": "(Apache-2.0 AND MIT)",
+  "homepage": "https://metamask.github.io/filsnap/",
+  "devDependencies": {
+    "eslint-config-react-app": "^6.0.0",
+    "gh-pages": "^3.1.0"
+  },
   "dependencies": {
+    "@chainsafe/filsnap-adapter": "^1.0.0",
+    "@chainsafe/filsnap-types": "^1.0.0",
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "latest",
     "@material-ui/styles": "^4.9.6",
-    "@chainsafe/filsnap-adapter": "^1.0.0",
-    "@chainsafe/filsnap-types": "^1.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -19,12 +24,14 @@
     "@types/react-dom": "^16.9.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-scripts": "3.4.0",
+    "react-scripts": "^4.0.3",
     "sass": "^1.26.3",
     "to-hex": "^0.0.15",
-    "typescript": "~3.7.2"
+    "typescript": "4.3.5"
   },
   "scripts": {
+    "predeploy": "yarn build",
+    "deploy": "gh-pages --dist build --remote metamask --no-history",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "exit 0",

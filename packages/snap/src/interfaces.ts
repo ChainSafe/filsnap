@@ -1,4 +1,4 @@
-import {MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@chainsafe/filsnap-types";
+import {FilecoinNetwork, MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@chainsafe/filsnap-types";
 import {defaultConfiguration} from "./configuration/predefined";
 
 export type FMethodCallback = (
@@ -18,19 +18,6 @@ export const EmptyMetamaskState: () => MetamaskState = () => ({
 });
 
 export interface Wallet {
-  registerApiRequestHandler: (origin: unknown) => unknown;
   registerRpcMessageHandler: (fn: FMethodCallback) => unknown;
-  send(options: {method: string; params: unknown[]}): unknown;
-  getAppKey(): Promise<string>;
-  updatePluginState(state: MetamaskState): void;
-  getPluginState(): MetamaskState;
-}
-
-export interface Asset {
-  balance: string|number;
-  customViewUrl?: string;
-  decimals?: number;
-  identifier: string;
-  image?: string;
-  symbol: string;
+  request(options: {method: string; params?: unknown[]}): unknown;
 }

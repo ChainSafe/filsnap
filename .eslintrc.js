@@ -11,7 +11,6 @@ module.exports = {
         // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
         // e.g. "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/class-name-casing": "error",
         "@typescript-eslint/func-call-spacing": "error",
         "@typescript-eslint/indent": ["error", 2],
         "@typescript-eslint/member-ordering": "error",

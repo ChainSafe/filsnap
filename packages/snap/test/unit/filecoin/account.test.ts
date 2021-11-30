@@ -16,18 +16,18 @@ describe('Test account function: getKeyPair', function() {
   });
 
   it('should return valid keypair for filecoin mainnnet', async function() {
-    walletStub.getPluginState.returns({
+    walletStub.rpcStubs.snap_getState.resolves({
       filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}
     });
-    walletStub.updatePluginState.returnsArg(0);
+    walletStub.rpcStubs.snap_updateState.returnsArg(0);
     // ensure our call to getBip44Entropy returns the correct entropy
-    walletStub.send.returns(testBip44Entropy);
+    walletStub.requestStub.resolves(testBip44Entropy);
     const result = await getKeyPair(walletStub);
     expect(result.publicKey).to.be.eq(testPublicKey);
     expect(result.address).to.be.eq(testAddress);
     expect(result.privateKey).to.be.eq(testPrivateKey);
-    expect(walletStub.getAppKey).to.have.not.been.called;
-    expect(walletStub.send).to.have.been.calledOnce;
-    expect(walletStub.getPluginState).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_getAppKey).to.have.not.been.called;
+    expect(walletStub.requestStub).to.have.been.calledOnce;
+    expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
   });
 });

@@ -5,28 +5,28 @@ export function hasMetaMask(): boolean {
   return window.ethereum.isMetaMask;
 }
 
-async function getWalletPlugins(): Promise<{ [k: string]: { permissionName: string } }> {
-  return await window.ethereum.send({
-    method: 'wallet_getPlugins',
+async function getWalletSnaps(): Promise<{ [k: string]: { permissionName: string } }> {
+  return await window.ethereum.request({
+    method: 'wallet_getSnaps',
   }) as { [k: string]: { permissionName: string } };
 }
 
 export async function isMetamaskSnapsSupported(): Promise<boolean> {
   try {
-    await getWalletPlugins();
+    await getWalletSnaps();
     return true;
   } catch (e) {
     return false;
   }
 }
 
-export async function isSnapInstalled(pluginOrigin: string): Promise<boolean> {
+export async function isSnapInstalled(snapOrigin: string): Promise<boolean> {
   try {
     return !!Object
-      .values(await getWalletPlugins())
-      .find((permission) => permission.permissionName === pluginOrigin);
+      .values(await getWalletSnaps())
+      .find((permission) => permission.permissionName === snapOrigin);
   } catch (e) {
-    console.log("Failed to obtain installed plugins", e);
+    console.log("Failed to obtain installed snaps", e);
     return false;
   }
 }

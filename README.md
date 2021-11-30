@@ -4,7 +4,7 @@
 ![](https://img.shields.io/badge/Node.js-%3E%3D12.x-orange.svg?style=flat-square)
 ![Discord](https://img.shields.io/discord/608204864593461248?color=blue&label=Discord&logo=discord)
 
-Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
+Metamask Snap to enable Metamask users interaction with filecoin dapps.
 
 **For detailed documentation and integration instructions see [wiki](https://github.com/chainsafe/filsnap/wiki).**
 
@@ -12,7 +12,7 @@ Metamask snap (plugin) to enable Metamask users interaction with filecoin dapps.
 
 #### Metamask
 
-First, install our beta release of Metamask plugin: 
+First, install our beta release of Metamask snap: 
 
 - [download latest Metamask snaps beta release](https://github.com/NodeFactoryIo/metamask-snaps-beta/releases) (chrome recommended)
 - extract downloaded archive
