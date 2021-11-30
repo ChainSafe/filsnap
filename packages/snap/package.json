@@ -66,6 +66,7 @@
   "devDependencies": {
     "@chainsafe/filsnap-types": "^1.0.0",
     "@nodefactory/snaps-cli": "^1.5.0",
+    "@metamask/snaps-cli": "^0.4.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
