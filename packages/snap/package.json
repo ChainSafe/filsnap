@@ -24,12 +24,8 @@
     "watch:tsc": "yarn run build:tsc --watch",
     "watch:snap": "mm-snap watch --sourceMaps -s build/index.js",
     "serve": "mm-snap serve",
-    "watch:snap:nf": "nf-snap watch --debug -s build/index.js",
-    "serve:nf": "nf-snap serve",
     "test": "yarn run test:unit",
     "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
-    "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --verboseErrors --eval false",
-    "eval:snap:nf": "nf-snap eval -b dist/bundle.js --verbose",
     "prepublish": "yarn run build && mkdir -p ipfs && cp package.json ipfs/package.json",
     "publish": "export BUNDLE_URL=`ipd --no-clipboard -O -p infura dist/bundle.js` && sed -i 's/http:\\/\\/localhost:8081\\/dist\\/bundle.js/https:\\/\\/ipfs.infura.io\\/ipfs\\/'\"$BUNDLE_URL\"'/g' ipfs/package.json && ipd --no-clipboard -O -p infura ipfs/package.json",
     "postpublish": "rm -rf ipfs"
@@ -65,7 +61,7 @@
   },
   "devDependencies": {
     "@chainsafe/filsnap-types": "^1.0.0",
-    "@nodefactory/snaps-cli": "^1.5.0",
+    "@metamask/snaps-cli": "^0.4.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^7.0.2",
