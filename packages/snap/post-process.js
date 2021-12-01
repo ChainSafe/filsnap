@@ -6,7 +6,7 @@ const bundlePath = pathUtils.join(snapConfig.dist, snapConfig.outfileName)
 
 let bundleString = fs.readFileSync(bundlePath, 'utf8');
 
-// Remove anonymous arrow function wrapper injected by nf-snap
+// Remove anonymous arrow function wrapper injected by mm-snap
 bundleString = bundleString.replace(/\(\) => \(\n/u, '');
 bundleString = bundleString.slice(0, bundleString.lastIndexOf('\n)'));
 
