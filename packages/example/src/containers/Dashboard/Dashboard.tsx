@@ -76,7 +76,7 @@ export const Dashboard = () => {
                     setBalanceChange(false)
                 }
             }
-        }, 30000);
+        }, 30000); // every 30 seconds ~ 1 epoch
         return () => clearInterval(interval);
     }, [api, balance, setBalance, setBalanceChange]);
 
