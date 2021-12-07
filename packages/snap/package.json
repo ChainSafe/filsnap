@@ -59,8 +59,7 @@
       "snap_confirm": {},
       "snap_getBip44Entropy_1": {},
       "snap_getBip44Entropy_461": {},
-      "snap_getState": {},
-      "snap_updateState": {}
+      "snap_manageState": {}
     }
   },
   "devDependencies": {

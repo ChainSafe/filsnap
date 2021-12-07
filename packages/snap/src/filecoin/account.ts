@@ -8,7 +8,7 @@ import {deriveBIP44AddressKey, JsonBIP44CoinTypeNode} from '@metamask/key-tree';
  * @param wallet
  */
 export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
-  const snapState = await wallet.request({ method: 'snap_getState' }) as MetamaskState;
+  const snapState = await wallet.request({ method: 'snap_manageState', params: ['get'] }) as MetamaskState;
   const { derivationPath } = snapState.filecoin.config;
   const bip44Code = derivationPath.split('/')[2].split('\'')[0];
   const isTestnet = bip44Code !== '461';

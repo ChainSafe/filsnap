@@ -6,11 +6,11 @@ import {SnapConfig} from "@chainsafe/filsnap-types";
 export async function configure(wallet: Wallet, networkName: string, overrides?: unknown): Promise<SnapConfig> {
   const defaultConfig = getDefaultConfiguration(networkName);
   const configuration = overrides ? deepmerge(defaultConfig, overrides) : defaultConfig;
-  const state = await wallet.request({ method: 'snap_getState' }) as MetamaskState;
+  const state = await wallet.request({ method: 'snap_manageState', params: ['get'] }) as MetamaskState;
   state.filecoin.config = configuration;
   wallet.request({
-    method: 'snap_updateState',
-    params: [state],
+    method: 'snap_manageState',
+    params: ['update', state],
   });
   return configuration;
 }

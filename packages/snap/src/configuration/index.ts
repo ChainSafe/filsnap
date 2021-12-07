@@ -21,7 +21,8 @@ export function getDefaultConfiguration(networkName?: string): SnapConfig {
 
 export async function getConfiguration(wallet: Wallet): Promise<SnapConfig> {
   const state = await wallet.request({
-    method: 'snap_getState'
+    method: 'snap_manageState',
+    params: ['get'],
   }) as MetamaskState;
   if (!state || !state.filecoin.config) {
     return defaultConfiguration;
