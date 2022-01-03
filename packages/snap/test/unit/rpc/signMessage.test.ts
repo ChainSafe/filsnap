@@ -72,13 +72,15 @@ describe('Test rpc handler function: signMessage', function () {
             ...messageRequest,
             gaspremium: "10",
             gasfeecap: "10",
-            gaslimit: 1000
+            gaslimit: 1000,
+            nonce: 1
         };
         const signedMessage = await signMessage(walletStub, apiStub, messageRequestWithGasParams);
+        expect(apiStub.mpoolGetNonce).to.have.not.been.called;
         expect(walletStub.requestStub).to.have.been.calledTwice;
         expect(walletStub.rpcStubs.snap_getState).to.have.been.calledOnce;
         expect(walletStub.rpcStubs.snap_getAppKey).to.have.not.been.called;
-        expect(signedMessage.message).to.be.deep.eq(fullMessage);
+        expect(signedMessage.message).to.be.deep.eq({...fullMessage, nonce: 1});
         expect(signedMessage.signature.data).to.not.be.empty;
         expect(signedMessage.signature.type).to.be.eq(1);
     });
