@@ -1,7 +1,7 @@
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
-import {FilecoinNumber} from '@glif/filecoin-number';
+import {FilecoinNumber} from '@glif/filecoin-number/dist';
 
 export async function getBalance(wallet: Wallet, api: LotusRpcApi, address?: string): Promise<string> {
   if(!address) {
