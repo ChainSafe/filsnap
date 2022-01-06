@@ -2,25 +2,10 @@
 # yarn lockfile v1
 
 
-"@agoric/babel-standalone@^7.9.5":
-  version "7.14.3"
-  resolved "https://registry.yarnpkg.com/@agoric/babel-standalone/-/babel-standalone-7.14.3.tgz#1bf201417481d37d2797dd3283590dcbef775b4d"
-  integrity sha512-Rdlxts19kvxHsqTjTrhGJv0yKgCyjCSVgXoLBZf9dZ7lyo/j+6xFQBiWjP03bXve3X74wUvA1QU55wVey8DEiQ==
-
 "@agoric/make-hardener@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@agoric/make-hardener/-/make-hardener-0.0.6.tgz#5903748a71381bc37e23d571390aaff9973c37b2"
   integrity sha512-OpZcNx/7bhHar0iuQ6D+FKYCMMxqKvYs4aC/bB5v/ffZaSM5sNAl98DnGL1mD9NSyZLGzAZ7D5XwJpe37BMldQ==
-
-"@agoric/make-hardener@^0.1.2":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@agoric/make-hardener/-/make-hardener-0.1.3.tgz#807b0072bef95d935c3370d406d9dfeb719f69ee"
-  integrity sha512-rc9M2ErE/Zu822OLCnAltr957ZVTsBvVZ7KA2unqDpjo3q7PqZF2hWFB1xXD2Qkfwt5exQ3BjFbkj+NUaTg4gA==
-
-"@agoric/transform-module@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@agoric/transform-module/-/transform-module-0.4.1.tgz#9fb152364faf372e1bda535cb4ef89717724f57c"
-  integrity sha512-4TJJHXeXAWu1FCA7yXCAZmhBNoGTB/BEAe2pv+J2X8W/mJTr9b395OkDCSRMpzvmSshLfBx6wT0D7dqWIWEC1w==
 
 "@babel/code-frame@7.10.4", "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.10.4":
   version "7.10.4"
@@ -3247,19 +3232,22 @@
   resolved "https://registry.yarnpkg.com/@metamask/snap-workers/-/snap-workers-0.6.3.tgz#ef456f7d0bef1e492984784b0e4785ed3e42dab8"
   integrity sha512-P2rGjnNfq8EcAu7CD7N/Ipk+x0isPwXWDoQNcCT5mgvLGoeRLhJmre+aDpwBvCK4FTJvUZ+PabXSoFlDme14Cw==
 
-"@metamask/snaps-cli@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-0.4.0.tgz#444a8aebbdeb144df85b15a8d8ff2ab94cf1b6e3"
-  integrity sha512-DsPzmY8FCSJfZZ0DOeTGXiIbWY3Shfaxy4nxk1vn5/Qc3PcIU8bJw8382AfNUiJ4TuPjP+sZ2zrah+0opRos5A==
+"@metamask/snaps-cli@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-0.6.3.tgz#794547bced2358663806010b30dc98a1423e8e38"
+  integrity sha512-RrNDhlhikzTHVb3nBfiJOk3n4NlCruzdnm3FblxQO9KiZLzbwNT+0Y3VEwTx3Oou2nJjBxXduE/snBhcHfAEKQ==
   dependencies:
+    "@metamask/snap-controllers" "^0.6.3"
     browserify "^17.0.0"
     chokidar "^3.0.2"
     fast-deep-equal "^2.0.1"
     init-package-json "^1.10.3"
     is-url "^1.2.4"
+    mkdirp "^1.0.4"
     rfdc "^1.3.0"
     serve-handler "^6.1.1"
-    ses "^0.11.0"
+    ses "^0.15.3"
+    slash "^3.0.0"
     strip-comments "^2.0.1"
     yargs "^16.2.0"
     yargs-parser "^20.2.2"
@@ -16223,14 +16211,10 @@ serve-static@1.14.1:
     parseurl "~1.3.3"
     send "0.17.1"
 
-ses@^0.11.0:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/ses/-/ses-0.11.1.tgz#9ba6103c25721cd000dc685f50d03487bdd3700f"
-  integrity sha512-ulorTzYygfVpvlKiAf/ZlnGFhJ7wngGHdJgi6hBrYwoV1tPsQNvBse9gfXMc7b0W8t98N9qagIYYveBkN+SiVA==
-  dependencies:
-    "@agoric/babel-standalone" "^7.9.5"
-    "@agoric/make-hardener" "^0.1.2"
-    "@agoric/transform-module" "^0.4.1"
+ses@^0.15.3:
+  version "0.15.3"
+  resolved "https://registry.yarnpkg.com/ses/-/ses-0.15.3.tgz#f9dcc640394787e17b7c66dc550133b2ec45df3e"
+  integrity sha512-DTESfYMwSYtIuwCGmOYwxrOngCvLmInu/UHeMRen1tx23bKAe7rFjQAvbkdGKQDBezdwnybFD3JUCPDxVeiVPA==
 
 ses@^0.6.4:
   version "0.6.5"
