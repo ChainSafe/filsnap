@@ -57,8 +57,8 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
   const confirmation = await showConfirmationDialog(
     wallet,
     {
-      prompt: `Do you want to sign this message?`,
       description: `It will be signed with address: ${keypair.address}`,
+      prompt: `Do you want to sign this message?`,
       textAreaContent: rawMessage,
     }
   );
