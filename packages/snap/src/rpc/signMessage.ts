@@ -60,7 +60,7 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
         `with account ${keypair.address}?`
   );
   if (confirmation) {
-    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("base64");
   }
   return null;
 }
