@@ -132,6 +132,7 @@ export interface MessageRequest {
   gaslimit?: number;
   gasfeecap?: string;
   gaspremium?: string;
+  nonce?: number;
 }
 
 export interface MessageGasEstimate {

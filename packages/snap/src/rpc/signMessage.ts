@@ -13,6 +13,7 @@ export async function signMessage(
   const gl = messageRequest.gaslimit && messageRequest.gaslimit !== 0 ? messageRequest.gaslimit : 0;
   const gp = messageRequest.gaspremium && messageRequest.gaspremium !== "0" ? messageRequest.gaspremium : "0";
   const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
+  const nonce = messageRequest.nonce ?? Number(await api.mpoolGetNonce(keypair.address));
   // create message object
   const message: Message = {
     from: keypair.address,
@@ -20,7 +21,7 @@ export async function signMessage(
     gaslimit: gl,
     gaspremium: gp,
     method: 0, // code for basic transaction
-    nonce: Number(await api.mpoolGetNonce(keypair.address)),
+    nonce,
     params: [],
     to: messageRequest.to,
     value: messageRequest.value,
@@ -63,7 +64,7 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
     }
   );
   if (confirmation) {
-    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("base64");
   }
   return null;
 }

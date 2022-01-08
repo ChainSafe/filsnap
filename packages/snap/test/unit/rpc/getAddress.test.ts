@@ -28,4 +28,29 @@ describe('Test rpc handler function: getAddress', function() {
     expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been.calledOnce;
   });
 
+  it('should respect all derivation path fields', async function () {
+    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testBip44Entropy);
+    walletStub.rpcStubs.snap_manageState
+      .withArgs('get')
+      .resolves({filecoin: {config: {derivationPath: "m/44'/461'/1'/0/0", network: "f"} as SnapConfig}});
+    let result = await getAddress(walletStub);
+    expect(result).to.not.be.eq(testAddress);
+    expect(result).to.not.be.null;
+    
+    walletStub.rpcStubs.snap_manageState
+      .withArgs('get')
+      .resolves({filecoin: {config: {derivationPath: "m/44'/461'/0'/1/0", network: "f"} as SnapConfig}});
+    result = await getAddress(walletStub);
+    expect(result).to.not.be.eq(testAddress);
+    expect(result).to.not.be.null;
+
+    walletStub.rpcStubs.snap_manageState
+      .withArgs('get')
+      .resolves({filecoin: {config: {derivationPath: "m/44'/461'/0'/0/1", network: "f"} as SnapConfig}});
+    result = await getAddress(walletStub);
+    expect(result).to.not.be.eq(testAddress);
+    expect(result).to.not.be.null;
+  });
+
+
 });
