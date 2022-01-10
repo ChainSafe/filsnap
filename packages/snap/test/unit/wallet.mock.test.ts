@@ -7,9 +7,9 @@ export class WalletMock implements Wallet {
   public readonly requestStub = sinon.stub()
 
   public readonly rpcStubs = {
-    snap_getState: sinon.stub(),
-    snap_updateState: sinon.stub(),
-    snap_getAppKey: sinon.stub(),
+    snap_manageState: sinon.stub(),
+    snap_getBip44Entropy_461: sinon.stub(),
+    snap_confirm: sinon.stub(),
   }
 
   /**

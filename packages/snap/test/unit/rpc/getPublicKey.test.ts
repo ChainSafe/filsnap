@@ -15,11 +15,15 @@ describe('Test rpc handler function: getPublicKey', function () {
     });
 
     it('should return valid address', async function () {
-        walletStub.requestStub.resolves(testBip44Entropy);
-        walletStub.rpcStubs.snap_getState.resolves({
-            filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}
-        })
+        walletStub.rpcStubs.snap_manageState
+            .withArgs('get')
+            .resolves({filecoin: {config: {network: "f", derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig}});
+        walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testBip44Entropy);
+        
         const result = await getPublicKey(walletStub);
+
         expect(result).to.be.eq(testPublicKey);
+        expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
+        expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been.calledOnce;
     });
 });

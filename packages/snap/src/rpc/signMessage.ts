@@ -36,14 +36,16 @@ export async function signMessage(
   // show confirmation
   const confirmation = await showConfirmationDialog(
     wallet,
-    `Do you want to sign message\n\n` +
-        `from: ${message.from}\n` +
+    {
+      prompt: `Do you want to sign this message?`,
+      textAreaContent: `from: ${message.from}\n` +
         `to: ${message.to}\n` +
         `value:${message.value}\n` +
         `gas limit:${message.gaslimit}\n` +
         `gas fee cap:${message.gasfeecap}\n` +
         `gas premium: ${message.gaspremium}\n` +
         `with account ${keypair.address}?`
+    },
   );
   if (confirmation) {
     return transactionSign(message, keypair.privateKey);
@@ -55,9 +57,11 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
   const keypair = await getKeyPair(wallet);
   const confirmation = await showConfirmationDialog(
     wallet,
-    `Do you want to sign message\n\n` +
-        `${rawMessage}\n\n` +
-        `with account ${keypair.address}?`
+    {
+      description: `It will be signed with address: ${keypair.address}`,
+      prompt: `Do you want to sign this message?`,
+      textAreaContent: rawMessage,
+    }
   );
   if (confirmation) {
     return transactionSignRaw(rawMessage, keypair.privateKey).toString("base64");

@@ -9,7 +9,7 @@ import { isMainThread } from "worker_threads";
  * @param wallet
  */
 export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
-  const snapState = await wallet.request({ method: 'snap_getState' }) as MetamaskState;
+  const snapState = await wallet.request({ method: 'snap_manageState', params: ['get'] }) as MetamaskState;
   const { derivationPath } = snapState.filecoin.config;
   const [, , coinType, account, change, addressIndex] = derivationPath.split('/');
   const bip44Code = coinType.replace("\'", "");

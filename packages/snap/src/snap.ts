@@ -19,14 +19,15 @@ const apiDependentMethods = [
 
 wallet.registerRpcMessageHandler(async (originString, requestObject) => {
   const state = await wallet.request({
-    method: 'snap_getState',
+    method: 'snap_manageState',
+    params: ['get'],
   });
 
   if (!state) {
     // initialize state if empty and set default config
     await wallet.request({
-      method: 'snap_updateState',
-      params: [EmptyMetamaskState()],
+      method: 'snap_manageState',
+      params: ['update', EmptyMetamaskState()],
     });
   }
 
