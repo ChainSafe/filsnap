@@ -7,7 +7,7 @@ const defaultSnapId = `wallet_snap_${defaultSnapOrigin}`;
 
 export type MetamaskFilecoinSnap = MFSnap;
 
-export {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
+export {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
 
 /**
  * Install and enable Filecoin snap
