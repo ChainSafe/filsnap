@@ -13,7 +13,7 @@ declare global {
     }
 }
 
-export const snapId = 'local:http://localhost:8081';
+export const snapId = process.env.REACT_APP_SNAP_ID ?? 'local:http://localhost:8081';
 
 let isInstalled: boolean = false;
 
