@@ -1,6 +1,6 @@
 {
   "name": "@chainsafe/filsnap",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
   "private": false,
@@ -30,9 +30,7 @@
     "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
     "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --verboseErrors --eval false",
     "eval:snap:nf": "mm-snap eval -b dist/bundle.js --verbose",
-    "prepublish": "yarn run build && mkdir -p ipfs && cp package.json ipfs/package.json",
-    "publish": "export BUNDLE_URL=`ipd --no-clipboard -O -p infura dist/bundle.js` && sed -i 's/http:\\/\\/localhost:8081\\/dist\\/bundle.js/https:\\/\\/ipfs.infura.io\\/ipfs\\/'\"$BUNDLE_URL\"'/g' ipfs/package.json && ipd --no-clipboard -O -p infura ipfs/package.json",
-    "postpublish": "rm -rf ipfs"
+    "prepublish": "yarn run build"
   },
   "repository": {
     "type": "git",
@@ -51,7 +49,7 @@
   },
   "homepage": "https://github.com/chainsafe/filecoin-metamask-snap#readme",
   "devDependencies": {
-    "@chainsafe/filsnap-types": "^1.0.0",
+    "@chainsafe/filsnap-types": "2.0.0-beta.1",
     "@metamask/snap-controllers": "^0.6.3",
     "@metamask/snaps-cli": "^0.6.3",
     "@nodefactory/snaps-cli": "^1.5.0",
