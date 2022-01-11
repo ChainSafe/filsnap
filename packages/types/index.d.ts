@@ -132,6 +132,7 @@ export interface MessageRequest {
   gaslimit?: number;
   gasfeecap?: string;
   gaspremium?: string;
+  maxFee?: string;
   nonce?: number;
 }
 
