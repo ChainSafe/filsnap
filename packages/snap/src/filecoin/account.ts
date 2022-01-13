@@ -2,7 +2,6 @@ import {MetamaskState, Wallet} from "../interfaces";
 import {keyRecover} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@chainsafe/filsnap-types";
 import {deriveBIP44AddressKey, JsonBIP44CoinTypeNode} from '@metamask/key-tree';
-import { isMainThread } from "worker_threads";
 
 /**
  * Return derived KeyPair from seed.
