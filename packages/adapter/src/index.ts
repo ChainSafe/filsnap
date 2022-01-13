@@ -1,9 +1,8 @@
-import {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
+import {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
 import {MetamaskFilecoinSnap as MFSnap} from "./snap";
 import {SnapConfig} from "@chainsafe/filsnap-types";
 
 const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
-const defaultSnapId = `wallet_snap_${defaultSnapOrigin}`;
 
 export type MetamaskFilecoinSnap = MFSnap;
 
@@ -26,10 +25,7 @@ export async function enableFilecoinSnap(
   config: Partial<SnapConfig>, snapOrigin?: string
 ): Promise<MetamaskFilecoinSnap> {
 
-  let snapId = defaultSnapId;
-  if (snapOrigin) {
-    snapId = `wallet_snap_${snapOrigin}`;
-  }
+  const snapId = snapOrigin ?? defaultSnapOrigin;
 
   // check all conditions
   if (!hasMetaMask()) {
@@ -43,14 +39,14 @@ export async function enableFilecoinSnap(
   }
 
   // enable snap
-  if (!(await isSnapInstalled(snapId))) {
-    await window.ethereum.request({
-      method: "wallet_enable",
-      params: [{
-        [snapId]: {}
-      }]
-    });
-  }
+  await window.ethereum.request({
+    method: "wallet_enable",
+    params: [{
+      [`wallet_snap_${snapId}`]: {}
+    }]
+  });
+
+  //await unlockMetamask();
 
   // create snap describer
   const snap = new MFSnap(
