@@ -19,7 +19,7 @@ export async function estimateMessageGas(
   };
   // estimate gas usage
   const gasLimit = await api.gasEstimateGasLimit(message, null);
-  const maxFee = new FilecoinNumber('0.1', "fill").toAttoFil(); // set max fee to 0.1 FIL
+  const maxFee = new FilecoinNumber('0.1', "fil").toAttoFil(); // set max fee to 0.1 FIL
   const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: maxFee}, null);
   return {gasfeecap: messageEstimate.GasFeeCap, gaslimit: gasLimit, gaspremium: messageEstimate.GasPremium};
 }
