@@ -26,8 +26,8 @@
     "serve": "mm-snap serve",
     "test": "yarn run test:unit",
     "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
-    "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --verboseErrors --eval false",
-    "eval:snap": "mm-snap eval -b dist/bundle.js --verbose",
+    "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --strip --verboseErrors --eval false",
+    "eval:snap": "mm-snap eval -b dist/bundle.js --verboseErrors",
     "prepublish": "yarn run build"
   },
   "repository": {
