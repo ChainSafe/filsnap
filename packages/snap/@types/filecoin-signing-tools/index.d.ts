@@ -23,7 +23,7 @@ declare module "@zondax/filecoin-signing-tools/js" {
         gaspremium: string;
         gaslimit: number;
         method: number;
-        params?: any;
+        params?: string;
     }
 
     export interface SignedMessage {

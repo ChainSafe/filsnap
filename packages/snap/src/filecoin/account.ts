@@ -27,10 +27,10 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   });
   const privateKey = extendedPrivateKey.slice(0, 32);
   const extendedKey = keyRecover(privateKey, !isFilecoinMainnet);
-
+  
   return {
     address: extendedKey.address,
-    privateKey: extendedKey.private_hexstring,
+    privateKey: extendedKey.private_base64,
     publicKey: extendedKey.public_hexstring
   };
 }
