@@ -26,7 +26,7 @@ describe('Test rpc handler function: signMessage', function () {
         gaspremium: "10",
         method: 0,
         nonce: 0,
-        params: []
+        params: ""
     };
 
     afterEach(function() {

@@ -22,7 +22,7 @@ export async function signMessage(
     gaspremium: gp,
     method: 0, // code for basic transaction
     nonce,
-    params: [],
+    params: "",
     to: messageRequest.to,
     value: messageRequest.value,
   };

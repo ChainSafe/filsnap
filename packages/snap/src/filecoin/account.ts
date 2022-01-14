@@ -2,7 +2,6 @@ import {MetamaskState, Wallet} from "../interfaces";
 import {keyRecover} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@chainsafe/filsnap-types";
 import {deriveBIP44AddressKey, JsonBIP44CoinTypeNode} from '@metamask/key-tree';
-import { isMainThread } from "worker_threads";
 
 /**
  * Return derived KeyPair from seed.
@@ -28,10 +27,10 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   });
   const privateKey = extendedPrivateKey.slice(0, 32);
   const extendedKey = keyRecover(privateKey, !isFilecoinMainnet);
-
+  
   return {
     address: extendedKey.address,
-    privateKey: extendedKey.private_hexstring,
+    privateKey: extendedKey.private_base64,
     publicKey: extendedKey.public_hexstring
   };
 }

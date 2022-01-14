@@ -2,7 +2,7 @@ import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
 import {getKeyPair} from "../../../src/filecoin/account";
-import {testAddress, testBip44Entropy, testPrivateKey, testPublicKey} from "../rpc/keyPairTestConstants";
+import {testAddress, testBip44Entropy, testPrivateKeyBase64, testPublicKey} from "../rpc/keyPairTestConstants";
 import {SnapConfig} from "@chainsafe/filsnap-types";
 
 chai.use(sinonChai);
@@ -25,7 +25,7 @@ describe('Test account function: getKeyPair', function() {
     const result = await getKeyPair(walletStub);
     expect(result.publicKey).to.be.eq(testPublicKey);
     expect(result.address).to.be.eq(testAddress);
-    expect(result.privateKey).to.be.eq(testPrivateKey);
+    expect(result.privateKey).to.be.eq(testPrivateKeyBase64);
     expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
   });
