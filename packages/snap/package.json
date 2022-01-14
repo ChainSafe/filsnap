@@ -16,7 +16,7 @@
     "type-check:watch": "npm run type-check -- --watch",
     "build": "yarn run build:tsc && yarn run build:snap",
     "build:tsc": "tsc -p tsconfig.build.json --pretty --outDir build",
-    "build:snap": "yarn build:snap:bundle && yarn build:snap:postprocess && yarn build:snap:eval",
+    "build:snap": "yarn build:snap:bundle && yarn build:snap:postprocess && yarn build:snap:eval && mm-snap manifest --fix",
     "build:snap:bundle": "mm-snap build --verboseErrors  --stripComments --eval false",
     "build:snap:postprocess": "node ./post-process.js",
     "build:snap:eval": "mm-snap eval -b dist/bundle.js --verboseErrors",
