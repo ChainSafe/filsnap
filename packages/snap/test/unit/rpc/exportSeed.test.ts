@@ -2,7 +2,7 @@ import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {exportPrivateKey} from "../../../src/rpc/exportPrivateKey";
 import {WalletMock} from "../wallet.mock.test";
-import {testBip44Entropy, testPrivateKey} from "./keyPairTestConstants";
+import {testBip44Entropy, testPrivateKeyBase64} from "./keyPairTestConstants";
 import {SnapConfig} from "@chainsafe/filsnap-types";
 
 chai.use(sinonChai);
@@ -28,7 +28,7 @@ describe('Test rpc handler function: exportSeed', function() {
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been.calledOnce;
     
-    expect(result).to.be.eq(testPrivateKey);
+    expect(result).to.be.eq(testPrivateKeyBase64);
   });
 
   it('should not return seed on negative prompt confirmation', async function () {

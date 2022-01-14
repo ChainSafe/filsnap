@@ -2,18 +2,28 @@ const fs = require('fs');
 const pathUtils = require('path');
 const snapConfig = require('./snap.config.json')
 
-const bundlePath = pathUtils.join(snapConfig.dist, snapConfig.outfileName)
+const bundlePath = pathUtils.join(snapConfig.dist, snapConfig.outfileName);
 
 let bundleString = fs.readFileSync(bundlePath, 'utf8');
 
-// Remove anonymous arrow function wrapper injected by mm-snap
-bundleString = bundleString.replace(/\(\) => \(\n/u, '');
-bundleString = bundleString.slice(0, bundleString.lastIndexOf('\n)'));
+// Alias `window` as `self`
+bundleString = 'var self = window;\n'.concat(bundleString);
 
-// Remove 'use asm' token that throws a console warning
+// Remove useless "stdlib" argument from bignumber.js asm module
+bundleString = bundleString
+  .replace(
+    `module.exports = function decodeAsm (stdlib, foreign, buffer) {`,
+    `module.exports = function decodeAsm (foreign, buffer) {`,
+  )
+  .replace(
+    /stdlib\./gu,
+    '',
+  );
+
+// Remove 'use asm' tokens; they cause pointless console warnings
 bundleString = bundleString.replace(
-  `module.exports = function decodeAsm ( foreign, buffer) {\n  'use asm'\n`,
-  `module.exports = function decodeAsm ( foreign, buffer) {\n`,
-)
+  /^\s*'use asm';?\n?/gmu,
+  '',
+);
 
 fs.writeFileSync(bundlePath, bundleString);
