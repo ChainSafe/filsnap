@@ -12,13 +12,13 @@ Metamask Snap to enable Metamask users interaction with filecoin dapps.
 
 #### Metamask
 
-First, install our beta release of Metamask snap: 
+First, build and install beta release of Metamask extension: 
 
-- [download latest Metamask snaps beta release](https://github.com/NodeFactoryIo/metamask-snaps-beta/releases) (chrome recommended)
-- extract downloaded archive
+- checkout to [this branch](https://github.com/MetaMask/metamask-extension/tree/snaps-stable-nov-21) (chrome recommended)
+- build metamask using `yarn start --build-type flask` or `yarn dist`
 - go to [chrome://extensions/](chrome://extensions/)
 - enable "Developer mode"
-- click "Load unpacked" and point to extracted archive chrome directory
+- click "Load unpacked" and point to chrome directory
 
 #### Demo DAPP
 

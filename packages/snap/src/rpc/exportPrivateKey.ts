@@ -6,7 +6,7 @@ export async function exportPrivateKey(wallet: Wallet): Promise<string|null> {
   // ask for confirmation
   const confirmation = await showConfirmationDialog(
     wallet,
-    'Do you want to export your private key?'
+    { prompt: 'Do you want to export your private key?' }
   );
   // return private key if user confirmed action
   if (confirmation) {

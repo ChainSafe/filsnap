@@ -13,6 +13,7 @@ export async function signMessage(
   const gl = messageRequest.gaslimit && messageRequest.gaslimit !== 0 ? messageRequest.gaslimit : 0;
   const gp = messageRequest.gaspremium && messageRequest.gaspremium !== "0" ? messageRequest.gaspremium : "0";
   const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
+  const nonce = messageRequest.nonce ?? Number(await api.mpoolGetNonce(keypair.address));
   // create message object
   const message: Message = {
     from: keypair.address,
@@ -20,8 +21,8 @@ export async function signMessage(
     gaslimit: gl,
     gaspremium: gp,
     method: 0, // code for basic transaction
-    nonce: Number(await api.mpoolGetNonce(keypair.address)),
-    params: [],
+    nonce,
+    params: "",
     to: messageRequest.to,
     value: messageRequest.value,
   };
@@ -35,14 +36,16 @@ export async function signMessage(
   // show confirmation
   const confirmation = await showConfirmationDialog(
     wallet,
-    `Do you want to sign message\n\n` +
-        `from: ${message.from}\n` +
+    {
+      prompt: `Do you want to sign this message?`,
+      textAreaContent: `from: ${message.from}\n` +
         `to: ${message.to}\n` +
         `value:${message.value}\n` +
         `gas limit:${message.gaslimit}\n` +
         `gas fee cap:${message.gasfeecap}\n` +
         `gas premium: ${message.gaspremium}\n` +
         `with account ${keypair.address}?`
+    },
   );
   if (confirmation) {
     return transactionSign(message, keypair.privateKey);
@@ -54,12 +57,14 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
   const keypair = await getKeyPair(wallet);
   const confirmation = await showConfirmationDialog(
     wallet,
-    `Do you want to sign message\n\n` +
-        `${rawMessage}\n\n` +
-        `with account ${keypair.address}?`
+    {
+      description: `It will be signed with address: ${keypair.address}`,
+      prompt: `Do you want to sign this message?`,
+      textAreaContent: rawMessage,
+    }
   );
   if (confirmation) {
-    return transactionSignRaw(rawMessage, keypair.privateKey).toString("hex");
+    return transactionSignRaw(rawMessage, keypair.privateKey).toString("base64");
   }
   return null;
 }

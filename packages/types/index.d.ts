@@ -113,7 +113,7 @@ export interface Message {
   gaspremium: string;
   gaslimit: number;
   method: number;
-  params?: [];
+  params?: string;
 }
 
 export interface SignedMessage {
@@ -132,6 +132,7 @@ export interface MessageRequest {
   gaslimit?: number;
   gasfeecap?: string;
   gaspremium?: string;
+  nonce?: number;
 }
 
 export interface MessageGasEstimate {
