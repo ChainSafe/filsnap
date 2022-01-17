@@ -49,11 +49,11 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
         setGasPremium(event.target.value);
     }, [setGasPremium]);
     
-    const handleGasFeeCapChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleMaxFeeChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setMaxFee(event.target.value);
     }, [setMaxFee]);
 
-    const handleMaxFeeChange =  useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleGasFeeCapChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setGasFeeCap(event.target.value);
     }, [setGasFeeCap]);
 
@@ -65,7 +65,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
 
     const onAutoFillGas = useCallback(async () => {
         if (recipient && amount && api) {
-            const messageEstimate = (maxFee == "0") ? await api.calculateGasForMessage({
+            const messageEstimate = (maxFee === "0") ? await api.calculateGasForMessage({
                 to: recipient,
                 value: BigInt(amount).toString()
             }) : await api.calculateGasForMessage({
@@ -75,6 +75,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             setGasPremium(messageEstimate.gaspremium);
             setGasFeeCap(messageEstimate.gasfeecap);
             setGasLimit(messageEstimate.gaslimit.toString());
+            setMaxFee(messageEstimate.maxfee);
         } else {
             showAlert("error", "Please first fill in Recipient and Amount fields");
         }
@@ -103,7 +104,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             // inform to refresh messages display
             onNewMessageCallback();
         }
-    }, [amount, recipient, api, gasLimit, gasFeeCap, gasPremium, maxFee, onNewMessageCallback]);
+    }, [amount, recipient, api, gasLimit, gasFeeCap, gasPremium, onNewMessageCallback]);
 
     return (
         <Card>
@@ -137,7 +138,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                         <Box m="0.5rem"/>
                         <TextField
                             InputProps={{startAdornment: <InputAdornment position="start">{`AttoFIL`}</InputAdornment>}}
-                            onChange={handleMaxFeeChange} size="medium" fullWidth id="maxfee" label="Max fee" variant="outlined" value={maxFee}>
+                            onChange={handleMaxFeeChange} size="medium" fullWidth id="maxfee" label="Max fee (0.1 FIL if not set)" variant="outlined" value={maxFee}>
                         </TextField>
                     </Grid>
                 </Grid>

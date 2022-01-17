@@ -3,6 +3,7 @@ import {Message, MessageGasEstimate, MessageRequest} from "@chainsafe/filsnap-ty
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
 import { FilecoinNumber } from "@openworklabs/filecoin-number";
+import { showConfirmationDialog } from "../util/confirmation";
 
 export async function estimateMessageGas(
   wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest, maxFee?: string,
@@ -19,10 +20,7 @@ export async function estimateMessageGas(
   };
   // estimate gas usage
   const gasLimit = await api.gasEstimateGasLimit(message, null);
-  const maxFeeFil = maxFee ? maxFee : '0.1' // set max fee to 0.1 FIL
-  // const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: new FilecoinNumber(maxFeeFil, "fil").toAttoFil()}, null);
-  const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: "0"}, null);
-  console.log("GAS ESTIMATE")
-  console.log(messageEstimate)
-  return {gasfeecap: messageEstimate.GasFeeCap, gaslimit: gasLimit, gaspremium: messageEstimate.GasPremium};
+  const maxFeeAttoFil = maxFee ? maxFee : new FilecoinNumber('0.1', "fil").toAttoFil() // set max fee to 0.1 FIL if not set
+  const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: maxFeeAttoFil}, null);
+  return {gasfeecap: messageEstimate.GasFeeCap, gaslimit: gasLimit, gaspremium: messageEstimate.GasPremium, maxfee: maxFeeAttoFil};
 }

@@ -140,6 +140,7 @@ export interface MessageGasEstimate {
   gaslimit: number;
   gasfeecap: string;
   gaspremium: string;
+  maxfee: string;
 }
 
 export interface MessageStatus {
