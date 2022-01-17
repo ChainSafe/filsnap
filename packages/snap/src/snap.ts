@@ -62,7 +62,7 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
     case "fil_sendMessage":
       return await sendMessage(wallet, api, requestObject.params.signedMessage);
     case "fil_getGasForMessage":
-      return await estimateMessageGas(wallet, api, requestObject.params.message);
+      return await estimateMessageGas(wallet, api, requestObject.params.message, requestObject.params["maxFee"]);
     default:
       throw new Error("Unsupported RPC method");
   }

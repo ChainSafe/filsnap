@@ -27,6 +27,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
     const [gasLimit, setGasLimit] = useState<string>("0");
     const [gasPremium, setGasPremium] = useState<string>("0");
     const [gasFeeCap, setGasFeeCap] = useState<string>("0");
+    const [maxFee, setMaxFee] = useState<string>("0");
     
     const [alert, setAlert] = useState(false);
     const [severity, setSeverity] = useState("success" as AlertSeverity);
@@ -49,6 +50,10 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
     }, [setGasPremium]);
     
     const handleGasFeeCapChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setMaxFee(event.target.value);
+    }, [setMaxFee]);
+
+    const handleMaxFeeChange =  useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setGasFeeCap(event.target.value);
     }, [setGasFeeCap]);
 
@@ -60,17 +65,20 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
 
     const onAutoFillGas = useCallback(async () => {
         if (recipient && amount && api) {
-            const messageEstimate = await api.calculateGasForMessage({
+            const messageEstimate = (maxFee == "0") ? await api.calculateGasForMessage({
                 to: recipient,
                 value: BigInt(amount).toString()
-            });
+            }) : await api.calculateGasForMessage({
+                to: recipient,
+                value: BigInt(amount).toString()
+            }, maxFee);
             setGasPremium(messageEstimate.gaspremium);
             setGasFeeCap(messageEstimate.gasfeecap);
             setGasLimit(messageEstimate.gaslimit.toString());
         } else {
             showAlert("error", "Please first fill in Recipient and Amount fields");
         }
-    }, [recipient, amount, api]);
+    }, [recipient, amount, maxFee, api]);
 
     const onSubmit = useCallback(async () => {
         if (amount && recipient && api) {
@@ -91,10 +99,11 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
             setGasFeeCap("0");
             setGasPremium("0");
             setGasLimit("0");
+            setMaxFee("0");
             // inform to refresh messages display
             onNewMessageCallback();
         }
-    }, [amount, recipient, api, gasLimit, gasFeeCap, gasPremium, onNewMessageCallback]);
+    }, [amount, recipient, api, gasLimit, gasFeeCap, gasPremium, maxFee, onNewMessageCallback]);
 
     return (
         <Card>
@@ -112,15 +121,23 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            onChange={handleGasLimitChange} size="medium" fullWidth id="gaslimit" label="Gas Limit" variant="outlined" value={gasLimit + " AttoFIL"}>
+                            InputProps={{startAdornment: <InputAdornment position="start">{`AttoFIL`}</InputAdornment>}}
+                            onChange={handleGasLimitChange} size="medium" fullWidth id="gaslimit" label="Gas Limit" variant="outlined" value={gasLimit}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            onChange={handleGasPremiumChange} size="medium" fullWidth id="gaspremium" label="Gas Premium" variant="outlined" value={gasPremium + " AttoFIL"}>
+                            InputProps={{startAdornment: <InputAdornment position="start">{`AttoFIL`}</InputAdornment>}}
+                            onChange={handleGasPremiumChange} size="medium" fullWidth id="gaspremium" label="Gas Premium" variant="outlined" value={gasPremium}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            onChange={handleGasFeeCapChange} size="medium" fullWidth id="gasfeecap" label="Gas Fee Cap" variant="outlined" value={gasFeeCap + " AttoFIL"}>
+                            InputProps={{startAdornment: <InputAdornment position="start">{`AttoFIL`}</InputAdornment>}}
+                            onChange={handleGasFeeCapChange} size="medium" fullWidth id="gasfeecap" label="Gas Fee Cap" variant="outlined" value={gasFeeCap}>
+                        </TextField>
+                        <Box m="0.5rem"/>
+                        <TextField
+                            InputProps={{startAdornment: <InputAdornment position="start">{`AttoFIL`}</InputAdornment>}}
+                            onChange={handleMaxFeeChange} size="medium" fullWidth id="maxfee" label="Max fee" variant="outlined" value={maxFee}>
                         </TextField>
                     </Grid>
                 </Grid>

@@ -5,7 +5,7 @@ import {LotusRpcApi} from "../filecoin/types";
 import { FilecoinNumber } from "@openworklabs/filecoin-number";
 
 export async function estimateMessageGas(
-  wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest
+  wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest, maxFee?: string,
 ): Promise<MessageGasEstimate> {
   const keypair = await getKeyPair(wallet);
   const message: Message = {
@@ -19,7 +19,10 @@ export async function estimateMessageGas(
   };
   // estimate gas usage
   const gasLimit = await api.gasEstimateGasLimit(message, null);
-  const maxFee = new FilecoinNumber('0.1', "fil").toAttoFil(); // set max fee to 0.1 FIL
-  const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: maxFee}, null);
+  const maxFeeFil = maxFee ? maxFee : '0.1' // set max fee to 0.1 FIL
+  // const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: new FilecoinNumber(maxFeeFil, "fil").toAttoFil()}, null);
+  const messageEstimate = await api.gasEstimateMessageGas(message, {MaxFee: "0"}, null);
+  console.log("GAS ESTIMATE")
+  console.log(messageEstimate)
   return {gasfeecap: messageEstimate.GasFeeCap, gaslimit: gasLimit, gaspremium: messageEstimate.GasPremium};
 }
