@@ -75,16 +75,24 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
     const onSubmit = useCallback(async () => {
         if (amount && recipient && api) {
             // Temporary signature method until sending is implemented
-            const signedMessage = await api.signMessage({
+            const signedMessageResponse = await api.signMessage({
                 to: recipient,
                 value: BigInt(amount).toString(),
                 gaslimit: Number(gasLimit),
                 gasfeecap: gasFeeCap,
                 gaspremium: gasPremium
             });
-            showAlert("info", `Message signature: ${signedMessage.signature.data}`);
-            const txResult = await api.sendMessage(signedMessage);
-            showAlert("info", `Message sent with cid: ${txResult.cid}`);
+
+            if(signedMessageResponse.error != null) {
+                showAlert("error", "Error on signing message");
+            } else if(signedMessageResponse.error == null && !signedMessageResponse.confirmed) {
+                showAlert("info", "Signing message declined");
+            } else {
+                showAlert("info", `Message signature: ${signedMessageResponse.signedMessage.signature.data}`);
+                const txResult = await api.sendMessage(signedMessageResponse.signedMessage);
+                showAlert("info", `Message sent with cid: ${txResult.cid}`);
+            }
+
             // clear form
             setAmount("");
             setRecipient("");
