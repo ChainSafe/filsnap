@@ -53,7 +53,10 @@ export async function getMessages(this: MetamaskFilecoinSnap): Promise<MessageSt
 }
 
 export async function calculateGasForMessage(
-  this: MetamaskFilecoinSnap, message: MessageRequest
+  this: MetamaskFilecoinSnap, message: MessageRequest, maxFee?: string
 ): Promise<MessageGasEstimate> {
-  return await sendSnapMethod({method: "fil_getGasForMessage", params: {message: message}}, this.snapId);
+  return await sendSnapMethod(
+    {method: "fil_getGasForMessage", params: {maxFee: maxFee, message: message}}, 
+    this.snapId,
+  );
 }
