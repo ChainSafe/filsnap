@@ -2,7 +2,7 @@ import {Box, Container, Grid, Typography} from "@material-ui/core";
 import GitHubIcon from '@material-ui/icons/GitHub';
 import DescriptionIcon from '@material-ui/icons/Description';
 import logo from "./filecoin_logo.png";
-import nf_logo from "./node_factory_logo.png";
+import cs_logo from "./chain_safe_logo.png";
 import React from "react";
 
 function Footer() {
@@ -27,7 +27,7 @@ function Footer() {
                     <img height={60} src={logo} alt={"Logo"}/>
                 </Box>
                 <Box m="2rem" height="100%">
-                    <img height={60} src={nf_logo} alt={"Node Factory"}/>
+                    <img height={60} src={cs_logo} alt={"Node Factory"}/>
                 </Box>
             </Grid>
         </Container>
