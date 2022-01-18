@@ -3,7 +3,8 @@ import {
   MetamaskFilecoinRpcRequest,
   MessageRequest,
   SignedMessage,
-  SnapConfig, MessageGasEstimate
+  SignMessageResponse,
+  SnapConfig, MessageGasEstimate, SignRawMessageResponse
 } from "@chainsafe/filsnap-types";
 import {MetamaskFilecoinSnap} from "./snap";
 
@@ -36,11 +37,11 @@ export async function configure(this: MetamaskFilecoinSnap, configuration: SnapC
   return await sendSnapMethod({method: "fil_configure", params: {configuration: configuration}}, this.snapId);
 }
 
-export async function signMessage(this: MetamaskFilecoinSnap, message: MessageRequest): Promise<SignedMessage> {
+export async function signMessage(this: MetamaskFilecoinSnap, message: MessageRequest): Promise<SignMessageResponse> {
   return await sendSnapMethod({method: "fil_signMessage", params: {message: message}}, this.snapId);
 }
 
-export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: string): Promise<string> {
+export async function signMessageRaw(this: MetamaskFilecoinSnap, rawMessage: string): Promise<SignRawMessageResponse> {
   return await sendSnapMethod({method: "fil_signMessageRaw", params: {message: rawMessage}}, this.snapId);
 }
 

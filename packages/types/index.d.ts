@@ -127,6 +127,18 @@ export interface MessageSignature {
   type: number;
 }
 
+export interface SignMessageResponse {
+  signedMessage: SignedMessage
+  confirmed: boolean
+  error: Error
+}
+
+export interface SignRawMessageResponse {
+  signature: string
+  confirmed: boolean
+  error: Error
+}
+
 export interface MessageRequest {
   to: string;
   value: string;
@@ -158,8 +170,8 @@ export interface FilecoinSnapApi {
   getBalance(): Promise<string>;
   exportPrivateKey(): Promise<string>;
   configure(configuration: Partial<SnapConfig>): Promise<void>;
-  signMessage(message: MessageRequest): Promise<SignedMessage>;
-  signMessageRaw(message: string): Promise<string>;
+  signMessage(message: MessageRequest): Promise<SignMessageResponse>;
+  signMessageRaw(message: string): Promise<SignRawMessageResponse>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
   calculateGasForMessage(message: MessageRequest, maxFee?: string): Promise<MessageGasEstimate>;
