@@ -95,12 +95,14 @@ describe('Test rpc handler function: signMessage', function () {
             gaslimit: 1000
         };
         
-        const signedMessage = await signMessage(walletStub, apiStub, messageRequestWithGasParams);
+        const response = await signMessage(walletStub, apiStub, messageRequestWithGasParams);
         
         expect(walletStub.rpcStubs.snap_confirm).to.have.been.calledOnce;
         expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been.calledOnce;
         expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
-        expect(signedMessage).to.be.null;
+        expect(response.signedMessage).to.be.null;
+        expect(response.error).to.be.null;
+        expect(response.confirmed).to.be.false;
     });
 
     it('should fail signing on invalid message ', async function () {
@@ -115,8 +117,10 @@ describe('Test rpc handler function: signMessage', function () {
 
         apiStub.mpoolGetNonce.returns("0");
 
-        expect(async () => {
-            return await signMessage(walletStub, apiStub, invalidMessage);
-        }).to.throw;
+        const response = await signMessage(walletStub, apiStub, invalidMessage);
+
+        expect(response.signedMessage).to.be.null;
+        expect(response.error).to.not.be.null;
+        expect(response.confirmed).to.be.false;
     });
 });

@@ -49,14 +49,14 @@ export async function signMessage(
       },
     );
 
-    let sig: SignedMessage;
+    let sig: SignedMessage = null;
     if (confirmation) {
       sig = transactionSign(message, keypair.privateKey);
     }
 
     return {confirmed: confirmation, error: null, signedMessage: sig};
   } catch (e) {
-    return {confirmed: false, error: null, signedMessage: null};
+    return {confirmed: false, error: e, signedMessage: null};
   }
 }
 
@@ -72,7 +72,7 @@ export async function signMessageRaw(wallet: Wallet, rawMessage: string): Promis
       }
     );
 
-    let sig: string;
+    let sig: string = null;
     if (confirmation) {
       sig = transactionSignRaw(rawMessage, keypair.privateKey).toString("base64");
     }
