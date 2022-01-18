@@ -1,12 +1,14 @@
-import {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
-import {SnapConfig} from "@chainsafe/filsnap-types";
+import { hasMetaMask, isMetamaskSnapsSupported } from "./utils";
+import { SnapConfig } from "@chainsafe/filsnap-types";
 import { MetamaskFilecoinSnap } from "./snap";
 
 const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
 
 
-export {MetamaskFilecoinSnap} from "./snap";
-export {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
+export { MetamaskFilecoinSnap } from "./snap";
+export { hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled } from "./utils";
+
+export type SnapInstallationParamNames = 'version' | string;
 
 /**
  * Install and enable Filecoin snap
@@ -22,7 +24,9 @@ export {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
  * @return MetamaskFilecoinSnap - adapter object that exposes snap API
  */
 export async function enableFilecoinSnap(
-  config: Partial<SnapConfig>, snapOrigin?: string
+  config: Partial<SnapConfig>,
+  snapOrigin?: string,
+  snapInstallationParams: Record<SnapInstallationParamNames, unknown> = {}
 ): Promise<MetamaskFilecoinSnap> {
 
   const snapId = snapOrigin ?? defaultSnapOrigin;
@@ -42,7 +46,9 @@ export async function enableFilecoinSnap(
   await window.ethereum.request({
     method: "wallet_enable",
     params: [{
-      [`wallet_snap_${snapId}`]: {}
+      [`wallet_snap_${snapId}`]: {
+        ...snapInstallationParams
+      }
     }]
   });
 

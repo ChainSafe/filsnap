@@ -26,7 +26,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
     const snapId = process.env.REACT_APP_SNAP_ID ? process.env.REACT_APP_SNAP_ID : defaultSnapId
     try {
         console.log('Attempting to connect to snap...');
-        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "f"}, snapId);
+        const metamaskFilecoinSnap = await enableFilecoinSnap({network: "f"}, snapId, {version: "latest"});
         isInstalled = true;
         console.log('Snap installed!');
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
