@@ -50,6 +50,7 @@ export interface GetGasForMessageRequest {
   method: "fil_getGasForMessage";
   params: {
     message: MessageRequest;
+    maxFee?: string;
   };
 }
 
@@ -151,6 +152,7 @@ export interface MessageGasEstimate {
   gaslimit: number;
   gasfeecap: string;
   gaspremium: string;
+  maxfee: string;
 }
 
 export interface MessageStatus {
@@ -172,7 +174,7 @@ export interface FilecoinSnapApi {
   signMessageRaw(message: string): Promise<SignRawMessageResponse>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
-  calculateGasForMessage(message: MessageRequest): Promise<MessageGasEstimate>;
+  calculateGasForMessage(message: MessageRequest, maxFee?: string): Promise<MessageGasEstimate>;
 }
 
 export interface KeyPair {
