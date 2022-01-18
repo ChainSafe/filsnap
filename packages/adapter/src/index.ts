@@ -1,11 +1,11 @@
 import {hasMetaMask, isMetamaskSnapsSupported} from "./utils";
-import {MetamaskFilecoinSnap as MFSnap} from "./snap";
 import {SnapConfig} from "@chainsafe/filsnap-types";
+import { MetamaskFilecoinSnap } from "./snap";
 
 const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
 
-export type MetamaskFilecoinSnap = MFSnap;
 
+export {MetamaskFilecoinSnap} from "./snap";
 export {hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled} from "./utils";
 
 /**
@@ -49,7 +49,7 @@ export async function enableFilecoinSnap(
   //await unlockMetamask();
 
   // create snap describer
-  const snap = new MFSnap(
+  const snap = new MetamaskFilecoinSnap(
     snapOrigin || defaultSnapOrigin
   );
   // set initial configuration
