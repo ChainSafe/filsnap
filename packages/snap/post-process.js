@@ -1,6 +1,6 @@
 const fs = require('fs');
 const pathUtils = require('path');
-const snapConfig = require('./snap.config.json')
+const snapConfig = require('./snap.config.json');
 
 const bundlePath = pathUtils.join(snapConfig.dist, snapConfig.outfileName);
 
@@ -19,6 +19,11 @@ bundleString = bundleString
     /stdlib\./gu,
     '',
   );
+
+// Remove readonly assignment 
+bundleString = bundleString.replace(`Gp[iteratorSymbol] = function() {
+    return this;
+  };`, '');
 
 // Remove 'use asm' tokens; they cause pointless console warnings
 bundleString = bundleString.replace(

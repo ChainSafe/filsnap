@@ -26,8 +26,8 @@
     "serve": "mm-snap serve",
     "test": "yarn run test:unit",
     "test:unit": "mocha --colors -r ts-node/register \"test/unit/**/*.test.ts\"",
-    "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --verboseErrors --eval false",
-    "eval:snap": "mm-snap eval -b dist/bundle.js --verbose",
+    "build:snap:bundle:mm-snap": "mm-snap build --sourceMaps --strip --verboseErrors --eval false",
+    "eval:snap": "mm-snap eval -b dist/bundle.js --verboseErrors",
     "prepublish": "yarn run build"
   },
   "repository": {
@@ -70,7 +70,7 @@
     "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
     "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
     "@metamask/key-tree": "^3.0.1",
-    "@openworklabs/filecoin-number": "^0.0.9",
+    "@glif/filecoin-number": "1.1.0",
     "@zondax/filecoin-signing-tools": "^0.18.3",
     "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"

@@ -2,7 +2,7 @@ import {Wallet} from "../interfaces";
 import {Message, MessageGasEstimate, MessageRequest} from "@chainsafe/filsnap-types";
 import {getKeyPair} from "../filecoin/account";
 import {LotusRpcApi} from "../filecoin/types";
-import { FilecoinNumber } from "@openworklabs/filecoin-number";
+import { FilecoinNumber } from "@glif/filecoin-number/dist";
 
 export async function estimateMessageGas(
   wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest, maxFee?: string,
