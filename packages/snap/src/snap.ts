@@ -14,7 +14,7 @@ import {estimateMessageGas} from "./rpc/estimateMessageGas";
 declare let wallet: Wallet;
 
 const apiDependentMethods = [
-  "fil_getBalance", "fil_signMessage", "fil_sendMessage", "fil_getGasForMessage"
+  "fil_getBalance", "fil_signMessage", "fil_sendMessage", "fil_getGasForMessage", "fil_configure"
 ];
 
 wallet.registerRpcMessageHandler(async (originString, requestObject) => {
@@ -39,11 +39,11 @@ wallet.registerRpcMessageHandler(async (originString, requestObject) => {
 
   switch (requestObject.method) {
     case "fil_configure":
-      const configuration = configure(
+      const resp = await configure(
         wallet, requestObject.params.configuration.network, requestObject.params.configuration
       );
-      api = await getApi(wallet);
-      return configuration;
+      api = resp.api;
+      return resp.snapConfig;
     case "fil_getAddress":
       return await getAddress(wallet);
     case "fil_getPublicKey":

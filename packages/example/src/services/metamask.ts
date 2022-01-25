@@ -31,7 +31,7 @@ export async function installFilecoinSnap(): Promise<SnapInitializationResponse>
         console.log('Snap installed!');
         return {isSnapInstalled: true, snap: metamaskFilecoinSnap};
     } catch (e) {
-        console.log(e);
+        console.error(e);
         isInstalled = false;
         return {isSnapInstalled: false};
     }

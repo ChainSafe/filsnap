@@ -10,6 +10,7 @@ export class LotusApiMock implements LotusRpcApi {
     public gasEstimateMessageGas = sinon.stub();
     public gasEstimateFeeCap = sinon.stub();
     public gasEstimateGasLimit = sinon.stub();
+    public stateNetworkName = sinon.stub();
 
     public reset(): void {
         this.version.reset();
@@ -20,5 +21,6 @@ export class LotusApiMock implements LotusRpcApi {
         this.gasEstimateFeeCap.reset();
         this.gasEstimateGasLimit.reset();
         this.gasEstimateMessageGas.reset();
+        this.stateNetworkName.reset();
     }
 }

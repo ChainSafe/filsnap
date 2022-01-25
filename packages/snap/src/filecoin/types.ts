@@ -9,6 +9,7 @@ export interface LotusRpcApi {
   gasEstimateMessageGas(message: Message, messageSendSpec: {MaxFee: string}, tipset: unknown): Promise<ApiMessage>;
   gasEstimateFeeCap(message: Message, maxqueueblks: number, tipset: unknown): Promise<string>;
   gasEstimateGasLimit(message: Message, tipset: unknown): Promise<number>;
+  stateNetworkName(): Promise<string>;
 }
 
 export interface ApiMessage {
