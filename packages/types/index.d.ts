@@ -146,6 +146,7 @@ export interface MessageRequest {
   gasfeecap?: string;
   gaspremium?: string;
   nonce?: number;
+  params?: string;
 }
 
 export interface MessageGasEstimate {
@@ -162,6 +163,7 @@ export interface MessageStatus {
 
 export type FilecoinNetwork = "f" | "t";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface FilecoinEventApi {}
 
 export interface FilecoinSnapApi {

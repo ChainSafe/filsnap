@@ -15,6 +15,8 @@ export async function signMessage(
     const gp = messageRequest.gaspremium && messageRequest.gaspremium !== "0" ? messageRequest.gaspremium : "0";
     const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
     const nonce = messageRequest.nonce ?? Number(await api.mpoolGetNonce(keypair.address));
+    const params = messageRequest.params || "";
+
     // create message object
     const message: Message = {
       from: keypair.address,
@@ -23,7 +25,7 @@ export async function signMessage(
       gaspremium: gp,
       method: 0, // code for basic transaction
       nonce,
-      params: "",
+      params,
       to: messageRequest.to,
       value: messageRequest.value,
     };
@@ -34,6 +36,7 @@ export async function signMessage(
       message.gaspremium = messageEstimate.GasPremium;
       message.gasfeecap = messageEstimate.GasFeeCap;
     }
+
     // show confirmation
     const confirmation = await showConfirmationDialog(
       wallet,
@@ -41,9 +44,10 @@ export async function signMessage(
         prompt: `Do you want to sign this message?`,
         textAreaContent: `from: ${message.from}\n` +
           `to: ${message.to}\n` +
-          `value:${message.value}\n` +
-          `gas limit:${message.gaslimit}\n` +
-          `gas fee cap:${message.gasfeecap}\n` +
+          `value: ${message.value}\n` +
+          params ? `params: ${params}\n` : '' +
+          `gas limit: ${message.gaslimit}\n` +
+          `gas fee cap: ${message.gasfeecap}\n` +
           `gas premium: ${message.gaspremium}\n` +
           `with account ${keypair.address}?`
       },
