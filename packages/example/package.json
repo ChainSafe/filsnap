@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "private": true,
   "license": "(Apache-2.0 AND MIT)",
   "devDependencies": {
@@ -8,8 +8,8 @@
     "gh-pages": "^3.1.0"
   },
   "dependencies": {
-    "@chainsafe/filsnap-adapter": "2.0.1",
-    "@chainsafe/filsnap-types": "2.0.0",
+    "@chainsafe/filsnap-adapter": "^2.1.0",
+    "@chainsafe/filsnap-types": "^2.1.0",
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "latest",
