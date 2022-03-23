@@ -93,7 +93,6 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                 gasfeecap: filToAttoFil(gasFeeCap),
                 gaspremium: filToAttoFil(gasPremium)
             });
-
             if(signedMessageResponse.error != null) {
                 showAlert("error", "Error on signing message");
             } else if(signedMessageResponse.error == null && !signedMessageResponse.confirmed) {
