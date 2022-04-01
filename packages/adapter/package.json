@@ -1,5 +1,5 @@
 {
-  "name": "@chainsafe/filsnap-adapter",
+  "name": "@mpetrunic/filsnap-adapter",
   "version": "2.1.0",
   "main": "./build/index.js",
   "module": "./build/index.js",
