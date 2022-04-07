@@ -16,6 +16,7 @@ export async function signMessage(
     const gfc = messageRequest.gasfeecap && messageRequest.gasfeecap !== "0" ? messageRequest.gasfeecap : "0";
     const nonce = messageRequest.nonce ?? Number(await api.mpoolGetNonce(keypair.address));
     const params = messageRequest.params || "";
+    const method = messageRequest.method || 0;
 
     // create message object
     const message: Message = {
@@ -23,7 +24,7 @@ export async function signMessage(
       gasfeecap: gfc,
       gaslimit: gl,
       gaspremium: gp,
-      method: 0, // code for basic transaction
+      method,
       nonce,
       params,
       to: messageRequest.to,
