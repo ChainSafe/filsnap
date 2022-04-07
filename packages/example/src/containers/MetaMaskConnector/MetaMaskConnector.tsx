@@ -29,6 +29,7 @@ export const MetaMaskConnector = () => {
                 type: MetamaskActions.SET_INSTALLED_STATUS,
                 payload: {isInstalled: true, snap: installResult.snap}
             });
+            sessionStorage.setItem('metamask-snap', "connected");
         }
     }, [dispatch]);
 
