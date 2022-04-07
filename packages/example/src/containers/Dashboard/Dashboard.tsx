@@ -63,7 +63,7 @@ export const Dashboard = () => {
                 }
             }
         })();
-    } , []);
+    } , [dispatch]);
 
     useEffect(() => {
         (async () => {
