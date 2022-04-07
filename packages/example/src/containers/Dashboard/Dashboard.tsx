@@ -4,17 +4,19 @@ import {
     Container, Grid, Hidden, InputLabel, MenuItem, Select, Typography,
 } from '@material-ui/core/';
 import {MetaMaskConnector} from "../MetaMaskConnector/MetaMaskConnector";
-import {MetaMaskContext} from "../../context/metamask";
+import {MetamaskActions, MetaMaskContext} from "../../context/metamask";
 import {Account} from "../../components/Account/Account";
 import {FilecoinSnapApi, MessageStatus} from "@chainsafe/filsnap-types";
 import {TransactionTable} from "../../components/TransactionTable/TransactionTable";
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
 import Footer from "../../Footer";
+import {enableFilecoinSnap, MetamaskFilecoinSnap} from "@chainsafe/filsnap-adapter";
+import { installFilecoinSnap } from "../../services/metamask";
 
 export const Dashboard = () => {
 
-    const [state] = useContext(MetaMaskContext);
+    const [state, dispatch] = useContext(MetaMaskContext);
 
     const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
@@ -48,6 +50,21 @@ export const Dashboard = () => {
             setMessages(await api.getMessages());
         }
     }, [api, setMessages]);
+
+    useEffect(() => {
+        (async () => {
+            const isConnected = sessionStorage.getItem('metamask-snap');
+            if (isConnected) {
+                const installResult = await installFilecoinSnap();
+                if (installResult.isSnapInstalled) { 
+                    dispatch({
+                        type: MetamaskActions.SET_INSTALLED_STATUS,
+                        payload: {isInstalled: true, snap: installResult.snap}
+                    });
+                }
+            }
+        })();
+    } , []);
 
     useEffect(() => {
         (async () => {
