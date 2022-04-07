@@ -146,6 +146,7 @@ export interface MessageRequest {
   gasfeecap?: string;
   gaspremium?: string;
   nonce?: number;
+  method?: number;
   params?: string;
 }
 
