@@ -1,6 +1,6 @@
 {
   "name": "@chainsafe/filsnap-adapter",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
@@ -18,7 +18,6 @@
     "access": "public"
   },
   "description": "Adapter for installing Filsnap",
-  "dependencies": {},
   "scripts": {
     "prebuild": "rm -rf build",
     "build": "yarn run build:lib && yarn run build:types",
