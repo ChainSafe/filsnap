@@ -18,5 +18,16 @@ jobs:
         run: yarn run lint
       - name: Build
         run: yarn run build
+      - uses: tj-actions/verify-changed-files@v9
+        id: verify-changed-files
+        with:
+          files: |
+             packages/snap/snap.manifest.json
+
+      - name: Check if snap manifest updated
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          echo "Snap manifest not updated: ${{ steps.verify-changed-files.outputs.changed_files }}"
+          exit 1
       - name: Run tests
         run: yarn run test
