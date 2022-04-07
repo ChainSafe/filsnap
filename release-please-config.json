@@ -1,0 +1,40 @@
+{
+  "bootstrap-sha": "f008067c30acddb8358bdaf0ba16e18798c91b59",
+  "plugins": ["node-workspace"],
+  "packages": {
+    "packages/adapter": {
+      "releaseType": "node",
+      "draft": false,
+      "prerelease": false,
+      "bumpMinorPreMajor": false,
+      "bumpPatchForMinorPreMajor": false,
+      "changelogPath": "CHANGELOG.md",
+      "versioning": "default"
+    },
+    "packages/types": {
+      "releaseType": "node",
+      "draft": false,
+      "prerelease": false,
+      "bumpMinorPreMajor": false,
+      "bumpPatchForMinorPreMajor": false,
+      "changelogPath": "CHANGELOG.md",
+      "versioning": "default"
+    },
+    "packages/snap": {
+      "releaseType": "node",
+      "draft": false,
+      "prerelease": false,
+      "bumpMinorPreMajor": false,
+      "bumpPatchForMinorPreMajor": false,
+      "changelogPath": "CHANGELOG.md",
+      "versioning": "default",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "snap.manifest.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    }
+  }
+}
