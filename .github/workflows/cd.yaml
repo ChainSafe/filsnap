@@ -1,0 +1,45 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  maybe-release:
+    name: release
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    steps:
+
+        # you should probably do this after your regular CI checks passes
+      - uses: google-github-actions/release-please-action@v3 # it will analyze commits and create PR with new version and updated CHANGELOG:md file. On merging it will create github release page with changelog
+        id: release
+        with:
+          command: manifest
+          token: ${{secrets.GITHUB_TOKEN}}
+          default-branch: master
+          release-type: node
+          monorepo-tags: true
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false}]'
+      
+      - uses: actions/checkout@v3
+        # these if statements ensure that a publication only occurs when
+        # a new release is created:
+        if: ${{ steps.release.outputs.releases_created }}
+        
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org'
+        if: ${{ steps.release.outputs.releases_created }}
+      
+      - run: yarn install --ignore-scripts --frozen-lockfile
+        if: ${{ steps.release.outputs.releases_created }}
+      
+      - run: yarn build
+        if: ${{ steps.release.outputs.releases_created }}
+
+      - run: npx lerna publish from-package --no-push --no-private --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} # use npm "Automation" token and put in Github repository secrets under "NPM_TOKEN"
+        if: ${{ steps.release.outputs.releases_created }}
