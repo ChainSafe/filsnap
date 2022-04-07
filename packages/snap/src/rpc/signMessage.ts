@@ -4,6 +4,7 @@ import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
 import {LotusRpcApi} from "../filecoin/types";
 import {MessageRequest, SignMessageResponse, SignRawMessageResponse} from "@chainsafe/filsnap-types";
+import {messageCreator} from "../util/messageCreator";
 
 export async function signMessage(
   wallet: Wallet, api: LotusRpcApi, messageRequest: MessageRequest
@@ -42,15 +43,19 @@ export async function signMessage(
     const confirmation = await showConfirmationDialog(
       wallet,
       {
+        description: `It will be signed with address: ${message.from}`,
         prompt: `Do you want to sign this message?`,
-        textAreaContent: `from: ${message.from}\n` +
-          `to: ${message.to}\n` +
-          `value: ${message.value}\n` +
-          params ? `params: ${params}\n` : '' +
-          `gas limit: ${message.gaslimit}\n` +
-          `gas fee cap: ${message.gasfeecap}\n` +
-          `gas premium: ${message.gaspremium}\n` +
-          `with account ${keypair.address}?`
+        textAreaContent: messageCreator(
+          [
+            {message: 'to:', value: message.to},
+            {message: 'value:', value: message.value !== '0' && message.value},
+            {message: 'method:', value: message.method},
+            {message: 'params:', value: message.params},
+            {message: 'gas limit:', value: message.gaslimit},
+            {message: 'gas fee cap:', value: message.gasfeecap},
+            {message: 'gas premium:', value: message.gaspremium},
+          ]
+        )
       },
     );
 
