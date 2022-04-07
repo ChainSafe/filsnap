@@ -11,7 +11,6 @@ import {TransactionTable} from "../../components/TransactionTable/TransactionTab
 import {SignMessage} from "../../components/SignMessage/SignMessage";
 import {Transfer} from "../../components/Transfer/Transfer";
 import Footer from "../../Footer";
-import {enableFilecoinSnap, MetamaskFilecoinSnap} from "@chainsafe/filsnap-adapter";
 import { installFilecoinSnap } from "../../services/metamask";
 
 export const Dashboard = () => {
