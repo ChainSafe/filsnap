@@ -126,27 +126,27 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                        InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
+                        InputProps={{startAdornment: <InputAdornment position="start">FIL</InputAdornment>}}
                         onChange={handleAmountChange} size="medium" fullWidth id="amount" label="Amount" variant="outlined" value={amount}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
+                            InputProps={{startAdornment: <InputAdornment position="start">FIL</InputAdornment>}}
                             onChange={handleGasLimitChange} size="medium" fullWidth id="gaslimit" label="Gas Limit" variant="outlined" value={gasLimit}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
+                            InputProps={{startAdornment: <InputAdornment position="start">FIL</InputAdornment>}}
                             onChange={handleGasPremiumChange} size="medium" fullWidth id="gaspremium" label="Gas Premium" variant="outlined" value={gasPremium}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
+                            InputProps={{startAdornment: <InputAdornment position="start">FIL</InputAdornment>}}
                             onChange={handleGasFeeCapChange} size="medium" fullWidth id="gasfeecap" label="Gas Fee Cap" variant="outlined" value={gasFeeCap}>
                         </TextField>
                         <Box m="0.5rem"/>
                         <TextField
-                            InputProps={{startAdornment: <InputAdornment position="start">{`FIL`}</InputAdornment>}}
+                            InputProps={{startAdornment: <InputAdornment position="start">FIL</InputAdornment>}}
                             onChange={handleMaxFeeChange} size="medium" fullWidth id="maxfee" label="Max fee (0.1 FIL if not set)" variant="outlined" value={maxFee}>
                         </TextField>
                     </Grid>
