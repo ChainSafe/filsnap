@@ -1,6 +1,6 @@
 {
   "name": "@chainsafe/filsnap",
-  "version": "2.1.0",
+  "version": "2.3.0",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
   "private": false,
@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/chainsafe/filecoin-metamask-snap#readme",
   "devDependencies": {
-    "@chainsafe/filsnap-types": "^2.1.0",
+    "@chainsafe/filsnap-types": "^2.1.2",
     "@metamask/snaps-cli": "^0.7.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",

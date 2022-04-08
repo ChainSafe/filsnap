@@ -39,7 +39,7 @@ jobs:
       - run: yarn build
         if: ${{ steps.release.outputs.releases_created }}
 
-      - run: npx lerna publish from-package --no-push --no-private --yes
+      - run: npx lerna publish from-package --no-push --no-private --no-verify-access --yes
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} # use npm "Automation" token and put in Github repository secrets under "NPM_TOKEN"
         if: ${{ steps.release.outputs.releases_created }}
