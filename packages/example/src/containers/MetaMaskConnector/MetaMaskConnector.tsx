@@ -3,7 +3,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import React, {useCallback, useContext, useEffect} from "react";
 import Alert from "@material-ui/lab/Alert";
 import {MetamaskActions, MetaMaskContext} from "../../context/metamask";
-import {installFilecoinSnap, isFilecoinSnapInstalled} from "../../services/metamask";
+import {initiateFilecoinSnap} from "../../services/metamask";
 
 export const MetaMaskConnector = () => {
 
@@ -11,14 +11,21 @@ export const MetaMaskConnector = () => {
 
     useEffect(() => {
         (async () => {
-            if (await isFilecoinSnapInstalled()) {
-                dispatch({type: MetamaskActions.SET_INSTALLED_STATUS, payload: {isInstalled: true}});
+            const isConnected = sessionStorage.getItem('metamask-snap');
+            if (isConnected) {
+                const installResult = await initiateFilecoinSnap();
+                if (installResult.isSnapInstalled) { 
+                    dispatch({
+                        type: MetamaskActions.SET_INSTALLED_STATUS,
+                        payload: {isInstalled: true, snap: installResult.snap}
+                    });
+                }
             }
         })();
-    }, [dispatch]);
+    } , [dispatch]);
 
     const installSnap = useCallback(async () => {
-        const installResult = await installFilecoinSnap();
+        const installResult = await initiateFilecoinSnap();
         if (!installResult.isSnapInstalled) {
             dispatch({
                 type: MetamaskActions.SET_INSTALLED_STATUS,
@@ -29,6 +36,7 @@ export const MetaMaskConnector = () => {
                 type: MetamaskActions.SET_INSTALLED_STATUS,
                 payload: {isInstalled: true, snap: installResult.snap}
             });
+            sessionStorage.setItem('metamask-snap', "connected");
         }
     }, [dispatch]);
 

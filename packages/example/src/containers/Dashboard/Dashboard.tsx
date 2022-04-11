@@ -85,7 +85,6 @@ export const Dashboard = () => {
         return () => clearInterval(interval);
     }, [api, balance, setBalance, setBalanceChange]);
 
-
     return (
         <Container maxWidth="lg">
             <Grid direction="column" alignItems="center" justify="center" container spacing={3}>

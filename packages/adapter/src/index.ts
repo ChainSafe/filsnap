@@ -1,14 +1,22 @@
-import { hasMetaMask, isMetamaskSnapsSupported } from "./utils";
+import {
+  hasMetaMask,
+  isMetamaskSnapsSupported,
+  isSnapInstalled,
+} from "./utils";
 import { SnapConfig } from "@chainsafe/filsnap-types";
 import { MetamaskFilecoinSnap } from "./snap";
 
-const defaultSnapOrigin = "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
-
+const defaultSnapOrigin =
+  "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
 
 export { MetamaskFilecoinSnap } from "./snap";
-export { hasMetaMask, isMetamaskSnapsSupported, isSnapInstalled } from "./utils";
+export {
+  hasMetaMask,
+  isMetamaskSnapsSupported,
+  isSnapInstalled,
+} from "./utils";
 
-export type SnapInstallationParamNames = 'version' | string;
+export type SnapInstallationParamNames = "version" | string;
 
 /**
  * Install and enable Filecoin snap
@@ -35,29 +43,33 @@ export async function enableFilecoinSnap(
   if (!hasMetaMask()) {
     throw new Error("Metamask is not installed");
   }
-  if (!await isMetamaskSnapsSupported()) {
+  if (!(await isMetamaskSnapsSupported())) {
     throw new Error("Current Metamask version doesn't support snaps");
   }
   if (!config.network) {
     throw new Error("Configuration must at least define network type");
   }
 
-  // enable snap
-  await window.ethereum.request({
-    method: "wallet_enable",
-    params: [{
-      [`wallet_snap_${snapId}`]: {
-        ...snapInstallationParams
-      }
-    }]
-  });
+  const isInstalled = await isSnapInstalled(snapId);
+
+  if (!isInstalled) {
+    // // enable snap
+    await window.ethereum.request({
+      method: "wallet_enable",
+      params: [
+        {
+          [`wallet_snap_${snapId}`]: {
+            ...snapInstallationParams,
+          },
+        },
+      ],
+    });
+  }
 
   //await unlockMetamask();
 
   // create snap describer
-  const snap = new MetamaskFilecoinSnap(
-    snapOrigin || defaultSnapOrigin
-  );
+  const snap = new MetamaskFilecoinSnap(snapOrigin || defaultSnapOrigin);
   // set initial configuration
   await (await snap.getFilecoinSnapApi()).configure(config);
   // return snap object

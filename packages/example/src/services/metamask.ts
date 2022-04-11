@@ -22,7 +22,7 @@ export interface SnapInitializationResponse {
     snap?: MetamaskFilecoinSnap;
 }
 
-export async function installFilecoinSnap(): Promise<SnapInitializationResponse> {
+export async function initiateFilecoinSnap(): Promise<SnapInitializationResponse> {
     const snapId = process.env.REACT_APP_SNAP_ID ? process.env.REACT_APP_SNAP_ID : defaultSnapId
     try {
         console.log('Attempting to connect to snap...');
