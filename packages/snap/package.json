@@ -69,7 +69,7 @@
     "@filecoin-shipyard/lotus-client-provider-nodejs": "^0.0.5",
     "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
     "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
-    "@glif/filecoin-number": "1.1.0",
+    "@glif/filecoin-number": "^2.0.0-beta.0",
     "@metamask/key-tree": "^3.0.1",
     "@zondax/filecoin-signing-tools": "^0.18.3",
     "bn.js": "^5.1.2",

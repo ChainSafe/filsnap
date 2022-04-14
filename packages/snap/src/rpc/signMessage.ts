@@ -1,4 +1,5 @@
 import {Message, SignedMessage, transactionSign, transactionSignRaw} from "@zondax/filecoin-signing-tools/js";
+import {FilecoinNumber} from '@glif/filecoin-number';
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
@@ -48,12 +49,14 @@ export async function signMessage(
         textAreaContent: messageCreator(
           [
             {message: 'to:', value: message.to},
-            {message: 'value:', value: message.value !== '0' && message.value},
+            {message: 'from:', value: message.from},
+            {message: 'value:', value: message.value !== '0'
+              && `${new FilecoinNumber(message.value, 'attofil').toFil()} FIL`},
             {message: 'method:', value: message.method},
             {message: 'params:', value: message.params},
-            {message: 'gas limit:', value: message.gaslimit},
-            {message: 'gas fee cap:', value: message.gasfeecap},
-            {message: 'gas premium:', value: message.gaspremium},
+            {message: 'gas limit:', value: `${message.gaslimit} attofil`},
+            {message: 'gas fee cap:', value: `${message.gasfeecap} attofil`},
+            {message: 'gas premium:', value: `${message.gaspremium} attofil`},
           ]
         )
       },
