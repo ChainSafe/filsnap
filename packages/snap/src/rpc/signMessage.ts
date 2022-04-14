@@ -1,5 +1,5 @@
 import {Message, SignedMessage, transactionSign, transactionSignRaw} from "@zondax/filecoin-signing-tools/js";
-import {FilecoinNumber} from '@glif/filecoin-number';
+import {FilecoinNumber} from '@glif/filecoin-number/dist';
 import {Wallet} from "../interfaces";
 import {getKeyPair} from "../filecoin/account";
 import {showConfirmationDialog} from "../util/confirmation";
