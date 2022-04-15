@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.1](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.0...filsnap-v2.3.1) (2022-04-15)
+
+
+### Bug Fixes
+
+* message approval UI ([#146](https://github.com/ChainSafe/filsnap/issues/146)) ([8e6ce28](https://github.com/ChainSafe/filsnap/commit/8e6ce282f2895d96144cb0d7439011c37bc611b4))
+
 ## [2.3.0](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.2.0...filsnap-v2.3.0) (2022-04-07)
 
 
