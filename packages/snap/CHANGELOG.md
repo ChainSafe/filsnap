@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.3](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.2...filsnap-v2.3.3) (2022-04-19)
+
+
+### Bug Fixes
+
+* application/json header to work with Glif nodes ([#152](https://github.com/ChainSafe/filsnap/issues/152)) ([a92e389](https://github.com/ChainSafe/filsnap/commit/a92e389c01d753e2237ec7164916f22d130371c1))
+
 ### [2.3.2](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.1...filsnap-v2.3.2) (2022-04-19)
 
 
