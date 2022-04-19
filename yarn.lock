@@ -2705,19 +2705,19 @@
     unique-filename "^1.1.1"
     which "^1.3.1"
 
-"@filecoin-shipyard/lotus-client-provider-browser@^0.0.14":
-  version "0.0.14"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-0.0.14.tgz#28268cd1a940627b08e06378527f5f34fea0db75"
-  integrity sha512-rFH2aUA65fa9C+3d8JoKxL/UGYPbEqIjhJ9ZMJS50aKFELMA1FJ/l10Tpgkx0p6KrdygfIytHneITvpgcumR4g==
+"@filecoin-shipyard/lotus-client-provider-browser@^1.0.1":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-1.1.0.tgz#f52f05267a4195f06d18e4775b7ec81c46e80a8a"
+  integrity sha512-WgRbh3AdI+F27rsZYGjsSIRQa7SIxpQ+RusimAQcdIH4fqVasW3y9p+YHL39XfMTE4sUSRFMGpFHr3E/Hh37XA==
 
-"@filecoin-shipyard/lotus-client-provider-nodejs@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-0.0.5.tgz#e7e27b13eb5b1892454ff72c8060c6f845ee0bf6"
-  integrity sha512-alYbMEYr5M/U/n97eWSWvIi79pZBFhUdS+NEJSpVUhZBzR1iIKKSr0MxL0zXdMTFV5C/UbVKNJy72JaSAvS9oA==
+"@filecoin-shipyard/lotus-client-provider-nodejs@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-1.1.1.tgz#bfd97bd0dd580a41084442d2bb3cb74c3aeb948b"
+  integrity sha512-PgjQeABOpiZ89XLqL74GnPQ3KvBWo8HN8N13blOSuev5V4dagPNEFOwhvXt4zWTbqAfLwYwWxY1nZtsnEtRysg==
   dependencies:
-    "@filecoin-shipyard/lotus-client-provider-browser" "^0.0.14"
-    node-fetch "^2.6.0"
-    ws "^7.3.0"
+    "@filecoin-shipyard/lotus-client-provider-browser" "^1.0.1"
+    node-fetch "^2.6.1"
+    ws "^8.2.0"
 
 "@filecoin-shipyard/lotus-client-rpc@^0.0.11":
   version "0.0.11"
@@ -19219,15 +19219,15 @@ ws@^6.2.1:
   dependencies:
     async-limiter "~1.0.0"
 
-ws@^7.3.0:
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
-  integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
-
 ws@^7.4.6:
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.5.tgz#8b4bc4af518cfabd0473ae4f99144287b33eb881"
   integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
+
+ws@^8.2.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
+  integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
 
 xhr2-cookies@^1.1.0:
   version "1.1.0"
