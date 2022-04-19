@@ -16,7 +16,7 @@ export async function getApiFromConfig(configuration:SnapConfig): Promise<LotusR
   if(configuration.rpc.token) {
     options.token = configuration.rpc.token;
   }
-  options.sendHttpContentType = "application/json;charset=UTF-8";
+  options.sendHttpContentType = "application/json";
   const provider = new NodejsProvider(
     configuration.rpc.url,
     options
