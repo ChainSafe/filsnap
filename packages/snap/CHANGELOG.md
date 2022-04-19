@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.2](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.1...filsnap-v2.3.2) (2022-04-19)
+
+
+### Bug Fixes
+
+* change content type for filecoin rpc to json ([#150](https://github.com/ChainSafe/filsnap/issues/150)) ([68377eb](https://github.com/ChainSafe/filsnap/commit/68377ebe8541fe4da585fcd7311d574746362374))
+
 ### [2.3.1](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.0...filsnap-v2.3.1) (2022-04-15)
 
 
