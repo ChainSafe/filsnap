@@ -4,6 +4,5 @@ interface Message {
 }
 
 export const messageCreator = (messages: Message[]): string => messages
-  .filter(({ value }) => !!value)
   .map(({ message, value,}) => message + ' ' + value)
   .join('\n');

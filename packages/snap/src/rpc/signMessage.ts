@@ -50,8 +50,7 @@ export async function signMessage(
           [
             {message: 'to:', value: message.to},
             {message: 'from:', value: message.from},
-            {message: 'value:', value: message.value !== '0'
-              && `${new FilecoinNumber(message.value, 'attofil').toFil()} FIL`},
+            {message: 'value:', value: `${new FilecoinNumber(message.value, 'attofil').toFil()} FIL`},
             {message: 'method:', value: message.method},
             {message: 'params:', value: message.params},
             {message: 'gas limit:', value: `${message.gaslimit} aFIL`},
