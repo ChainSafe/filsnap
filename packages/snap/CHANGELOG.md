@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.4](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.3...filsnap-v2.3.4) (2022-05-04)
+
+
+### Bug Fixes
+
+* show falsy fields in `signMessage` prompt ([#154](https://github.com/ChainSafe/filsnap/issues/154)) ([1d29ef8](https://github.com/ChainSafe/filsnap/commit/1d29ef85abb05b7070b9d587bbba2f22cb701a7c))
+
 ### [2.3.3](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.2...filsnap-v2.3.3) (2022-04-19)
 
 
