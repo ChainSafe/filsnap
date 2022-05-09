@@ -1,0 +1,18 @@
+{
+    "enabled": true,
+    "major": {
+        "enabled": false
+    },
+    "extends": [
+        ":semanticCommitType(chore)"
+    ],
+    "packageRules": [
+        {
+          "matchDepTypes": [
+            "devDependencies"
+          ],
+          "enabled": false
+        }
+    ],
+    "rebaseWhen": "behind-base-branch"
+}
