@@ -28,6 +28,9 @@
     "lint:style:fix": "yarn run lint:style --fix",
     "test": "exit 0"
   },
+  "dependencies": {
+    "@chainsafe/filsnap-types": "workspace:^"
+  },
   "devDependencies": {
     "@types/node": "^12.12.35",
     "@typescript-eslint/eslint-plugin": "^4.1.1",

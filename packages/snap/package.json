@@ -46,7 +46,7 @@
   },
   "homepage": "https://github.com/chainsafe/filecoin-metamask-snap#readme",
   "devDependencies": {
-    "@chainsafe/filsnap-types": "^2.1.2",
+    "@chainsafe/filsnap-types": "workspace:^",
     "@metamask/snaps-cli": "^0.7.0",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
