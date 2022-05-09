@@ -3056,11 +3056,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chainsafe/filsnap-adapter@workspace:*, @chainsafe/filsnap-adapter@workspace:packages/adapter":
+"@chainsafe/filsnap-adapter@workspace:^, @chainsafe/filsnap-adapter@workspace:packages/adapter":
   version: 0.0.0-use.local
   resolution: "@chainsafe/filsnap-adapter@workspace:packages/adapter"
   dependencies:
-    "@chainsafe/filsnap-types": "workspace:*"
+    "@chainsafe/filsnap-types": "workspace:^"
     "@types/node": ^12.12.35
     "@typescript-eslint/eslint-plugin": ^4.1.1
     "@typescript-eslint/parser": ^4.1.1
@@ -3069,7 +3069,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@chainsafe/filsnap-types@workspace:*, @chainsafe/filsnap-types@workspace:packages/types":
+"@chainsafe/filsnap-types@workspace:^, @chainsafe/filsnap-types@workspace:packages/types":
   version: 0.0.0-use.local
   resolution: "@chainsafe/filsnap-types@workspace:packages/types"
   languageName: unknown
@@ -3079,7 +3079,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@chainsafe/filsnap@workspace:packages/snap"
   dependencies:
-    "@chainsafe/filsnap-types": "workspace:*"
+    "@chainsafe/filsnap-types": "workspace:^"
     "@filecoin-shipyard/lotus-client-provider-nodejs": 1.1.1
     "@filecoin-shipyard/lotus-client-rpc": ^0.0.11
     "@filecoin-shipyard/lotus-client-schema": ^0.0.14
@@ -10951,8 +10951,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example@workspace:packages/example"
   dependencies:
-    "@chainsafe/filsnap-adapter": "workspace:*"
-    "@chainsafe/filsnap-types": "workspace:*"
+    "@chainsafe/filsnap-adapter": "workspace:^"
+    "@chainsafe/filsnap-types": "workspace:^"
     "@material-ui/core": ^4.9.7
     "@material-ui/icons": ^4.9.1
     "@material-ui/lab": latest
