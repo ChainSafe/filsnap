@@ -6,7 +6,6 @@
   "types": "./build/index.d.ts",
   "author": "chainsafe <info@chainsafe.io>",
   "license": "(Apache-2.0 AND MIT)",
-  "private": false,
   "homepage": "https://github.com/chainsafe/filecoin-metamask-snap/tree/master/packages/adapter",
   "keywords": [
     "filecoin",
