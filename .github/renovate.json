@@ -4,6 +4,7 @@
         "enabled": false
     },
     "extends": [
+        "config:base",
         ":semanticCommitType(chore)"
     ],
     "packageRules": [
