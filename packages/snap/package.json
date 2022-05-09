@@ -55,6 +55,7 @@
     "@types/sinon-chai": "^3.2.3",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
     "@typescript-eslint/parser": "^2.22.0",
+    "babelify": "^10.0.0",
     "chai": "^4.2.0",
     "concurrently": "^5.1.0",
     "eslint": "^7.11.0",
