@@ -33,13 +33,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.releases_created }}
       
-      - run: yarn install --ignore-scripts --frozen-lockfile
+      - run: yarn install --immutable
         if: ${{ steps.release.outputs.releases_created }}
       
       - run: yarn build
         if: ${{ steps.release.outputs.releases_created }}
 
-      - run: npx lerna publish from-package --no-push --no-private --no-verify-access --yes
+      - run: yarn workspaces foreach --exclude root npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} # use npm "Automation" token and put in Github repository secrets under "NPM_TOKEN"
         if: ${{ steps.release.outputs.releases_created }}

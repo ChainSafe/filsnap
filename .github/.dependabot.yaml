@@ -1,8 +1,0 @@
-version: 2
-updates:
-  - package-ecosystem: "yarn"
-    allow:
-      # Allow both direct and indirect updates for all packages
-      - dependency-type: "production"
-    commit-message:
-      prefix: "chore: "
