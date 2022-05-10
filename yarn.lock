@@ -7035,10 +7035,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bignumber.js@npm:2.0.8":
-  version: 2.0.8
-  resolution: "bignumber.js@npm:2.0.8"
-  checksum: be902d5d40d3a9d560a58eed677da7a0f7c7db96ecd0870d775fe2715e40e0eab8bc7fab84922dca67fe2bed85ced5a0b2aa94199c841f9859b55304f43afb3d
+"bignumber.js@npm:2.4.0":
+  version: 2.4.0
+  resolution: "bignumber.js@npm:2.4.0"
+  checksum: 254648de38df34ca2dbeb6eb8a61d19b74c59afec4918455fc2e3de7e5327d9018ccfaa1825c27d0df12daa1c98e12b6fa679dfcf7acd0287016c4586a04a68a
   languageName: node
   linkType: hard
 
