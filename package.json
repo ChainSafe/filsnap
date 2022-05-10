@@ -31,12 +31,7 @@
     "eslint": "^7.11.0",
     "typescript": "4.3.5"
   },
-  "dependenciesMeta": {
-    "bignumber.js": {
-      "built": false
-    },
-    "ethereumjs-abi": {
-      "built": false
-    }
+  "resolutions": {
+    "web3/bignumber.js": "2.0.8"
   }
 }
