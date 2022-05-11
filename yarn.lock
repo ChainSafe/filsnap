@@ -5168,12 +5168,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:*, @types/react-dom@npm:^16.9.0":
+"@types/react-dom@npm:*":
   version: 16.9.8
   resolution: "@types/react-dom@npm:16.9.8"
   dependencies:
     "@types/react": "*"
   checksum: 1e71ddff87b41b5dbb9e2fa36676bea3d695fa36f9f0b8701d9a1ad01f0f670a41b0318856f0b2f5aac5c6a5d8ca1b092bade9257e27f2ae43f95df40aa40a77
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:16.9.15":
+  version: 16.9.15
+  resolution: "@types/react-dom@npm:16.9.15"
+  dependencies:
+    "@types/react": ^16
+  checksum: b41ca153f7bd02210c1b2eeccc25161b24ddb405350331cfa05b63078304526768c6bded0c1e1c2cda91bc06d38d263abec2b421dce3fe5ffb9de0b767c06117
   languageName: node
   linkType: hard
 
@@ -5196,12 +5205,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react@npm:^16":
+  version: 16.14.26
+  resolution: "@types/react@npm:16.14.26"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 3fcc3ec7ae7227976e047c80831e50d1a4a28a023cfd0b7465d45806180a370899745408eb0f657968286623523b176f859817f59a6ea5c0e8f0455833d9ab42
+  languageName: node
+  linkType: hard
+
 "@types/resolve@npm:0.0.8":
   version: 0.0.8
   resolution: "@types/resolve@npm:0.0.8"
   dependencies:
     "@types/node": "*"
   checksum: ead6902f01e7240918e6f6dabf0e2bc37035492b1da16f605bbd1e153c17d0639df77981b2ec042480361be76c9e967543287d9b312cd668ed9123524994c344
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:*":
+  version: 0.16.2
+  resolution: "@types/scheduler@npm:0.16.2"
+  checksum: 89a3a922f03609b61c270d534226791edeedcb1b06f0225d5543ac17830254624ef9d8a97ad05418e4ce549dd545bddf1ff28cb90658ff10721ad14556ca68a5
   languageName: node
   linkType: hard
 
@@ -11274,7 +11301,7 @@ __metadata:
     "@types/jest": ^24.0.0
     "@types/node": 12.20.50
     "@types/react": ^16.9.0
-    "@types/react-dom": ^16.9.0
+    "@types/react-dom": 16.9.15
     eslint-config-react-app: ^6.0.0
     gh-pages: ^3.1.0
     react: ^16.13.0
