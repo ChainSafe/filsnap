@@ -11277,8 +11277,8 @@ __metadata:
     "@types/react-dom": ^16.9.0
     eslint-config-react-app: ^6.0.0
     gh-pages: ^3.1.0
-    react: ^16.13.0
-    react-dom: ^16.13.0
+    react: 16.14.0
+    react-dom: 16.14.0
     react-scripts: ^4.0.3
     sass: ^1.26.3
     to-hex: ^0.0.15
@@ -18662,17 +18662,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.13.0":
-  version: 16.13.1
-  resolution: "react-dom@npm:16.13.1"
+"react-dom@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react-dom@npm:16.14.0"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
     prop-types: ^15.6.2
     scheduler: ^0.19.1
   peerDependencies:
-    react: ^16.13.1
-  checksum: 2408bf4a022f5386da72f2eb7f8cc3e68d2cfd76d338d1cc77afcc6b11fc40d94fd8ebe43e39aec7ef1122f0c08992f9aba50ce4195fc2fc69fe0b515e12b273
+    react: ^16.14.0
+  checksum: ca146e780631672a2d57c8d77775d38f394a6cd67db30c6af7964d0b3574ef7edccb1de8d592e990b98f4f5f8d1c8460b0691f04e7a45799962a51dcbaaa1371
   languageName: node
   linkType: hard
 
@@ -18797,14 +18797,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^16.13.0":
-  version: 16.13.1
-  resolution: "react@npm:16.13.1"
+"react@npm:16.14.0":
+  version: 16.14.0
+  resolution: "react@npm:16.14.0"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
     prop-types: ^15.6.2
-  checksum: 4d6ad44cd5c12511218ad179df94919b5c1c328d078160a9f39ae7d31738c427a9b6bbcf9fb4745f4c4f534ddab8529acc24e7cd9dce086c76e3478422256fb3
+  checksum: df8faae43e01387013900e8f8fb3c4ce9935b7edbcbaa77e12999c913eb958000a0a8750bf9a0886dae0ad768dd4a4ee983752d5bade8d840adbe0ce890a2438
   languageName: node
   linkType: hard
 
