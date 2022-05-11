@@ -7100,6 +7100,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bignumber.js@npm:9.0.0":
+  version: 9.0.0
+  resolution: "bignumber.js@npm:9.0.0"
+  checksum: a760979ca822533ad7a437a45bcac66c191554a407092baa4991e068fd4af7344ff52d9e82e0574946c831690de706cf86fbc80775b5ebc6e59c2eef7325172c
+  languageName: node
+  linkType: hard
+
 "bignumber.js@npm:9.0.1":
   version: 9.0.1
   resolution: "bignumber.js@npm:9.0.1"
@@ -11292,7 +11299,7 @@ __metadata:
     react-dom: 16.14.0
     react-scripts: ^4.0.3
     sass: 1.51.0
-    to-hex: ^0.0.15
+    to-hex: 0.0.18
     typescript: 4.3.5
   languageName: unknown
   linkType: soft
@@ -21299,12 +21306,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"to-hex@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "to-hex@npm:0.0.15"
+"to-hex@npm:0.0.18":
+  version: 0.0.18
+  resolution: "to-hex@npm:0.0.18"
   dependencies:
+    bignumber.js: 9.0.0
     normalize-hex: 0.0.2
-  checksum: 9e3eab81456a99cce60002b6820d8a186aa88ba11b23af6ddedef1d8d18fabcaaa7a0514b7714a999b1a9b4dcb12fcac23744853c1bd810c2fe98edaea8a539a
+  checksum: 8dbdb0bf99a63f42a859f3ee84cc3e545cfd90b504726cc832d74e7c4e7e737585f76e0d4f82f33c90f2b44754d2adbaaf0ec7a18bc4534b64901faeb0ef01cb
   languageName: node
   linkType: hard
 
