@@ -23,6 +23,17 @@ jobs:
       - run: yarn install --immutable
       - name: Run linter
         run: yarn run lint
+      - name: Update Manifest for renovate
+        if: $github.event.pull_request.user.login === 'renovate'
+        run: |
+          yarn run manifest
+
+          git config --global user.name "Renovate Bot"
+          git config --global user.email "bot@renovateapp.com"
+
+          git add -A
+          git commit -m "chore: update metamask manifest"
+          git push
       - name: Build
         run: yarn run build
       - uses: tj-actions/verify-changed-files@v9

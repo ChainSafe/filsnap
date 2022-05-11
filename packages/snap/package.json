@@ -6,6 +6,7 @@
   "main": "build/index.js",
   "scripts": {
     "snap": "mm-snap",
+    "manifest": "mm-snap manifest",
     "lint": "yarn run lint:types && yarn run lint:style",
     "lint:types": "tsc --noEmit --pretty",
     "lint:style": "eslint 'src/**/*.{js,ts,tsx}' --fix",
