@@ -5120,10 +5120,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:12.20.50":
-  version: 12.20.50
-  resolution: "@types/node@npm:12.20.50"
-  checksum: 96d47d12bcca1d16c7e9bfec351d702265697558c4e7595c7e0aec0bd66d4d3e1af36481b518624db941ae66c1b3ac73ec3c1add5d52a4aa8eb997fa0937c568
+"@types/node@npm:12.20.52":
+  version: 12.20.52
+  resolution: "@types/node@npm:12.20.52"
+  checksum: 4e48eaddb274a5456d32d39fe532ced94c84ceea361651414fb3c2bdc280e4b13d5320d53d0f095ca56d96a957ce276dce2051ae4d0b8765583b3fff5a7497fc
   languageName: node
   linkType: hard
 
@@ -11290,7 +11290,7 @@ __metadata:
     "@testing-library/react": 9.5.0
     "@testing-library/user-event": 7.2.1
     "@types/jest": 24.9.1
-    "@types/node": 12.20.50
+    "@types/node": 12.20.52
     "@types/react": 16.14.26
     "@types/react-dom": 16.9.15
     eslint-config-react-app: ^6.0.0
