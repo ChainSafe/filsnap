@@ -5187,12 +5187,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:16.9.15":
-  version: 16.9.15
-  resolution: "@types/react-dom@npm:16.9.15"
+"@types/react-dom@npm:16.9.16":
+  version: 16.9.16
+  resolution: "@types/react-dom@npm:16.9.16"
   dependencies:
     "@types/react": ^16
-  checksum: b41ca153f7bd02210c1b2eeccc25161b24ddb405350331cfa05b63078304526768c6bded0c1e1c2cda91bc06d38d263abec2b421dce3fe5ffb9de0b767c06117
+  checksum: 1d3feea5f32d70644a94e6b3d15371585bd5f3defe3981a936f299d5a0ebd6ef0208057201c990e7feaab3c2092bb9e889ae74ee316e3a48e15069e72a8e1575
   languageName: node
   linkType: hard
 
@@ -11292,7 +11292,7 @@ __metadata:
     "@types/jest": 24.9.1
     "@types/node": 12.20.50
     "@types/react": 16.14.26
-    "@types/react-dom": 16.9.15
+    "@types/react-dom": 16.9.16
     eslint-config-react-app: ^6.0.0
     gh-pages: ^3.1.0
     react: 16.14.0
