@@ -3088,7 +3088,7 @@ __metadata:
   dependencies:
     "@chainsafe/filsnap-types": "workspace:^"
     "@filecoin-shipyard/lotus-client-provider-nodejs": 1.1.1
-    "@filecoin-shipyard/lotus-client-rpc": ^0.0.11
+    "@filecoin-shipyard/lotus-client-rpc": ^0.2.0
     "@filecoin-shipyard/lotus-client-schema": ^0.0.14
     "@glif/filecoin-number": ^2.0.0-beta.0
     "@metamask/key-tree": ^3.0.1
@@ -3630,10 +3630,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@filecoin-shipyard/lotus-client-rpc@npm:^0.0.11":
-  version: 0.0.11
-  resolution: "@filecoin-shipyard/lotus-client-rpc@npm:0.0.11"
-  checksum: fad6a59a0c40c9feb3ccffd61ae527102e55870909a35bfba267856308eb09377ae8be384dcf558d3cca8a28bac7ecabdfeb9558f69ed081e5425dd440892fc3
+"@filecoin-shipyard/lotus-client-rpc@npm:^0.2.0":
+  version: 0.2.1
+  resolution: "@filecoin-shipyard/lotus-client-rpc@npm:0.2.1"
+  checksum: db4d0cc9ee883c79d1268c78a2ac5546f9075c7c75e2c6811a2e3477e5579d906d31e6546c6fce4a67ce384f5cf3e8df80b47abe16ee3680af8620cb20e7c669
   languageName: node
   linkType: hard
 
