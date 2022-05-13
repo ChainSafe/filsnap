@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@filecoin-shipyard/lotus-client-provider-nodejs": "1.1.1",
-    "@filecoin-shipyard/lotus-client-rpc": "^0.0.11",
+    "@filecoin-shipyard/lotus-client-rpc": "^0.2.0",
     "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
     "@glif/filecoin-number": "^2.0.0-beta.0",
     "@metamask/key-tree": "^3.0.1",
