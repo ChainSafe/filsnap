@@ -15,7 +15,6 @@ import Footer from "../../Footer";
 export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
-
     const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
