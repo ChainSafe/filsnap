@@ -15,7 +15,6 @@ import Footer from "../../Footer";
 export const Dashboard = () => {
 
     const [state] = useContext(MetaMaskContext);
-
     const [balance, setBalance] = useState("");
     const [address, setAddress] = useState("");
     const [publicKey, setPublicKey] = useState("");
@@ -87,7 +86,7 @@ export const Dashboard = () => {
 
     return (
         <Container maxWidth="lg">
-            <Grid direction="column" alignItems="center" justify="center" container spacing={3}>
+            <Grid direction="column" alignItems="center" justifyContent="center" container spacing={3}>
                 <Box m="2rem" style={{textAlign: "center"}}>
                     <Typography variant="h2">
                         Filsnap demo

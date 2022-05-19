@@ -45,7 +45,7 @@ export const SignMessage = (props: SignMessageProps) => {
                     />
                 </Grid>
                 <Box m="0.5rem" />
-                <Grid container justify="flex-end">
+                <Grid container justifyContent="flex-end">
                     <Button onClick={onSubmit} color="secondary" variant="contained" size="large">Sign</Button>
                 </Grid>
             </CardContent>

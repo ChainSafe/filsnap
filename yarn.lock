@@ -3088,7 +3088,7 @@ __metadata:
   dependencies:
     "@chainsafe/filsnap-types": "workspace:^"
     "@filecoin-shipyard/lotus-client-provider-nodejs": 1.1.1
-    "@filecoin-shipyard/lotus-client-rpc": ^0.0.11
+    "@filecoin-shipyard/lotus-client-rpc": ^0.2.0
     "@filecoin-shipyard/lotus-client-schema": ^0.0.14
     "@glif/filecoin-number": ^2.0.0-beta.0
     "@metamask/key-tree": ^3.0.1
@@ -3630,10 +3630,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@filecoin-shipyard/lotus-client-rpc@npm:^0.0.11":
-  version: 0.0.11
-  resolution: "@filecoin-shipyard/lotus-client-rpc@npm:0.0.11"
-  checksum: fad6a59a0c40c9feb3ccffd61ae527102e55870909a35bfba267856308eb09377ae8be384dcf558d3cca8a28bac7ecabdfeb9558f69ed081e5425dd440892fc3
+"@filecoin-shipyard/lotus-client-rpc@npm:^0.2.0":
+  version: 0.2.1
+  resolution: "@filecoin-shipyard/lotus-client-rpc@npm:0.2.1"
+  checksum: db4d0cc9ee883c79d1268c78a2ac5546f9075c7c75e2c6811a2e3477e5579d906d31e6546c6fce4a67ce384f5cf3e8df80b47abe16ee3680af8620cb20e7c669
   languageName: node
   linkType: hard
 
@@ -5120,10 +5120,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:12.20.50":
-  version: 12.20.50
-  resolution: "@types/node@npm:12.20.50"
-  checksum: 96d47d12bcca1d16c7e9bfec351d702265697558c4e7595c7e0aec0bd66d4d3e1af36481b518624db941ae66c1b3ac73ec3c1add5d52a4aa8eb997fa0937c568
+"@types/node@npm:16.11.35":
+  version: 16.11.35
+  resolution: "@types/node@npm:16.11.35"
+  checksum: 528459656dd057e1c86bebd583a95c4108d3469874d89947439a80ca5b60f9a0a37e16ba05a60bf0a3b691704ede2d1b6c66355a3dd15a7a503eb15a18e6e987
   languageName: node
   linkType: hard
 
@@ -5187,12 +5187,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-dom@npm:16.9.15":
-  version: 16.9.15
-  resolution: "@types/react-dom@npm:16.9.15"
+"@types/react-dom@npm:16.9.16":
+  version: 16.9.16
+  resolution: "@types/react-dom@npm:16.9.16"
   dependencies:
     "@types/react": ^16
-  checksum: b41ca153f7bd02210c1b2eeccc25161b24ddb405350331cfa05b63078304526768c6bded0c1e1c2cda91bc06d38d263abec2b421dce3fe5ffb9de0b767c06117
+  checksum: 1d3feea5f32d70644a94e6b3d15371585bd5f3defe3981a936f299d5a0ebd6ef0208057201c990e7feaab3c2092bb9e889ae74ee316e3a48e15069e72a8e1575
   languageName: node
   linkType: hard
 
@@ -11290,9 +11290,9 @@ __metadata:
     "@testing-library/react": 9.5.0
     "@testing-library/user-event": 7.2.1
     "@types/jest": 24.9.1
-    "@types/node": 12.20.50
+    "@types/node": 16.11.35
     "@types/react": 16.14.26
-    "@types/react-dom": 16.9.15
+    "@types/react-dom": 16.9.16
     eslint-config-react-app: ^6.0.0
     gh-pages: ^3.1.0
     react: 16.14.0
@@ -19523,7 +19523,7 @@ __metadata:
     "@typescript-eslint/parser": ^4.1.1
     concurrently: ^7.1.0
     eslint: ^7.11.0
-    typescript: 4.3.5
+    typescript: 4.6.4
   languageName: unknown
   linkType: soft
 
@@ -21678,6 +21678,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:4.6.4":
+  version: 4.6.4
+  resolution: "typescript@npm:4.6.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 92e2c0328485a4f7bd7435f5b105f03addff32f867e241dc3be8c372ed801a138c732d9a55697696d2f82a80dd6ad4bddff1ad6b0d1884bf4a24b92e71094c44
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@4.3.5#~builtin<compat/typescript>":
   version: 4.3.5
   resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=bda367"
@@ -21685,6 +21695,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 8991b4a568bd5a9dab8fa470b5e51368f588e46aebde3a773d9c993ef83e8a1ec0832deae4496d2c788a23c400471117d60b8f9607578ae79779cb3f379308ae
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@4.6.4#~builtin<compat/typescript>":
+  version: 4.6.4
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 0e3fa814d454942a689daf4c00f82328d323e7ecd4077e3265d45375e64642611631f4c882a71be87774468ba03793e9b8ff4bccfac3018194a9e36d8f72c251
   languageName: node
   linkType: hard
 

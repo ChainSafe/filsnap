@@ -40,7 +40,7 @@ export const Account = (props: AccountProps) => {
                         }
                     </Grid>
                 </Grid>
-                <Grid container item xs={12} justify="flex-end">
+                <Grid container item xs={12} justifyContent="flex-end">
                     <Button color="secondary" variant={"contained"} onClick={handleExport}>Export private key</Button>
                 </Grid>
             </CardContent>

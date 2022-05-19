@@ -119,7 +119,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
         <Card>
             <CardContent>
                 <CardHeader title="Transfer"/>
-                <Grid container alignItems="center" justify="space-between">
+                <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item xs={12}>
                         <TextField
                         onChange={handleRecipientChange} size="medium" fullWidth id="recipient" label="Recipient" variant="outlined" value={recipient}>
@@ -152,7 +152,7 @@ export const Transfer: React.FC<ITransferProps> = ({network, api, onNewMessageCa
                     </Grid>
                 </Grid>
                 <Box m="0.5rem"/>
-                <Grid container item xs={12} justify="flex-end">
+                <Grid container item xs={12} justifyContent="flex-end" >
                     <Button onClick={onAutoFillGas} color="secondary" variant="contained" size="large" style={{marginRight: 10}}>AUTO FILL GAS</Button>
                     <Button onClick={onSubmit} color="secondary" variant="contained" size="large">SEND</Button>
                 </Grid>
