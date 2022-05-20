@@ -24,7 +24,7 @@ First, build and install beta release of Metamask extension:
 
 ##### Live demo
 
-Test Filsnap inside [our demo DAPP.](https://filsnap.netlify.app/)
+Test Filsnap inside [our demo DAPP.](http://filsnap.chainsafe.io/)
 
 ##### Running Filsnap demo locally
 
