@@ -24,7 +24,7 @@ jobs:
       - name: Run linter
         run: yarn run lint
       - name: Update Manifest for renovate
-        if: github.event.pull_request.user.login === 'renovate'
+        if: github.event.pull_request.user.login == 'renovate'
         run: |
           yarn run manifest
 
