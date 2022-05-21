@@ -24,7 +24,7 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-scripts": "4.0.3",
-    "sass": "1.51.0",
+    "sass": "1.52.1",
     "to-hex": "0.0.18",
     "typescript": "4.3.5"
   },
