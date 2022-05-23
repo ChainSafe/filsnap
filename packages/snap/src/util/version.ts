@@ -8,8 +8,9 @@ export const getMetamaskVersion = async (wallet: Wallet): Promise<string> => awa
 export const isNewerVersion = (current: string, comparingWith: string): boolean => {
   if (current === comparingWith) return false;
 
-  const currentFragments = current.replace(/[^\d.-]/g, '').split('.');
-  const comparingWithFragments = comparingWith.replace(/[^\d.-]/g, '').split('.');
+  const regex = /[^\d.]/g;
+  const currentFragments = current.replace(regex, '').split('.');
+  const comparingWithFragments = comparingWith.replace(regex, '').split('.');
 
   const length =
         currentFragments.length > comparingWithFragments.length ?
