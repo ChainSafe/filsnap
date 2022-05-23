@@ -3091,7 +3091,8 @@ __metadata:
     "@filecoin-shipyard/lotus-client-rpc": ^0.2.0
     "@filecoin-shipyard/lotus-client-schema": ^0.0.14
     "@glif/filecoin-number": ^2.0.0-beta.0
-    "@metamask/key-tree": ^3.0.1
+    "@metamask/key-tree": ^4.0.0
+    "@metamask/key-tree-old": "npm:@metamask/key-tree@^3.0.1"
     "@metamask/snaps-cli": ^0.11.1
     "@types/bn.js": ^4.11.6
     "@types/chai": ^4.2.10
@@ -4247,7 +4248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/key-tree@npm:^3.0.1":
+"@metamask/key-tree-old@npm:@metamask/key-tree@^3.0.1":
   version: 3.0.1
   resolution: "@metamask/key-tree@npm:3.0.1"
   dependencies:
@@ -4255,6 +4256,19 @@ __metadata:
     keccak: ^3.0.2
     secp256k1: ^4.0.2
   checksum: cd1798e3bd39fc6a8dd49e72a921ff3d3db2d5cbb85dccd94962eee9ebaf92bcbe1f8a7d933443eaaff40c4152539c640664ac72fb415bb0c28a84d11fe521a5
+  languageName: node
+  linkType: hard
+
+"@metamask/key-tree@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@metamask/key-tree@npm:4.0.0"
+  dependencies:
+    "@noble/ed25519": ^1.6.0
+    "@noble/hashes": ^1.0.0
+    "@noble/secp256k1": ^1.5.5
+    "@scure/base": ^1.0.0
+    "@scure/bip39": ^1.0.0
+  checksum: f3b869888ae6bb5a174a0971fdd32b7242f067792437a41a0e166d8315825c86d7317035da7fb49ef8387f1601baeae381293f9426f123c7ce5d197aa29c1c8b
   languageName: node
   linkType: hard
 
@@ -4415,6 +4429,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@noble/ed25519@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@noble/ed25519@npm:1.6.0"
+  checksum: 6af5d1830eb13627961b0915679c64be49e8214575ff3a5d74c7392747af4e4fe6d94e397ffdb22be4913e78f047f6eb5d99b32ef3d057e7d8afea8003647400
+  languageName: node
+  linkType: hard
+
+"@noble/hashes@npm:^1.0.0, @noble/hashes@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "@noble/hashes@npm:1.0.0"
+  checksum: b6244bb44d2c8774437034c5e416fb72188bbb16e1298fc3223c1a71f918d78496df79523d10d6953a8a6e3009dde745d022bb9aca2e5a5b92eede01b2d9664e
+  languageName: node
+  linkType: hard
+
+"@noble/secp256k1@npm:^1.5.5":
+  version: 1.5.5
+  resolution: "@noble/secp256k1@npm:1.5.5"
+  checksum: 7c451c09ba539e305f94c27f6f2651c806938006d2f91ca69245b334b6a60f747ec26a81b277a3c41be4dc75988700a78d01484909711d9b6bfd90cfa2a271e1
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -4555,6 +4590,23 @@ __metadata:
   peerDependencies:
     rollup: ^1.20.0||^2.0.0
   checksum: 7151753160d15ba2b259461a6c25b3932150994ea52dba8fd3144f634c7647c2e56733d986e2c15de67c4d96a9ee7d6278efa6d2e626a7169898fd64adc0f90c
+  languageName: node
+  linkType: hard
+
+"@scure/base@npm:^1.0.0, @scure/base@npm:~1.0.0":
+  version: 1.0.0
+  resolution: "@scure/base@npm:1.0.0"
+  checksum: b5a87f7d3a5b97bf65b8f8b306d796c86607451904aaef882be7fbb65dae7a2cf6dab943dcf0623cd63c8f1543ea7e39c5c0b1dd90064180a1816c2ef455b72b
+  languageName: node
+  linkType: hard
+
+"@scure/bip39@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@scure/bip39@npm:1.0.0"
+  dependencies:
+    "@noble/hashes": ~1.0.0
+    "@scure/base": ~1.0.0
+  checksum: 2d0e984c152e5864aa59e2e8181a1bfbefba4399d52a0332fa71b5f794818bc9fa0d8dd859944b4c88e7ff31d9480f3f56f290bb7895e7026cf309a62d364357
   languageName: node
   linkType: hard
 
