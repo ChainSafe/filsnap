@@ -5172,10 +5172,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.11.35":
-  version: 16.11.35
-  resolution: "@types/node@npm:16.11.35"
-  checksum: 528459656dd057e1c86bebd583a95c4108d3469874d89947439a80ca5b60f9a0a37e16ba05a60bf0a3b691704ede2d1b6c66355a3dd15a7a503eb15a18e6e987
+"@types/node@npm:16.11.36":
+  version: 16.11.36
+  resolution: "@types/node@npm:16.11.36"
+  checksum: fbb1febc365549455a8566bbc3a3fb4521f08e2a1aac9d55bcfee67501383435c3a4d05c16759a0d6988bdcf6d8c145738aed61b043ec257fa76e8179984af20
   languageName: node
   linkType: hard
 
@@ -11342,7 +11342,7 @@ __metadata:
     "@testing-library/react": 9.5.0
     "@testing-library/user-event": 7.2.1
     "@types/jest": 24.9.1
-    "@types/node": 16.11.35
+    "@types/node": 16.11.36
     "@types/react": 16.14.26
     "@types/react-dom": 16.9.16
     eslint-config-react-app: ^6.0.0
@@ -11350,7 +11350,7 @@ __metadata:
     react: 16.14.0
     react-dom: 16.14.0
     react-scripts: 4.0.3
-    sass: 1.51.0
+    sass: 1.52.1
     to-hex: 0.0.18
     typescript: 4.3.5
   languageName: unknown
@@ -19719,16 +19719,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.51.0":
-  version: 1.51.0
-  resolution: "sass@npm:1.51.0"
+"sass@npm:1.52.1":
+  version: 1.52.1
+  resolution: "sass@npm:1.52.1"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: abbd30f51bfaf70afb67bacf9a29bc79c2788c243572514a3f71bb24f0e6493a820bb5dd55d4cfabf7a927a1ece8189330da8475a1b4a329e8d741cffe13b6b6
+  checksum: 684bd84d7d7349eeb4ea9f1b0a406a720c64bef238c0175307406ac2924b1da27c77173ab2ac5cd9c71005cda32f075e21cef3e7ca72e6654cf4debf42694167
   languageName: node
   linkType: hard
 
@@ -21742,7 +21742,7 @@ __metadata:
 
 "typescript@patch:typescript@4.3.5#~builtin<compat/typescript>":
   version: 4.3.5
-  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.3.5#~builtin<compat/typescript>::version=4.3.5&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -21752,7 +21752,7 @@ __metadata:
 
 "typescript@patch:typescript@4.6.4#~builtin<compat/typescript>":
   version: 4.6.4
-  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=bda367"
+  resolution: "typescript@patch:typescript@npm%3A4.6.4#~builtin<compat/typescript>::version=4.6.4&hash=7ad353"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver

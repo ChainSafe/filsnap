@@ -1,5 +1,5 @@
 {
-  "plugins": ["node-workspace"],
+  "plugins": [],
   "packages": {
     "packages/adapter": {
       "releaseType": "node",
