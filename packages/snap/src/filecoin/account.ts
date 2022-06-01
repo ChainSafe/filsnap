@@ -2,8 +2,8 @@ import {MetamaskState, Wallet} from "../interfaces";
 import {keyRecover} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@chainsafe/filsnap-types";
 import {
-  deriveBIP44AddressKey as old_deriveBIP44AddressKey,
-  JsonBIP44CoinTypeNode as Old_JsonBIP44CoinTypeNode
+  deriveBIP44AddressKey as deprecated_deriveBIP44AddressKey,
+  JsonBIP44CoinTypeNode as Deprecated_JsonBIP44CoinTypeNode
 } from '@metamask/key-tree-old';
 import {getMetamaskVersion, isNewerVersion} from "../util/version";
 import {getBIP44AddressKeyDeriver, JsonBIP44CoinTypeNode } from "@metamask/key-tree";
@@ -21,7 +21,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   const bip44Node = await wallet.request({
     method: `snap_getBip44Entropy_${bip44Code}`,
     params: []
-  }) as Old_JsonBIP44CoinTypeNode | JsonBIP44CoinTypeNode;
+  }) as Deprecated_JsonBIP44CoinTypeNode | JsonBIP44CoinTypeNode;
 
   let privateKey: Buffer;
 
@@ -33,7 +33,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   } else {
     // metamask has supplied us with entropy for "m/purpose'/bip44Code'/"
     // we need to derive the final "accountIndex'/change/addressIndex"
-    const extendedPrivateKey = await old_deriveBIP44AddressKey(bip44Node as Old_JsonBIP44CoinTypeNode, {
+    const extendedPrivateKey = await deprecated_deriveBIP44AddressKey(bip44Node as Deprecated_JsonBIP44CoinTypeNode, {
       account: parseInt(account),
       address_index: parseInt(addressIndex),
       change: parseInt(change),
