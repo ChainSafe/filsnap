@@ -1,7 +1,7 @@
-import chai, {expect} from "chai";
+import chai from "chai";
 import sinonChai from "sinon-chai";
 
 chai.use(sinonChai);
 
-describe('Test configuration functions', function() {
-});
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+describe('Test configuration functions', function() {});

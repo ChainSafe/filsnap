@@ -1,7 +1,7 @@
 import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
-import {filecoinMainnetConfiguration, filecoinTestnetConfiguration} from "../../../src/configuration/predefined";
+import {filecoinTestnetConfiguration} from "../../../src/configuration/predefined";
 import {configure} from "../../../src/rpc/configure";
 import {EmptyMetamaskState} from "../../../src/interfaces";
 import {SnapConfig} from "@chainsafe/filsnap-types";
@@ -18,11 +18,11 @@ describe('Test rpc handler function: configure', function() {
   it('should set predefined filecoin configuration based on network', async function() {
     walletStub.rpcStubs.snap_manageState
       .withArgs('get')
-      .resolves(EmptyMetamaskState())
+      .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-        .withArgs('update', {filecoin: {config: filecoinTestnetConfiguration, messages: []}})
-        .resolves()
+      .withArgs('update', {filecoin: {config: filecoinTestnetConfiguration, messages: []}})
+      .resolves();
 
     const result = await configure(walletStub, "t");
 
@@ -35,15 +35,15 @@ describe('Test rpc handler function: configure', function() {
 
   it('should set predefined filecoin configuration with additional property override', async function () {
     const customConfiguration = filecoinTestnetConfiguration;
-    customConfiguration.unit.symbol = "xFIL"
+    customConfiguration.unit.symbol = "xFIL";
 
     walletStub.rpcStubs.snap_manageState
       .withArgs('get')
-      .resolves(EmptyMetamaskState())
+      .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-        .withArgs('update', {filecoin: {config: customConfiguration, messages: []}})
-        .resolves()
+      .withArgs('update', {filecoin: {config: customConfiguration, messages: []}})
+      .resolves();
     
     const result = await configure(walletStub, "t", {unit: {symbol: "xFIL"}} as SnapConfig);
 
@@ -57,32 +57,32 @@ describe('Test rpc handler function: configure', function() {
   it('should throw error if wrong derivation path on mainet', async function() {
     walletStub.rpcStubs.snap_manageState
       .withArgs('get')
-      .resolves(EmptyMetamaskState())
+      .resolves(EmptyMetamaskState());
 
-    let err = null
+    let err = null;
     try {
-      await configure(walletStub, "f", {derivationPath: "m/44'/1'/0'/0/0"} as SnapConfig)
+      await configure(walletStub, "f", {derivationPath: "m/44'/1'/0'/0/0"} as SnapConfig);
     } catch(e) {
-      err = e
+      err = e;
     }
 
-    expect(err).to.be.an('Error')
-    expect(err.message).to.be.equal('Wrong CoinType in derivation path')
-  })
+    expect(err).to.be.an('Error');
+    expect(err.message).to.be.equal('Wrong CoinType in derivation path');
+  });
 
   it('should throw error if wrong derivation path on testnet', async function() {
     walletStub.rpcStubs.snap_manageState
       .withArgs('get')
-      .resolves(EmptyMetamaskState())
+      .resolves(EmptyMetamaskState());
 
-    let err = null
+    let err = null;
     try {
-      await configure(walletStub, "t", {derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig)
+      await configure(walletStub, "t", {derivationPath: "m/44'/461'/0'/0/0"} as SnapConfig);
     } catch(e) {
-      err = e
+      err = e;
     }
 
-    expect(err).to.be.an('Error')
-    expect(err.message).to.be.equal('Wrong CoinType in derivation path')
-  })
+    expect(err).to.be.an('Error');
+    expect(err.message).to.be.equal('Wrong CoinType in derivation path');
+  });
 });

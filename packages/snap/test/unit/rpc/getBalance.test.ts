@@ -2,8 +2,6 @@ import chai, {expect} from "chai";
 import sinonChai from "sinon-chai";
 import {WalletMock} from "../wallet.mock.test";
 import {getBalance} from "../../../src/rpc/getBalance";
-import {testBip44Entropy} from "./keyPairTestConstants";
-import {EmptyMetamaskState} from "../../../src/interfaces";
 import {LotusApiMock} from "../lotusapi.mock.test";
 
 chai.use(sinonChai);
@@ -20,10 +18,8 @@ describe('Test rpc handler function: getBalance', function() {
 
   it('should return balance on saved keyring in state', async function () {
     // prepare stubs
-    walletStub.rpcStubs.snap_manageState
-      .withArgs('get')
-      .resolves(EmptyMetamaskState());
-    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testBip44Entropy);
+    walletStub.prepareFoKeyPair();
+
     apiStub.walletBalance.returns("30000000");
     // call getBalance
     const result = await getBalance(walletStub, apiStub);
