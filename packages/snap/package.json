@@ -40,7 +40,8 @@
     "metamask",
     "snap",
     "dapp",
-    "wallet"
+    "wallet",
+    "plugin"
   ],
   "author": "chainsafe <info@chainsafe.io>",
   "bugs": {
