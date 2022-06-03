@@ -5233,10 +5233,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.11.36":
-  version: 16.11.36
-  resolution: "@types/node@npm:16.11.36"
-  checksum: fbb1febc365549455a8566bbc3a3fb4521f08e2a1aac9d55bcfee67501383435c3a4d05c16759a0d6988bdcf6d8c145738aed61b043ec257fa76e8179984af20
+"@types/node@npm:16.11.38":
+  version: 16.11.38
+  resolution: "@types/node@npm:16.11.38"
+  checksum: 16617890ac59c05791678cb8c8c656c3bbe70f597052213cac4f38a2d599d53814b62b2f8c380753df6a548337b8730cd30025d8441ecf116917683021084cb9
   languageName: node
   linkType: hard
 
@@ -11405,7 +11405,7 @@ __metadata:
     "@testing-library/react": 9.5.0
     "@testing-library/user-event": 7.2.1
     "@types/jest": 24.9.1
-    "@types/node": 16.11.36
+    "@types/node": 16.11.38
     "@types/react": 16.14.26
     "@types/react-dom": 16.9.16
     eslint-config-react-app: ^6.0.0
@@ -11413,7 +11413,7 @@ __metadata:
     react: 16.14.0
     react-dom: 16.14.0
     react-scripts: 4.0.3
-    sass: 1.52.1
+    sass: 1.52.2
     to-hex: 0.0.18
     typescript: 4.3.5
   languageName: unknown
@@ -19806,16 +19806,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.52.1":
-  version: 1.52.1
-  resolution: "sass@npm:1.52.1"
+"sass@npm:1.52.2":
+  version: 1.52.2
+  resolution: "sass@npm:1.52.2"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 684bd84d7d7349eeb4ea9f1b0a406a720c64bef238c0175307406ac2924b1da27c77173ab2ac5cd9c71005cda32f075e21cef3e7ca72e6654cf4debf42694167
+  checksum: 6e6d3babd896429225a74490de5ee32c00ae8b72958ffc69efbe1ff4e367a855f8e8b05072b275fbdaffec1b85c4bb397a24f7faf7b31118ee0ec0d503c3be91
   languageName: node
   linkType: hard
 
