@@ -1,6 +1,6 @@
 {
   "name": "@chainsafe/filsnap",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "license": "(Apache-2.0 AND MIT)",
   "description": "Filsnap - Metamask snap to interact with Filecoin dapps.",
   "main": "build/index.js",
