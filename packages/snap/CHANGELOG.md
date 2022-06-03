@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.5](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.4...filsnap-v2.3.5) (2022-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @zondax/filecoin-signing-tools to ^0.20.0 ([#170](https://github.com/ChainSafe/filsnap/issues/170)) ([3a4b94e](https://github.com/ChainSafe/filsnap/commit/3a4b94e6f7982ffef97962da289b101514bb7ce4))
+* update key tree ([#186](https://github.com/ChainSafe/filsnap/issues/186)) ([c51c621](https://github.com/ChainSafe/filsnap/commit/c51c621dea0adfa755b424f22bbfa9d314f02f6d))
+
 ### [2.3.4](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.3...filsnap-v2.3.4) (2022-05-04)
 
 
