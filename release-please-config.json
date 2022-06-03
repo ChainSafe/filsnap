@@ -23,6 +23,7 @@
       "releaseType": "node",
       "draft": false,
       "prerelease": false,
+      "release-as": "2.3.5",
       "bumpMinorPreMajor": false,
       "bumpPatchForMinorPreMajor": false,
       "changelogPath": "CHANGELOG.md",
