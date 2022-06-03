@@ -39,9 +39,10 @@ jobs:
       - run: yarn build
         if: ${{ steps.release.outputs.releases_created }}
 
-        
-
+      - env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: |
+          echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          
       - run: yarn workspaces foreach -v --exclude root npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} # use npm "Automation" token and put in Github repository secrets under "NPM_TOKEN"
         if: ${{ steps.release.outputs.releases_created }}
