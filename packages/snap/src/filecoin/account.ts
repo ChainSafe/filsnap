@@ -1,7 +1,12 @@
 import {MetamaskState, Wallet} from "../interfaces";
 import {keyRecover} from "@zondax/filecoin-signing-tools/js";
 import {KeyPair} from "@chainsafe/filsnap-types";
-import {deriveBIP44AddressKey, JsonBIP44CoinTypeNode} from '@metamask/key-tree';
+import {
+  deriveBIP44AddressKey as deprecated_deriveBIP44AddressKey,
+  JsonBIP44CoinTypeNode as Deprecated_JsonBIP44CoinTypeNode
+} from '@metamask/key-tree-old';
+import {getMetamaskVersion, isNewerVersion} from "../util/version";
+import {getBIP44AddressKeyDeriver, JsonBIP44CoinTypeNode } from "@metamask/key-tree";
 
 /**
  * Return derived KeyPair from seed.
@@ -16,18 +21,31 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   const bip44Node = await wallet.request({
     method: `snap_getBip44Entropy_${bip44Code}`,
     params: []
-  }) as JsonBIP44CoinTypeNode;
+  }) as Deprecated_JsonBIP44CoinTypeNode | JsonBIP44CoinTypeNode;
 
-  // metamask has supplied us with entropy for "m/purpose'/bip44Code'/"
-  // we need to derive the final "accountIndex'/change/addressIndex"
-  const extendedPrivateKey = deriveBIP44AddressKey(bip44Node, {
-    account: parseInt(account),
-    address_index: parseInt(addressIndex),
-    change: parseInt(change),
-  });
-  const privateKey = extendedPrivateKey.slice(0, 32);
+  let privateKey: Buffer;
+
+  const currentVersion = await getMetamaskVersion(wallet);
+  if(isNewerVersion('MetaMask/v10.14.99-flask.0', currentVersion)) {
+    const addressKeyDeriver = await getBIP44AddressKeyDeriver(bip44Node as JsonBIP44CoinTypeNode, {
+      account: parseInt(account),
+      change: parseInt(change),
+    });
+    const extendedPrivateKey = await addressKeyDeriver(Number(addressIndex));
+    privateKey = extendedPrivateKey.privateKeyBuffer.slice(0, 32);
+  } else {
+    // metamask has supplied us with entropy for "m/purpose'/bip44Code'/"
+    // we need to derive the final "accountIndex'/change/addressIndex"
+    const extendedPrivateKey = await deprecated_deriveBIP44AddressKey(bip44Node as Deprecated_JsonBIP44CoinTypeNode, {
+      account: parseInt(account),
+      address_index: parseInt(addressIndex),
+      change: parseInt(change),
+    });
+    privateKey = extendedPrivateKey.slice(0, 32);
+  }
+
   const extendedKey = keyRecover(privateKey, !isFilecoinMainnet);
-  
+
   return {
     address: extendedKey.address,
     privateKey: extendedKey.private_base64,

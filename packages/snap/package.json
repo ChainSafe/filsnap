@@ -52,7 +52,7 @@
     "@metamask/snaps-cli": "^0.11.1",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
-    "@types/mocha": "^7.0.2",
+    "@types/mocha": "^9.1.1",
     "@types/sinon": "^7.5.2",
     "@types/sinon-chai": "^3.2.3",
     "@typescript-eslint/eslint-plugin": "^2.22.0",
@@ -61,10 +61,10 @@
     "chai": "^4.2.0",
     "concurrently": "^5.1.0",
     "eslint": "^7.11.0",
-    "mocha": "^7.1.1",
+    "mocha": "^10.0.0",
     "sinon": "^9.0.1",
     "sinon-chai": "^3.5.0",
-    "ts-node": "^8.6.2",
+    "ts-node": "^10.8.0",
     "typescript": "4.3.5"
   },
   "dependencies": {
@@ -72,7 +72,8 @@
     "@filecoin-shipyard/lotus-client-rpc": "^0.2.0",
     "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
     "@glif/filecoin-number": "^2.0.0-beta.0",
-    "@metamask/key-tree": "^3.0.1",
+    "@metamask/key-tree": "^4.0.0",
+    "@metamask/key-tree-old": "npm:@metamask/key-tree@^3.0.1",
     "@zondax/filecoin-signing-tools": "^0.20.0",
     "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"
