@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.6](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.5...filsnap-v2.3.6) (2022-06-13)
+
+
+### Bug Fixes
+
+* snap manifest ([#192](https://github.com/ChainSafe/filsnap/issues/192)) ([c80fd79](https://github.com/ChainSafe/filsnap/commit/c80fd79fb6d1145060c046377b9b45ea5b4f38b3))
+
 ## [2.3.5](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.4...filsnap-v2.3.5) (2022-06-03)
 
 
