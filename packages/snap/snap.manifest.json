@@ -10,7 +10,7 @@
     "shasum": "HPfrpT3USxqWMAGpBBISGvx+Ieq7DZmPFISV1WPEc1g=",
     "location": {
       "npm": {
-        "filePath": "./dist/bundle.js",
+        "filePath": "dist/bundle.js",
         "packageName": "@chainsafe/filsnap",
         "registry": "https://registry.npmjs.org/"
       }
