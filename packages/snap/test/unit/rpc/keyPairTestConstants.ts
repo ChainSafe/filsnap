@@ -10,7 +10,7 @@ export const testPrivateKey = "888a4764f36384aef299c99f81a64e2d5d69e024979c8cb14
 export const testPrivateKeyBase64 = "iIpHZPNjhK7ymcmfgaZOLV1p4CSXnIyxSL2oRijTEDU=";
 
 export const testOldMetamaskVersion = "MetaMask/v10.14.6-flask.0";
-export const testNewMetamaskVersion = "MetaMask/v10.15.0-flask.1";
+export const testNewMetamaskVersion = "MetaMask/v10.16.0-flask.1";
 
 export const testOldBip44Entropy = {
   coin_type: 461,
