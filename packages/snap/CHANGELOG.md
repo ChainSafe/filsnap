@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.7](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.6...filsnap-v2.3.7) (2022-06-14)
+
+
+### Bug Fixes
+
+* metamask version handling for key-tree ([#195](https://github.com/ChainSafe/filsnap/issues/195)) ([e618c7f](https://github.com/ChainSafe/filsnap/commit/e618c7f8b37101a12e090d2582ac4202a9e68c4e))
+
 ## [2.3.6](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.5...filsnap-v2.3.6) (2022-06-13)
 
 
