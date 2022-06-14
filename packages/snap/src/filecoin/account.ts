@@ -26,7 +26,7 @@ export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
   let privateKey: Buffer;
 
   const currentVersion = await getMetamaskVersion(wallet);
-  if(isNewerVersion('MetaMask/v10.14.99-flask.0', currentVersion)) {
+  if(isNewerVersion('MetaMask/v10.15.99-flask.0', currentVersion)) {
     const addressKeyDeriver = await getBIP44AddressKeyDeriver(bip44Node as JsonBIP44CoinTypeNode, {
       account: parseInt(account),
       change: parseInt(change),
