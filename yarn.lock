@@ -11413,7 +11413,7 @@ __metadata:
     react: 16.14.0
     react-dom: 16.14.0
     react-scripts: 4.0.3
-    sass: 1.52.3
+    sass: 1.53.0
     to-hex: 0.0.18
     typescript: 4.7.3
   languageName: unknown
@@ -19806,16 +19806,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.52.3":
-  version: 1.52.3
-  resolution: "sass@npm:1.52.3"
+"sass@npm:1.53.0":
+  version: 1.53.0
+  resolution: "sass@npm:1.53.0"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 9897e2f8a0ba166a8176aaebdc90ca0fcbcee2412f1f24e9c3c289fd31f94d98a1c5e64827035651d2a235eaa956759276962d327ef93b994fe45f53f5552bc3
+  checksum: 7242194d40f94789d908d2e62982267ea6728a9682e161f38fbf5b959af935acc0f085f13e6e4510795f309eb08552ba6e8e82b85be2bf6128d6740c2fd6caa7
   languageName: node
   linkType: hard
 
