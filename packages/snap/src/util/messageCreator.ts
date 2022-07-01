@@ -3,6 +3,7 @@ interface Message {
   value: unknown | undefined;
 }
 
-export const messageCreator = (messages: Message[]): string => messages
-  .map(({ message, value,}) => message + ' ' + value)
-  .join('\n');
+export const messageCreator = (messages: Message[]): string =>
+  messages
+    .map(({ message, value }) => message + " " + String(value))
+    .join("\n");

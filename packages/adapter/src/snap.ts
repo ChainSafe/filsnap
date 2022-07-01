@@ -1,17 +1,18 @@
-import {FilecoinSnapApi} from "@chainsafe/filsnap-types";
+import { FilecoinSnapApi } from "@chainsafe/filsnap-types";
 import {
   calculateGasForMessage,
   configure,
   exportPrivateKey,
   getAddress,
-  getBalance, getMessages,
-  getPublicKey, sendMessage,
+  getBalance,
+  getMessages,
+  getPublicKey,
+  sendMessage,
   signMessage,
-  signMessageRaw
+  signMessageRaw,
 } from "./methods";
 
 export class MetamaskFilecoinSnap {
-
   // snap parameters
   protected readonly snapOrigin: string;
   protected readonly snapId: string;
@@ -21,6 +22,7 @@ export class MetamaskFilecoinSnap {
     this.snapId = `wallet_snap_${this.snapOrigin}`;
   }
 
+  // eslint-disable-next-line @typescript-eslint/require-await
   public getFilecoinSnapApi = async (): Promise<FilecoinSnapApi> => {
     return {
       calculateGasForMessage: calculateGasForMessage.bind(this),
@@ -34,4 +36,5 @@ export class MetamaskFilecoinSnap {
       signMessage: signMessage.bind(this),
       signMessageRaw: signMessageRaw.bind(this),
     };
-  };}
+  };
+}
