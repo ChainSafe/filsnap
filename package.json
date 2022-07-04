@@ -31,7 +31,7 @@
     "@types/mocha": "^9.1.1",
     "@types/node": "^12.12.35",
     "concurrently": "^7.1.0",
-    "eslint": "7",
+    "eslint": "8",
     "mocha": "^10.0.0",
     "ts-node": "^10.8.0",
     "typescript": "4.6.4"
