@@ -1,5 +1,9 @@
-import {MessageStatus, MetamaskFilecoinRpcRequest, SnapConfig} from "@chainsafe/filsnap-types";
-import {defaultConfiguration} from "./configuration/predefined";
+import {
+  MessageStatus,
+  MetamaskFilecoinRpcRequest,
+  SnapConfig,
+} from "@chainsafe/filsnap-types";
+import { defaultConfiguration } from "./configuration/predefined";
 
 export type FMethodCallback = (
   originString: string,
@@ -14,10 +18,10 @@ export type MetamaskState = {
 };
 
 export const EmptyMetamaskState: () => MetamaskState = () => ({
-  filecoin: {config: defaultConfiguration, messages: []}
+  filecoin: { config: defaultConfiguration, messages: [] },
 });
 
 export interface Wallet {
   registerRpcMessageHandler: (fn: FMethodCallback) => unknown;
-  request(options: {method: string; params?: unknown[]}): unknown;
+  request(options: { method: string; params?: unknown[] }): unknown;
 }

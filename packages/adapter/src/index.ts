@@ -1,9 +1,9 @@
+import { SnapConfig } from "@chainsafe/filsnap-types";
 import {
   hasMetaMask,
   isMetamaskSnapsSupported,
   isSnapInstalled,
 } from "./utils";
-import { SnapConfig } from "@chainsafe/filsnap-types";
 import { MetamaskFilecoinSnap } from "./snap";
 
 const defaultSnapOrigin =
@@ -36,7 +36,6 @@ export async function enableFilecoinSnap(
   snapOrigin?: string,
   snapInstallationParams: Record<SnapInstallationParamNames, unknown> = {}
 ): Promise<MetamaskFilecoinSnap> {
-
   const snapId = snapOrigin ?? defaultSnapOrigin;
 
   // check all conditions
