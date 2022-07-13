@@ -1,13 +1,15 @@
 import {Box, Button, Hidden, Snackbar, IconButton} from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
-import React, {useCallback, useContext, useEffect} from "react";
+import React, {useCallback, useContext, useEffect, useState} from "react";
 import Alert from "@material-ui/lab/Alert";
 import {MetamaskActions, MetaMaskContext} from "../../context/metamask";
 import {initiateFilecoinSnap} from "../../services/metamask";
+import {isMetamaskSnapsSupported} from "@chainsafe/filsnap-adapter";
 
 export const MetaMaskConnector = () => {
 
     const [state, dispatch] = useContext(MetaMaskContext);
+    const [needSnap, setNeedSnap] = useState<null | boolean>(null);
 
     useEffect(() => {
         (async () => {
@@ -23,6 +25,12 @@ export const MetaMaskConnector = () => {
             }
         })();
     } , [dispatch]);
+
+    useEffect(() => {
+        (async () => {
+            if (state.hasMetaMask) setNeedSnap(await isMetamaskSnapsSupported());
+        })();
+    }, [state.hasMetaMask]);
 
     const installSnap = useCallback(async () => {
         const installResult = await initiateFilecoinSnap();
@@ -74,8 +82,12 @@ export const MetaMaskConnector = () => {
                 <Alert severity="warning">Ensure that MetaMask is installed!</Alert>
                 <Box mt={"1rem"}/>
             </Hidden>
+            <Hidden xsUp={!state.hasMetaMask || !!needSnap}>
+                <Alert severity="warning">Metamask flask is required to run snap!</Alert>
+                <Box mt={"1rem"}/>
+            </Hidden>
             <Button
-                disabled={!state.hasMetaMask}
+                disabled={!state.hasMetaMask || !needSnap}
                 onClick={installSnap}
                 variant="contained"
                 size={"large"}
