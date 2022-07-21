@@ -38,16 +38,18 @@ module.exports.onRpcRequest = (async ({ origin, request }: { origin: string, req
 
   let api: LotusRpcApi;
   // initialize lotus RPC api if needed
-  
+  // eslint-disable-next-line
   if (apiDependentMethods.indexOf(request.method) >= 0) {
     api = await getApi(wallet);
   }
-
+  // eslint-disable-next-line
   switch (request.method) {
     case "fil_configure": {
       const resp = await configure(
         wallet,
+        // eslint-disable-next-line
         request.params.configuration.network,
+        // eslint-disable-next-line
         request.params.configuration
       );
       api = resp.api;
@@ -66,20 +68,25 @@ module.exports.onRpcRequest = (async ({ origin, request }: { origin: string, req
     case "fil_getMessages":
       return getMessages(wallet);
     case "fil_signMessage":
+      // eslint-disable-next-line
       return await signMessage(wallet, api, request.params.message);
     case "fil_signMessageRaw":
+      // eslint-disable-next-line
       return await signMessageRaw(wallet, request.params.message);
     case "fil_sendMessage":
+      // eslint-disable-next-line
       return await sendMessage(wallet, api, request.params.signedMessage);
     case "fil_getGasForMessage":
       return await estimateMessageGas(
         wallet,
         api,
+        // eslint-disable-next-line
         request.params.message,
+        // eslint-disable-next-line
         request.params.maxFee
       );
     default:
       throw new Error("Unsupported RPC method");
   }
-}
-)
+  // eslint-disable-next-line
+});
