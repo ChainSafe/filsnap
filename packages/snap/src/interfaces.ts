@@ -22,6 +22,5 @@ export const EmptyMetamaskState: () => MetamaskState = () => ({
 });
 
 export interface Wallet {
-  registerRpcMessageHandler: (fn: FMethodCallback) => unknown;
   request(options: { method: string; params?: unknown[] }): unknown;
 }
