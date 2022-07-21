@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.8](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.7...filsnap-v2.3.8) (2022-07-21)
+
+
+### Bug Fixes
+
+* flask 10.17 snap breaking change fix ([#206](https://github.com/ChainSafe/filsnap/issues/206)) ([5efed8a](https://github.com/ChainSafe/filsnap/commit/5efed8aafedd8babd94562dc8f24b9e7f62ec09e))
+
 ## [2.3.7](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.6...filsnap-v2.3.7) (2022-06-14)
 
 
