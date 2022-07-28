@@ -1,38 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "../../node_modules"
-      ],
-      "@filecoin-shipyard/lotus-client-provider-nodejs": [
-        "./@types/lotus-client-provider-nodejs"
-      ],
-      "@filecoin-shipyard/lotus-client-rpc": [
-        "./@types/lotus-client-rpc"
-      ],
-      "@filecoin-shipyard/lotus-client-schema": [
-        "./@types/lotus-client-schema"
-      ],
-      "@zondax/filecoin-signing-tools/js": [
-        "./@types/filecoin-signing-tools"
-      ],
-      "@openworklabs/filecoin-number": [
-        "./@types/filecoin-number"
-      ]
-    },
+    "skipLibCheck": true,
     "outDir": "./build",
-    "types": [
-      "@types/chai",
-      "@types/mocha",
-      "@types/sinon",
-      "@types/sinon-chai"
-    ],
     "typeRoots": [
-      "./@types",
       "./node_modules/@types",
-      "../../node_modules/@types"
+      "../../node_modules/@types",
+      "./@types"
     ]
   },
   "include": [
