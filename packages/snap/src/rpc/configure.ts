@@ -1,9 +1,10 @@
-import deepmerge from "deepmerge";
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { MetamaskState, Wallet } from "../interfaces";
+import { SnapProvider } from "@metamask/snap-types";
+import deepmerge from "deepmerge";
 import { getDefaultConfiguration } from "../configuration";
-import { LotusRpcApi } from "../filecoin/types";
 import { getApiFromConfig } from "../filecoin/api";
+import { LotusRpcApi } from "../filecoin/types";
+import { MetamaskState } from "../interfaces";
 
 export interface ConfigureResponse {
   api: LotusRpcApi;
@@ -11,7 +12,7 @@ export interface ConfigureResponse {
 }
 
 export async function configure(
-  wallet: Wallet,
+  wallet: SnapProvider,
   networkName: string,
   overrides?: unknown
 ): Promise<ConfigureResponse> {
@@ -44,7 +45,7 @@ export async function configure(
     params: ["get"],
   })) as MetamaskState;
   state.filecoin.config = configuration;
-  wallet.request({
+  await wallet.request({
     method: "snap_manageState",
     params: ["update", state],
   });

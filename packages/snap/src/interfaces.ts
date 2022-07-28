@@ -20,7 +20,3 @@ export type MetamaskState = {
 export const EmptyMetamaskState: () => MetamaskState = () => ({
   filecoin: { config: defaultConfiguration, messages: [] },
 });
-
-export interface Wallet {
-  request(options: { method: string; params?: unknown[] }): unknown;
-}

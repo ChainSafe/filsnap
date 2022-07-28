@@ -1,5 +1,5 @@
 import { OnRpcRequestHandler } from "@metamask/snap-types";
-import { EmptyMetamaskState, Wallet } from "./interfaces";
+import { EmptyMetamaskState } from "./interfaces";
 import { getAddress } from "./rpc/getAddress";
 import { exportPrivateKey } from "./rpc/exportPrivateKey";
 import { getPublicKey } from "./rpc/getPublicKey";
@@ -17,8 +17,6 @@ import {
   isValidSendRequest,
   isValidSignRequest,
 } from "./util/params";
-
-declare let wallet: Wallet;
 
 const apiDependentMethods = [
   "fil_getBalance",

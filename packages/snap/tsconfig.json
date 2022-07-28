@@ -12,5 +12,6 @@
   "include": [
     "src/**/*.ts",
     "test/**/*ts"
-  ]
+  ],
+  "files": ["../../node_modules/@metamask/snap-types/global.d.ts"],
 }

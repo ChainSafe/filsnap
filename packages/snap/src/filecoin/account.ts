@@ -8,14 +8,15 @@ import {
   getBIP44AddressKeyDeriver,
   JsonBIP44CoinTypeNode,
 } from "@metamask/key-tree";
+import { SnapProvider } from "@metamask/snap-types";
 import { getMetamaskVersion, isNewerVersion } from "../util/version";
-import { MetamaskState, Wallet } from "../interfaces";
+import { MetamaskState } from "../interfaces";
 
 /**
  * Return derived KeyPair from seed.
  * @param wallet
  */
-export async function getKeyPair(wallet: Wallet): Promise<KeyPair> {
+export async function getKeyPair(wallet: SnapProvider): Promise<KeyPair> {
   const snapState = (await wallet.request({
     method: "snap_manageState",
     params: ["get"],

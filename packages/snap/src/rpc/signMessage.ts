@@ -1,23 +1,23 @@
 import {
+  MessageRequest,
+  SignMessageResponse,
+  SignRawMessageResponse,
+} from "@chainsafe/filsnap-types";
+import { FilecoinNumber } from "@glif/filecoin-number/dist";
+import { SnapProvider } from "@metamask/snap-types";
+import {
   Message,
   SignedMessage,
   transactionSign,
   transactionSignRaw,
 } from "@zondax/filecoin-signing-tools/js";
-import { FilecoinNumber } from "@glif/filecoin-number/dist";
-import {
-  MessageRequest,
-  SignMessageResponse,
-  SignRawMessageResponse,
-} from "@chainsafe/filsnap-types";
-import { Wallet } from "../interfaces";
 import { getKeyPair } from "../filecoin/account";
-import { showConfirmationDialog } from "../util/confirmation";
 import { LotusRpcApi } from "../filecoin/types";
+import { showConfirmationDialog } from "../util/confirmation";
 import { messageCreator } from "../util/messageCreator";
 
 export async function signMessage(
-  wallet: Wallet,
+  wallet: SnapProvider,
   api: LotusRpcApi,
   messageRequest: MessageRequest
 ): Promise<SignMessageResponse> {
@@ -100,7 +100,7 @@ export async function signMessage(
 }
 
 export async function signMessageRaw(
-  wallet: Wallet,
+  wallet: SnapProvider,
   rawMessage: string
 ): Promise<SignRawMessageResponse> {
   try {
