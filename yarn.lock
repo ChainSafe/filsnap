@@ -6419,14 +6419,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:16.14.28":
-  version: 16.14.28
-  resolution: "@types/react@npm:16.14.28"
+"@types/react@npm:16.14.29":
+  version: 16.14.29
+  resolution: "@types/react@npm:16.14.29"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: 9f9c2ab60c7f82fd81264810052c12e7cf8224a77a14afeef89598594b0c9c12531dc1b2f32d7297e56432b67dddbc0338605b66238820db94a4d757047a060a
+  checksum: 4b9a5b90f0fe346e59d60a442709a0b85e5b0cb423218667a01818c864e1286af93040b35d44c2df1505efdb3dc7114ec0d40d063f73f633c9f08ddde41c80c3
   languageName: node
   linkType: hard
 
@@ -12640,7 +12640,7 @@ __metadata:
     "@testing-library/user-event": 7.2.1
     "@types/jest": 24.9.1
     "@types/node": 16.11.45
-    "@types/react": 16.14.28
+    "@types/react": 16.14.29
     "@types/react-dom": 16.9.16
     eslint-config-react-app: ^6.0.0
     gh-pages: ^3.1.0
