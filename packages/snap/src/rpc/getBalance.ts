@@ -1,10 +1,10 @@
 import { FilecoinNumber } from "@glif/filecoin-number/dist";
-import { Wallet } from "../interfaces";
+import { SnapProvider } from "@metamask/snap-types";
 import { getKeyPair } from "../filecoin/account";
 import { LotusRpcApi } from "../filecoin/types";
 
 export async function getBalance(
-  wallet: Wallet,
+  wallet: SnapProvider,
   api: LotusRpcApi,
   address?: string
 ): Promise<string> {

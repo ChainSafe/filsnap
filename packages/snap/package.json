@@ -9,7 +9,7 @@
     "manifest": "mm-snap manifest",
     "lint": "yarn run lint:types && yarn run lint:style",
     "lint:types": "tsc --noEmit --pretty",
-    "lint:style": "eslint --color '{src, @types}/**/*.{js,ts,tsx}'",
+    "lint:style": "eslint --color '{src, test, @types}/**/*.{js,ts,tsx}'",
     "lint:style:fix": "yarn run lint --fix",
     "start": "yarn run build && yarn run serve",
     "prebuild": "rm -rf build && rm -rf dist",
@@ -48,6 +48,7 @@
   "homepage": "https://github.com/chainsafe/filecoin-metamask-snap#readme",
   "devDependencies": {
     "@chainsafe/filsnap-types": "workspace:^",
+    "@metamask/providers": "^9.0.0",
     "@metamask/snaps-cli": "^0.18.1",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",

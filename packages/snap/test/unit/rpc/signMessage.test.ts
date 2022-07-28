@@ -2,14 +2,14 @@ import chai, { expect } from "chai";
 import sinonChai from "sinon-chai";
 import { MessageRequest } from "@chainsafe/filsnap-types";
 import { Message } from "@zondax/filecoin-signing-tools/js";
-import { WalletMock } from "../wallet.mock.test";
 import { signMessage } from "../../../src/rpc/signMessage";
 import { LotusApiMock } from "../lotusapi.mock.test";
+import { mockSnapProvider } from "../wallet.mock.test";
 
 chai.use(sinonChai);
 
 describe("Test rpc handler function: signMessage", function () {
-  const walletStub = new WalletMock();
+  const walletStub = mockSnapProvider();
   const apiStub = new LotusApiMock();
 
   const messageRequest: MessageRequest = {

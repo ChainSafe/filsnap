@@ -4,12 +4,12 @@ import {
   MessageRequest,
 } from "@chainsafe/filsnap-types";
 import { FilecoinNumber } from "@glif/filecoin-number/dist";
-import { Wallet } from "../interfaces";
+import { SnapProvider } from "@metamask/snap-types";
 import { getKeyPair } from "../filecoin/account";
 import { LotusRpcApi } from "../filecoin/types";
 
 export async function estimateMessageGas(
-  wallet: Wallet,
+  wallet: SnapProvider,
   api: LotusRpcApi,
   messageRequest: MessageRequest,
   maxFee?: string

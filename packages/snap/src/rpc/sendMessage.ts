@@ -1,10 +1,10 @@
 import { MessageStatus, SignedMessage } from "@chainsafe/filsnap-types";
-import { Wallet } from "../interfaces";
-import { LotusRpcApi } from "../filecoin/types";
+import { SnapProvider } from "@metamask/snap-types";
 import { updateMessageInState } from "../filecoin/message";
+import { LotusRpcApi } from "../filecoin/types";
 
 export async function sendMessage(
-  wallet: Wallet,
+  wallet: SnapProvider,
   api: LotusRpcApi,
   signedMessage: SignedMessage
 ): Promise<MessageStatus> {
