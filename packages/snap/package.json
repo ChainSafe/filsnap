@@ -73,6 +73,7 @@
     "@glif/filecoin-number": "^2.0.0-beta.0",
     "@metamask/key-tree": "^4.0.0",
     "@metamask/key-tree-old": "npm:@metamask/key-tree@^3.0.1",
+    "@metamask/snap-types": "^0.18.1",
     "@zondax/filecoin-signing-tools": "^0.20.0",
     "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"
