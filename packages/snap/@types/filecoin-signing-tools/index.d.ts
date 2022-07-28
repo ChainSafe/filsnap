@@ -1,7 +1,6 @@
 declare module "@zondax/filecoin-signing-tools/js" {
-
   export class ExtendedKey {
-    constructor(privateKey: Buffer, testnet?: boolean)
+    constructor(privateKey: Buffer, testnet?: boolean);
     address: string;
     privateKey: Buffer | Uint8Array;
     publicKey: Buffer | Uint8Array;
@@ -31,7 +30,7 @@ declare module "@zondax/filecoin-signing-tools/js" {
     signature: {
       data: string;
       type: number;
-    }
+    };
   }
 
   export function generateMnemonic(): string;
@@ -40,8 +39,14 @@ declare module "@zondax/filecoin-signing-tools/js" {
   export function transactionSerializeRaw(transaction: Message): Buffer;
   export function transactionSerialize(transaction: Message): string;
 
-  export function transactionSignRaw(unsignedMessage: Message | string, privateKey: string): Buffer;
-  export function transactionSign(unsignedMessage: Message, privateKey: string): SignedMessage;
+  export function transactionSignRaw(
+    unsignedMessage: Message | string,
+    privateKey: string
+  ): Buffer;
+  export function transactionSign(
+    unsignedMessage: Message,
+    privateKey: string
+  ): SignedMessage;
 
   export function keyRecover(privateKey: Buffer, testnet: boolean): ExtendedKey;
 
