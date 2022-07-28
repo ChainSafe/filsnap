@@ -1,3 +1,4 @@
+import { OnRpcRequestHandler } from "@metamask/snap-types";
 import { EmptyMetamaskState, Wallet } from "./interfaces";
 import { getAddress } from "./rpc/getAddress";
 import { exportPrivateKey } from "./rpc/exportPrivateKey";
@@ -10,6 +11,12 @@ import { getMessages } from "./rpc/getMessages";
 import { signMessage, signMessageRaw } from "./rpc/signMessage";
 import { sendMessage } from "./rpc/sendMessage";
 import { estimateMessageGas } from "./rpc/estimateMessageGas";
+import {
+  isValidConfigureRequest,
+  isValidEstimateGasRequest,
+  isValidSendRequest,
+  isValidSignRequest,
+} from "./util/params";
 
 declare let wallet: Wallet;
 
@@ -20,9 +27,8 @@ const apiDependentMethods = [
   "fil_getGasForMessage",
   "fil_configure",
 ];
-// eslint-disable-next-line
-module.exports.onRpcRequest = (async ({ origin, request }: { origin: string, request: any }) => {
 
+export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
   const state = await wallet.request({
     method: "snap_manageState",
     params: ["get"],
@@ -38,18 +44,15 @@ module.exports.onRpcRequest = (async ({ origin, request }: { origin: string, req
 
   let api: LotusRpcApi;
   // initialize lotus RPC api if needed
-  // eslint-disable-next-line
   if (apiDependentMethods.indexOf(request.method) >= 0) {
     api = await getApi(wallet);
   }
-  // eslint-disable-next-line
   switch (request.method) {
     case "fil_configure": {
+      isValidConfigureRequest(request.params);
       const resp = await configure(
         wallet,
-        // eslint-disable-next-line
         request.params.configuration.network,
-        // eslint-disable-next-line
         request.params.configuration
       );
       api = resp.api;
@@ -68,25 +71,29 @@ module.exports.onRpcRequest = (async ({ origin, request }: { origin: string, req
     case "fil_getMessages":
       return getMessages(wallet);
     case "fil_signMessage":
-      // eslint-disable-next-line
+      isValidSignRequest(request.params);
       return await signMessage(wallet, api, request.params.message);
     case "fil_signMessageRaw":
-      // eslint-disable-next-line
-      return await signMessageRaw(wallet, request.params.message);
+      if (
+        "message" in request.params &&
+        typeof request.params.message == "string"
+      ) {
+        return await signMessageRaw(wallet, request.params.message);
+      } else {
+        throw new Error("Invalid raw message signing request");
+      }
     case "fil_sendMessage":
-      // eslint-disable-next-line
+      isValidSendRequest(request.params);
       return await sendMessage(wallet, api, request.params.signedMessage);
     case "fil_getGasForMessage":
+      isValidEstimateGasRequest(request.params);
       return await estimateMessageGas(
         wallet,
         api,
-        // eslint-disable-next-line
         request.params.message,
-        // eslint-disable-next-line
         request.params.maxFee
       );
     default:
       throw new Error("Unsupported RPC method");
   }
-  // eslint-disable-next-line
-});
+};

@@ -1,4 +1,4 @@
-export interface GetPublicKeyRequest{
+export interface GetPublicKeyRequest {
   method: "fil_getPublicKey";
 }
 
@@ -55,16 +55,16 @@ export interface GetGasForMessageRequest {
 }
 
 export type MetamaskFilecoinRpcRequest =
-    GetPublicKeyRequest |
-    GetAddressRequest |
-    ExportSeedRequest |
-    ConfigureRequest |
-    GetBalanceRequest |
-    GetMessagesRequest |
-    SignMessageRequest |
-    SignMessageRawRequest |
-    SendMessageRequest |
-    GetGasForMessageRequest;
+  | GetPublicKeyRequest
+  | GetAddressRequest
+  | ExportSeedRequest
+  | ConfigureRequest
+  | GetBalanceRequest
+  | GetMessagesRequest
+  | SignMessageRequest
+  | SignMessageRawRequest
+  | SendMessageRequest
+  | GetGasForMessageRequest;
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
@@ -82,7 +82,10 @@ export interface SnapRpcMethodRequest {
   params: [MetamaskFilecoinRpcRequest];
 }
 
-export type MetamaskRpcRequest = WalletEnableRequest | GetSnapsRequest | SnapRpcMethodRequest;
+export type MetamaskRpcRequest =
+  | WalletEnableRequest
+  | GetSnapsRequest
+  | SnapRpcMethodRequest;
 
 export interface UnitConfiguration {
   symbol: string;
@@ -128,15 +131,15 @@ export interface MessageSignature {
 }
 
 export interface SignMessageResponse {
-  signedMessage: SignedMessage
-  confirmed: boolean
-  error: Error
+  signedMessage: SignedMessage;
+  confirmed: boolean;
+  error: Error;
 }
 
 export interface SignRawMessageResponse {
-  signature: string
-  confirmed: boolean
-  error: Error
+  signature: string;
+  confirmed: boolean;
+  error: Error;
 }
 
 export interface MessageRequest {
@@ -177,7 +180,10 @@ export interface FilecoinSnapApi {
   signMessageRaw(message: string): Promise<SignRawMessageResponse>;
   sendMessage(signedMessage: SignedMessage): Promise<MessageStatus>;
   getMessages(): Promise<MessageStatus[]>;
-  calculateGasForMessage(message: MessageRequest, maxFee?: string): Promise<MessageGasEstimate>;
+  calculateGasForMessage(
+    message: MessageRequest,
+    maxFee?: string
+  ): Promise<MessageGasEstimate>;
 }
 
 export interface KeyPair {
