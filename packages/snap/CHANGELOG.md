@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.3.9](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.8...filsnap-v2.3.9) (2022-07-29)
+
+
+### Bug Fixes
+
+* calibration net node api url ([#216](https://github.com/ChainSafe/filsnap/issues/216)) ([8f0d19d](https://github.com/ChainSafe/filsnap/commit/8f0d19dc75ff2df7a9bf3475fdb4280fdbd38996))
+* replace custom types with metamask types ([#214](https://github.com/ChainSafe/filsnap/issues/214)) ([5fd1801](https://github.com/ChainSafe/filsnap/commit/5fd18019d4045c3522786c7306a33d7bf07b0cc4))
+
 ## [2.3.8](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.7...filsnap-v2.3.8) (2022-07-21)
 
 
