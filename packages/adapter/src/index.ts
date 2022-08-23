@@ -6,8 +6,7 @@ import {
 } from "./utils";
 import { MetamaskFilecoinSnap } from "./snap";
 
-const defaultSnapOrigin =
-  "https://bafybeigzphbumdkucnj2c6nr5xb3kwsq5gs2gp7w3qldgbvfeycfsbjylu.ipfs.infura-ipfs.io";
+const defaultSnapOrigin = "npm:@chainsafe/polkadot-snap";
 
 export { MetamaskFilecoinSnap } from "./snap";
 export {
