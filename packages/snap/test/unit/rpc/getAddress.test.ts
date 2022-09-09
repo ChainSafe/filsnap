@@ -4,7 +4,7 @@ import { SnapConfig } from "@chainsafe/filsnap-types";
 import { getAddress } from "../../../src/rpc/getAddress";
 import { mockSnapProvider } from "../wallet.mock.test";
 import {
-  testNewBip44Entropy,
+  testBip44Entropy,
   testAddress,
   testNewMetamaskVersion,
 } from "./keyPairTestConstants";
@@ -25,13 +25,12 @@ describe("Test rpc handler function: getAddress", function () {
 
     expect(result).to.be.eq(testAddress);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
   });
 
   it("should respect all derivation path fields", async function () {
     walletStub.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
-    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testNewBip44Entropy);
+    walletStub.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
     walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
       filecoin: {
         config: {

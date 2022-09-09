@@ -2,7 +2,7 @@ import { SnapConfig } from "@chainsafe/filsnap-types";
 import { SnapProvider } from "@metamask/snap-types";
 import sinon from "sinon";
 import {
-  testNewBip44Entropy,
+  testBip44Entropy,
   testNewMetamaskVersion,
 } from "./rpc/keyPairTestConstants";
 
@@ -14,6 +14,7 @@ class WalletMock implements SnapProvider {
 
   public readonly rpcStubs = {
     snap_confirm: sinon.stub(),
+    snap_getBip44Entropy: sinon.stub(),
     snap_getBip44Entropy_461: sinon.stub(),
     snap_manageState: sinon.stub(),
     web3_clientVersion: sinon.stub(),
@@ -28,9 +29,8 @@ class WalletMock implements SnapProvider {
   ): ReturnType<SnapProvider["request"]> {
     const { method, params = [] } = args;
     if (Object.hasOwnProperty.call(this.rpcStubs, method)) {
-      //@ts-expect-error
       // eslint-disable-next-line
-      return (this.rpcStubs as any)[method](...params);
+      return (this.rpcStubs as any)[method](...(Array.isArray(params) ? params : [params]));
     }
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.requestStub(args);
@@ -53,7 +53,7 @@ class WalletMock implements SnapProvider {
         } as SnapConfig,
       },
     });
-    this.rpcStubs.snap_getBip44Entropy_461.resolves(testNewBip44Entropy);
+    this.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
     this.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
   }
 }

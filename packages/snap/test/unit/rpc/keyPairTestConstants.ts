@@ -14,16 +14,10 @@ export const testPrivateKey =
 export const testPrivateKeyBase64 =
   "iIpHZPNjhK7ymcmfgaZOLV1p4CSXnIyxSL2oRijTEDU=";
 
-export const testOldMetamaskVersion = "MetaMask/v10.14.6-flask.0";
-export const testNewMetamaskVersion = "MetaMask/v10.16.0-flask.1";
+export const testOldMetamaskVersion = "MetaMask/v10.18.1-flask.0";
+export const testNewMetamaskVersion = "MetaMask/v10.19.0-flask.0";
 
-export const testOldBip44Entropy = {
-  coin_type: 461,
-  depth: 2,
-  key: "Owl8ESiPOy6Ti2OmB3pS3VOAOhXwU5AF4yedFmOF2iZY3SI5Po+DMB13OKZ8LdTHTWwDNzsAfzb58tJ2WkyYpA==",
-  path: "m / bip32:44' / bip32:461'",
-};
-export const testNewBip44Entropy = {
+export const testBip44Entropy = {
   chainCode: "58dd22393e8f83301d7738a67c2dd4c74d6c03373b007f36f9f2d2765a4c98a4",
   coin_type: 461,
   depth: 2,
