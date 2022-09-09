@@ -7,7 +7,7 @@
     "url": "https://github.com/Chainsafe/filsnap.git"
   },
   "source": {
-    "shasum": "a3CXQvJp2vz7Hp24PDJY2wnXAbwjNQl8I7seM0ZbMKE=",
+    "shasum": "HTqaKNap0dS5ZCZOTT4tKXjzH+yyGPTDeJ3RZ5JmCc8=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -19,6 +19,14 @@
   "initialPermissions": {
     "endowment:network-access": {},
     "snap_confirm": {},
+    "snap_getBip44Entropy": [
+      {
+        "coinType": 1
+      },
+      {
+        "coinType": 461
+      }
+    ],
     "snap_getBip44Entropy_1": {},
     "snap_getBip44Entropy_461": {},
     "snap_manageState": {}
