@@ -4,9 +4,8 @@ import sinonChai from "sinon-chai";
 import { getKeyPair } from "../../../src/filecoin/account";
 import {
   testAddress,
-  testNewBip44Entropy,
+  testBip44Entropy,
   testNewMetamaskVersion,
-  testOldBip44Entropy,
   testOldMetamaskVersion,
   testPrivateKeyBase64,
   testPublicKey,
@@ -32,10 +31,11 @@ describe("Test account function: getKeyPair", function () {
       },
     });
 
-    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testOldBip44Entropy);
+    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testBip44Entropy);
     walletStub.rpcStubs.web3_clientVersion.resolves(testOldMetamaskVersion);
     // ensure our call to getBip44Entropy returns the correct entropy
-    walletStub.requestStub.resolves(testOldBip44Entropy);
+    walletStub.requestStub.resolves(testBip44Entropy);
+
     const result = await getKeyPair(walletStub);
 
     expect(result.publicKey).to.be.eq(testPublicKey);
@@ -57,17 +57,17 @@ describe("Test account function: getKeyPair", function () {
       },
     });
 
-    walletStub.rpcStubs.snap_getBip44Entropy_461.resolves(testNewBip44Entropy);
+    walletStub.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
     walletStub.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
     // ensure our call to getBip44Entropy returns the correct entropy
-    walletStub.requestStub.resolves(testNewBip44Entropy);
+    walletStub.requestStub.resolves(testBip44Entropy);
 
     const result = await getKeyPair(walletStub);
+
     expect(result.publicKey).to.be.eq(testPublicKey);
     expect(result.address).to.be.eq(testAddress);
     expect(result.privateKey).to.be.eq(testPrivateKeyBase64);
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.web3_clientVersion).to.have.been.calledOnce;
   });

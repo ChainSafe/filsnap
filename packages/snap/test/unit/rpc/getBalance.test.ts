@@ -24,8 +24,7 @@ describe("Test rpc handler function: getBalance", function () {
     const result = await getBalance(walletStub, apiStub);
     // assertions
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(result).to.be.eq("0.00000000003");
   });
 });

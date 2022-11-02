@@ -4053,7 +4053,6 @@ __metadata:
     "@filecoin-shipyard/lotus-client-schema": ^0.0.14
     "@glif/filecoin-number": ^2.0.0-beta.0
     "@metamask/key-tree": ^4.0.0
-    "@metamask/key-tree-old": "npm:@metamask/key-tree@^3.0.1"
     "@metamask/providers": ^9.0.0
     "@metamask/snap-types": ^0.18.1
     "@metamask/snaps-cli": ^0.18.1
@@ -5326,17 +5325,6 @@ __metadata:
     ses: ^0.15.15
     stream-browserify: ^3.0.0
   checksum: 23d70a8391de1593af3b9d7495282b76057e178421471c774a3b741842e081a8fd92efdd10425991034866945c146e4e2f6f144424e8ced154928b51a603b319
-  languageName: node
-  linkType: hard
-
-"@metamask/key-tree-old@npm:@metamask/key-tree@^3.0.1":
-  version: 3.0.1
-  resolution: "@metamask/key-tree@npm:3.0.1"
-  dependencies:
-    bip39: ^3.0.4
-    keccak: ^3.0.2
-    secp256k1: ^4.0.2
-  checksum: cd1798e3bd39fc6a8dd49e72a921ff3d3db2d5cbb85dccd94962eee9ebaf92bcbe1f8a7d933443eaaff40c4152539c640664ac72fb415bb0c28a84d11fe521a5
   languageName: node
   linkType: hard
 
@@ -16322,7 +16310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"keccak@npm:^3.0.0, keccak@npm:^3.0.2":
+"keccak@npm:^3.0.0":
   version: 3.0.2
   resolution: "keccak@npm:3.0.2"
   dependencies:
@@ -21330,18 +21318,6 @@ __metadata:
     node-gyp: latest
     node-gyp-build: ^4.2.0
   checksum: a09774603519884d54e013f0466b5df02f7fec354828c01046dcf7d2f7ed4ef93e92f6d6829eae690ee5f975f93af6f58513b92e7b942f2ce699b858e43c1335
-  languageName: node
-  linkType: hard
-
-"secp256k1@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "secp256k1@npm:4.0.2"
-  dependencies:
-    elliptic: ^6.5.2
-    node-addon-api: ^2.0.0
-    node-gyp: latest
-    node-gyp-build: ^4.2.0
-  checksum: 8b7da50c71e7740630fd1cb7771146644fef37ea2ecef4abe756165502cec9cfb45e1368da297ec25e4e1389bbae7cc5f200b6cc43a21264f9fdf64c5f4f7f99
   languageName: node
   linkType: hard
 

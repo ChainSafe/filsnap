@@ -20,7 +20,6 @@ describe("Test rpc handler function: getPublicKey", function () {
 
     expect(result).to.be.eq(testPublicKey);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
   });
 });

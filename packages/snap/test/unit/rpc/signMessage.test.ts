@@ -58,8 +58,7 @@ describe("Test rpc handler function: signMessage", function () {
     const response = await signMessage(walletStub, apiStub, messageRequest);
 
     expect(walletStub.rpcStubs.snap_confirm).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(apiStub.mpoolGetNonce).to.have.been.calledOnce;
     expect(apiStub.gasEstimateGasLimit).to.have.been.calledOnce;
@@ -89,8 +88,7 @@ describe("Test rpc handler function: signMessage", function () {
     );
 
     expect(walletStub.rpcStubs.snap_confirm).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(response.signedMessage.message).to.be.deep.eq({
       ...fullMessage,
@@ -122,8 +120,7 @@ describe("Test rpc handler function: signMessage", function () {
     );
 
     expect(walletStub.rpcStubs.snap_confirm).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(apiStub.mpoolGetNonce).to.have.been.calledOnce;
     expect(apiStub.gasEstimateGasLimit).to.have.been.calledOnce;
@@ -152,8 +149,7 @@ describe("Test rpc handler function: signMessage", function () {
     );
 
     expect(walletStub.rpcStubs.snap_confirm).to.have.been.calledOnce;
-    expect(walletStub.rpcStubs.snap_getBip44Entropy_461).to.have.been
-      .calledOnce;
+    expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(response.signedMessage).to.be.null;
     expect(response.error).to.be.null;
