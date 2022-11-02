@@ -27,8 +27,6 @@
         "coinType": 461
       }
     ],
-    "snap_getBip44Entropy_1": {},
-    "snap_getBip44Entropy_461": {},
     "snap_manageState": {}
   },
   "manifestVersion": "0.1"
