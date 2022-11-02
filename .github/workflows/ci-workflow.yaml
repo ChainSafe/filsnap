@@ -15,11 +15,12 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           cache: yarn
           node-version: '16.x'
+      - run: corepack enable    
       - run: yarn install --immutable
       - name: Run linter
         run: yarn run lint

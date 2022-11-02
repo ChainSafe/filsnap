@@ -23,7 +23,7 @@ Test FilSnap inside [our demo dapp](http://filsnap.chainsafe.io/).
 
 ### Running our demo dapp locally
 ```shell
-yarn install && yarn run demo
+corepack enable && yarn install && yarn run demo
 ```
 
 ## License
