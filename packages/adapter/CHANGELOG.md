@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.2](https://github.com/ChainSafe/filsnap/compare/filsnap-adapter-v2.1.1...filsnap-adapter-v2.1.2) (2022-11-02)
+
+
+### Bug Fixes
+
+* change default origin from `ipfs` to `npm` ([ccaa97a](https://github.com/ChainSafe/filsnap/commit/ccaa97abbac21d463fef7c31d8a8067ab074d97b))
+* default origin ([#219](https://github.com/ChainSafe/filsnap/issues/219)) ([ccaa97a](https://github.com/ChainSafe/filsnap/commit/ccaa97abbac21d463fef7c31d8a8067ab074d97b))
+
 ### [2.1.1](https://github.com/ChainSafe/filsnap/compare/filsnap-adapter-v2.1.0...filsnap-adapter-v2.1.1) (2022-04-11)
 
 
