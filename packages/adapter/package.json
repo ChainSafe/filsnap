@@ -1,6 +1,6 @@
 {
   "name": "@chainsafe/filsnap-adapter",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "./build/index.js",
   "module": "./build/index.js",
   "types": "./build/index.d.ts",
