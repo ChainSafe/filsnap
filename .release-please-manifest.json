@@ -1,5 +1,5 @@
 {
-  "packages/snap": "2.3.10",
+  "packages/snap": "2.3.9",
   "packages/types": "2.1.2",
-  "packages/adapter": "2.1.2"
+  "packages/adapter": "2.1.1"
 }
