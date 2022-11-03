@@ -32,6 +32,8 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
         if: ${{ steps.release.outputs.releases_created }}
+
+      - run: corepack enable
       
       - run: yarn install --immutable
         if: ${{ steps.release.outputs.releases_created }}
