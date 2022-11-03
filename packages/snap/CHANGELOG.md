@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.10](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.9...filsnap-v2.3.10) (2022-11-03)
+
+
+### Bug Fixes
+
+* refactor deprecated `snap_getBip44Entropy_*` with `snap_getBip44Entropy` ([#223](https://github.com/ChainSafe/filsnap/issues/223)) ([efdb48e](https://github.com/ChainSafe/filsnap/commit/efdb48e7efc36d6a3ff1eae5b84c3725b1440d13))
+
 ## [2.3.9](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.8...filsnap-v2.3.9) (2022-07-29)
 
 
