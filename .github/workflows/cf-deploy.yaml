@@ -16,6 +16,8 @@ jobs:
           - run: corepack enable    
           - run: yarn install --immutable
           - run: yarn run build
+            env:
+              REACT_APP_SNAP_ID: npm:@chainsafe/filsnap
           - name: Publish to Cloudflare Pages
             uses: cloudflare/pages-action@1
             with:
