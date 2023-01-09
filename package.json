@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=16.0.1"
   },
   "scripts": {
     "manifest": "yarn workspace @chainsafe/filsnap manifest",
