@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.11](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.10...filsnap-v2.3.11) (2023-01-24)
+
+
+### Bug Fixes
+
+* MUI components fix ([#232](https://github.com/ChainSafe/filsnap/issues/232)) ([2d53064](https://github.com/ChainSafe/filsnap/commit/2d530641866bdc067087f5964a61b61f5d327e61))
+
 ## [2.3.10](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.9...filsnap-v2.3.10) (2022-11-03)
 
 
