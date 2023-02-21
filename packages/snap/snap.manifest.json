@@ -17,6 +17,10 @@
     }
   },
   "initialPermissions": {
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": false
+    },
     "endowment:network-access": {},
     "snap_confirm": {},
     "snap_getBip44Entropy": [
