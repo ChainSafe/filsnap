@@ -16,7 +16,7 @@ async function sendSnapMethod<T>(
 ): Promise<T> {
   return await window.ethereum.request({
     method: snapId,
-    params: [request],
+    params: request,
   });
 }
 

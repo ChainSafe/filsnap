@@ -6,7 +6,7 @@ declare global {
         ethereum: {
             isMetaMask: boolean;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            send: <T>(request: SnapRpcMethodRequest | {method: string; params?: any[]}) => Promise<T>;
+            send: <T>(request: SnapRpcMethodRequest | {method: string; params?: any}) => Promise<T>;
             on: (eventName: unknown, callback: unknown) => unknown;
             // requestIndex: () => Promise<{getSnapApi: (origin: string) => Promise<FilecoinApi>}>;
         }

@@ -78,8 +78,8 @@ export interface GetSnapsRequest {
 }
 
 export interface SnapRpcMethodRequest {
-  method: string;
-  params: [MetamaskFilecoinRpcRequest];
+  method: `wallet_snap_${string}`;
+  params: MetamaskFilecoinRpcRequest;
 }
 
 export type MetamaskRpcRequest =
