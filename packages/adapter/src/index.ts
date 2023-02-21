@@ -27,13 +27,14 @@ export type SnapInstallationParamNames = "version" | string;
  *
  * @param config - SnapConfig
  * @param snapOrigin
+ * @param version
  *
  * @return MetamaskFilecoinSnap - adapter object that exposes snap API
  */
 export async function enableFilecoinSnap(
   config: Partial<SnapConfig>,
   snapOrigin?: string,
-  snapInstallationParams: Record<SnapInstallationParamNames, unknown> = {}
+  version?: string
 ): Promise<MetamaskFilecoinSnap> {
   const snapId = snapOrigin ?? defaultSnapOrigin;
 
@@ -53,14 +54,10 @@ export async function enableFilecoinSnap(
   if (!isInstalled) {
     // // enable snap
     await window.ethereum.request({
-      method: "wallet_enable",
-      params: [
-        {
-          [`wallet_snap_${snapId}`]: {
-            ...snapInstallationParams,
-          },
-        },
-      ],
+      method: "wallet_requestSnaps",
+      params: {
+        [snapId]: { version },
+      },
     });
   }
 

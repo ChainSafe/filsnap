@@ -16,7 +16,8 @@ Adapter has only exposed function for installing Filecoin snap.
 ```typescript
 async function enableFilecoinSnap(
   config: Partial<SnapConfig>, 
-  snapOrigin?: string
+  snapOrigin?: string, 
+  version?: string
 ): Promise<MetamaskFilecoinSnap> 
 ```
 
