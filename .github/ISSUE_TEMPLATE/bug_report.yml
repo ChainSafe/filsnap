@@ -3,7 +3,6 @@ description: "Create a report to help us improve"
 title: "[bug]: "
 labels: ["bug", "unconfirmed"]
 assignees:
- - BeroBurny
 body:
   - type: textarea
     id: description
@@ -38,7 +37,7 @@ body:
     attributes:
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
-      placeholder: When i click shoud work fine
+      placeholder: When i click should work fine
     validations:
       required: true
   - type: textarea
