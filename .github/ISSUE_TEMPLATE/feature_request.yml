@@ -3,7 +3,6 @@ description: "Request new Feature to adapter/snap"
 title: "[feature]: "
 labels: ["enhancement", "unconfirmed"]
 assignees:
- - BeroBurny
 body:
   - type: textarea
     id: summary
