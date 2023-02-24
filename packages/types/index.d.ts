@@ -68,9 +68,9 @@ export type MetamaskFilecoinRpcRequest =
 
 type Method = MetamaskFilecoinRpcRequest["method"];
 
-export interface WalletEnableRequest {
-  method: "wallet_enable";
-  params: object[];
+export interface WalletRequestSnapsRequest {
+  method: "wallet_requestSnaps";
+  params: object;
 }
 
 export interface GetSnapsRequest {
@@ -79,11 +79,11 @@ export interface GetSnapsRequest {
 
 export interface SnapRpcMethodRequest {
   method: string;
-  params: [MetamaskFilecoinRpcRequest];
+  params: MetamaskFilecoinRpcRequest;
 }
 
 export type MetamaskRpcRequest =
-  | WalletEnableRequest
+  | WalletRequestSnapsRequest
   | GetSnapsRequest
   | SnapRpcMethodRequest;
 

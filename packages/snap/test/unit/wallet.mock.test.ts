@@ -1,13 +1,11 @@
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import sinon from "sinon";
 import {
   testBip44Entropy,
   testNewMetamaskVersion,
 } from "./rpc/keyPairTestConstants";
-
-//@ts-expect-error
-class WalletMock implements SnapProvider {
+class WalletMock implements SnapsGlobalObject {
   public readonly registerRpcMessageHandler = sinon.stub();
 
   public readonly requestStub = sinon.stub();
@@ -25,8 +23,8 @@ class WalletMock implements SnapProvider {
    * a dedicated stub.
    */
   public request(
-    args: Parameters<SnapProvider["request"]>[0]
-  ): ReturnType<SnapProvider["request"]> {
+    args: Parameters<SnapsGlobalObject["request"]>[0]
+  ): ReturnType<SnapsGlobalObject["request"]> {
     const { method, params = [] } = args;
     if (Object.hasOwnProperty.call(this.rpcStubs, method)) {
       // eslint-disable-next-line
@@ -59,7 +57,7 @@ class WalletMock implements SnapProvider {
 }
 
 //risky hack but it's hard to stub all provider methods
-export function mockSnapProvider(): SnapProvider & WalletMock {
+export function mockSnapProvider(): SnapsGlobalObject & WalletMock {
   const mock = new WalletMock();
-  return mock as any as SnapProvider & WalletMock;
+  return mock as any as SnapsGlobalObject & WalletMock;
 }

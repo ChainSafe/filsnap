@@ -1,5 +1,5 @@
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { MetamaskState } from "../interfaces";
 import {
   defaultConfiguration,
@@ -21,12 +21,12 @@ export function getDefaultConfiguration(networkName?: string): SnapConfig {
 }
 
 export async function getConfiguration(
-  wallet: SnapProvider
+  snap: SnapsGlobalObject
 ): Promise<SnapConfig> {
-  const state = (await wallet.request({
-    method: "snap_manageState",
-    params: ["get"],
-  })) as MetamaskState;
+  const state = await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'get' },
+  }) as MetamaskState;
   if (!state || !state.filecoin.config) {
     return defaultConfiguration;
   }

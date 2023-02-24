@@ -1,4 +1,4 @@
-import { OnRpcRequestHandler } from "@metamask/snap-types";
+import { OnRpcRequestHandler } from "@metamask/snaps-types";
 import { EmptyMetamaskState } from "./interfaces";
 import { getAddress } from "./rpc/getAddress";
 import { exportPrivateKey } from "./rpc/exportPrivateKey";
@@ -27,29 +27,29 @@ const apiDependentMethods = [
 ];
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
-  const state = await wallet.request({
-    method: "snap_manageState",
-    params: ["get"],
+  const state = await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'get' },
   });
 
   if (!state) {
     // initialize state if empty and set default config
-    await wallet.request({
-      method: "snap_manageState",
-      params: ["update", EmptyMetamaskState()],
+    await snap.request({
+      method: 'snap_manageState',
+      params: { newState: EmptyMetamaskState(), operation: 'update' },
     });
   }
 
   let api: LotusRpcApi;
   // initialize lotus RPC api if needed
   if (apiDependentMethods.indexOf(request.method) >= 0) {
-    api = await getApi(wallet);
+    api = await getApi(snap);
   }
   switch (request.method) {
     case "fil_configure": {
       isValidConfigureRequest(request.params);
       const resp = await configure(
-        wallet,
+        snap,
         request.params.configuration.network,
         request.params.configuration
       );
@@ -57,36 +57,36 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
       return resp.snapConfig;
     }
     case "fil_getAddress":
-      return await getAddress(wallet);
+      return await getAddress(snap);
     case "fil_getPublicKey":
-      return await getPublicKey(wallet);
+      return await getPublicKey(snap);
     case "fil_exportPrivateKey":
-      return exportPrivateKey(wallet);
+      return exportPrivateKey(snap);
     case "fil_getBalance": {
-      const balance = await getBalance(wallet, api);
+      const balance = await getBalance(snap, api);
       return balance;
     }
     case "fil_getMessages":
-      return getMessages(wallet);
+      return getMessages(snap);
     case "fil_signMessage":
       isValidSignRequest(request.params);
-      return await signMessage(wallet, api, request.params.message);
+      return await signMessage(snap, api, request.params.message);
     case "fil_signMessageRaw":
       if (
         "message" in request.params &&
         typeof request.params.message == "string"
       ) {
-        return await signMessageRaw(wallet, request.params.message);
+        return await signMessageRaw(snap, request.params.message);
       } else {
         throw new Error("Invalid raw message signing request");
       }
     case "fil_sendMessage":
       isValidSendRequest(request.params);
-      return await sendMessage(wallet, api, request.params.signedMessage);
+      return await sendMessage(snap, api, request.params.signedMessage);
     case "fil_getGasForMessage":
       isValidEstimateGasRequest(request.params);
       return await estimateMessageGas(
-        wallet,
+        snap,
         api,
         request.params.message,
         request.params.maxFee

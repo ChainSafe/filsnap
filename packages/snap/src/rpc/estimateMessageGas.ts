@@ -4,17 +4,17 @@ import {
   MessageRequest,
 } from "@chainsafe/filsnap-types";
 import { FilecoinNumber } from "@glif/filecoin-number/dist";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { getKeyPair } from "../filecoin/account";
 import { LotusRpcApi } from "../filecoin/types";
 
 export async function estimateMessageGas(
-  wallet: SnapProvider,
+  snap: SnapsGlobalObject,
   api: LotusRpcApi,
   messageRequest: MessageRequest,
   maxFee?: string
 ): Promise<MessageGasEstimate> {
-  const keypair = await getKeyPair(wallet);
+  const keypair = await getKeyPair(snap);
   const message: Message = {
     ...messageRequest,
     from: keypair.address,

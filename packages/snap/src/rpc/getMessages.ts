@@ -1,13 +1,13 @@
 import { MessageStatus } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { MetamaskState } from "../interfaces";
 
 export async function getMessages(
-  wallet: SnapProvider
+  snap: SnapsGlobalObject
 ): Promise<MessageStatus[]> {
-  const state = (await wallet.request({
-    method: "snap_manageState",
-    params: ["get"],
-  })) as MetamaskState;
+  const state = await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'get' },
+  }) as MetamaskState;
   return state?.filecoin?.messages;
 }

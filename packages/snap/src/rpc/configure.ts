@@ -1,5 +1,5 @@
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import deepmerge from "deepmerge";
 import { getDefaultConfiguration } from "../configuration";
 import { getApiFromConfig } from "../filecoin/api";
@@ -12,7 +12,7 @@ export interface ConfigureResponse {
 }
 
 export async function configure(
-  wallet: SnapProvider,
+  snap: SnapsGlobalObject,
   networkName: string,
   overrides?: unknown
 ): Promise<ConfigureResponse> {
@@ -40,14 +40,14 @@ export async function configure(
       "Mismatch between configured network and network provided by RPC"
     );
   }
-  const state = (await wallet.request({
-    method: "snap_manageState",
-    params: ["get"],
-  })) as MetamaskState;
+  const state = await snap.request({
+    method: 'snap_manageState',
+    params: { operation: 'get' },
+  }) as MetamaskState;
   state.filecoin.config = configuration;
-  await wallet.request({
-    method: "snap_manageState",
-    params: ["update", state],
+  await snap.request({
+    method: 'snap_manageState',
+    params: { newState: state, operation: 'update' },
   });
   return { api: api, snapConfig: configuration };
 }

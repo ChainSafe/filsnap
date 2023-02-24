@@ -4,7 +4,7 @@ import {
   SignRawMessageResponse,
 } from "@chainsafe/filsnap-types";
 import { FilecoinNumber } from "@glif/filecoin-number/dist";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import {
   Message,
   SignedMessage,
@@ -17,12 +17,12 @@ import { showConfirmationDialog } from "../util/confirmation";
 import { messageCreator } from "../util/messageCreator";
 
 export async function signMessage(
-  wallet: SnapProvider,
+  snap: SnapsGlobalObject,
   api: LotusRpcApi,
   messageRequest: MessageRequest
 ): Promise<SignMessageResponse> {
   try {
-    const keypair = await getKeyPair(wallet);
+    const keypair = await getKeyPair(snap);
     // extract gas params
     const gl =
       messageRequest.gaslimit && messageRequest.gaslimit !== 0
@@ -70,7 +70,7 @@ export async function signMessage(
     }
 
     // show confirmation
-    const confirmation = await showConfirmationDialog(wallet, {
+    const confirmation = await showConfirmationDialog(snap, {
       description: `It will be signed with address: ${message.from}`,
       prompt: `Do you want to sign this message?`,
       textAreaContent: messageCreator([
@@ -100,12 +100,12 @@ export async function signMessage(
 }
 
 export async function signMessageRaw(
-  wallet: SnapProvider,
+  snap: SnapsGlobalObject,
   rawMessage: string
 ): Promise<SignRawMessageResponse> {
   try {
-    const keypair = await getKeyPair(wallet);
-    const confirmation = await showConfirmationDialog(wallet, {
+    const keypair = await getKeyPair(snap);
+    const confirmation = await showConfirmationDialog(snap, {
       description: `It will be signed with address: ${keypair.address}`,
       prompt: `Do you want to sign this message?`,
       textAreaContent: rawMessage,

@@ -5,12 +5,12 @@ import {
 } from "@filecoin-shipyard/lotus-client-provider-nodejs";
 import { testnet } from "@filecoin-shipyard/lotus-client-schema";
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { getConfiguration } from "../configuration";
 import { LotusRpcApi } from "./types";
 
-export async function getApi(wallet: SnapProvider): Promise<LotusRpcApi> {
-  const configuration = await getConfiguration(wallet);
+export async function getApi(snap: SnapsGlobalObject): Promise<LotusRpcApi> {
+  const configuration = await getConfiguration(snap);
   return getApiFromConfig(configuration);
 }
 

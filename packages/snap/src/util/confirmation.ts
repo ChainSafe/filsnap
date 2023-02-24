@@ -1,4 +1,4 @@
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 
 type ConfirmationDialogContent = {
   prompt: string;
@@ -7,10 +7,10 @@ type ConfirmationDialogContent = {
 };
 
 export async function showConfirmationDialog(
-  wallet: SnapProvider,
+  snap: SnapsGlobalObject,
   message: ConfirmationDialogContent
 ): Promise<boolean> {
-  return (await wallet.request({
+  return (await snap.request({
     method: "snap_confirm",
     params: [message],
   })) as boolean;
