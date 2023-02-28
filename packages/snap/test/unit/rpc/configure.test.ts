@@ -17,13 +17,17 @@ describe("Test rpc handler function: configure", function () {
 
   it("should set predefined filecoin configuration based on network", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: filecoinTestnetConfiguration, messages: [] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: filecoinTestnetConfiguration, messages: [] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     const result = await configure(walletStub, "t");
@@ -41,13 +45,17 @@ describe("Test rpc handler function: configure", function () {
     customConfiguration.unit.symbol = "xFIL";
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: customConfiguration, messages: [] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: customConfiguration, messages: [] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     const result = await configure(walletStub, "t", {
@@ -64,7 +72,7 @@ describe("Test rpc handler function: configure", function () {
 
   it("should throw error if wrong derivation path on mainet", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     let err = null;
@@ -82,7 +90,7 @@ describe("Test rpc handler function: configure", function () {
 
   it("should throw error if wrong derivation path on testnet", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     let err = null;

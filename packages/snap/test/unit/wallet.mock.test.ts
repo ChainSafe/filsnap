@@ -13,7 +13,6 @@ class WalletMock implements SnapsGlobalObject {
   public readonly rpcStubs = {
     snap_confirm: sinon.stub(),
     snap_getBip44Entropy: sinon.stub(),
-    snap_getBip44Entropy_461: sinon.stub(),
     snap_manageState: sinon.stub(),
     web3_clientVersion: sinon.stub(),
   };
@@ -43,7 +42,7 @@ class WalletMock implements SnapsGlobalObject {
   }
 
   public prepareFoKeyPair(): void {
-    this.rpcStubs.snap_manageState.withArgs("get").resolves({
+    this.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
         config: {
           derivationPath: "m/44'/461'/0'/0/0",

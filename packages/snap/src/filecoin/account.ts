@@ -6,6 +6,7 @@ import {
 } from "@metamask/key-tree";
 import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { MetamaskState } from "../interfaces";
+import { Buffer } from "buffer";
 
 /**
  * Return derived KeyPair from seed.
@@ -35,9 +36,12 @@ export async function getKeyPair(snap: SnapsGlobalObject): Promise<KeyPair> {
     change: parseInt(change),
   });
   const extendedPrivateKey = await addressKeyDeriver(Number(addressIndex));
-  const privateKey = extendedPrivateKey.privateKeyBytes.slice(0, 32);
 
-  const extendedKey = keyRecover(privateKey, !isFilecoinMainnet);
+  const privateKey = extendedPrivateKey.privateKeyBytes;
+  const privateKeyBuffer = Buffer.from(privateKey).slice(0,32);
+
+  const extendedKey = keyRecover(privateKeyBuffer, !isFilecoinMainnet);
+
 
   return {
     address: extendedKey.address,

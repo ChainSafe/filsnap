@@ -30,13 +30,17 @@ describe("Test saving transactions in state", function () {
 
   it("should add transaction to state if empty state", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves({ filecoin: { config: { network: "f" }, messages: [] } });
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: { network: "f" }, messages: [message] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: { network: "f" }, messages: [message] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     await updateMessageInState(walletStub, message);
@@ -51,17 +55,21 @@ describe("Test saving transactions in state", function () {
   it("should add transaction to state if same hash transaction is not saved", async function () {
     const differentTx = { ...message, cid: "abc123" };
 
-    walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
+    walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: { config: { network: "f" }, messages: [differentTx] },
     });
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: {
-          config: { network: "f" },
-          messages: [differentTx, message],
-        },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: {
+              config: { network: "f" },
+              messages: [differentTx, message],
+            },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     await updateMessageInState(walletStub, message);
@@ -82,14 +90,18 @@ describe("Test saving transactions in state", function () {
     const updatedTx = { ...message };
     updatedTx.message.nonce = 2;
 
-    walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
+    walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: { config: { network: "f" }, messages: [message] },
     });
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: { network: "f" }, messages: [updatedTx] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: { network: "f" }, messages: [updatedTx] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     await updateMessageInState(walletStub, updatedTx);
