@@ -40,8 +40,5 @@ describe("Test account function: getKeyPair", function () {
     expect(result.publicKey).to.be.eq(testPublicKey);
     expect(result.address).to.be.eq(testAddress);
     expect(result.privateKey).to.be.eq(testPrivateKeyBase64);
-    // expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
-    // expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
-    // expect(walletStub.rpcStubs.web3_clientVersion).to.have.been.calledOnce;
   });
 });
