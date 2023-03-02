@@ -40,14 +40,14 @@ export async function configure(
       "Mismatch between configured network and network provided by RPC"
     );
   }
-  const state = await snap.request({
-    method: 'snap_manageState',
-    params: { operation: 'get' },
-  }) as MetamaskState;
+  const state = (await snap.request({
+    method: "snap_manageState",
+    params: { operation: "get" },
+  })) as MetamaskState;
   state.filecoin.config = configuration;
   await snap.request({
-    method: 'snap_manageState',
-    params: { newState: state, operation: 'update' },
+    method: "snap_manageState",
+    params: { newState: state, operation: "update" },
   });
   return { api: api, snapConfig: configuration };
 }

@@ -34,8 +34,11 @@ describe("Test rpc handler function: configure", function () {
 
     expect(result.snapConfig).to.be.deep.eq(filecoinTestnetConfiguration);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: filecoinTestnetConfiguration, messages: [] } }
+      {
+        newState: {
+          filecoin: { config: filecoinTestnetConfiguration, messages: [] },
+        }, operation: 'update'
+      }
     );
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
   });
@@ -64,8 +67,11 @@ describe("Test rpc handler function: configure", function () {
 
     expect(result.snapConfig).to.be.deep.eq(customConfiguration);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: customConfiguration, messages: [] } }
+      {
+        newState: {
+          filecoin: { config: customConfiguration, messages: [] },
+        }, operation: 'update'
+      }
     );
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
   });

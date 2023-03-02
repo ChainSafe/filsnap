@@ -28,15 +28,15 @@ const apiDependentMethods = [
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ request }) => {
   const state = await snap.request({
-    method: 'snap_manageState',
-    params: { operation: 'get' },
+    method: "snap_manageState",
+    params: { operation: "get" },
   });
 
   if (!state) {
     // initialize state if empty and set default config
     await snap.request({
-      method: 'snap_manageState',
-      params: { newState: EmptyMetamaskState(), operation: 'update' },
+      method: "snap_manageState",
+      params: { newState: EmptyMetamaskState(), operation: "update" },
     });
   }
 

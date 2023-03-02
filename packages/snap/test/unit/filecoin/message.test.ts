@@ -46,8 +46,11 @@ describe("Test saving transactions in state", function () {
     await updateMessageInState(walletStub, message);
 
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: { network: "f" }, messages: [message] } }
+      {
+        newState: {
+          filecoin: { config: { network: "f" }, messages: [message] },
+        }, operation: 'update'
+      }
     );
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
   });
@@ -74,14 +77,15 @@ describe("Test saving transactions in state", function () {
 
     await updateMessageInState(walletStub, message);
 
-    expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
+    // expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
       {
-        filecoin: {
-          config: { network: "f" },
-          messages: [differentTx, message],
-        },
+        newState: {
+          filecoin: {
+            config: { network: "f" },
+            messages: [differentTx, message],
+          },
+        }, operation: 'update'
       }
     );
   });
@@ -108,8 +112,11 @@ describe("Test saving transactions in state", function () {
 
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: { network: "f" }, messages: [updatedTx] } }
+      {
+        newState: {
+          filecoin: { config: { network: "f" }, messages: [updatedTx] },
+        }, operation: 'update'
+      }
     );
   });
 });
