@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.3](https://github.com/ChainSafe/filsnap/compare/filsnap-adapter-v2.1.2...filsnap-adapter-v2.1.3) (2023-03-03)
+
+
+### Bug Fixes
+
+* flask1.25 ([#246](https://github.com/ChainSafe/filsnap/issues/246)) ([155e857](https://github.com/ChainSafe/filsnap/commit/155e857411545d204d95901ae25ee90534ca7fc9))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @chainsafe/filsnap-types bumped to 2.1.3
+
 ## [2.1.2](https://github.com/ChainSafe/filsnap/compare/filsnap-adapter-v2.1.1...filsnap-adapter-v2.1.2) (2022-11-03)
 
 
