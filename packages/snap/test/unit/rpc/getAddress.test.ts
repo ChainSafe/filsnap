@@ -6,7 +6,6 @@ import { mockSnapProvider } from "../wallet.mock.test";
 import {
   testBip44Entropy,
   testAddress,
-  testNewMetamaskVersion,
 } from "./keyPairTestConstants";
 
 chai.use(sinonChai);
@@ -29,9 +28,8 @@ describe("Test rpc handler function: getAddress", function () {
   });
 
   it("should respect all derivation path fields", async function () {
-    walletStub.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
     walletStub.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
-    walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
+    walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
         config: {
           derivationPath: "m/44'/461'/1'/0/0",
@@ -43,7 +41,7 @@ describe("Test rpc handler function: getAddress", function () {
     expect(result).to.not.be.eq(testAddress);
     expect(result).to.not.be.null;
 
-    walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
+    walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
         config: {
           derivationPath: "m/44'/461'/0'/1/0",
@@ -55,7 +53,7 @@ describe("Test rpc handler function: getAddress", function () {
     expect(result).to.not.be.eq(testAddress);
     expect(result).to.not.be.null;
 
-    walletStub.rpcStubs.snap_manageState.withArgs("get").resolves({
+    walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
         config: {
           derivationPath: "m/44'/461'/0'/0/1",

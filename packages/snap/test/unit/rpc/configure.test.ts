@@ -17,21 +17,28 @@ describe("Test rpc handler function: configure", function () {
 
   it("should set predefined filecoin configuration based on network", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: filecoinTestnetConfiguration, messages: [] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: filecoinTestnetConfiguration, messages: [] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     const result = await configure(walletStub, "t");
 
     expect(result.snapConfig).to.be.deep.eq(filecoinTestnetConfiguration);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: filecoinTestnetConfiguration, messages: [] } }
+      {
+        newState: {
+          filecoin: { config: filecoinTestnetConfiguration, messages: [] },
+        }, operation: 'update'
+      }
     );
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
   });
@@ -41,13 +48,17 @@ describe("Test rpc handler function: configure", function () {
     customConfiguration.unit.symbol = "xFIL";
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     walletStub.rpcStubs.snap_manageState
-      .withArgs("update", {
-        filecoin: { config: customConfiguration, messages: [] },
-      })
+      .withArgs(
+        {
+          newState: {
+            filecoin: { config: customConfiguration, messages: [] },
+          }, operation: 'update'
+        }
+      )
       .resolves();
 
     const result = await configure(walletStub, "t", {
@@ -56,15 +67,18 @@ describe("Test rpc handler function: configure", function () {
 
     expect(result.snapConfig).to.be.deep.eq(customConfiguration);
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
-      "update",
-      { filecoin: { config: customConfiguration, messages: [] } }
+      {
+        newState: {
+          filecoin: { config: customConfiguration, messages: [] },
+        }, operation: 'update'
+      }
     );
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
   });
 
   it("should throw error if wrong derivation path on mainet", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     let err = null;
@@ -82,7 +96,7 @@ describe("Test rpc handler function: configure", function () {
 
   it("should throw error if wrong derivation path on testnet", async function () {
     walletStub.rpcStubs.snap_manageState
-      .withArgs("get")
+      .withArgs({ operation: 'get' })
       .resolves(EmptyMetamaskState());
 
     let err = null;

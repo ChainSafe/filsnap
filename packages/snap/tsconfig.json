@@ -13,5 +13,5 @@
     "src/**/*.ts",
     "test/**/*ts"
   ],
-  "files": ["../../node_modules/@metamask/snap-types/global.d.ts"],
+  "files": ["../../node_modules/@metamask/snaps-types/global.d.ts"],
 }

@@ -1,13 +1,10 @@
 import { SnapConfig } from "@chainsafe/filsnap-types";
-import { SnapProvider } from "@metamask/snap-types";
+import { SnapsGlobalObject } from "@metamask/snaps-types";
 import sinon from "sinon";
 import {
   testBip44Entropy,
-  testNewMetamaskVersion,
 } from "./rpc/keyPairTestConstants";
-
-//@ts-expect-error
-class WalletMock implements SnapProvider {
+class WalletMock implements SnapsGlobalObject {
   public readonly registerRpcMessageHandler = sinon.stub();
 
   public readonly requestStub = sinon.stub();
@@ -15,7 +12,6 @@ class WalletMock implements SnapProvider {
   public readonly rpcStubs = {
     snap_confirm: sinon.stub(),
     snap_getBip44Entropy: sinon.stub(),
-    snap_getBip44Entropy_461: sinon.stub(),
     snap_manageState: sinon.stub(),
     web3_clientVersion: sinon.stub(),
   };
@@ -25,8 +21,8 @@ class WalletMock implements SnapProvider {
    * a dedicated stub.
    */
   public request(
-    args: Parameters<SnapProvider["request"]>[0]
-  ): ReturnType<SnapProvider["request"]> {
+    args: Parameters<SnapsGlobalObject["request"]>[0]
+  ): ReturnType<SnapsGlobalObject["request"]> {
     const { method, params = [] } = args;
     if (Object.hasOwnProperty.call(this.rpcStubs, method)) {
       // eslint-disable-next-line
@@ -45,7 +41,7 @@ class WalletMock implements SnapProvider {
   }
 
   public prepareFoKeyPair(): void {
-    this.rpcStubs.snap_manageState.withArgs("get").resolves({
+    this.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
         config: {
           derivationPath: "m/44'/461'/0'/0/0",
@@ -54,12 +50,11 @@ class WalletMock implements SnapProvider {
       },
     });
     this.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
-    this.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
   }
 }
 
 //risky hack but it's hard to stub all provider methods
-export function mockSnapProvider(): SnapProvider & WalletMock {
+export function mockSnapProvider(): SnapsGlobalObject & WalletMock {
   const mock = new WalletMock();
-  return mock as any as SnapProvider & WalletMock;
+  return mock as any as SnapsGlobalObject & WalletMock;
 }
