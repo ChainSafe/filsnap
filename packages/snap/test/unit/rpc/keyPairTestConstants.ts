@@ -14,8 +14,6 @@ export const testPrivateKey =
 export const testPrivateKeyBase64 =
   "iIpHZPNjhK7ymcmfgaZOLV1p4CSXnIyxSL2oRijTEDU=";
 
-export const testNewMetamaskVersion = "MetaMask/v10.19.0-flask.0";
-
 export const testBip44Entropy = {
   chainCode: "58dd22393e8f83301d7738a67c2dd4c74d6c03373b007f36f9f2d2765a4c98a4",
   coin_type: 461,

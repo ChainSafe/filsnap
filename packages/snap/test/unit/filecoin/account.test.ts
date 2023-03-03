@@ -5,7 +5,6 @@ import { getKeyPair } from "../../../src/filecoin/account";
 import {
   testAddress,
   testBip44Entropy,
-  testNewMetamaskVersion,
   testPrivateKeyBase64,
   testPublicKey,
 } from "../rpc/keyPairTestConstants";
@@ -31,7 +30,6 @@ describe("Test account function: getKeyPair", function () {
     });
 
     walletStub.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
-    walletStub.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
     // ensure our call to getBip44Entropy returns the correct entropy
     walletStub.requestStub.resolves(testBip44Entropy);
 

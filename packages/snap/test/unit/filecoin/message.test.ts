@@ -77,7 +77,6 @@ describe("Test saving transactions in state", function () {
 
     await updateMessageInState(walletStub, message);
 
-    // expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledTwice;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledWithExactly(
       {
         newState: {

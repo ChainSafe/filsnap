@@ -17,7 +17,7 @@ async function sendSnapMethod<T>(
   return await window.ethereum.request({
     method: "wallet_invokeSnap",
     params: {
-      request: { ...request },
+      request,
       snapId,
     },
   });

@@ -3,7 +3,6 @@ import { SnapsGlobalObject } from "@metamask/snaps-types";
 import sinon from "sinon";
 import {
   testBip44Entropy,
-  testNewMetamaskVersion,
 } from "./rpc/keyPairTestConstants";
 class WalletMock implements SnapsGlobalObject {
   public readonly registerRpcMessageHandler = sinon.stub();
@@ -51,7 +50,6 @@ class WalletMock implements SnapsGlobalObject {
       },
     });
     this.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
-    this.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
   }
 }
 

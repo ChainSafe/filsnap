@@ -6,7 +6,6 @@ import { mockSnapProvider } from "../wallet.mock.test";
 import {
   testBip44Entropy,
   testAddress,
-  testNewMetamaskVersion,
 } from "./keyPairTestConstants";
 
 chai.use(sinonChai);
@@ -29,7 +28,6 @@ describe("Test rpc handler function: getAddress", function () {
   });
 
   it("should respect all derivation path fields", async function () {
-    walletStub.rpcStubs.web3_clientVersion.resolves(testNewMetamaskVersion);
     walletStub.rpcStubs.snap_getBip44Entropy.resolves(testBip44Entropy);
     walletStub.rpcStubs.snap_manageState.withArgs({ operation: 'get' }).resolves({
       filecoin: {
