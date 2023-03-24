@@ -49,10 +49,10 @@ describe("Test rpc handler function: signMessage", function () {
     walletStub.prepareFoKeyPair();
 
     apiStub.mpoolGetNonce.returns("0");
-    apiStub.gasEstimateGasLimit.returns(1000);
     apiStub.gasEstimateMessageGas.returns({
       GasPremium: "10",
       GasFeeCap: "10",
+      GasLimit: 1000,
     });
 
     const response = await signMessage(walletStub, apiStub, messageRequest);
@@ -61,7 +61,6 @@ describe("Test rpc handler function: signMessage", function () {
     expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(apiStub.mpoolGetNonce).to.have.been.calledOnce;
-    expect(apiStub.gasEstimateGasLimit).to.have.been.calledOnce;
     expect(apiStub.gasEstimateMessageGas).to.have.been.calledOnce;
     expect(response.signedMessage.message).to.be.deep.eq(fullMessage);
     expect(response.signedMessage.signature.data).to.not.be.empty;
@@ -103,10 +102,10 @@ describe("Test rpc handler function: signMessage", function () {
     walletStub.rpcStubs.snap_confirm.resolves(true);
     walletStub.prepareFoKeyPair();
     apiStub.mpoolGetNonce.returns("0");
-    apiStub.gasEstimateGasLimit.returns(1000);
     apiStub.gasEstimateMessageGas.returns({
       GasFeeCap: "10",
       GasPremium: "10",
+      GasLimit: 1000,
     });
 
     const messageRequestWithCustomParams: MessageRequest = {
@@ -123,7 +122,6 @@ describe("Test rpc handler function: signMessage", function () {
     expect(walletStub.rpcStubs.snap_getBip44Entropy).to.have.been.calledOnce;
     expect(walletStub.rpcStubs.snap_manageState).to.have.been.calledOnce;
     expect(apiStub.mpoolGetNonce).to.have.been.calledOnce;
-    expect(apiStub.gasEstimateGasLimit).to.have.been.calledOnce;
     expect(apiStub.gasEstimateMessageGas).to.have.been.calledOnce;
     expect(response.signedMessage.message).to.be.deep.eq(paramsMessage);
     expect(response.signedMessage.signature.data).to.not.be.empty;
