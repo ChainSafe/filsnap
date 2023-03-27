@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.13](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.12...filsnap-v2.3.13) (2023-03-27)
+
+
+### Bug Fixes
+
+* gaslimit ([#254](https://github.com/ChainSafe/filsnap/issues/254)) ([067fce8](https://github.com/ChainSafe/filsnap/commit/067fce8c736b76a5d73e73a500fe1b1d1b00c7cd))
+
 ## [2.3.12](https://github.com/ChainSafe/filsnap/compare/filsnap-v2.3.11...filsnap-v2.3.12) (2023-03-03)
 
 
