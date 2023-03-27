@@ -59,12 +59,12 @@ export async function signMessage(
       message.gasfeecap === "0" &&
       message.gaspremium === "0"
     ) {
-      message.gaslimit = await api.gasEstimateGasLimit(message, null);
       const messageEstimate = await api.gasEstimateMessageGas(
         message,
         { MaxFee: "0" },
         null
       );
+      message.gaslimit = messageEstimate.GasLimit;
       message.gaspremium = messageEstimate.GasPremium;
       message.gasfeecap = messageEstimate.GasFeeCap;
     }

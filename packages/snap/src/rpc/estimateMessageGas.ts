@@ -24,8 +24,6 @@ export async function estimateMessageGas(
     method: 0, // code for basic transaction
     nonce: 0, // dummy nonce just for gas calculation
   };
-  // estimate gas usage
-  const gasLimit = await api.gasEstimateGasLimit(message, null);
   // set max fee to 0.1 FIL if not set
   const maxFeeAttoFil = maxFee
     ? maxFee
@@ -37,7 +35,7 @@ export async function estimateMessageGas(
   );
   return {
     gasfeecap: messageEstimate.GasFeeCap,
-    gaslimit: gasLimit,
+    gaslimit: messageEstimate.GasLimit,
     gaspremium: messageEstimate.GasPremium,
     maxfee: maxFeeAttoFil,
   };
