@@ -67,11 +67,11 @@
   },
   "dependencies": {
     "@filecoin-shipyard/lotus-client-provider-nodejs": "1.1.1",
-    "@filecoin-shipyard/lotus-client-rpc": "^0.2.0",
-    "@filecoin-shipyard/lotus-client-schema": "^0.0.14",
+    "@filecoin-shipyard/lotus-client-rpc": "1.2.0",
+    "@filecoin-shipyard/lotus-client-schema": "4.2.0",
     "@glif/filecoin-number": "^2.0.0-beta.0",
     "@metamask/key-tree": "^6.0.0",
-    "@metamask/snaps-types": "^0.26.2",
+    "@metamask/snaps-types": "0.31.0",
     "@zondax/filecoin-signing-tools": "^0.20.0",
     "bn.js": "^5.1.2",
     "deepmerge": "^4.2.2"

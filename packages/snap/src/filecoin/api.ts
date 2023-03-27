@@ -3,7 +3,7 @@ import {
   NodejsProvider,
   ProviderOptions,
 } from "@filecoin-shipyard/lotus-client-provider-nodejs";
-import { testnet } from "@filecoin-shipyard/lotus-client-schema";
+import { mainnet} from '@filecoin-shipyard/lotus-client-schema'
 import { SnapConfig } from "@chainsafe/filsnap-types";
 import { SnapsGlobalObject } from "@metamask/snaps-types";
 import { getConfiguration } from "../configuration";
@@ -24,6 +24,6 @@ export async function getApiFromConfig(
   }
   options.sendHttpContentType = "application/json";
   const provider = new NodejsProvider(configuration.rpc.url, options);
-  const client = new LotusRPC(provider, { schema: testnet.fullNode });
+  const client = new LotusRPC(provider, { schema: mainnet.fullNode });
   return client as unknown as LotusRpcApi;
 }
