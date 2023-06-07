@@ -49,7 +49,7 @@
   "devDependencies": {
     "@chainsafe/filsnap-types": "workspace:^",
     "@metamask/providers": "^9.0.0",
-    "@metamask/snaps-cli": "^0.18.1",
+    "@metamask/snaps-cli": "^0.32.2",
     "@types/bn.js": "^4.11.6",
     "@types/chai": "^4.2.10",
     "@types/mocha": "^9.1.1",
