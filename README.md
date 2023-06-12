@@ -1,3 +1,5 @@
+> This repo is not maintained. See latest development at https://github.com/filecoin-project/filsnap
+
 # FilSnap
 ![](https://github.com/chainsafe/filsnap/workflows/ci/badge.svg)
 ![](https://img.shields.io/badge/yarn-%3E%3D3-orange)
