@@ -1,6 +1,0 @@
-{
-  "dist": "dist",
-  "outfileName": "bundle.js",
-  "port": 8081,
-  "src": "src/index.ts"
-}
